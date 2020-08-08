@@ -1,5 +1,14 @@
 import React from 'react'
 
-const Layout = ({ children }) => <main>{children}</main>
+// Styles
+import 'assets/styles/reset.css'
+import GlobalStyles from 'assets/styles/globalStyles'
+
+const Layout = ({ children }) => (
+  <main>
+    <GlobalStyles />
+    {children}
+  </main>
+)
 
 export default Layout
