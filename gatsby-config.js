@@ -65,7 +65,7 @@ module.exports = {
         fonts: [
           {
             family: `Inter`,
-            variants: [`400`, `500`, `700`]
+            variants: [`400`, `500`, `600`, `700`]
           }
         ]
       }
