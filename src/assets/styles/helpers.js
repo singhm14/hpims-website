@@ -14,6 +14,14 @@ export const Helpers = () => {
         color: ${color};
       }
 
+      // Hover color classes
+      .color-hover--${name} {
+        
+        &:hover {
+          color: ${color};
+        }
+      }
+
       // Background color classes
       .bg--${name} {
         background-color: ${color};

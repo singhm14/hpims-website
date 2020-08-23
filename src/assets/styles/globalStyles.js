@@ -8,6 +8,12 @@ const GlobalStyles = createGlobalStyle`
     font-family: "Inter", sans-serif;
   }
 
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all .3s;
+  }
+
   ${Helpers}
 `
 

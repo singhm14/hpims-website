@@ -102,8 +102,10 @@ header,
 hgroup,
 menu,
 nav,
-section {
+section,
+div {
   display: block;
+  box-sizing: border-box;
 }
 body {
   line-height: 1;
