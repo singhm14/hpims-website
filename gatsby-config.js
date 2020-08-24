@@ -60,14 +60,10 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          {
-            family: `Inter`,
-            variants: [`400`, `500`, `600`, `700`]
-          }
-        ]
+        fonts: [`Inter\:400,500,600,700`],
+        display: `swap`
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

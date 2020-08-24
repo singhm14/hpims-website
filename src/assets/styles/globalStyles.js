@@ -1,8 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
 
-// Utils
-import breakpoint from 'utils/breakpoints/'
-
 // Helpers
 import { Helpers } from './helpers'
 
