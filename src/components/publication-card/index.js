@@ -12,7 +12,8 @@ import breakpoint from 'utils/breakpoints/'
 // Icons
 import ExternalLink from 'assets/icons/icon-external-link.inline.svg'
 
-const StyledPublicationCard = styled.div`
+const StyledPublicationCard = styled.a`
+  display: block;
   padding: 32px 16px;
 
   ${breakpoint.small`
@@ -109,7 +110,7 @@ class PublicationCard extends React.Component {
   }
 
   render = (props) => (
-    <StyledPublicationCard className="bg--grey100 color--black">
+    <StyledPublicationCard className="bg--grey100 color--black" href={this.props.link} target="_blank" rel="noopener noreferrer">
       <div className="publication__info color--grey900">
         <p>
           <span>{this.props.method}</span>
