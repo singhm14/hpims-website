@@ -10,6 +10,10 @@ import PublicationCard from 'components/publication-card/'
 
 const StyledPublications = styled.section`
   padding: 80px 0;
+
+  ${Container} {
+    max-width: 928px;
+  }
 `
 
 const Publications = () => {

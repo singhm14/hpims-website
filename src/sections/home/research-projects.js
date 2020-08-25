@@ -17,6 +17,10 @@ const StyledResearchProjects = styled.section`
   ${breakpoint.medium`
     padding: 60px 0;
   `}
+
+  ${Container} {
+    max-width: 928px;
+  }
 `
 
 const ResearchProjects = () => {
