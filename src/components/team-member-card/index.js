@@ -66,7 +66,7 @@ const TeamMemberCard = (props) => (
       <p className="name">{props.name}</p>
       <p>{props.position}</p>
 
-      <Link to={getSlug(props.name)} className="link color--900">
+      <Link to={'/team/' + getSlug(props.name)} className="link color--900">
         + More Info
       </Link>
     </div>
