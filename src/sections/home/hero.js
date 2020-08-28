@@ -19,6 +19,7 @@ const StyledHero = styled(PageHero)`
   max-height: 800px;
   height: 100vh;
   position: relative;
+  overflow-x: hidden;
 
   h1,
   p {
@@ -41,6 +42,7 @@ const StyledHero = styled(PageHero)`
   }
 
   .hero__background {
+    max-width: 100vw;
     position: absolute;
     top: 0;
     right: 0;
