@@ -16,32 +16,43 @@ import ExternalLink from 'assets/icons/icon-external-link.inline.svg'
 const StyledPublicationCard = styled.a`
   display: block;
   padding: 32px 16px;
+  box-shadow: 2px 2px 20px 4px rgba(0, 0, 0, 0.16);
 
   ${breakpoint.small`
-    padding: 32px;
+    padding: 40px;
   `}
 
   .publication__info {
     font-size: 14px;
     text-transform: uppercase;
 
-    .publication__journal {
+    span {
       font-weight: 600;
 
-      &::before {
+      &::after {
         content: '|';
-        margin: 0 6px;
+        margin: 0 8px;
+      }
+
+      &:last-child {
+        text-transform: capitalize;
+
+        &::after {
+          content: '';
+          margin: 0;
+        }
       }
     }
   }
 
   .publication__title {
-    margin: 20px 0;
+    margin: 16px 0;
   }
 
   .card__footer {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
     margin-top: 40px;
 
@@ -56,11 +67,12 @@ const StyledPublicationCard = styled.a`
 
       ${breakpoint.medium`
         width: auto;
+        margin-bottom: 0;
       `}
 
       .tag {
         margin-right: 16px;
-        border-bottom: 1px solid ${colors.grey500};
+        border-bottom: 1px solid ${colors.blue300};
 
         &:last-child {
           margin-right: 0;
@@ -84,28 +96,28 @@ const StyledPublicationCard = styled.a`
       `}
 
       svg {
-        margin-left: 12px;
+        margin-left: 8px;
       }
     }
   }
 `
 
 const PublicationCard = (props) => (
-  <StyledPublicationCard className="bg--grey100 color--black" href={props.link} target="_blank" rel="noopener noreferrer">
-    <div className="publication__info color--grey900">
+  <StyledPublicationCard className="bg--white color--black" href={props.link} target="_blank" rel="noopener noreferrer">
+    <div className="publication__info color--blue500">
       <p>
+        <span>{props.year}</span>
         <span>{props.method}</span>
-        <span className="publication__journal">{props.journal}</span>
+        <span>{props.journal}</span>
       </p>
     </div>
 
-    <h3 className="publication__title">{props.title}</h3>
+    <h4 className="publication__title color--blue500">{props.title}</h4>
 
     <p className="publication__authors">{props.authors}</p>
-    <p className="publication__year">{props.year}</p>
 
     <div className="card__footer">
-      <div className="publication__tags color--grey900">
+      <div className="publication__tags color--blue300">
         {props.tags.map((tag) => (
           <Link to={getSlug(tag)} className="tag color-hover--magenta500">
             {tag}
@@ -113,7 +125,7 @@ const PublicationCard = (props) => (
         ))}
       </div>
 
-      <Link to={props.link} className="publication__link color--grey900">
+      <Link to={props.link} className="publication__link color--magenta300">
         Open publication <ExternalLink />
       </Link>
     </div>

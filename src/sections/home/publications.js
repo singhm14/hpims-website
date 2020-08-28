@@ -4,15 +4,29 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
+// Utils
+import breakpoint from 'utils/breakpoints/'
+
 // Components
 import Container from 'components/container/'
+import Grid from 'components/grid/'
 import PublicationCard from 'components/publication-card/'
+import ButtonLink from 'components/button-link/'
 
 const StyledPublications = styled.section`
-  padding: 80px 0;
+  padding: 60px 0;
+
+  ${breakpoint.medium`
+    padding: 120px 0;
+  `}
 
   ${Container} {
     max-width: 928px;
+  }
+
+  .publications__view-more {
+    margin-top: 80px;
+    text-align: center;
   }
 `
 
@@ -39,11 +53,24 @@ const Publications = () => {
     }
   `)
   return (
-    <StyledPublications>
+    <StyledPublications className="bg--grey100">
       <Container>
-        {data.allContentfulPublications.nodes.map((publication) => (
-          <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
-        ))}
+        <p className="section__subtitle color--black">Publications</p>
+        <h2 className="section__title color--blue500">Explore our publications</h2>
+
+        <Grid gutter="32" columns="1">
+          <div className="grid__item">
+            {data.allContentfulPublications.nodes.map((publication) => (
+              <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
+            ))}
+          </div>
+        </Grid>
+
+        <div className="publications__view-more">
+          <ButtonLink to="/publications" className="bg--blue300 color--white">
+            See all publications
+          </ButtonLink>
+        </div>
       </Container>
     </StyledPublications>
   )
