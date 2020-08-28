@@ -9,7 +9,7 @@ import SEO from 'components/seo/'
 import Footer from 'components/footer/'
 
 const Layout = ({ children }) => (
-  <main>
+  <main className="color--black">
     <SEO />
     <GlobalStyles />
     {children}

@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 
 // Sections
 import Hero from 'sections/home/hero'
+import AboutUs from 'sections/home/about-us'
 import WhyHPIMS from 'sections/home/why-hpims'
 import ResearchProjects from 'sections/home/research-projects'
 import Publications from 'sections/home/publications'
@@ -17,6 +18,7 @@ const Home = () => (
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
     </Helmet>
     <Hero />
+    <AboutUs />
     <WhyHPIMS />
     <ResearchProjects />
     <Publications />
