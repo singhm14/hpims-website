@@ -19,7 +19,6 @@ const StyledHero = styled(PageHero)`
   max-height: 800px;
   height: 100vh;
   position: relative;
-  overflow-x: hidden;
 
   h1,
   p {
@@ -27,13 +26,13 @@ const StyledHero = styled(PageHero)`
   }
 
   .hero__collaboration {
-    position: absolute;
-    right: 24px;
-    bottom: 24px;
+    display: none;
 
     ${breakpoint.small`
+      position: absolute;
       right: 48px;
       bottom: 48px;
+      display: block;
     `}
 
     ${breakpoint.large`
