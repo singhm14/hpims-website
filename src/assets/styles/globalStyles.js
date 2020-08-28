@@ -69,14 +69,19 @@ const GlobalStyles = createGlobalStyle`
 
   section {
 
+    .section__title {
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
     .section__subtitle {
       margin-bottom: 16px;
       font-weight: 600;
       text-transform: uppercase;
     }
 
-    .section__title {
-      margin-bottom: 56px;
+    .section__description {
+      margin-top: 16px;
     }
   }
 
