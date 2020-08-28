@@ -8,6 +8,7 @@ import { Link } from 'gatsby'
 // Utils
 import { colors } from 'utils/variables/'
 import breakpoint from 'utils/breakpoints/'
+import { getSlug } from 'utils/functions/'
 
 // Icons
 import ExternalLink from 'assets/icons/icon-external-link.inline.svg'
@@ -89,56 +90,35 @@ const StyledPublicationCard = styled.a`
   }
 `
 
-class PublicationCard extends React.Component {
-  transformTagToSlug = (tag) => {
-    tag = tag.replace(/^\s+|\s+$/g, '')
-    tag = tag.toLowerCase()
+const PublicationCard = (props) => (
+  <StyledPublicationCard className="bg--grey100 color--black" href={props.link} target="_blank" rel="noopener noreferrer">
+    <div className="publication__info color--grey900">
+      <p>
+        <span>{props.method}</span>
+        <span className="publication__journal">{props.journal}</span>
+      </p>
+    </div>
 
-    // remove accents, swap ñ for n, etc
-    var from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;'
-    var to = 'aaaaeeeeiiiioooouuuunc------'
-    for (var i = 0, l = from.length; i < l; i++) {
-      tag = tag.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
-    }
+    <h3 className="publication__title">{props.title}</h3>
 
-    tag = tag
-      .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-      .replace(/\s+/g, '-') // collapse whitespace and replace by -
-      .replace(/-+/g, '-') // collapse dashes
+    <p className="publication__authors">{props.authors}</p>
+    <p className="publication__year">{props.year}</p>
 
-    return tag
-  }
-
-  render = (props) => (
-    <StyledPublicationCard className="bg--grey100 color--black" href={this.props.link} target="_blank" rel="noopener noreferrer">
-      <div className="publication__info color--grey900">
-        <p>
-          <span>{this.props.method}</span>
-          <span className="publication__journal">{this.props.journal}</span>
-        </p>
+    <div className="card__footer">
+      <div className="publication__tags color--grey900">
+        {props.tags.map((tag) => (
+          <Link to={getSlug(tag)} className="tag color-hover--magenta500">
+            {tag}
+          </Link>
+        ))}
       </div>
 
-      <h3 className="publication__title">{this.props.title}</h3>
-
-      <p className="publication__authors">{this.props.authors}</p>
-      <p className="publication__year">{this.props.year}</p>
-
-      <div className="card__footer">
-        <div className="publication__tags color--grey900">
-          {this.props.tags.map((tag) => (
-            <Link to={this.transformTagToSlug(tag)} className="tag color-hover--magenta500">
-              {tag}
-            </Link>
-          ))}
-        </div>
-
-        <Link to={this.props.link} className="publication__link color--grey900">
-          Open publication <ExternalLink />
-        </Link>
-      </div>
-    </StyledPublicationCard>
-  )
-}
+      <Link to={props.link} className="publication__link color--grey900">
+        Open publication <ExternalLink />
+      </Link>
+    </div>
+  </StyledPublicationCard>
+)
 
 PublicationCard.propTypes = {
   method: PropTypes.string,
