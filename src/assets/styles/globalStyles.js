@@ -67,6 +67,19 @@ const GlobalStyles = createGlobalStyle`
     transition: all .3s;
   }
 
+  section {
+
+    .section__subtitle {
+      margin-bottom: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .section__title {
+      margin-bottom: 56px;
+    }
+  }
+
   ${Helpers}
 `
 

@@ -10,42 +10,62 @@ import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 
+// Icons
+import ArrowRight from 'assets/icons/icon-arrow-right.inline.svg'
+
 const StyledResearchProjectCard = styled.a`
   max-width: 448px;
-  display: block;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
   padding: 32px 16px;
+  box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
 
   ${breakpoint.small`
-    padding: 40px;
+    padding: 48px 32px 42px 40px;
   `}
 
   .research-project__icon {
-    width: 88px;
-    margin-bottom: 24px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 32px;
   }
 
   .research-project__title {
-    margin-bottom: 8px;
+    width: 100%;
+    margin-bottom: 16px;
   }
 
   .research-project__link {
+    width: 100%;
+    align-self: flex-end;
     display: flex;
-    margin-top: 48px;
+    align-items: center;
+    margin-top: 40px;
+    font-weight: 600;
+
+    svg {
+      margin-left: 12px;
+    }
   }
 `
 
 const ResearchProject = (props) => (
-  <StyledResearchProjectCard className="bg--grey100 color--black">
-    <div className="research-project__icon">
-      <Img fixed={props.icon} alt={props.title} />
+  <StyledResearchProjectCard className="bg--white color--black">
+    <div>
+      <div className="research-project__icon">{props.icon && <Img fixed={props.icon} alt={props.title} />}</div>
+
+      <h4 className="research-project__title color--magenta300">{props.title}</h4>
+      <p className="color--grey900">{props.summary}</p>
     </div>
 
-    <h3 className="research-project__title">{props.title}</h3>
-    <p className="color--grey900">{props.summary}</p>
-
-    <Link to={'/research-projects/' + getSlug(props.title)} className="research-project__link color--black">
-      Find out more
+    <Link to={'/research-projects/' + getSlug(props.title)} className="research-project__link color--magenta300">
+      View full project
+      <ArrowRight />
     </Link>
   </StyledResearchProjectCard>
 )
