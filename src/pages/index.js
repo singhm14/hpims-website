@@ -10,6 +10,7 @@ import WhyHPIMS from 'sections/home/why-hpims'
 import ResearchProjects from 'sections/home/research-projects'
 import Publications from 'sections/home/publications'
 import News from 'sections/home/news'
+import LastEvent from 'sections/home/last-event'
 
 const Home = () => (
   <React.Fragment>
@@ -23,6 +24,7 @@ const Home = () => (
     <ResearchProjects />
     <Publications />
     <News />
+    <LastEvent />
   </React.Fragment>
 )
 
