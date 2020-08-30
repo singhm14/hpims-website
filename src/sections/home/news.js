@@ -82,7 +82,7 @@ const ArrowNext = (props) => {
 const News = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulNews {
+      allContentfulNews(sort: { fields: date, order: DESC }) {
         nodes {
           id
           journal

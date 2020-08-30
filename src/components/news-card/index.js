@@ -36,8 +36,10 @@ const StyledNewsCard = styled.a`
 
 const NewsCard = (props) => (
   <StyledNewsCard href={props.link} target="_blank" rel="noopener noreferrer">
-    <p className="news__journal paragraph--small color--grey900">{props.journal}</p>
-    <p className="news__title color--blue300">{props.title}</p>
+    <div>
+      <p className="news__journal paragraph--small color--grey900">{props.journal}</p>
+      <p className="news__title color--blue300">{props.title}</p>
+    </div>
 
     <p className="news__link color--black">{props.date}</p>
   </StyledNewsCard>
