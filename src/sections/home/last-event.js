@@ -94,6 +94,7 @@ const StyledLastEvent = styled.section`
 
     .date {
       max-width: 221px;
+      margin-bottom: 24px;
       font-weight: 600;
 
       p {
