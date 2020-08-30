@@ -27,7 +27,7 @@ const StyledResearchProjects = styled.section`
 const ResearchProjects = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulResearchProjects {
+      allContentfulResearchProjects(sort: { fields: createdAt, order: ASC }, limit: 2) {
         nodes {
           icon {
             fixed(width: 52, quality: 100) {
