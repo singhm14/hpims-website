@@ -4,12 +4,12 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Indicius' Gatsby Starter`,
+    title: `HPI·MS | Icahn School of Medicine`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    url: 'https://indicius.com',
+    url: 'https://icahn.mssm.edu/research/hpims',
     image: '',
-    twitterUsername: '@indiciusar',
-    author: `@tomasperalta`
+    twitterUsername: '@hpi_health',
+    author: `@indicius`
   },
   plugins: [
     // persistent-layout is enabled by default
