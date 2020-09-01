@@ -10,9 +10,13 @@ const StyledAccordion = styled.div`
   }
 
   .accordion__content {
-    max-height: ${(props) => (props.active ? '500000px' : '0')};
-    transition: max-height 0.6s ease;
+    max-height: ${(props) => (props.active ? '2500px' : '0')};
+    margin-bottom: ${(props) => (props.active ? '40px' : '0')};
+    transition: all 0.6s ease;
     overflow: hidden;
+  }
+
+  .accordion__trigger {
   }
 `
 
@@ -32,11 +36,11 @@ class Accordion extends React.Component {
 
   render = (props) => (
     <StyledAccordion active={this.state.active}>
+      <div className="accordion__content">{this.props.content}</div>
+
       <button type="button" className="accordion__trigger" onClick={this.toggleAccordion}>
         {this.state.active ? '- Less Info' : '+ More Info'}
       </button>
-
-      <div className="accordion__content">{this.props.content}</div>
     </StyledAccordion>
   )
 }

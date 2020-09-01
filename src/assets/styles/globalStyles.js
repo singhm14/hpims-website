@@ -85,6 +85,14 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  button {
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+  }
+
   ${Helpers}
 `
 
