@@ -44,6 +44,11 @@ const Publications = () => {
           internalAuthors {
             id
             name
+            profilePicture {
+              fixed(width: 24, quality: 100) {
+                ...GatsbyContentfulFixed_withWebp
+              }
+            }
           }
           year
           tags

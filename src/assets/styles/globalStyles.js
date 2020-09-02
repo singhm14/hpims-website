@@ -49,6 +49,14 @@ const GlobalStyles = createGlobalStyle`
     `}
   }
 
+  h5 {
+    font-size: 20px;
+
+    ${breakpoint.medium`
+      font-size: 22px;
+    `}
+  }
+
   p {
     margin: 0;
 
@@ -58,6 +66,11 @@ const GlobalStyles = createGlobalStyle`
 
     &.paragraph--small {
       font-size: 14px;
+    }
+
+    &.paragraph--extra-small {
+      font-size: 12px;
+      line-height: 1.33em;
     }
   }
 

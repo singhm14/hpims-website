@@ -24,6 +24,7 @@ const StyledResearchProjects = styled.section`
   `}
 
   .research-projects__background {
+    max-width: 100vw;
     position: absolute;
     top: 0;
     right: 0;

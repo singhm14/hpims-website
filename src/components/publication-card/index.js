@@ -2,145 +2,276 @@ import React from 'react'
 
 // Libraries
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
 
 // Utils
-import { colors } from 'utils/variables/'
 import breakpoint from 'utils/breakpoints/'
+import { colors } from 'utils/variables/'
 import { getSlug } from 'utils/functions/'
 
+// Components
+import BackgroundImage from 'gatsby-background-image'
+import { Link } from 'gatsby'
+
 // Icons
-import ExternalLink from 'assets/icons/icon-external-link.inline.svg'
+import IconExternalLink from 'assets/icons/icon-external-link.inline.svg'
 
-const StyledPublicationCard = styled.a`
-  display: block;
-  padding: 32px 16px;
-  box-shadow: 2px 2px 20px 4px rgba(0, 0, 0, 0.16);
+const StyledPublicationCard = styled.div`
+  padding: 24px 16px;
+  background-color: ${colors.white};
+  box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
 
-  ${breakpoint.small`
-    padding: 40px;
+  ${breakpoint.medium`
+    padding: 0;
+    display: flex;
   `}
 
   .publication__info {
-    font-size: 14px;
-    text-transform: uppercase;
-
-    span {
-      font-weight: 600;
-
-      &::after {
-        content: '|';
-        margin: 0 8px;
-      }
-
-      &:last-child {
-        text-transform: capitalize;
-
-        &::after {
-          content: '';
-          margin: 0;
-        }
-      }
-    }
-  }
-
-  .publication__title {
-    margin: 16px 0;
-  }
-
-  .card__footer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 40px;
-
     ${breakpoint.medium`
-      flex-wrap: no-wrap;
+      padding: 32px 32px 20px 32px;
     `}
 
-    .publication__tags {
-      width: 100%;
-      margin-bottom: 16px;
-      font-size: 14px;
+    .publication__date {
+      margin-bottom: 4px;
+      font-weight: 500;
 
       ${breakpoint.medium`
-        width: auto;
-        margin-bottom: 0;
+        font-size: 14px;
+      `}
+    }
+
+    .publication__title {
+      display: flex;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .info {
+      border-top: 1px solid ${colors.grey300};
+      padding: 20px 0;
+
+      ${breakpoint.medium`
+        padding: 16px 0;
       `}
 
-      .tag {
-        margin-right: 16px;
-        border-bottom: 1px solid ${colors.blue300};
+      &.info--journal {
+        ${breakpoint.medium`
+          display: none;
+        `}
+      }
 
-        &:last-child {
-          margin-right: 0;
+      &.info--authors {
+        display: flex;
+        justify-content: space-between;
+
+        .title {
+          font-weight: 600;
         }
 
-        &:hover {
-          border-color: ${colors.magenta500};
+        button {
+          border-bottom: 1px solid ${colors.blue300};
+          white-space: nowrap;
+        }
+
+        .authors__internal {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+
+          ${breakpoint.medium`
+            flex-wrap: nowrap;
+          `}
+
+          .authors {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: ${(props) => (props.active ? 'flex-start' : 'center')};
+            justify-content: space-between;
+            margin-bottom: ${(props) => (props.active ? '20px' : '0')};
+
+            .author {
+              width: ${(props) => (props.active ? '100%' : 'auto')};
+              display: flex;
+              align-items: center;
+              margin-bottom: ${(props) => (props.active ? '2px' : '0')};
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+
+              .author__profile-picture {
+                width: 24px;
+                height: 24px;
+                margin-right: ${(props) => (props.active ? '4px' : '-4px')};
+                border: 1px solid ${colors.white};
+                border-radius: 50% !important;
+              }
+
+              .author__name {
+                display: ${(props) => (props.active ? 'block' : 'none')};
+                font-weight: 500;
+              }
+            }
+
+            .count {
+              display: ${(props) => (props.active ? 'none' : 'block')};
+              margin-left: 8px;
+              font-weight: 500;
+            }
+          }
+        }
+
+        .authors__full-list {
+          max-width: 256px;
+          display: ${(props) => (props.active ? 'block' : 'none')};
+
+          ${breakpoint.medium`
+            margin-right: 40px;
+          `}
+        }
+      }
+
+      &.info--tags {
+        padding-bottom: 16px;
+
+        ${breakpoint.medium`
+          padding-bottom: 0;
+        `}
+
+        .tag {
+          display: inline-block;
+          padding: 4px 12px;
+          margin: 0 8px 8px 0;
+          background-color: ${colors.blue100};
+          color: ${colors.blue500};
+          font-size: 12px;
+          border-radius: 24px;
+          transition: all 0.6s;
+
+          &:last-child {
+            margin-right: 0;
+          }
         }
       }
     }
+  }
 
-    .publication__link {
-      width: 100%;
-      display: inline-flex;
-      align-items: center;
-      font-weight: 600;
-      text-align: right;
+  .publication__actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    ${breakpoint.medium`
+      padding: 32px 24px 24px 24px;
+      background-color: ${colors.grey100};
+    `}
+
+    .journal {
+      display: none;
 
       ${breakpoint.medium`
-        width: auto;
+        display: block;
+        font-weight: 600;
       `}
+    }
+
+    .link {
+      width: 100%;
+      align-self: flex-end;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 24px;
+      font-weight: 600;
+      white-space: nowrap;
+      border: 1px solid ${colors.blue300};
+      transition: all 0.6s;
 
       svg {
         margin-left: 8px;
+        * {
+          stroke: ${colors.blue300};
+        }
       }
     }
   }
 `
 
-const PublicationCard = (props) => (
-  <StyledPublicationCard className="bg--white color--black" href={props.link} target="_blank" rel="noopener noreferrer">
-    <div className="publication__info color--blue500">
-      <p>
-        <span>{props.year}</span>
-        <span>{props.method}</span>
-        <span>{props.journal}</span>
-      </p>
-    </div>
+class PublicationCard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      active: false
+    }
+  }
 
-    <h4 className="publication__title color--blue500">{props.title}</h4>
+  toggleAuthors = () => {
+    this.setState((prevState) => ({
+      active: !prevState.active
+    }))
+  }
 
-    <p className="publication__authors">{props.authors}</p>
+  render = () => (
+    <StyledPublicationCard active={this.state.active}>
+      <div className="publication__info color--grey900">
+        <p className="publication__date paragraph--extra-small color--grey700">{this.props.year}</p>
+        <h5>
+          <a href={this.props.link} className="publication__title color--black" target="_blank" rel="noopener noreferrer">
+            {this.props.title}
+          </a>
+        </h5>
 
-    <div className="card__footer">
-      <div className="publication__tags color--blue300">
-        {props.tags.map((tag) => (
-          <Link to={getSlug(tag)} className="tag color-hover--magenta500">
-            {tag}
-          </Link>
-        ))}
+        <div className="info info--journal">
+          <p className="journal paragraph--extra-small">Journal</p>
+          <p className="journal-title paragraph--small">{this.props.journal}</p>
+        </div>
+
+        <div className="info info--authors">
+          <div className="authors__internal">
+            <div className="authors">
+              {this.props.internalAuthors.map((author) => (
+                <div className="author" key={author.id}>
+                  <BackgroundImage className="author__profile-picture" fixed={author.profilePicture && author.profilePicture.fixed} style={{ width: '24px', height: '24px', backgroundSize: 'cover', borderRadius: '50%', overflow: 'hidden' }} />
+                  <p className="author__name paragraph--extra-small">{author.name}</p>
+                </div>
+              ))}
+
+              <p className="count paragraph--extra-small color--grey700">{this.props.internalAuthors.length} HPI•MS authors</p>
+            </div>
+
+            <div className="authors__full-list">
+              <p className="title paragraph--extra-small">Full List of Authors</p>
+              <p className="paragraph--extra-small">{this.props.authors}</p>
+            </div>
+          </div>
+
+          <div>
+            <button type="button" className="color--blue300" onClick={this.toggleAuthors}>
+              {this.state.active ? 'View less authors' : 'View all authors'}
+            </button>
+          </div>
+        </div>
+
+        <div className="info info--tags">
+          {this.props.tags.map((tag) => (
+            <Link to={'/publications?category=' + getSlug(tag)} className="tag color--blue500">
+              {tag}
+            </Link>
+          ))}
+        </div>
       </div>
+      <div className="publication__actions">
+        <div className="journal">
+          <p className="paragraph--extra-small color--black">Journal</p>
+          <p className="color--black">{this.props.journal}</p>
+        </div>
 
-      <Link to={props.link} className="publication__link color--magenta300">
-        Open publication <ExternalLink />
-      </Link>
-    </div>
-  </StyledPublicationCard>
-)
-
-PublicationCard.propTypes = {
-  method: PropTypes.string,
-  journal: PropTypes.string,
-  title: PropTypes.string,
-  authors: PropTypes.string,
-  internalAuthors: PropTypes.object,
-  year: PropTypes.string,
-  tags: PropTypes.array,
-  link: PropTypes.string
+        <a href={this.props.link} className="link color--blue300" target="_blank" rel="noopener noreferrer">
+          Open Publication
+          <IconExternalLink />
+        </a>
+      </div>
+    </StyledPublicationCard>
+  )
 }
 
 export default PublicationCard
