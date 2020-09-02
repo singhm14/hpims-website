@@ -27,7 +27,7 @@ const TeamMembers = () => {
         nodes {
           profilePicture {
             fixed(width: 256, quality: 100) {
-              ...GatsbyContentfulFluid_withWebp
+              ...GatsbyContentfulFixed_withWebp
             }
           }
           department

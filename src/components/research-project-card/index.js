@@ -2,6 +2,7 @@ import React from 'react'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
+import { colors } from 'utils/variables/'
 import { getSlug } from 'utils/functions/'
 
 // Libraries
@@ -50,6 +51,10 @@ const StyledResearchProjectCard = styled.a`
 
     svg {
       margin-left: 12px;
+
+      * {
+        stroke: ${colors.blue500};
+      }
     }
   }
 `
@@ -59,11 +64,15 @@ const ResearchProject = (props) => (
     <div>
       <div className="research-project__icon">{props.icon && <Img fixed={props.icon} alt={props.title} />}</div>
 
-      <h4 className="research-project__title color--magenta300">{props.title}</h4>
+      <h4 className="research-project__title color--blue500">
+        <Link to={'/research-projects/' + getSlug(props.title)} className="color--blue500">
+          {props.title}
+        </Link>
+      </h4>
       <p className="color--grey900">{props.summary}</p>
     </div>
 
-    <Link to={'/research-projects/' + getSlug(props.title)} className="research-project__link color--magenta300">
+    <Link to={'/research-projects/' + getSlug(props.title)} className="research-project__link color--blue500">
       View full project
       <ArrowRight />
     </Link>
