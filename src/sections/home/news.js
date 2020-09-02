@@ -123,6 +123,7 @@ const News = () => {
     <StyledNews>
       <Container>
         <div className="section__title">
+          <p className="section__subtitle color--black">Press</p>
           <h2 className="color--blue500">HPI·MS in the news</h2>
         </div>
 

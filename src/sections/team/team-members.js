@@ -41,9 +41,9 @@ const TeamMembers = () => {
     <StyledTeamMembers>
       <Container>
         <Grid gutter="32" columns="4">
-          {data.allContentfulTeamMembers.nodes.map((members) => (
+          {data.allContentfulTeamMembers.nodes.map((member) => (
             <div className="grid__item">
-              <TeamMemberCard />
+              <TeamMemberCard profilePicture={member.profilePicture && member.profilePicture.fixed} departments={member.department} name={member.name} position={member.position} />
             </div>
           ))}
         </Grid>
@@ -51,3 +51,5 @@ const TeamMembers = () => {
     </StyledTeamMembers>
   )
 }
+
+export default TeamMembers

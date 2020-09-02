@@ -55,7 +55,7 @@ const StyledTeamMemberCard = styled.div`
 
 const TeamMemberCard = (props) => (
   <StyledTeamMemberCard>
-    <BackgroundImage className="team-member__profile-picture bg--grey900" fluid={props.profilePicture} />
+    {props.profilePicture && <BackgroundImage className="team-member__profile-picture bg--grey900" fluid={props.profilePicture} style={{ backgroundSize: 'auto 100%' }} />}
     <div className="team-member__info bg--grey100 color--black">
       <p className="department">
         {props.departments.map((department) => (
