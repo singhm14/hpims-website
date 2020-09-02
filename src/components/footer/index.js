@@ -50,6 +50,7 @@ const StyledFooter = styled.footer`
   ul {
     display: flex;
     margin-bottom: 40px;
+    list-style: none;
 
     ${breakpoint.medium`
       margin-bottom: 0;
