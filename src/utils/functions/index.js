@@ -1,3 +1,5 @@
+import React from 'react'
+
 export const getSlug = (tag) => {
   tag = tag.replace(/^\s+|\s+$/g, '')
   tag = tag.toLowerCase()
@@ -15,4 +17,12 @@ export const getSlug = (tag) => {
     .replace(/-+/g, '-') // collapse dashes
 
   return tag
+}
+
+export const useToggle = (initialValue = false) => {
+  const [value, setValue] = React.useState(initialValue)
+  const toggle = React.useCallback(() => {
+    setValue((v) => !v)
+  }, [])
+  return [value, toggle]
 }

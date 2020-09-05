@@ -80,6 +80,13 @@ const GlobalStyles = createGlobalStyle`
     transition: all .3s;
   }
 
+  img,
+  svg {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+  }
+
   section {
 
     .section__title {
@@ -101,6 +108,9 @@ const GlobalStyles = createGlobalStyle`
   button {
     padding: 0;
     background: none;
+    color: inherit;
+    font: inherit;
+    font-size: inherit;
     border: 0;
     cursor: pointer;
     outline: 0;
