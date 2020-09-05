@@ -15,6 +15,7 @@ import { Link } from 'gatsby'
 
 // Icons
 import Logo from 'assets/icons/icon-logo.inline.svg'
+import IconCaretDown from 'assets/icons/icon-caret-down.inline.svg'
 import IconArrowLeft from 'assets/icons/icon-arrow-left.inline.svg'
 
 const StyledMenu = styled.nav`
@@ -27,6 +28,10 @@ const StyledMenu = styled.nav`
   background-color: ${colors.white};
   box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
   z-index: 9998;
+
+  ${breakpoint.small`
+    padding: 16px 0;
+  `}
 
   ul {
     list-style: none;
@@ -55,6 +60,10 @@ const StyledMenu = styled.nav`
     max-width: 152px;
     display: flex;
     align-items: flex-start;
+
+    ${breakpoint.small`
+      max-width: 180px;
+    `}
   }
 
   .menu__toggler {
@@ -156,6 +165,22 @@ const StyledMenu = styled.nav`
     }
 
     .menu__has-submenu {
+      > button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        svg {
+          transform: rotate(-90deg);
+          transition: all 0.6s ease;
+
+          ${breakpoint.small`
+            margin-left: 4px;
+            transform: ${(props) => (props.isSubMenuOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
+          `}
+        }
+      }
     }
 
     .submenu {
@@ -295,6 +320,7 @@ const Menu = () => {
             <li className="menu__has-submenu">
               <button type="button" onClick={() => toggleSubMenu()}>
                 Research
+                <IconCaretDown />
               </button>
 
               <div className="submenu">
