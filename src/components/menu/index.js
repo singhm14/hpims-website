@@ -45,6 +45,10 @@ const StyledMenu = styled.nav`
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+
+    ${breakpoint.small`
+      flex-wrap: nowrap;
+    `}
   }
 
   .menu__logo {
@@ -57,6 +61,10 @@ const StyledMenu = styled.nav`
     width: 22px;
     display: flex;
     flex-wrap: wrap;
+
+    ${breakpoint.small`
+      display: none;
+    `}
 
     span {
       width: 100%;
@@ -90,7 +98,22 @@ const StyledMenu = styled.nav`
     transition: all 0.6s ease;
     overflow: hidden;
 
+    ${breakpoint.small`
+      width: auto;
+      max-height: 100%!important;
+      height: auto;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      overflow: visible;
+    `}
+
     > ul {
+      ${breakpoint.small`
+        display: flex;
+        align-items: center;
+      `}
+
       li {
         width: 100%;
         padding: 16px 0;
@@ -98,12 +121,36 @@ const StyledMenu = styled.nav`
 
         &:last-child {
           border-bottom: 1px solid ${colors.grey300};
+
+          ${breakpoint.small`
+            border: 0;
+          `}
         }
+
+        ${breakpoint.small`
+          width: auto;
+          padding: 0;
+          margin-right: 20px;
+          border: 0;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        `}
+
+        ${breakpoint.medium`
+          margin-right: 40px;
+        `}
 
         a,
         button {
           font-size: 20px;
           font-weight: 600;
+
+          ${breakpoint.small`
+            font-size: 16px;
+            font-weight: 500;
+          `}
         }
       }
     }
@@ -123,11 +170,31 @@ const StyledMenu = styled.nav`
       background-color: ${colors.white};
       transition: all 0.3s ease;
 
+      ${breakpoint.small`
+        width: 512px;
+        top: 59px;
+        right: 0;
+        bottom: auto;
+        left: auto;
+        display: flex;
+        justify-content: space-between;
+        padding: 32px;
+        opacity: ${(props) => (props.isSubMenuOpen ? '1' : '0')};
+        visibility: ${(props) => (props.isSubMenuOpen ? 'visible' : 'hidden')};
+        transform: ${(props) => (props.isSubMenuOpen ? 'translateY(0)' : 'translateY(32px)')};
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+        transition: all 0.6s ease;
+      `}
+
       .submenu__closer {
         position: relative;
         margin-bottom: 24px;
         font-size: 20px;
         font-weight: 600;
+
+        ${breakpoint.small`
+          display: none;
+        `}
 
         svg {
           position: absolute;
@@ -143,15 +210,24 @@ const StyledMenu = styled.nav`
           margin-bottom: 0;
         }
 
+        ${breakpoint.small`
+          margin: 0 32px 0 0;
+        `}
+
         p {
-          margin-bottom: 8px;
+          padding-bottom: 8px;
           font-size: 12px;
           font-weight: 600;
           text-transform: uppercase;
+
+          ${breakpoint.small`
+            border-bottom: 1px solid ${colors.grey300};
+          `}
         }
 
         li {
           padding: 8px 0;
+          margin: 0;
         }
 
         a {
@@ -222,8 +298,8 @@ const Menu = () => {
               </button>
 
               <div className="submenu">
-                <h5>
-                  <button type="button" className="submenu__closer" onClick={() => toggleSubMenu()}>
+                <h5 className="submenu__closer">
+                  <button type="button" onClick={() => toggleSubMenu()}>
                     <IconArrowLeft />
                     Research
                   </button>
