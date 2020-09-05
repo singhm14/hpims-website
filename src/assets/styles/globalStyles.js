@@ -116,6 +116,10 @@ const GlobalStyles = createGlobalStyle`
     outline: 0;
   }
 
+  .no-scroll {
+    overflow: hidden!important;
+  }
+
   ${Helpers}
 `
 

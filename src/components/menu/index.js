@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
@@ -30,6 +30,14 @@ const StyledMenu = styled.nav`
 
   ul {
     list-style: none;
+  }
+
+  a,
+  button {
+    transition: all 0.3s;
+    &:hover {
+      color: ${colors.blue300};
+    }
   }
 
   ${Container} {
@@ -158,6 +166,16 @@ const StyledMenu = styled.nav`
 const Menu = () => {
   const [isMenuOpen, toggleMenu] = useToggle()
   const [isSubMenuOpen, toggleSubMenu] = useToggle()
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.querySelector('html').classList.add('no-scroll')
+      document.querySelector('body').classList.add('no-scroll')
+    } else {
+      document.querySelector('html').classList.remove('no-scroll')
+      document.querySelector('body').classList.remove('no-scroll')
+    }
+  })
 
   const data = useStaticQuery(graphql`
     query {
