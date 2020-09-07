@@ -97,7 +97,7 @@ const StyledFooter = styled.footer`
     }
 
     svg {
-      margin-right: 24px;
+      margin-right: 48px;
 
       &:last-child {
         margin-right: 0;
@@ -107,11 +107,11 @@ const StyledFooter = styled.footer`
 `
 
 const Footer = () => (
-  <StyledFooter className="bg--grey100">
+  <StyledFooter className="bg--blue900 color--white">
     <Container>
       <div className="footer__sitemap">
         <div className="email">
-          <p className="paragraph--small color--black">Contact Us</p>
+          <p className="paragraph--small color--white">Contact Us</p>
           <h4>
             <a href="mailto:hpimsinfo@mssm.edu" className="color--blue300 color-hover--magenta300">
               HPIMSinfo@mssm.edu
@@ -121,34 +121,34 @@ const Footer = () => (
         <ul>
           <div className="column">
             <li>
-              <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/" className="color--white color-hover--magenta300" activeClassName="active">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/about" className="color--white color-hover--magenta300" activeClassName="active">
                 About
               </Link>
             </li>
             <li>
-              <Link to="/team" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/team" className="color--white color-hover--magenta300" activeClassName="active">
                 Team
               </Link>
             </li>
           </div>
           <div className="column">
             <li>
-              <Link to="/research" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/research" className="color--white color-hover--magenta300" activeClassName="active">
                 Research
               </Link>
             </li>
             <li>
-              <Link to="/publications" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/publications" className="color--white color-hover--magenta300" activeClassName="active">
                 Publications
               </Link>
             </li>
             <li>
-              <Link to="/careers" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/careers" className="color--white color-hover--magenta300" activeClassName="active">
                 Careers
               </Link>
             </li>
@@ -161,7 +161,7 @@ const Footer = () => (
           <HassoPlatner />
           <MountSinai />
         </div>
-        <p className="color--grey900">© 2020 Hasso Plattner Institute for Digital Health at Mount Sinai</p>
+        <p className="color--grey500">© 2020 Hasso Plattner Institute for Digital Health at Mount Sinai</p>
       </div>
     </Container>
   </StyledFooter>
