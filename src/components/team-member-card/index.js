@@ -16,7 +16,7 @@ const StyledTeamMemberCard = styled.div`
 
   .team-member__profile-picture {
     width: 100%;
-    padding-bottom: 85%;
+    padding-bottom: 116%;
   }
 
   .team-member__info {
@@ -55,7 +55,7 @@ const StyledTeamMemberCard = styled.div`
 
 const TeamMemberCard = (props) => (
   <StyledTeamMemberCard>
-    {props.profilePicture && <BackgroundImage className="team-member__profile-picture bg--grey900" fluid={props.profilePicture} style={{ backgroundSize: 'auto 100%' }} />}
+    {props.profilePicture && <BackgroundImage className="team-member__profile-picture bg--grey900" fluid={props.profilePicture} style={{ backgroundSize: 'cover' }} />}
     <div className="team-member__info bg--grey100 color--black">
       <p className="department">{props.departments && props.departments.map((department) => <span>{department}</span>)}</p>
 
