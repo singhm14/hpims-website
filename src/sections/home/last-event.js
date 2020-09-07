@@ -175,9 +175,9 @@ const LastEvent = () => {
   }
 
   return (
-    <StyledLastEvent className="bg--blue900 color--white">
+    <StyledLastEvent className="bg--blue100 color--black">
       <Container>
-        <div className="section__title">
+        <div className="section__title color--blue500">
           <p className="section__subtitle">Our Last Event</p>
           <h2>HPI - Mount Sinai Digital Health Forum</h2>
         </div>
