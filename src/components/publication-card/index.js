@@ -30,6 +30,13 @@ const StyledPublicationCard = styled.div`
       padding: 32px 32px 20px 32px;
     `}
 
+    .title {
+      margin-bottom: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1px;
+    }
+
     .publication__date {
       margin-bottom: 4px;
       font-weight: 500;
@@ -63,11 +70,8 @@ const StyledPublicationCard = styled.div`
         display: flex;
         justify-content: space-between;
 
-        .title {
-          font-weight: 600;
-        }
-
         button {
+          font-size: 14px;
           border-bottom: 1px solid ${colors.blue300};
           white-space: nowrap;
         }
@@ -81,6 +85,10 @@ const StyledPublicationCard = styled.div`
           ${breakpoint.medium`
             flex-wrap: nowrap;
           `}
+
+          .title {
+            display: ${(props) => (props.active ? 'block' : 'none')};
+          }
 
           .authors {
             display: flex;
@@ -162,7 +170,7 @@ const StyledPublicationCard = styled.div`
 
     ${breakpoint.medium`
       padding: 32px 24px 24px 24px;
-      background-color: ${colors.grey100};
+      background-color: ${colors.blue100};
     `}
 
     .journal {
@@ -187,7 +195,10 @@ const StyledPublicationCard = styled.div`
       transition: all 0.6s;
 
       svg {
+        width: 16px;
+        height: 16px;
         margin-left: 8px;
+
         * {
           stroke: ${colors.blue300};
         }
@@ -212,10 +223,10 @@ class PublicationCard extends React.Component {
 
   render = () => (
     <StyledPublicationCard active={this.state.active}>
-      <div className="publication__info color--grey900">
+      <div className="publication__info color--blue500">
         <p className="publication__date paragraph--extra-small color--grey700">{this.props.year}</p>
         <h5>
-          <a href={this.props.link} className="publication__title color--black" target="_blank" rel="noopener noreferrer">
+          <a href={this.props.link} className="publication__title color--blue500" target="_blank" rel="noopener noreferrer">
             {this.props.title}
           </a>
         </h5>
@@ -227,7 +238,8 @@ class PublicationCard extends React.Component {
 
         <div className="info info--authors">
           <div className="authors__internal">
-            <div className="authors">
+            <div className="authors color--black">
+              <p className="title paragraph--extra-small color--black">Full List of Authors</p>
               {this.props.internalAuthors.map((author) => (
                 <div className="author" key={author.id}>
                   <BackgroundImage className="author__profile-picture" fixed={author.profilePicture && author.profilePicture.fixed} style={{ width: '24px', height: '24px', backgroundSize: 'cover', borderRadius: '50%', overflow: 'hidden' }} />
@@ -239,8 +251,8 @@ class PublicationCard extends React.Component {
             </div>
 
             <div className="authors__full-list">
-              <p className="title paragraph--extra-small">Full List of Authors</p>
-              <p className="paragraph--extra-small">{this.props.authors}</p>
+              <p className="title paragraph--extra-small color--black">Full List of Authors</p>
+              <p className="paragraph--extra-small color--black">{this.props.authors}</p>
             </div>
           </div>
 

@@ -56,6 +56,7 @@ const GlobalStyles = createGlobalStyle`
 
   h5 {
     font-size: 20px;
+    line-height: 28px;
 
     ${breakpoint.medium`
       font-size: 22px;
