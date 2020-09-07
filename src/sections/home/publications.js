@@ -58,10 +58,10 @@ const Publications = () => {
     }
   `)
   return (
-    <StyledPublications className="bg--grey100">
+    <StyledPublications className="bg--blue500">
       <Container>
-        <p className="section__subtitle color--black">Publications</p>
-        <h2 className="section__title color--blue500">Explore our publications</h2>
+        <p className="section__subtitle color--white">Publications</p>
+        <h2 className="section__title color--white">Explore our publications</h2>
 
         <Grid gutter="32" columns="1">
           <div className="grid__item">
