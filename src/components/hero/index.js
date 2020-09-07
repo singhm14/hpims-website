@@ -19,10 +19,23 @@ const Hero = styled.section`
 
   .subtitle {
     margin-bottom: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
   }
 
   .title {
+    max-width: 640px;
     margin-bottom: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+
+    ${breakpoint.medium`
+      font-size: 52px;
+    `}
+  }
+
+  p {
+    max-width: 544px;
   }
 `
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
