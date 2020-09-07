@@ -26,6 +26,22 @@ export const Helpers = () => {
       .bg--${name} {
         background-color: ${color};
       }
+
+      // SVG Fills
+      .svg--fill-${name} {\
+      
+        * {
+          fill: ${color};
+        }
+      }
+
+      // SVG Strokes
+      .svg--stroke-${name} {
+
+        * {
+          stroke: ${color};
+        }
+      }
     `
   })
 
