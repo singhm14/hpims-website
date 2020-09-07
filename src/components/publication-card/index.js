@@ -27,6 +27,7 @@ const StyledPublicationCard = styled.div`
 
   .publication__info {
     ${breakpoint.medium`
+      width: calc(100% - 256px);
       padding: 32px 32px 20px 32px;
     `}
 
@@ -169,6 +170,7 @@ const StyledPublicationCard = styled.div`
     flex-wrap: wrap;
 
     ${breakpoint.medium`
+      width: 256px;
       padding: 32px 24px 24px 24px;
       background-color: ${colors.blue100};
     `}

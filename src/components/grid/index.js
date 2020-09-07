@@ -21,7 +21,7 @@ const Grid = styled.div`
     ${breakpoint.medium`
       width: calc((100% - (${(props) => props.gutter}px * (${(props) => props.columns} - 1))) / ${(props) => props.columns});
 
-      &:nth-last-child(-n + 2) {
+      &:nth-last-child(-n + ${(props) => props.columns}) {
         margin-bottom: 0;
       }
     `}

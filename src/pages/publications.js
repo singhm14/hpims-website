@@ -11,6 +11,7 @@ import Container from 'components/container/'
 
 // Sections
 import Filters from 'sections/publications/filters'
+import PublicationsList from 'sections/publications/publications-list'
 
 const StyledPublications = styled.section`
   padding: 40px 0;
@@ -29,6 +30,7 @@ const Publications = () => (
   <StyledPublications>
     <Container>
       <Filters />
+      <PublicationsList />
     </Container>
   </StyledPublications>
 )

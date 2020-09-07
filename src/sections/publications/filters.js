@@ -39,6 +39,7 @@ const Filters = () => {
   let internalAuthors = []
   let publicationMethods = []
 
+  // Populates the arrays with information
   data.allContentfulPublications.nodes.map((publication) => {
     // Push all Years
     years.push(publication.year)
