@@ -58,12 +58,15 @@ const StyledMenu = styled.nav`
 
   .menu__logo {
     max-width: 152px;
-    display: flex;
-    align-items: flex-start;
 
     ${breakpoint.small`
       max-width: 180px;
     `}
+
+    a {
+      display: flex;
+      align-items: flex-start;
+    }
   }
 
   .menu__toggler {
@@ -197,7 +200,7 @@ const StyledMenu = styled.nav`
 
       ${breakpoint.small`
         width: 512px;
-        top: 59px;
+        top: 52px;
         right: 0;
         bottom: auto;
         left: auto;
@@ -209,6 +212,7 @@ const StyledMenu = styled.nav`
         transform: ${(props) => (props.isSubMenuOpen ? 'translateY(0)' : 'translateY(32px)')};
         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
         transition: all 0.6s ease;
+        z-index: 9997;
       `}
 
       .submenu__closer {

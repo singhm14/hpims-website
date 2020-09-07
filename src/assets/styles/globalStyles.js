@@ -8,13 +8,13 @@ import { Helpers } from './helpers'
 
 const GlobalStyles = createGlobalStyle`
   body {
-    padding-top: 94px;
+    padding-top: 88px;
     font-family: "Inter", sans-serif;
     font-size: 16px;
     line-height: 1.5em;
 
     ${breakpoint.small`
-      padding-top: 85px;
+      padding-top: 79px;
     `}
   }
 
