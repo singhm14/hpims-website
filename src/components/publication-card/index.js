@@ -132,6 +132,7 @@ const StyledPublicationCard = styled.div`
 
         .authors__full-list {
           max-width: 256px;
+          width: 100%;
           display: ${(props) => (props.active ? 'block' : 'none')};
 
           ${breakpoint.medium`
@@ -249,7 +250,7 @@ class PublicationCard extends React.Component {
                 </div>
               ))}
 
-              <p className="count paragraph--extra-small color--grey700">{this.props.internalAuthors.length} HPI•MS authors</p>
+              <p className="count paragraph--extra-small">{this.props.internalAuthors.length} HPI•MS authors</p>
             </div>
 
             <div className="authors__full-list">
@@ -260,7 +261,7 @@ class PublicationCard extends React.Component {
 
           <div>
             <button type="button" className="color--blue300" onClick={this.toggleAuthors}>
-              {this.state.active ? 'View less authors' : 'View all authors'}
+              {this.state.active ? 'View less' : 'View all'}
             </button>
           </div>
         </div>

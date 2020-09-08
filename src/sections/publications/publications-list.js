@@ -20,6 +20,10 @@ const StyledPublicationsList = styled.section`
   `}
 
   ${breakpoint.medium`
+    width: calc(100% - 256px - 24px);
+  `}
+
+  ${breakpoint.large`
     width: calc(100% - 256px - 64px);
   `}
 `
