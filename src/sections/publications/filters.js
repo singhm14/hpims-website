@@ -12,9 +12,11 @@ import Dropdown from 'components/dropdown/'
 
 const StyledFilters = styled.div`
   width: 100%;
+  margin-bottom: 32px;
 
   ${breakpoint.small`
     max-width: 256px;
+    margin: 0;
   `}
 `
 
@@ -52,6 +54,8 @@ const Filters = () => {
 
     // Push all Publication Methods
     publicationMethods.push(publication.method)
+
+    return false // To avoid error
   })
 
   // Remove repeated options

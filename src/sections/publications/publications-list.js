@@ -4,12 +4,24 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
+// Utils
+import breakpoint from 'utils/breakpoints/'
+
 // Components
 import Grid from 'components/grid/'
 import PublicationCard from 'components/publication-card/'
 
 const StyledPublicationsList = styled.section`
-  max-width: 928px;
+  width: 100%;
+
+  ${breakpoint.small`
+    max-width: 800px;
+    width: calc(100% - 256px - 32px);
+  `}
+
+  ${breakpoint.medium`
+    width: calc(100% - 256px - 64px);
+  `}
 `
 
 const PublicationsList = () => {

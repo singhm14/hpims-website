@@ -22,6 +22,7 @@ const StyledPublications = styled.section`
 
   ${Container} {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 `
