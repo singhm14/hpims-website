@@ -24,7 +24,7 @@ const Hero = styled.section`
   }
 
   .title {
-    max-width: 640px;
+    max-width: 544px;
     margin-bottom: 24px;
     font-weight: 600;
     letter-spacing: -0.02em;

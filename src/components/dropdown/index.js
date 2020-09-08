@@ -2,10 +2,9 @@ import React from 'react'
 
 // Libraries
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
 import { colors } from 'utils/variables/'
 import { getSlug } from 'utils/functions/'
 
@@ -34,7 +33,7 @@ const StyledDropdown = styled.div`
       justify-content: space-between;
       padding: 8px 12px 8px 0;
       border-bottom: 1px solid;
-      border-color: ${(props) => (props.active ? colors.blue300 : colors.grey300)};
+      border-color: ${(props) => (props.active ? colors.blue500 : colors.grey300)};
 
       span {
         min-height: 24px;
@@ -111,14 +110,14 @@ class Dropdown extends React.Component {
 
   render = (props) => (
     <StyledDropdown active={this.state.active} selectedOption={this.state.selectedOption}>
-      <label className="dropdown__label color--blue300" htmlFor={getSlug(this.props.label)}>
-        {this.props.label}
-      </label>
-
       <div id={getSlug(this.props.label)} className="dropdown">
-        <button type="button" className="dropdown__toggler color--blue300" onClick={this.toggleDropdown}>
+        <p className="dropdown__label color--blue500" for={getSlug(this.props.label)}>
+          {this.props.label}
+        </p>
+
+        <button type="button" className="dropdown__toggler color--blue500" onClick={this.toggleDropdown}>
           <span>{this.state.selectedOption}</span>
-          <IconCaretDown className="svg--stroke-blue300" />
+          <IconCaretDown className="svg--stroke-blue500" />
         </button>
 
         <ul className="dropdown__options">
