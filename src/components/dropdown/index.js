@@ -16,12 +16,17 @@ const StyledDropdown = styled.div`
   position: relative;
 
   .dropdown__label {
+    position: relative;
     display: inline-block;
     font-weight: 600;
     transform: ${(props) => (props.selectedOption !== '' ? 'translateY(0)' : 'translateY(32px)')};
+    z-index: 999;
   }
 
   .dropdown {
+    position: relative;
+    z-index: 1000;
+
     .dropdown__toggler {
       width: 100%;
       display: flex;
@@ -55,6 +60,13 @@ const StyledDropdown = styled.div`
 
         &:last-child {
           border-bottom: 0;
+        }
+
+        button {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
       }
     }
