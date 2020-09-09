@@ -11,7 +11,7 @@ import breakpoint from 'utils/breakpoints/'
 import Container from 'components/container/'
 import Grid from 'components/grid/'
 import PublicationCard from 'components/publication-card/'
-import ButtonLink from 'components/button-link/'
+import { Primary } from 'components/buttons/'
 
 const StyledPublications = styled.section`
   padding: 60px 0;
@@ -27,6 +27,10 @@ const StyledPublications = styled.section`
   .publications__view-more {
     margin-top: 80px;
     text-align: center;
+
+    svg {
+      display: none;
+    }
   }
 `
 
@@ -58,23 +62,21 @@ const Publications = () => {
     }
   `)
   return (
-    <StyledPublications className="bg--blue500">
+    <StyledPublications className="bg--grey100">
       <Container>
-        <p className="section__subtitle color--white">Publications</p>
-        <h2 className="section__title color--white">Explore our publications</h2>
+        <p className="section__subtitle color--black">Publications</p>
+        <h2 className="section__title color--blue900">World class research with a global impact</h2>
 
         <Grid gutter="32" columns="1">
-          <div className="grid__item">
-            {data.allContentfulPublications.nodes.map((publication) => (
+          {data.allContentfulPublications.nodes.map((publication) => (
+            <div className="grid__item">
               <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
-            ))}
-          </div>
+            </div>
+          ))}
         </Grid>
 
         <div className="publications__view-more">
-          <ButtonLink to="/publications" className="bg--blue300 color--white">
-            See all publications
-          </ButtonLink>
+          <Primary to="/research" className="color--blue500 color-hover--white bg-hover--blue500 border--blue500" text="Explore all research initiatives" />
         </div>
       </Container>
     </StyledPublications>
