@@ -27,6 +27,25 @@ export const Helpers = () => {
         background-color: ${color};
       }
 
+      .bg-hover--${name} {
+        
+        &:hover {
+          background-color: ${color};
+        }
+      }
+
+      // Borders
+      .border--${name} {
+        border: 1px solid ${color};
+      }
+
+      .border-hover--${name} {
+        
+        &:hover {
+          border: 1px solid ${color};
+        }
+      }
+
       // SVG Fills
       .svg--fill-${name} {
       
@@ -36,7 +55,7 @@ export const Helpers = () => {
         }
       }
 
-      .svg--hover-fill-${name} {
+      .svg-hover--fill-${name} {
       
         &:hover {
           *,
@@ -55,7 +74,7 @@ export const Helpers = () => {
         }
       }
 
-      .svg--hover-stroke-${name} {
+      .svg-hover--stroke-${name} {
 
         &:hover {
           *,

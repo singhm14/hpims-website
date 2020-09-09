@@ -56,7 +56,7 @@ const AboutUs = (props) => {
           <br />
           <p>The Hasso Plattner Institute for Digital Health at Mount Sinai (HPI･MS) propels these possibilities through an extraordinary international academic collaboration between the Hasso Plattner Institute for Digital Engineering in Potsdam, Germany, and the Mount Sinai Health System in New York City, USA.</p>
 
-          <Tertiary to="/about" className="about__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg--hover-stroke-blue500" text="Learn more about us" />
+          <Tertiary to="/about" className="about__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500" text="Learn more about us" />
         </div>
       </Container>
 

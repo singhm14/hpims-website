@@ -11,30 +11,36 @@ import breakpoint from 'utils/breakpoints/'
 import Container from 'components/container/'
 import Grid from 'components/grid/'
 import ResearchProjectCard from 'components/research-project-card/'
-
-// Icons
-import Background from 'assets/icons/home/research-projects-background.inline.svg'
+import { Primary } from 'components/buttons/'
 
 const StyledResearchProjects = styled.section`
   position: relative;
   padding: 48px 0 80px 0;
+  text-align: center;
 
   ${breakpoint.medium`
-    padding: 94px 0 160px 0;
+    padding: 120px 0 80px 0;
   `}
-
-  .research-projects__background {
-    max-width: 100vw;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-  }
 
   ${Container} {
     max-width: 928px;
+  }
+
+  .section__title {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .research__link {
+    margin-top: 24px;
+
+    ${breakpoint.medium`
+      margin-top: 56px;
+    `}
+
+    svg {
+      display: none;
+    }
   }
 `
 
@@ -58,11 +64,11 @@ const ResearchProjects = () => {
   `)
   return (
     <StyledResearchProjects>
-      <Background className="research-projects__background" />
-
       <Container>
-        <p className="section__subtitle">Research</p>
-        <h2 className="section__title color--blue500">Explore our ongoing research projects</h2>
+        <div className="section__title">
+          <p className="section__subtitle">Research</p>
+          <h3 className="color--blue500">Leading the digital health revolution</h3>
+        </div>
 
         <Grid gutter="32" columns="2">
           {data.allContentfulResearchProjects.nodes.map((project) => (
@@ -71,6 +77,8 @@ const ResearchProjects = () => {
             </div>
           ))}
         </Grid>
+
+        <Primary to="/research" className="research__link color--blue500 color-hover--white bg-hover--blue500 border--blue500" text="Explore all research initiatives" />
       </Container>
     </StyledResearchProjects>
   )
