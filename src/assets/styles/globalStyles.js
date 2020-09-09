@@ -27,27 +27,31 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
+    font-size: 40px
 
     ${breakpoint.medium`
-      font-size: 68px;
+      font-size: 64px;
     `}
   }
 
   h2 {
+    font-size: 32px;
 
     ${breakpoint.medium`
-      font-size: 44px;
+      font-size: 52px;
     `}
   }
 
   h3 {
+    font-size: 28px;
 
     ${breakpoint.medium`
-      font-size: 32px;
+      font-size: 40px;
     `}
   }
 
   h4 {
+    font-size: 22px;
     
     ${breakpoint.medium`
       font-size: 24px;
@@ -59,7 +63,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 28px;
 
     ${breakpoint.medium`
-      font-size: 22px;
+      font-size: 24px;
     `}
   }
 
@@ -83,7 +87,7 @@ const GlobalStyles = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
-    transition: all .3s;
+    transition: all 0.3s ease;
   }
 
   img,
@@ -91,6 +95,7 @@ const GlobalStyles = createGlobalStyle`
     max-width: 100%;
     height: auto;
     display: inline-block;
+    transition: all 0.3s ease;
   }
 
   section {

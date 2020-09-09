@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
@@ -21,6 +21,12 @@ const StyledFilters = styled.div`
 `
 
 const Filters = () => {
+  // Store filters as state
+  const [year, handleYearFilter] = useState(null)
+  const [category, handleCategoryFilter] = useState(null)
+  const [author, handleAuthorFilter] = useState(null)
+  const [publicationMethod, handlePublicationMethodFilter] = useState(null)
+
   const data = useStaticQuery(graphql`
     query {
       allContentfulPublications {
@@ -66,10 +72,14 @@ const Filters = () => {
 
   return (
     <StyledFilters>
-      <Dropdown label="Year" options={years} />
-      <Dropdown label="Category" options={tags} />
-      <Dropdown label="Author" options={internalAuthors} />
-      <Dropdown label="Publication Method" options={publicationMethods} />
+      <Dropdown label="Year" options={years} callbackFunction={(event) => handleYearFilter(event.target.innerText)} />
+      <Dropdown label="Category" options={tags} callbackFunction={(event) => handleCategoryFilter(event.target.innerText)} />
+      <Dropdown label="Author" options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(event.target.innerText)} />
+      <Dropdown label="Publication Method" options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(event.target.innerText)} />
+
+      <p>
+        ?year={year}&category={category}&author={author}&publicatioMethod={publicationMethod}
+      </p>
     </StyledFilters>
   )
 }

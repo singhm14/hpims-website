@@ -28,18 +28,40 @@ export const Helpers = () => {
       }
 
       // SVG Fills
-      .svg--fill-${name} {\
+      .svg--fill-${name} {
       
-        * {
+        *,
+        svg * {
           fill: ${color};
+        }
+      }
+
+      .svg--hover-fill-${name} {
+      
+        &:hover {
+          *,
+          svg * {
+            fill: ${color};
+          }
         }
       }
 
       // SVG Strokes
       .svg--stroke-${name} {
 
-        * {
+        *,
+        svg * {
           stroke: ${color};
+        }
+      }
+
+      .svg--hover-stroke-${name} {
+
+        &:hover {
+          *,
+          svg * {
+            stroke: ${color};
+          }
         }
       }
     `

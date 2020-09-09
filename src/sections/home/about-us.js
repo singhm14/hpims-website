@@ -10,47 +10,27 @@ import breakpoint from 'utils/breakpoints/'
 // Components
 import Container from 'components/container/'
 import Img from 'gatsby-image'
-
-// Icons
-import Logo from 'assets/icons/icon-logo.inline.svg'
+import { Tertiary } from 'components/buttons/'
 
 const StyledAboutUs = styled.section`
-  padding: 60px 0;
+  padding-top: 60px;
   text-align: center;
 
   ${breakpoint.medium`
-    padding: 120px 0;
+    padding-top: 120px;
   `}
 
   .section__title {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .about-us__image {
-    margin-bottom: 40px;
-
-    ${breakpoint.medium`
-      margin-bottom: 80px;
-    `}
-  }
-
-  .about-us__description {
-    max-width: 928px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 auto;
+    max-width: 544px;
     text-align: left;
 
-    .logo {
-      max-width: 302px;
-      margin-bottom: 24px;
+    h3 {
+      margin-bottom: 32px;
     }
+  }
 
-    .summary {
-      max-width: 544px;
-    }
+  .about__link {
+    margin-top: 16px;
   }
 `
 
@@ -69,26 +49,18 @@ const AboutUs = (props) => {
   return (
     <StyledAboutUs>
       <Container>
-        <p className="section__subtitle color--black">About Us</p>
-        <h2 className="section__title color--blue500">Turning the promise of digital health into a reality</h2>
+        <div className="section__title">
+          <p className="section__subtitle color--black">About Us</p>
+          <h3 className="color--blue500">Turning the promise of digital health into a reality</h3>
+          <p>Science has helped humanity to improve and extend life. Today, technological advances have allowed us to understand and analyze information in ways never before possible.</p>
+          <br />
+          <p>The Hasso Plattner Institute for Digital Health at Mount Sinai (HPI･MS) propels these possibilities through an extraordinary international academic collaboration between the Hasso Plattner Institute for Digital Engineering in Potsdam, Germany, and the Mount Sinai Health System in New York City, USA.</p>
+
+          <Tertiary to="/about" className="about__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg--hover-stroke-blue500" text="Learn more about us" />
+        </div>
       </Container>
 
       <Img className="about-us__image" fluid={data.file.childImageSharp.fluid} alt="About Us" />
-
-      <Container>
-        <div className="about-us__description">
-          <div className="logo">
-            <Logo />
-          </div>
-
-          <div className="summary">
-            <h4 className="color--blue500">Science has helped humanity to improve and extend life. Today, technological advances have allowed us to understand and analyze information in ways never before possible. </h4>
-            <br />
-            <p>The Hasso Plattner Institute for Digital Health at Mount Sinai (HPI･MS) propels these possibilities through international academic collaboration between the Hasso Plattner Institute for Digital Engineering in Potsdam, Germany, and the Mount Sinai Health System in New York City, USA.</p>
-            <br />
-          </div>
-        </div>
-      </Container>
     </StyledAboutUs>
   )
 }

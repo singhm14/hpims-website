@@ -106,15 +106,15 @@ class Dropdown extends React.Component {
       },
       this.closeDropdown()
     )
+
+    this.props.callbackFunction(event)
   }
 
   render = (props) => (
     <StyledDropdown active={this.state.active} selectedOption={this.state.selectedOption}>
-      <div id={getSlug(this.props.label)} className="dropdown">
-        <p className="dropdown__label color--blue500" for={getSlug(this.props.label)}>
-          {this.props.label}
-        </p>
+      <p className="dropdown__label color--blue500">{this.props.label}</p>
 
+      <div id={getSlug(this.props.label)} className="dropdown">
         <button type="button" className="dropdown__toggler color--blue500" onClick={this.toggleDropdown}>
           <span>{this.state.selectedOption}</span>
           <IconCaretDown className="svg--stroke-blue500" />
