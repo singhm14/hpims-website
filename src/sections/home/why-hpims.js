@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
+import { colors } from 'utils/variables/'
 
 // Components
 import Container from 'components/container/'
@@ -23,8 +24,23 @@ const StyledWhyHPIMS = styled.section`
     padding: 120px 0;
   `}
 
+  .section__title {
+    max-width: 744px;
+
+    .section__description {
+      max-width: 544px;
+    }
+  }
+
   .why-hpims__item {
     width: 100%;
+    height: 100%;
+    padding-bottom: 24px;
+    border-bottom: 2px solid ${colors.blue500};
+
+    ${breakpoint.medium`
+      padding-bottom: 40px;
+    `}
 
     .icon {
       display: flex;
@@ -40,7 +56,7 @@ const StyledWhyHPIMS = styled.section`
 `
 
 const WhyHPIMS = () => (
-  <StyledWhyHPIMS className="bg--grey100">
+  <StyledWhyHPIMS className="bg--blue100">
     <Container>
       <div className="section__title">
         <p className="section__subtitle color--black">Why HPI•MS</p>
