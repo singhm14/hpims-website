@@ -16,7 +16,7 @@ import Collaboration from 'assets/icons/home/hero-foot-note.inline.svg'
 
 const StyledHero = styled(PageHero)`
   width: 100%;
-  max-height: 900px;
+  min-height: 520px;
   position: relative;
   align-items: flex-start;
   padding-top: 96px;
@@ -63,7 +63,18 @@ const StyledHero = styled(PageHero)`
   }
 
   .hero__background--desktop {
-    display: none;
+    top: 0;
+    bottom: 0;
+    left: calc((100vw - 1200px) / 2);
+    position: absolute;
+    display: block;
+    z-index: -1;
+
+    svg {
+      max-width: initial!important;
+      width: 1440px;
+      height: 500px;
+    }
 
     ${breakpoint.small`
       top: 0;
