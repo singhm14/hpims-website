@@ -8,6 +8,7 @@ import { Link } from 'gatsby'
 
 // Icons
 import CaretRight from 'assets/icons/icon-caret-right.inline.svg'
+import IconExternalLink from 'assets/icons/icon-external-link.inline.svg'
 
 const StyledButton = styled(Link)`
   display: inline-flex;
