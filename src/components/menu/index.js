@@ -20,10 +20,10 @@ import IconArrowLeft from 'assets/icons/icon-arrow-left.inline.svg'
 
 const StyledMenu = styled.nav`
   width: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
+  // position: fixed;
+  // top: 0;
+  // right: 0;
+  // left: 0;
   padding: 24px 0;
   background-color: ${colors.white};
   box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
