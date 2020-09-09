@@ -17,21 +17,15 @@ import Img from 'gatsby-image'
 import SliderArrow from 'assets/icons/icon-carousel-arrow.inline.svg'
 
 const StyledLastEvent = styled.section`
-  padding: 40px 0;
+  padding-bottom: 40px;
   overflow: hidden;
 
   ${breakpoint.medium`
-    padding: 80px 0;
+    padding-bottom: 120px;
   `}
 
   ${Container} {
-    max-width: 736px;
-  }
-
-  .section__title {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+    max-width: 928px;
   }
 
   .event__carousel {
@@ -43,9 +37,9 @@ const StyledLastEvent = styled.section`
   }
 
   .slick-slide {
-    max-width: 736px;
+    max-width: 928px;
     width: 100%;
-    padding: 0 16px;
+    padding: 0 4px;
     opacity: 0.5;
     box-sizing: content-box;
     transition: all 0.6s;
@@ -82,7 +76,7 @@ const StyledLastEvent = styled.section`
   }
 
   .event__image {
-    max-width: 736px;
+    max-width: 928px;
     width: 100%;
     display: block;
   }
@@ -93,12 +87,28 @@ const StyledLastEvent = styled.section`
     justify-content: space-between;
 
     .date {
-      max-width: 221px;
+      max-width: 416px;
+      display: flex;
+      flex-wrap: wrap;
       margin-bottom: 24px;
       font-weight: 600;
 
+      ${breakpoint.medium`
+        margin-bottom: 0;
+      `}
+
+      .subtitle {
+        text-transform: uppercase;
+      }
+
       p {
         margin-bottom: 8px;
+      }
+
+      .location {
+        align-self: flex-end;
+        margin-bottom: 0;
+        font-weight: 400;
       }
     }
 
@@ -140,9 +150,51 @@ const ArrowNext = (props) => {
 const LastEvent = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "home/event/event-image-1.png" }) {
+      image1: file(relativePath: { eq: "home/event/event-image-1.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 736, quality: 100) {
+          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      image2: file(relativePath: { eq: "home/event/event-image-2.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      image3: file(relativePath: { eq: "home/event/event-image-3.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      image4: file(relativePath: { eq: "home/event/event-image-4.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      image5: file(relativePath: { eq: "home/event/event-image-5.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      image6: file(relativePath: { eq: "home/event/event-image-6.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      image7: file(relativePath: { eq: "home/event/event-image-7.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -153,6 +205,7 @@ const LastEvent = () => {
   const settings = {
     dots: false,
     infinite: true,
+    autoplay: 3000,
     speed: 600,
     variableWidth: true,
     centerMode: true,
@@ -175,32 +228,32 @@ const LastEvent = () => {
   }
 
   return (
-    <StyledLastEvent className="bg--blue100 color--black">
-      <Container>
-        <div className="section__title color--blue500">
-          <p className="section__subtitle">Our Last Event</p>
-          <h2>HPI - Mount Sinai Digital Health Forum</h2>
-        </div>
-      </Container>
-
+    <StyledLastEvent className="bg--blue500 color--white">
       <Slider {...settings} className="event__carousel">
-        <Img className="event__image" fluid={data.file.childImageSharp.fluid} alt="Our last event" />
-        <Img className="event__image" fluid={data.file.childImageSharp.fluid} alt="Our last event" />
-        <Img className="event__image" fluid={data.file.childImageSharp.fluid} alt="Our last event" />
-        <Img className="event__image" fluid={data.file.childImageSharp.fluid} alt="Our last event" />
-        <Img className="event__image" fluid={data.file.childImageSharp.fluid} alt="Our last event" />
-        <Img className="event__image" fluid={data.file.childImageSharp.fluid} alt="Our last event" />
+        <Img className="event__image" fluid={data.image1.childImageSharp.fluid} alt="Our last event" />
+        <Img className="event__image" fluid={data.image2.childImageSharp.fluid} alt="Our last event" />
+        <Img className="event__image" fluid={data.image3.childImageSharp.fluid} alt="Our last event" />
+        <Img className="event__image" fluid={data.image4.childImageSharp.fluid} alt="Our last event" />
+        <Img className="event__image" fluid={data.image5.childImageSharp.fluid} alt="Our last event" />
+        <Img className="event__image" fluid={data.image6.childImageSharp.fluid} alt="Our last event" />
+        <Img className="event__image" fluid={data.image7.childImageSharp.fluid} alt="Our last event" />
       </Slider>
 
       <Container>
         <div className="event__description">
           <div className="date">
-            <p className="paragraph--large">2019</p>
-            <h4>Postdam, Germany</h4>
+            <div>
+              <p className="subtitle paragraph--large">Our Last Event</p>
+              <h3>HPI - Mount Sinai Digital Health Forum</h3>
+            </div>
+
+            <p className="location">2019 | Potsdam, Germany</p>
           </div>
 
           <div className="summary">
-            <p>We hosted a successful two-day conference on November 21 and November 22, 2019 at the Hasso Plattner Institute in Potsdam. The Forum introduced visions and strategies for driving the digital transformation of health care. With more than 400 attendees and livestream viewers from around the world, the conference facilitated transatlantic co-innovation among international experts in medical and biological sciences, engineering, computer science, and research, from world-leading organizations.</p>
+            <p>We hosted a successful two-day conference on November 21 and November 22, 2019 at the Hasso Plattner Institute in Potsdam. The Forum introduced visions and strategies for driving the digital transformation of health care.</p>
+            <br />
+            <p>With more than 400 attendees and livestream viewers from around the world, the conference facilitated transatlantic co-innovation among international experts in medical and biological sciences, engineering, computer science, and research, from world-leading organizations.</p>
           </div>
         </div>
       </Container>
