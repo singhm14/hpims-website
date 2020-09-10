@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
@@ -27,6 +27,8 @@ const StyledMenu = styled.nav`
   padding: 8px 0;
   background-color: ${colors.white};
   box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
+  transform: ${(props) => (props.hideMenu ? 'translateY(-100%)' : 'translateY(0)')};
+  transition: all 0.6s ease;
   z-index: 9998;
 
   ${breakpoint.small`
@@ -295,7 +297,10 @@ const StyledMenu = styled.nav`
 const Menu = () => {
   const [isMenuOpen, toggleMenu] = useToggle()
   const [isSubMenuOpen, toggleSubMenu] = useToggle()
+  const [isScrollingDown, handleVisibility] = useToggle()
+  const [lastScrollPosition, handleLastScrollPosition] = useState(0)
 
+  // Locks scroll if `isMenuOpen`
   useEffect(() => {
     if (isMenuOpen) {
       document.querySelector('html').classList.add('no-scroll')
@@ -304,6 +309,30 @@ const Menu = () => {
       document.querySelector('html').classList.remove('no-scroll')
       document.querySelector('body').classList.remove('no-scroll')
     }
+  })
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+
+      if (scrollPosition > 80) {
+        if (scrollPosition > lastScrollPosition) {
+          if (!isScrollingDown) {
+            handleVisibility(true)
+          }
+        } else {
+          if (isScrollingDown) {
+            handleVisibility(false)
+          }
+        }
+      }
+
+      handleLastScrollPosition(scrollPosition)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => window.removeEventListener('scroll', handleScroll)
   })
 
   const data = useStaticQuery(graphql`
@@ -323,7 +352,7 @@ const Menu = () => {
     }
   `)
   return (
-    <StyledMenu isMenuOpen={isMenuOpen} isSubMenuOpen={isSubMenuOpen}>
+    <StyledMenu isMenuOpen={isMenuOpen} isSubMenuOpen={isSubMenuOpen} hideMenu={isScrollingDown}>
       <Container>
         <div className="menu__logo">
           <Link to="/" aria-label="HPI·MS">
