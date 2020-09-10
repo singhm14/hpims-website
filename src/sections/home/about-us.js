@@ -22,6 +22,7 @@ const StyledAboutUs = styled.section`
 
   .section__title {
     max-width: 544px;
+    margin: 0;
     text-align: left;
 
     h3 {

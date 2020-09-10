@@ -27,16 +27,23 @@ const StyledWhyHPIMS = styled.section`
   `}
 
   .background__rectangle {
-    width: 1440px;
+    width: 100vw;
     height: 254px;
     position: absolute;
     bottom: 100%;
-    right: calc((-1440px + 100vw) / 2);
-    z-index: 1;
+    z-index: 2;
+
+    ${breakpoint.extraLarge`
+      height: 17.63vw;
+    `}
 
     svg {
-      width: 100%;
+      width: 1440px;
       height: 100%;
+
+      ${breakpoint.extraLarge`
+        width: 100%;
+      `}
     }
   }
 
