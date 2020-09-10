@@ -20,11 +20,11 @@ import IconArrowLeft from 'assets/icons/icon-arrow-left.inline.svg'
 
 const StyledMenu = styled.nav`
   width: 100%;
-  // position: fixed;
-  // top: 0;
-  // right: 0;
-  // left: 0;
-  padding: 24px 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 8px 0;
   background-color: ${colors.white};
   box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
   z-index: 9998;
@@ -109,7 +109,7 @@ const StyledMenu = styled.nav`
 
   .menu__content {
     width: 100%;
-    height: calc(100vh - 78px);
+    height: calc(100vh - 57px);
     max-height: ${(props) => (props.isMenuOpen ? '1000px' : '0')}; // This animates the dropdown's height.
     position: relative;
     padding-top: ${(props) => (props.isMenuOpen ? '16px' : '0')};
@@ -200,7 +200,6 @@ const StyledMenu = styled.nav`
       bottom: 0;
       left: ${(props) => (props.isSubMenuOpen ? '0' : '120%')};
       padding-top: 24px;
-      padding-left: 48px;
       background-color: ${colors.white};
       transition: all 0.3s ease;
 
@@ -211,6 +210,7 @@ const StyledMenu = styled.nav`
         bottom: auto;
         left: auto;
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         padding: 32px;
         opacity: ${(props) => (props.isSubMenuOpen ? '1' : '0')};
@@ -222,24 +222,41 @@ const StyledMenu = styled.nav`
       `}
 
       .submenu__closer {
+        width: 100%;
         position: relative;
+        display: flex;
+        align-items: center;
         margin-bottom: 24px;
+        padding: 16px 0;
         font-size: 20px;
         font-weight: 600;
+        border-top: 1px solid ${colors.grey300};
+        border-bottom: 1px solid ${colors.grey300};
 
         ${breakpoint.small`
           display: none;
         `}
 
         svg {
-          position: absolute;
-          top: 3px;
-          left: -48px;
+          margin-right: 32px;
         }
+      }
+
+      .submenu__general-link {
+        width: 100%;
+        display: inline-flex;
+        margin-bottom: 24px;
+        padding-left: 44px;
+        font-size: 16px;
+
+        ${breakpoint.small`
+          padding-left: 0;
+        `}
       }
 
       ul {
         margin-bottom: 32px;
+        padding-left: 44px;
 
         &:last-child {
           margin-bottom: 0;
@@ -247,6 +264,7 @@ const StyledMenu = styled.nav`
 
         ${breakpoint.small`
           margin: 0 32px 0 0;
+          padding: 0;
         `}
 
         p {
@@ -340,6 +358,13 @@ const Menu = () => {
                     Research
                   </button>
                 </h5>
+
+                <div className="submenu__general-link">
+                  <Link to="/research" className="color--black font-weight--500">
+                    All Research initiatives
+                  </Link>
+                </div>
+
                 <ul>
                   <p className="paragraph-small color--grey700">Core Research Projects</p>
                   {data.researchProjects.nodes.map((project) => (

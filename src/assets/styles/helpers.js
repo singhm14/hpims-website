@@ -2,10 +2,19 @@
 import { css } from 'styled-components'
 
 // Utils
-import { colors } from 'utils/variables/'
+import { colors, weights } from 'utils/variables/'
 
 export const Helpers = () => {
   let styles = ''
+
+  Object.entries(weights).forEach(([name, weight]) => {
+    styles += `
+      // Font-weights classes
+      .font-weight--${name} {
+        font-weight: ${weight};
+      }
+    `
+  })
 
   Object.entries(colors).forEach(([name, color]) => {
     styles += `

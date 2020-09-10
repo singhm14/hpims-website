@@ -33,3 +33,12 @@ export const colors = {
   green: '#32BA3D'
 }
 // Colors:end
+
+// Font-Weights:start
+export const weights = {
+  400: '400',
+  500: '500',
+  600: '600',
+  700: '700'
+}
+// Font-Weights:end

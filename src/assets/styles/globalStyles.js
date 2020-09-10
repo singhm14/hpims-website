@@ -8,9 +8,14 @@ import { Helpers } from './helpers'
 
 const GlobalStyles = createGlobalStyle`
   body {
+    padding-top: 56px;
     font-family: "Inter", sans-serif;
     font-size: 16px;
     line-height: 1.5em;
+
+    ${breakpoint.medium`
+      padding-top: 80px;
+    `}
   }
 
   h1,
