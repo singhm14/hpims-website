@@ -40,8 +40,14 @@ const StyledMenu = styled.nav`
   a,
   button {
     transition: all 0.3s;
+    border-bottom: 1px solid transparent;
+
     &:hover {
       color: ${colors.blue300};
+
+      ${breakpoint.medium`
+        border-color: ${colors.blue300};
+      `}
     }
   }
 

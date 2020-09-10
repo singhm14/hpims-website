@@ -11,9 +11,7 @@ import { getSlug } from 'utils/functions/'
 // Components
 import BackgroundImage from 'gatsby-background-image'
 import { Link } from 'gatsby'
-
-// Icons
-import IconExternalLink from 'assets/icons/icon-external-link.inline.svg'
+import { ExternalLink } from 'components/buttons/'
 
 const StyledPublicationCard = styled.div`
   padding: 24px 16px;
@@ -188,24 +186,7 @@ const StyledPublicationCard = styled.div`
     .link {
       width: 100%;
       align-self: flex-end;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 24px;
-      font-weight: 600;
       white-space: nowrap;
-      border: 1px solid ${colors.blue300};
-      transition: all 0.6s;
-
-      svg {
-        width: 16px;
-        height: 16px;
-        margin-left: 8px;
-
-        * {
-          stroke: ${colors.blue300};
-        }
-      }
     }
   }
 `
@@ -276,14 +257,11 @@ class PublicationCard extends React.Component {
       </div>
       <div className="publication__actions">
         <div className="journal">
-          <p className="paragraph--extra-small color--black">Journal</p>
-          <p className="color--black">{this.props.journal}</p>
+          <p className="paragraph--extra-small color--grey900">Journal</p>
+          <p className="color--blue900">{this.props.journal}</p>
         </div>
 
-        <a href={this.props.link} className="link color--blue300" target="_blank" rel="noopener noreferrer">
-          Open Publication
-          <IconExternalLink />
-        </a>
+        <ExternalLink href={this.props.link} className="link bg-hover--blue900 color--blue900 color-hover--white border--blue900 svg--stroke-blue900 svg-hover--stroke-white" text="Open Publication" />
       </div>
     </StyledPublicationCard>
   )
