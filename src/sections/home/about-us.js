@@ -13,11 +13,11 @@ import Img from 'gatsby-image'
 import { Tertiary } from 'components/buttons/'
 
 const StyledAboutUs = styled.section`
-  padding-top: 60px;
+  padding-top: 64px;
   text-align: center;
 
   ${breakpoint.medium`
-    padding-top: 120px;
+    padding-top: 36px;
   `}
 
   .section__title {

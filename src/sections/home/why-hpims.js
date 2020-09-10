@@ -12,17 +12,38 @@ import Container from 'components/container/'
 import Grid from 'components/grid/'
 
 // Icons
+import Rectangle from 'assets/icons/icon-rectangle.inline.svg'
 import Icon1 from 'assets/icons/home/why-hpims-icon-1.inline.svg'
 import Icon2 from 'assets/icons/home/why-hpims-icon-2.inline.svg'
 import Icon3 from 'assets/icons/home/why-hpims-icon-3.inline.svg'
 import Icon4 from 'assets/icons/home/why-hpims-icon-4.inline.svg'
 
 const StyledWhyHPIMS = styled.section`
-  padding: 60px 0;
+  position: relative;
+  padding-bottom: 60px;
 
   ${breakpoint.medium`
-    padding: 120px 0;
+    padding-bottom: 120px;
   `}
+
+  .background__rectangle {
+    width: 1440px;
+    height: 254px;
+    position: absolute;
+    bottom: 100%;
+    right: calc((-1440px + 100vw) / 2);
+    z-index: 1;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  ${Container} {
+    position: relative;
+    z-index: 2;
+  }
 
   .section__title {
     max-width: 744px;
@@ -57,6 +78,9 @@ const StyledWhyHPIMS = styled.section`
 
 const WhyHPIMS = () => (
   <StyledWhyHPIMS className="bg--blue100">
+    <div className="background__rectangle svg--fill-blue100">
+      <Rectangle />
+    </div>
     <Container>
       <div className="section__title">
         <p className="section__subtitle color--black">Why HPI•MS</p>
