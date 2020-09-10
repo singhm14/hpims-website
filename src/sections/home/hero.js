@@ -19,7 +19,7 @@ const StyledHero = styled(PageHero)`
   min-height: 520px;
   position: relative;
   align-items: flex-start;
-  padding-top: 96px;
+  padding-top: 120px;
   overflow: hidden;
   z-index: 100;
 
@@ -30,12 +30,12 @@ const StyledHero = styled(PageHero)`
 
   ${breakpoint.medium`
     min-height: 700px;
-    padding-top: 120px;
+    padding-top: 200px;
   `}
 
   ${breakpoint.extraLarge`
     min-height: 900px;
-    padding-top: 184px;
+    padding-top: 264px;
   `}
 
   h1,
