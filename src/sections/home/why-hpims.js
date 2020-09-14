@@ -8,11 +8,11 @@ import breakpoint from 'utils/breakpoints/'
 import { colors } from 'utils/variables/'
 
 // Components
+import BackgroundTriangle from 'components/background-triangle/'
 import Container from 'components/container/'
 import Grid from 'components/grid/'
 
 // Icons
-import Rectangle from 'assets/icons/icon-rectangle.inline.svg'
 import Icon1 from 'assets/icons/home/why-hpims-icon-1.inline.svg'
 import Icon2 from 'assets/icons/home/why-hpims-icon-2.inline.svg'
 import Icon3 from 'assets/icons/home/why-hpims-icon-3.inline.svg'
@@ -25,27 +25,6 @@ const StyledWhyHPIMS = styled.section`
   ${breakpoint.medium`
     padding-bottom: 120px;
   `}
-
-  .background__rectangle {
-    width: 100vw;
-    height: 254px;
-    position: absolute;
-    bottom: 100%;
-    z-index: 2;
-
-    ${breakpoint.extraLarge`
-      height: 17.63vw;
-    `}
-
-    svg {
-      width: 1440px;
-      height: 100%;
-
-      ${breakpoint.extraLarge`
-        width: 100%;
-      `}
-    }
-  }
 
   ${Container} {
     position: relative;
@@ -85,9 +64,7 @@ const StyledWhyHPIMS = styled.section`
 
 const WhyHPIMS = () => (
   <StyledWhyHPIMS className="bg--blue100">
-    <div className="background__rectangle svg--fill-blue100">
-      <Rectangle />
-    </div>
+    <BackgroundTriangle className="svg--fill-blue100" />
     <Container>
       <div className="section__title">
         <p className="section__subtitle color--black">Why HPI•MS</p>
