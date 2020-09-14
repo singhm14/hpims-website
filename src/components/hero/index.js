@@ -10,12 +10,17 @@ const Hero = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 0;
+  padding: 120px 0 80px 0;
 
   ${breakpoint.medium`
-    min-height: 528px;
-    padding: 120px 0;
+    min-height: 600px;
+    padding-top: 200px;
+    padding-bottom: 120px;
   `}
+
+  .container {
+    max-width: 928px;
+  }
 
   .subtitle {
     margin-bottom: 16px;
@@ -25,7 +30,7 @@ const Hero = styled.section`
 
   .title {
     max-width: 544px;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     font-weight: 600;
     letter-spacing: -0.02em;
 

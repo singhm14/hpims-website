@@ -224,14 +224,15 @@ class PublicationCard extends React.Component {
           <div className="authors__internal">
             <div className="authors color--black">
               <p className="title paragraph--extra-small color--black">Full List of Authors</p>
-              {this.props.internalAuthors.map((author) => (
-                <div className="author" key={author.id}>
-                  <BackgroundImage className="author__profile-picture" fixed={author.profilePicture && author.profilePicture.fixed} style={{ width: '24px', height: '24px', backgroundSize: 'cover', borderRadius: '50%', overflow: 'hidden' }} />
-                  <p className="author__name paragraph--extra-small">{author.name}</p>
-                </div>
-              ))}
+              {this.props.internalAuthors &&
+                this.props.internalAuthors.map((author) => (
+                  <div className="author" key={author.id}>
+                    <BackgroundImage className="author__profile-picture" fixed={author.profilePicture && author.profilePicture.fixed} style={{ width: '24px', height: '24px', backgroundSize: 'cover', borderRadius: '50%', overflow: 'hidden' }} />
+                    <p className="author__name paragraph--extra-small">{author.name}</p>
+                  </div>
+                ))}
 
-              <p className="count paragraph--extra-small">{this.props.internalAuthors.length} HPI•MS authors</p>
+              <p className="count paragraph--extra-small">{this.props.internalAuthors && this.props.internalAuthors.length} HPI•MS authors</p>
             </div>
 
             <div className="authors__full-list">
@@ -248,11 +249,12 @@ class PublicationCard extends React.Component {
         </div>
 
         <div className="info info--tags">
-          {this.props.tags.map((tag) => (
-            <Link to={'/publications?category=' + getSlug(tag)} className="tag color--blue500">
-              {tag}
-            </Link>
-          ))}
+          {this.props.tags &&
+            this.props.tags.map((tag) => (
+              <Link to={'/publications?category=' + getSlug(tag)} className="tag color--blue500">
+                {tag}
+              </Link>
+            ))}
         </div>
       </div>
       <div className="publication__actions">

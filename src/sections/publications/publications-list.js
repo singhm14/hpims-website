@@ -48,7 +48,6 @@ const PublicationsList = () => {
               }
             }
           }
-          year
           tags
           link
         }

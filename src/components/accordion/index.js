@@ -6,7 +6,6 @@ import styled from 'styled-components'
 const StyledAccordion = styled.div`
   .accordion__trigger {
     font-weight: 600;
-    text-transform: uppercase;
   }
 
   .accordion__content {
@@ -39,7 +38,7 @@ class Accordion extends React.Component {
       <div className="accordion__content">{this.props.content}</div>
 
       <button type="button" className="accordion__trigger" onClick={this.toggleAccordion}>
-        {this.state.active ? '- Less Info' : '+ More Info'}
+        {this.state.active ? (this.props.closedText ? this.props.closedText : '- Less Info') : this.props.openText ? this.props.openText : '+ More Info'}
       </button>
     </StyledAccordion>
   )
