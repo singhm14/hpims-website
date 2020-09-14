@@ -58,7 +58,7 @@ const Filters = () => {
     years.push(publication.year)
 
     // Push all Tags
-    publication.tags.map((tag) => tags.push(tag))
+    publication.tags && publication.tags.map((tag) => tags.push(tag))
 
     // Push all Authors
     publication.internalAuthors && publication.internalAuthors.map((author) => internalAuthors.push(author.name))
