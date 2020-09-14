@@ -74,6 +74,7 @@ const StyledMenu = styled.nav`
     a {
       display: flex;
       align-items: flex-start;
+      border: 0;
     }
   }
 
