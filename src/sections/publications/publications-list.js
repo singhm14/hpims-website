@@ -40,12 +40,18 @@ const PublicationsList = () => {
             authors
           }
           internalAuthors {
-            id
-            name
-            profilePicture {
-              fixed(width: 24, quality: 100) {
-                ...GatsbyContentfulFixed_withWebp
+            ... on ContentfulTeamMembers {
+              id
+              name
+              profilePicture {
+                fixed(width: 24, quality: 100) {
+                  ...GatsbyContentfulFixed_withWebp
+                }
               }
+            }
+            ... on ContentfulStudents {
+              id
+              name
             }
           }
           tags

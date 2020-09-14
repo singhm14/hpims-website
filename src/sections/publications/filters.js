@@ -34,7 +34,12 @@ const Filters = () => {
           year
           tags
           internalAuthors {
-            name
+            ... on ContentfulTeamMembers {
+              name
+            }
+            ... on ContentfulStudents {
+              name
+            }
           }
           method
         }

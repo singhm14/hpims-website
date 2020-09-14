@@ -2,11 +2,12 @@ import React from 'react'
 
 // Libraries
 import styled from 'styled-components'
+import { useStaticQuery, graphql } from 'gatsby'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
 import { colors } from 'utils/variables/'
-import { getSlug } from 'utils/functions/'
+import { getSlug, useToggle } from 'utils/functions/'
 
 // Components
 import BackgroundImage from 'gatsby-background-image'
@@ -191,66 +192,67 @@ const StyledPublicationCard = styled.div`
   }
 `
 
-class PublicationCard extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      active: false
+const PublicationCard = (props) => {
+  const [active, toggleAuthors] = useToggle(false)
+
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
+        childImageSharp {
+          fixed(width: 24, quality: 100) {
+            ...GatsbyImageSharpFixed_withWebp
+          }
+        }
+      }
     }
-  }
+  `)
 
-  toggleAuthors = () => {
-    this.setState((prevState) => ({
-      active: !prevState.active
-    }))
-  }
-
-  render = () => (
-    <StyledPublicationCard active={this.state.active}>
+  return (
+    <StyledPublicationCard active={active}>
       <div className="publication__info color--blue500">
-        <p className="publication__date paragraph--extra-small color--grey700">{this.props.year}</p>
+        <p className="publication__date paragraph--extra-small color--grey700">{props.year}</p>
         <h5>
-          <a href={this.props.link} className="publication__title color--blue500" target="_blank" rel="noopener noreferrer">
-            {this.props.title}
+          <a href={props.link} className="publication__title color--blue500" target="_blank" rel="noopener noreferrer">
+            {props.title}
           </a>
         </h5>
 
         <div className="info info--journal">
           <p className="journal paragraph--extra-small">Journal</p>
-          <p className="journal-title paragraph--small">{this.props.journal}</p>
+          <p className="journal-title paragraph--small">{props.journal}</p>
         </div>
 
         <div className="info info--authors">
           <div className="authors__internal">
             <div className="authors color--black">
               <p className="title paragraph--extra-small color--black">Full List of Authors</p>
-              {this.props.internalAuthors &&
-                this.props.internalAuthors.map((author) => (
+              {props.internalAuthors &&
+                props.internalAuthors.map((author) => (
                   <div className="author" key={author.id}>
-                    <BackgroundImage className="author__profile-picture" fixed={author.profilePicture && author.profilePicture.fixed} style={{ width: '24px', height: '24px', backgroundSize: 'cover', borderRadius: '50%', overflow: 'hidden' }} />
+                    <BackgroundImage className="author__profile-picture" fixed={author.profilePicture ? author.profilePicture.fixed : data.file.childImageSharp.fixed} style={{ width: '24px', height: '24px', backgroundSize: 'cover', borderRadius: '50%', overflow: 'hidden' }} />
                     <p className="author__name paragraph--extra-small">{author.name}</p>
                   </div>
                 ))}
 
-              <p className="count paragraph--extra-small">{this.props.internalAuthors && this.props.internalAuthors.length} HPI•MS authors</p>
+              <p className="count paragraph--extra-small">{props.internalAuthors && props.internalAuthors.length} HPI•MS authors</p>
             </div>
 
             <div className="authors__full-list">
               <p className="title paragraph--extra-small color--black">Full List of Authors</p>
-              <p className="paragraph--extra-small color--black">{this.props.authors}</p>
+              <p className="paragraph--extra-small color--black">{props.authors}</p>
             </div>
           </div>
 
           <div>
-            <button type="button" className="color--blue300" onClick={this.toggleAuthors}>
-              {this.state.active ? 'View less' : 'View all'}
+            <button type="button" className="color--blue300" onClick={toggleAuthors}>
+              {active ? 'View less' : 'View all'}
             </button>
           </div>
         </div>
 
         <div className="info info--tags">
-          {this.props.tags &&
-            this.props.tags.map((tag) => (
+          {props.tags &&
+            props.tags.map((tag) => (
               <Link to={'/publications?category=' + getSlug(tag)} className="tag color--blue500">
                 {tag}
               </Link>
@@ -260,10 +262,10 @@ class PublicationCard extends React.Component {
       <div className="publication__actions">
         <div className="journal">
           <p className="paragraph--extra-small color--grey900">Journal</p>
-          <p className="color--blue900">{this.props.journal}</p>
+          <p className="color--blue900">{props.journal}</p>
         </div>
 
-        <ExternalLink href={this.props.link} className="link bg-hover--blue900 color--blue900 color-hover--white border--blue900 svg--stroke-blue900 svg-hover--stroke-white" text="Open Publication" />
+        <ExternalLink href={props.link} className="link bg-hover--blue900 color--blue900 color-hover--white border--blue900 svg--stroke-blue900 svg-hover--stroke-white" text="Open Publication" />
       </div>
     </StyledPublicationCard>
   )
