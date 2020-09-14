@@ -11,7 +11,7 @@ const Container = styled.div`
   margin: 0 auto;
 
   ${breakpoint.small`
-    padding: 0 48px;
+    padding: 0 40px;
   `}
 
   ${breakpoint.large`

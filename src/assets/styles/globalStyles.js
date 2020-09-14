@@ -30,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h2 {
-    font-size: 32px;
+    font-size: 40px;
 
     ${breakpoint.medium`
       font-size: 52px;
