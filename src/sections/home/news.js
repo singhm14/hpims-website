@@ -20,7 +20,6 @@ const StyledNews = styled.section`
   position: relative;
   padding: 40px 0 60px 0;
   z-index: 5;
-  overflow-x: hidden;
 
   ${breakpoint.medium`
     padding: 0 0 120px 0;

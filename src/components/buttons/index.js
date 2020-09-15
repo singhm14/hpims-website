@@ -60,6 +60,7 @@ export const Tertiary = (props) => (
 const StyledExternalLink = styled.a`
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   padding: 8px 24px;
   font-weight: 600;
 
