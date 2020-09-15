@@ -14,7 +14,7 @@ import PublicationCard from 'components/publication-card/'
 import { Primary } from 'components/buttons/'
 
 // Icons
-import Background from 'assets/icons/home/publications-background.inline.svg'
+import Background from 'assets/icons/home/publications-background.svg'
 
 const StyledPublications = styled.section`
   position: relative;
@@ -26,7 +26,8 @@ const StyledPublications = styled.section`
 
   .publications__background {
     max-width: 100vw;
-    width: 100%;
+    width: auto;
+    height: 100%;
     position: absolute;
     top: 0;
     right: 0;
@@ -35,6 +36,8 @@ const StyledPublications = styled.section`
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
+    background-image: url(${Background});
+    background-size: cover;
     z-index: 1;
   }
 
@@ -89,7 +92,7 @@ const Publications = () => {
   `)
   return (
     <StyledPublications className="bg--grey100">
-      <Background className="publications__background" />
+      <div className="publications__background" />
 
       <Container>
         <p className="section__subtitle color--black">Publications</p>
