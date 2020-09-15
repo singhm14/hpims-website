@@ -20,6 +20,7 @@ const StyledNews = styled.section`
   position: relative;
   padding: 40px 0 60px 0;
   z-index: 5;
+  overflow-x: hidden;
 
   ${breakpoint.medium`
     padding: 0 0 120px 0;
@@ -105,6 +106,13 @@ const News = () => {
     prevArrow: <ArrowPrev />,
     nextArrow: <ArrowNext />,
     responsive: [
+      {
+        breakpoint: 1199,
+        settings: {
+          arrows: false,
+          slidesToShow: 3
+        }
+      },
       {
         breakpoint: 1023,
         settings: {
