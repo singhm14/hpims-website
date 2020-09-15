@@ -154,6 +154,12 @@ const StyledHero = styled(PageHero)`
       max-width: 719px;
       width: 719px;
       height: 100%;
+
+      @media screen and (min-width: 719px) {
+        max-width: 768px;
+        width: 768px;
+        height: auto;
+      }
     }
   }
 
