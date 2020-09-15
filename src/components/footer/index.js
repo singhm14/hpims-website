@@ -91,15 +91,19 @@ const StyledFooter = styled.footer`
     `}
 
     .logos {
+      width: auto;
+      height: 52px;
       margin-bottom: 24px;
-      opacity: 0.6;
     }
 
     svg {
-      margin-right: 48px;
+      filter: grayscale(100%);
+      opacity: 0.5;
+      transition: all 0.3s;
 
-      &:last-child {
-        margin-right: 0;
+      &:hover {
+        filter: grayscale(0);
+        opacity: 1;
       }
     }
 
@@ -161,8 +165,12 @@ const Footer = () => (
 
       <div className="footer__logos">
         <div className="logos">
-          <HassoPlatner />
-          <MountSinai />
+          <a href="https://hpi.de/en/index.html" target="_blank" rel="noopener noreferrer" title="Hasso Plattnet Institut">
+            <HassoPlatner />
+          </a>
+          <a href="https://www.mountsinai.org/" target="_blank" rel="noopener noreferrer" title="Mount Sinai">
+            <MountSinai />
+          </a>
         </div>
         <p className="color--grey500 paragraph--extra-small">© 2020 Hasso Plattner Institute for Digital Health at Mount Sinai</p>
       </div>
