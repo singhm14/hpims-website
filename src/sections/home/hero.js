@@ -13,7 +13,8 @@ import PageHero from 'components/hero/'
 // Icons
 import BackgroundMobile from 'assets/icons/home/hero-background-mobile.inline.svg'
 import Background from 'assets/icons/home/hero-background.inline.svg'
-import Collaboration from 'assets/icons/home/hero-foot-note.inline.svg'
+import HassoPlatner from 'assets/icons/logo-hasso-plattner-institut.inline.svg'
+import MountSinai from 'assets/icons/logo-mount-sinai.inline.svg'
 
 const StyledHero = styled(PageHero)`
   width: 100%;
@@ -124,15 +125,30 @@ const StyledHero = styled(PageHero)`
       ${breakpoint.extraLarge`
         width: auto;
         margin-right: 24px;
-        margin-bottom: 0;
+        margin-bottom: 16px;
       `}
     }
 
-    svg {
+    .icons {
+      display: flex;
 
-      ${breakpoint.medium`
-        width: 208px;
-      `}
+      svg {
+        max-width: auto!important;
+        width: auto!important;
+        height: 27px;
+        filter: grayscale(100%);
+        opacity: 0.5;
+        transition: all 0.3s;
+
+        &:hover {
+          filter: grayscale(0);
+          opacity: 1;
+        }
+
+        ${breakpoint.medium`
+          height: 52px;
+        `}
+      }
     }
   }
 
@@ -224,7 +240,14 @@ const Hero = () => (
 
     <div className="hero__collaboration">
       <p className="color--grey900">A collaboration between</p>
-      <Collaboration />
+      <div className="icons">
+        <a href="https://hpi.de/en/index.html" target="_blank" rel="noopener noreferrer" title="Hasso Plattnet Institut">
+          <HassoPlatner />
+        </a>
+        <a href="https://www.mountsinai.org/" target="_blank" rel="noopener noreferrer" title="Mount Sinai">
+          <MountSinai />
+        </a>
+      </div>
     </div>
 
     <div className="hero__background--mobile">
