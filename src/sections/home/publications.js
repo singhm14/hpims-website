@@ -13,15 +13,35 @@ import Grid from 'components/grid/'
 import PublicationCard from 'components/publication-card/'
 import { Primary } from 'components/buttons/'
 
+// Icons
+import Background from 'assets/icons/home/publications-background.inline.svg'
+
 const StyledPublications = styled.section`
+  position: relative;
   padding: 60px 0 30vw 0;
 
   ${breakpoint.medium`
     padding: 120px 0 15vw 0;
   `}
 
+  .publications__background {
+    max-width: 100vw;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    z-index: 1;
+  }
+
   ${Container} {
     max-width: 928px;
+    position: relative;
+    z-index: 10;
   }
 
   .publications__view-more {
@@ -69,6 +89,8 @@ const Publications = () => {
   `)
   return (
     <StyledPublications className="bg--grey100">
+      <Background className="publications__background" />
+
       <Container>
         <p className="section__subtitle color--black">Publications</p>
         <h2 className="section__title color--blue900">World class research with a global impact</h2>

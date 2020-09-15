@@ -19,6 +19,7 @@ import SliderArrow from 'assets/icons/icon-carousel-arrow.inline.svg'
 const StyledNews = styled.section`
   position: relative;
   padding: 40px 0 60px 0;
+  z-index: 10;
 
   ${breakpoint.medium`
     padding: 0 0 120px 0;
