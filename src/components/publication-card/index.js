@@ -82,10 +82,6 @@ const StyledPublicationCard = styled.div`
           flex-wrap: wrap;
           justify-content: space-between;
 
-          ${breakpoint.medium`
-            flex-wrap: nowrap;
-          `}
-
           .title {
             display: ${(props) => (props.active ? 'block' : 'none')};
           }
@@ -130,7 +126,6 @@ const StyledPublicationCard = styled.div`
         }
 
         .authors__full-list {
-          max-width: 256px;
           width: 100%;
           display: ${(props) => (props.active ? 'block' : 'none')};
 
@@ -225,7 +220,7 @@ const PublicationCard = (props) => {
         <div className="info info--authors">
           <div className="authors__internal">
             <div className="authors color--black">
-              <p className="title paragraph--extra-small color--black">Full List of Authors</p>
+              <p className="title paragraph--extra-small color--black">HPI·MS Authors</p>
               {props.internalAuthors &&
                 props.internalAuthors.map((author) => (
                   <div className="author" key={author.id}>
