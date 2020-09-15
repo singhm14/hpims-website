@@ -83,7 +83,7 @@ const Publications = () => {
               name
             }
           }
-          year
+          year(formatString: "MMMM, YYYY")
           tags
           link
         }
