@@ -20,9 +20,11 @@ import Icon4 from 'assets/icons/home/why-hpims-icon-4.inline.svg'
 
 const StyledWhyHPIMS = styled.section`
   position: relative;
+  padding-top: 40px;
   padding-bottom: 60px;
 
   ${breakpoint.medium`
+    padding-top: 0;
     padding-bottom: 120px;
   `}
 

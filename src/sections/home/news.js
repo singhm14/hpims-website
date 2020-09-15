@@ -18,10 +18,10 @@ import SliderArrow from 'assets/icons/icon-carousel-arrow.inline.svg'
 
 const StyledNews = styled.section`
   position: relative;
-  padding: 60px 0;
+  padding: 40px 0 60px 0;
 
   ${breakpoint.medium`
-    padding: 120px 0;
+    padding: 0 0 120px 0;
   `}
 
   .slick-list {
