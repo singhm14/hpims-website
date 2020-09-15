@@ -63,7 +63,8 @@ const StyledHero = styled(PageHero)`
 
     p {
       max-width: 258px;
-      line-height: 1.45em;
+      font-size: 14px;
+      line-height: 20px;
 
       ${breakpoint.small`
         max-width: 312px;
@@ -71,10 +72,14 @@ const StyledHero = styled(PageHero)`
 
       ${breakpoint.medium`
         max-width: 423px;
+        font-size: 16px;
+        line-height: 22px;
       `}
 
       ${breakpoint.extraLarge`
         max-width: 448px;
+        font-size: 18px;
+        line-height: 26px;
       `}
     }
   }
