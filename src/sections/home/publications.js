@@ -14,10 +14,10 @@ import PublicationCard from 'components/publication-card/'
 import { Primary } from 'components/buttons/'
 
 const StyledPublications = styled.section`
-  padding: 60px 0;
+  padding: 60px 0 30vw 0;
 
   ${breakpoint.medium`
-    padding: 120px 0;
+    padding: 120px 0 15vw 0;
   `}
 
   ${Container} {

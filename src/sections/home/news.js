@@ -11,11 +11,13 @@ import breakpoint from 'utils/breakpoints/'
 // Components
 import Container from 'components/container/'
 import NewsCard from 'components/news-card/'
+import Triangle from 'components/background-triangle/'
 
 // Icons
 import SliderArrow from 'assets/icons/icon-carousel-arrow.inline.svg'
 
 const StyledNews = styled.section`
+  position: relative;
   padding: 60px 0;
 
   ${breakpoint.medium`
@@ -121,6 +123,7 @@ const News = () => {
 
   return (
     <StyledNews>
+      <Triangle className="svg--fill-white" />
       <Container>
         <div className="section__title">
           <p className="section__subtitle color--black">Press</p>

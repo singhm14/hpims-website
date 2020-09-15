@@ -3,9 +3,6 @@ import React from 'react'
 // Libraries
 import styled from 'styled-components'
 
-// Utils
-import breakpoint from 'utils/breakpoints/'
-
 // Icons
 import Rectangle from 'assets/icons/icon-rectangle.inline.svg'
 
