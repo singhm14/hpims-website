@@ -7,9 +7,10 @@ import styled from 'styled-components'
 import Rectangle from 'assets/icons/icon-rectangle.inline.svg'
 
 const StyledBackgroundTriangle = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 458px;
   position: absolute;
+  right: 0;
   bottom: 100%;
   left: 0;
   overflow: hidden;
