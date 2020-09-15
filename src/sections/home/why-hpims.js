@@ -22,6 +22,7 @@ const StyledWhyHPIMS = styled.section`
   position: relative;
   padding-top: 40px;
   padding-bottom: 60px;
+  z-index: 10;
 
   ${breakpoint.medium`
     padding-top: 0;
