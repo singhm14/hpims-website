@@ -13,6 +13,7 @@ const StyledBackgroundTriangle = styled.div`
   bottom: 100%;
   left: 0;
   overflow: hidden;
+  z-index: -1;
 
   svg {
     max-width: 2600px;

@@ -150,10 +150,24 @@ const StyledPublicationCard = styled.div`
           color: ${colors.blue500};
           font-size: 12px;
           border-radius: 24px;
-          transition: all 0.6s;
+          outline: 0;
+          transition: all 0.3s;
 
           &:last-child {
             margin-right: 0;
+          }
+
+          &:focus {
+            box-shadow: 0 0 0 4px ${colors.blue200};
+          }
+
+          &:hover {
+            background-color: ${colors.blue500};
+            color: ${colors.white};
+          }
+
+          &:pressed {
+            background-color: ${colors.blue900};
           }
         }
       }
