@@ -43,6 +43,7 @@ const StyledHero = styled(PageHero)`
 
     h2 {
       max-width: 258px;
+      margin-bottom: 24px;
       letter-spacing: -0.01em;
 
       ${breakpoint.small`
@@ -62,6 +63,7 @@ const StyledHero = styled(PageHero)`
 
     p {
       max-width: 258px;
+      line-height: 1.45em;
 
       ${breakpoint.small`
         max-width: 312px;
@@ -205,7 +207,6 @@ const Hero = () => (
     <Container>
       <div className="hero__content">
         <h2 className="color--white">Shaping the future of digital health</h2>
-        <br />
         <p className="color--white paragraph--large">We are a global research institute rapidly developing digital health solutions that empower patients and healthcare providers.</p>
       </div>
     </Container>

@@ -222,7 +222,7 @@ const StyledMenu = styled.nav`
         transform: ${(props) => (props.isSubMenuOpen ? 'translateY(0)' : 'translateY(32px)')};
         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
         transition: all 0.6s ease;
-        z-index: 9997;
+        z-index: -1;
       `}
 
       .submenu__closer {
