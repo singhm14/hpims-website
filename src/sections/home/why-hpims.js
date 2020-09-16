@@ -39,6 +39,10 @@ const StyledWhyHPIMS = styled.section`
 
     .section__description {
       max-width: 544px;
+
+      ${breakpoint.extraLarge`
+        font-weight: 500;
+      `}
     }
   }
 
@@ -53,6 +57,8 @@ const StyledWhyHPIMS = styled.section`
     `}
 
     .icon {
+      width: auto;
+      height: 40px;
       display: flex;
       align-items: flex-start;
     }
@@ -70,7 +76,7 @@ const WhyHPIMS = () => (
     <BackgroundTriangle className="svg--fill-blue100" />
     <Container>
       <div className="section__title">
-        <p className="section__subtitle color--black">Why HPI•MS</p>
+        <p className="section__subtitle color--blue500">Why HPI•MS</p>
         <h2 className="color--blue500">A new era of digital health</h2>
         <p className="section__description color--black">Combining an innovative health care system with world class engineering expertise to offer unprecedented opportunities for improved global well-being and medical discovery.</p>
       </div>
