@@ -39,7 +39,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h3 {
-    font-size: 28px;
+    font-size: 32px;
+    line-height: 1.2em;
 
     ${breakpoint.medium`
       font-size: 40px;
