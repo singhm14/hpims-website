@@ -11,7 +11,7 @@ import Footer from 'components/footer/'
 
 const Layout = ({ children }) => (
   <main className="color--black">
-    <SEO />
+    <SEO lang="en" />
     <GlobalStyles />
     <Menu />
     {children}
