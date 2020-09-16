@@ -209,7 +209,7 @@ const StyledMenu = styled.nav`
 
       ${breakpoint.small`
         width: 512px;
-        top: 52px;
+        top: 53px;
         right: 0;
         bottom: auto;
         left: auto;
@@ -217,10 +217,10 @@ const StyledMenu = styled.nav`
         flex-wrap: wrap;
         justify-content: space-between;
         padding: 32px;
+        border-top: 1px solid ${colors.grey300};
         opacity: ${(props) => (props.isSubMenuOpen ? '1' : '0')};
         visibility: ${(props) => (props.isSubMenuOpen ? 'visible' : 'hidden')};
         transform: ${(props) => (props.isSubMenuOpen ? 'translateY(0)' : 'translateY(32px)')};
-        box-shadow: inset 0px 2px 8px 2px rgba(0,0,0,0.1);
         transition: all 0.6s ease;
         z-index: -1;
       `}
