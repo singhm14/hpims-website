@@ -4,12 +4,12 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Indicius' Gatsby Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    url: 'https://indicius.com',
+    title: `HPI·MS | Icahn School of Medicine`,
+    description: `The institute is a collaboration between the Hasso Plattner Institute for Digital Engineering in Potsdam, Germany, and the Mount Sinai Health System. Our goal is to develop innovations to revolutionize how people think about their personal health and health systems and have a tangible impact on patients’ lives.`,
+    url: 'https://icahn.mssm.edu/research/hpims',
     image: '',
-    twitterUsername: '@indiciusar',
-    author: `@tomasperalta`
+    twitterUsername: '@hpi_health',
+    author: `@indicius`
   },
   plugins: [
     // persistent-layout is enabled by default
@@ -56,7 +56,14 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/images/gatsby-icon.png` // This path is relative to the root of the site.
+        icon: `src/assets/images/favicon.png` // This path is relative to the root of the site.
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Inter\:400,500,600,700`],
+        display: `swap`
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
