@@ -33,7 +33,6 @@ const PublicationsList = () => {
     query {
       allContentfulPublications {
         nodes {
-          year(formatString: "MMMM, YYYY")
           method
           journal
           title

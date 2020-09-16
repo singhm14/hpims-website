@@ -60,7 +60,7 @@ const StyledPublications = styled.section`
 const Publications = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulPublications(limit: 4) {
+      allContentfulPublications(limit: 4, sort: { fields: year, order: DESC }) {
         nodes {
           method
           journal
