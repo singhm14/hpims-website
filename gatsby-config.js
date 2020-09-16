@@ -5,7 +5,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `HPI·MS | Icahn School of Medicine`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    description: `The institute is a collaboration between the Hasso Plattner Institute for Digital Engineering in Potsdam, Germany, and the Mount Sinai Health System. Our goal is to develop innovations to revolutionize how people think about their personal health and health systems and have a tangible impact on patients’ lives.`,
     url: 'https://icahn.mssm.edu/research/hpims',
     image: '',
     twitterUsername: '@hpi_health',
