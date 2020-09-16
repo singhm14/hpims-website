@@ -220,7 +220,7 @@ const StyledMenu = styled.nav`
         opacity: ${(props) => (props.isSubMenuOpen ? '1' : '0')};
         visibility: ${(props) => (props.isSubMenuOpen ? 'visible' : 'hidden')};
         transform: ${(props) => (props.isSubMenuOpen ? 'translateY(0)' : 'translateY(32px)')};
-        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+        box-shadow: inset 0px 2px 8px 2px rgba(0,0,0,0.1);
         transition: all 0.6s ease;
         z-index: -1;
       `}
@@ -400,7 +400,9 @@ const Menu = () => {
                   <p className="paragraph-small color--grey700">Core Research Projects</p>
                   {data.researchProjects.nodes.map((project) => (
                     <li key={project.id}>
-                      <Link to={'/research-projects/' + getSlug(project.title)}>{project.title}</Link>
+                      <Link to={'/research-projects/' + getSlug(project.title)} className="font-weight--500">
+                        {project.title}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -408,7 +410,9 @@ const Menu = () => {
                   <p className="paragraph-small color--grey700">Our Labs</p>
                   {data.labs.nodes.map((lab) => (
                     <li key={lab.id}>
-                      <Link to={'/labs/' + getSlug(lab.name)}>{lab.name}</Link>
+                      <Link to={'/labs/' + getSlug(lab.name)} className="font-weight--500">
+                        {lab.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
