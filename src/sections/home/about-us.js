@@ -33,7 +33,7 @@ const StyledAboutUs = styled.section`
       font-size: 14px;
 
       ${breakpoint.medium`
-        max-width: 424px;
+        max-width: 544px;
       `}
 
       ${breakpoint.large`

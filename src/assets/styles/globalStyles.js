@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Inter", sans-serif;
     font-size: 16px;
-    line-height: 1.5em;
+    line-height: 1.38em;
   }
 
   h1,
