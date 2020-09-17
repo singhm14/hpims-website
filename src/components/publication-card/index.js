@@ -40,6 +40,7 @@ const StyledPublicationCard = styled.div`
     .publication__date {
       margin-bottom: 4px;
       font-weight: 500;
+      color: ${colors.grey700};
 
       ${breakpoint.medium`
         font-size: 14px;
@@ -218,17 +219,17 @@ const PublicationCard = (props) => {
 
   return (
     <StyledPublicationCard active={active}>
-      <div className="publication__info color--blue500">
-        <p className="publication__date paragraph--extra-small color--grey700">{props.year}</p>
+      <div className="publication__info">
+        <p clasName="publication__date paragraph--extra-small color--grey700">{props.year}</p>
         <h5>
-          <a href={props.link} className="publication__title color--blue500" target="_blank" rel="noopener noreferrer">
+          <a href={props.link} className="publication__title color--blue900" target="_blank" rel="noopener noreferrer">
             {props.title}
           </a>
         </h5>
 
-        <div className="info info--journal">
+        <div className="info info--journal color--grey900">
           <p className="journal paragraph--extra-small">Journal</p>
-          <p className="journal-title paragraph--small">{props.journal}</p>
+          <p className="journal-title paragraph--small font-weight--600">{props.journal}</p>
         </div>
 
         <div className="info info--authors">

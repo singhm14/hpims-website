@@ -21,7 +21,7 @@ const StyledAboutUs = styled.section`
   `}
 
   .section__title {
-    max-width: 544px;
+    max-width: 424px;
     margin: 0;
     text-align: left;
 
