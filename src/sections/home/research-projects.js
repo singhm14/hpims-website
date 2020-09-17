@@ -23,7 +23,12 @@ const StyledResearchProjects = styled.section`
   `}
 
   ${Container} {
-    max-width: 928px;
+    max-width: 716px;
+    padding: 0;
+
+    ${breakpoint.medium`
+      max-width: 928px;
+    `}
   }
 
   .section__title {
@@ -31,8 +36,14 @@ const StyledResearchProjects = styled.section`
     text-align: center;
   }
 
+  .grid__item {
+    ${breakpoint.small`
+      width: calc((100% - 16px) / 2);
+    `}
+  }
+
   .research__link {
-    margin-top: 24px;
+    margin-top: 40px;
 
     ${breakpoint.medium`
       margin-top: 56px;

@@ -25,7 +25,11 @@ const StyledResearchProjectCard = styled.a`
   box-sizing: border-box;
 
   ${breakpoint.small`
-    padding: 48px 32px 42px 40px;
+    padding: 40px 24px 32px 24px;
+  `}
+
+  ${breakpoint.medium`
+    padding: 48px 40px 42px 40px;
   `}
 
   ${breakpoint.medium`
@@ -43,6 +47,14 @@ const StyledResearchProjectCard = styled.a`
   .research-project__title {
     width: 100%;
     margin-bottom: 16px;
+
+    ${breakpoint.small`
+      margin-bottom: 8px;
+    `}
+
+    ${breakpoint.medium`
+      margin-bottom: 16px;
+    `}
   }
 
   .research-project__link {
@@ -52,6 +64,22 @@ const StyledResearchProjectCard = styled.a`
     align-items: center;
     margin-top: 40px;
     font-weight: 600;
+
+    ${breakpoint.small`
+      margin-top: 24px;
+    `}
+
+    ${breakpoint.medium`
+      margin-top: 40px;
+    `}
+  }
+
+  p {
+    font-size: 14px;
+
+    ${breakpoint.medium`
+      font-size: 16px;
+    `}
   }
 `
 
@@ -60,11 +88,11 @@ const ResearchProject = (props) => (
     <div>
       <div className="research-project__icon">{props.icon && <Img fixed={props.icon} alt={props.title} />}</div>
 
-      <h4 className="research-project__title color--blue500">
+      <h5 className="research-project__title color--blue500 font-weight--600">
         <Link to={'/research-projects/' + getSlug(props.title)} className="color--blue500">
           {props.title}
         </Link>
-      </h4>
+      </h5>
       <p className="color--grey900">{props.summary}</p>
     </div>
 
