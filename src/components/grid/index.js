@@ -2,7 +2,7 @@
 import breakpoint from 'utils/breakpoints/'
 
 // Libraries
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Grid = styled.div`
   width: 100%;
@@ -18,21 +18,26 @@ const Grid = styled.div`
       margin-bottom: 0;
     }
 
-    ${breakpoint.small`
-      width: calc((100% - ${(props) => props.gutter}px) / 2);
+    ${(props) =>
+      props.columns !== '1'
+        ? css`
+            ${breakpoint.small`
+              width: calc((100% - ${(props) => props.gutter}px) / 2);
 
-      &:nth-last-child(-n + ${(props) => props.columns}) {
-        margin-bottom: 0;
-      }
-    `}
+              &:nth-last-child(-n + ${(props) => props.columns}) {
+                margin-bottom: 0;
+              }
+            `}
 
-    ${breakpoint.medium`
-      width: calc((100% - (${(props) => props.gutter}px * (${(props) => props.columns} - 1))) / ${(props) => props.columns});
+            ${breakpoint.medium`
+              width: calc((100% - (${(props) => props.gutter}px * (${(props) => props.columns} - 1))) / ${(props) => props.columns});
 
-      &:nth-last-child(-n + ${(props) => props.columns}) {
-        margin-bottom: 0;
-      }
-    `}
+              &:nth-last-child(-n + ${(props) => props.columns}) {
+                margin-bottom: 0;
+              }
+            `}
+          `
+        : null}
   }
 `
 
