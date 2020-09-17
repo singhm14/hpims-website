@@ -29,7 +29,7 @@ const StyledLastEvent = styled.section`
   }
 
   .event__carousel {
-    margin-bottom: 56px;
+    margin-bottom: 72px;
   }
 
   .slick-track {
@@ -46,6 +46,42 @@ const StyledLastEvent = styled.section`
 
     &.slick-active {
       opacity: 1;
+    }
+  }
+
+  .slick-dots {
+    height: 8px;
+    bottom: -20px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    li {
+      width: 8px;
+      height: 8px;
+      margin: 0 4px 0 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.slick-active {
+        button {
+          background-color: ${colors.blue300};
+        }
+      }
+
+      button {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        background-color: ${colors.white};
+        border-radius: 50%;
+
+        &::before {
+          display: none;
+        }
+      }
     }
   }
 
@@ -215,6 +251,7 @@ const LastEvent = () => {
       {
         breakpoint: 1023,
         settings: {
+          dots: true,
           arrows: false
         }
       },
