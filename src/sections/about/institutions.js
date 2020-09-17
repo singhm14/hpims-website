@@ -51,11 +51,16 @@ const StyledInstitutions = styled.section`
   }
 
   .institution__card {
+    height: 100%;
     background-color: ${colors.white};
     box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
 
     .institute__content {
-      padding: 40px;
+      padding: 40px 16px;
+
+      ${breakpoint.medium`
+        padding: 40px;
+      `}
 
       .logo {
         height: 80px;
@@ -71,6 +76,7 @@ const StyledInstitutions = styled.section`
       }
 
       .link {
+        align-self: flex-end;
         margin-top: 48px;
         display: flex;
         align-items: center;
@@ -171,7 +177,11 @@ const Institutions = () => {
                 <div className="subinstitute">
                   <Img className="subinstitute__logo" fixed={data.logoIcahnSchool.childImageSharp.fixed} alt="Icahn School of Medicine at Mount Sinai" />
                   <h5>Icahn School of Medicine at Mount Sinai</h5>
-                  <p className="summary">The Icahn School of Medicine at Mount Sinai is an international leader in medical and scientific training, biomedical research, and patient care. It is the medical school for the Mount Sinai Health System, which includes eight hospital campuses, and has more than 5,000 faculty and nearly 2,000 students, residents and fellows. Our unwavering pursuit of intellectual exchange, breakthrough research, and multidisciplinary teamwork propels us ever forward in biomedical discoveries and advances. We pursue ideas that often challenge conventional wisdom to revolutionize the practice of medicine and produce dramatically better outcomes for patients. We make big, bold bets by investing in radical free thinkers and technology at the cutting edge.</p>
+                  <p className="summary">
+                    The Icahn School of Medicine at Mount Sinai is an international leader in medical and scientific training, biomedical research, and patient care. It is the medical school for the Mount Sinai Health System, which includes eight hospital campuses, and has more than 5,000 faculty and nearly 2,000 students, residents and fellows. Our unwavering pursuit of intellectual exchange, breakthrough research, and multidisciplinary teamwork propels us ever forward in biomedical discoveries and advances. We pursue ideas that often challenge conventional wisdom to revolutionize the practice of medicine and produce dramatically better outcomes for patients. We make big, bold bets by investing in radical free thinkers and technology at the cutting edge.
+                    <br />
+                    <br />
+                  </p>
 
                   <a className="link color--blue500 font-weight--600 svg--stroke-blue500" href="https://icahn.mssm.edu/" target="_blank" rel="noopener noreferrer">
                     Visit Website
