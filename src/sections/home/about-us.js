@@ -25,6 +25,10 @@ const StyledAboutUs = styled.section`
     margin: 0;
     text-align: left;
 
+    ${breakpoint.medium`
+      max-width: 544px;
+    `}
+
     h3 {
       margin-bottom: 32px;
     }
@@ -33,10 +37,6 @@ const StyledAboutUs = styled.section`
       font-size: 14px;
 
       ${breakpoint.medium`
-        max-width: 544px;
-      `}
-
-      ${breakpoint.large`
         font-size: 16px;
       `}
     }
