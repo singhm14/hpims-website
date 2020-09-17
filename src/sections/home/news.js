@@ -98,7 +98,8 @@ const StyledNews = styled.section`
       left: 0;
 
       ${breakpoint.medium`
-        left: -50px;
+        top: 50%;
+        left: -74px;
       `}
     }
 
@@ -107,7 +108,8 @@ const StyledNews = styled.section`
       right: 0;
 
       ${breakpoint.medium`
-        right: -50px;
+        top: 50%;
+        right: -74px;
       `}
     }
   }
