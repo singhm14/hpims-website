@@ -19,7 +19,7 @@ const StyledResearchProjectCard = styled.a`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  padding: 32px 16px;
+  padding: 32px 24px;
   text-align: left;
   box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;

@@ -24,7 +24,10 @@ const StyledResearchProjects = styled.section`
 
   ${Container} {
     max-width: 716px;
-    padding: 0;
+
+    ${breakpoint.small`
+      padding: 0;
+    `}
 
     ${breakpoint.medium`
       max-width: 928px;

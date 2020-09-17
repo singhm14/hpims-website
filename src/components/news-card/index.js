@@ -12,7 +12,7 @@ const StyledNewsCard = styled.a`
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 20px;
-  border-bottom: 4px solid ${colors.blue300};
+  border-bottom: 4px solid ${colors.blue500};
   box-sizing: border-box;
 
   p {

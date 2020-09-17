@@ -47,6 +47,12 @@ const StyledPublications = styled.section`
     z-index: 10;
   }
 
+  .section__title {
+    ${breakpoint.medium`
+      max-width: 455px;
+    `}
+  }
+
   .publications__view-more {
     margin-top: 80px;
     text-align: center;
@@ -96,7 +102,7 @@ const Publications = () => {
 
       <Container>
         <p className="section__subtitle color--black">Publications</p>
-        <h2 className="section__title color--blue900">World class research with a global impact</h2>
+        <h3 className="section__title color--blue500">World class research with a global impact</h3>
 
         <Grid gutter="32" columns="1">
           {data.allContentfulPublications.nodes.map((publication) => (
@@ -107,7 +113,7 @@ const Publications = () => {
         </Grid>
 
         <div className="publications__view-more">
-          <Primary to="/research" className="color--blue500 color-hover--white bg-hover--blue500 border--blue500" text="Explore all research initiatives" />
+          <Primary to="/publications" className="color--blue500 color-hover--white bg-hover--blue500 border--blue500" text="See all publications" />
         </div>
       </Container>
     </StyledPublications>

@@ -105,8 +105,13 @@ const GlobalStyles = createGlobalStyle`
 
     .section__subtitle {
       margin-bottom: 16px;
+      font-size: 14px;
       font-weight: 600;
       text-transform: uppercase;
+
+      ${breakpoint.medium`
+        font-size: 16px;
+      `}
     }
 
     .section__description {
