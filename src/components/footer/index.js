@@ -1,7 +1,6 @@
 // Libraries
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
