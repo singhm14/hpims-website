@@ -360,6 +360,12 @@ const Menu = () => {
             <li>
               <Link to="/#publications">Publications</Link>
             </li>
+            <li>
+              <Link to="/#press">Press</Link>
+            </li>
+            <li>
+              <Link to="/#events">Events</Link>
+            </li>
           </ul>
         </div>
       </Container>
