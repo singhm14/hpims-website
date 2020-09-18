@@ -96,7 +96,7 @@ const Publications = () => {
     }
   `)
   return (
-    <StyledPublications className="bg--grey100">
+    <StyledPublications id="publications" className="bg--grey100">
       <div className="publications__background" />
 
       <Container>

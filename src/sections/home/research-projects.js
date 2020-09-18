@@ -76,7 +76,7 @@ const ResearchProjects = () => {
     }
   `)
   return (
-    <StyledResearchProjects>
+    <StyledResearchProjects id="research">
       <Container>
         <div className="section__title">
           <p className="section__subtitle">Research</p>

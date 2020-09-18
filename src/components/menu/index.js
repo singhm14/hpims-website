@@ -352,13 +352,13 @@ const Menu = () => {
         <div className="menu__content">
           <ul>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/#about">About</Link>
             </li>
             <li>
-              <Link to="/research">Research</Link>
+              <Link to="/#research">Research</Link>
             </li>
             <li>
-              <Link to="/publications">Publications</Link>
+              <Link to="/#publications">Publications</Link>
             </li>
           </ul>
         </div>

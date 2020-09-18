@@ -55,7 +55,7 @@ const AboutUs = (props) => {
     }
   `)
   return (
-    <StyledAboutUs>
+    <StyledAboutUs id="about">
       <Container>
         <div className="section__title">
           <p className="section__subtitle color--black">About Us</p>
