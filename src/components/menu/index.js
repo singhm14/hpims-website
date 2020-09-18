@@ -48,6 +48,7 @@ const StyledMenu = styled.nav`
       color: ${colors.blue300};
 
       ${breakpoint.medium`
+        color: initial;
         border-color: ${colors.blue300};
       `}
     }
