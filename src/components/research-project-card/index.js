@@ -13,7 +13,7 @@ import PropTypes from 'prop-types'
 // Components
 import { Tertiary } from 'components/buttons/'
 
-const StyledResearchProjectCard = styled.a`
+const StyledResearchProjectCard = styled.div`
   max-width: 448px;
   height: 100%;
   display: flex;
@@ -101,7 +101,7 @@ const ResearchProject = (props) => (
 )
 
 ResearchProject.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.object,
   title: PropTypes.string,
   summary: PropTypes.string
 }

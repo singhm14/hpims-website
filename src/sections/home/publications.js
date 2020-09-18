@@ -105,8 +105,8 @@ const Publications = () => {
         <h3 className="section__title color--blue500">World class research with a global impact</h3>
 
         <Grid gutter="32" columns="1">
-          {data.allContentfulPublications.nodes.map((publication) => (
-            <div className="grid__item">
+          {data.allContentfulPublications.nodes.map((publication, index) => (
+            <div className="grid__item" key={index}>
               <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
             </div>
           ))}

@@ -268,8 +268,8 @@ const PublicationCard = (props) => {
 
         <div className="info info--tags">
           {props.tags &&
-            props.tags.map((tag) => (
-              <Link to={'/publications?category=' + getSlug(tag)} className="tag color--blue500">
+            props.tags.map((tag, index) => (
+              <Link to={'/publications?category=' + getSlug(tag)} className="tag color--blue500" key={index}>
                 {tag}
               </Link>
             ))}
