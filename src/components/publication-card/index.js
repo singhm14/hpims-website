@@ -7,11 +7,10 @@ import { useStaticQuery, graphql } from 'gatsby'
 // Utils
 import breakpoint from 'utils/breakpoints/'
 import { colors } from 'utils/variables/'
-import { getSlug, useToggle } from 'utils/functions/'
+import { useToggle } from 'utils/functions/'
 
 // Components
 import BackgroundImage from 'gatsby-background-image'
-import { Link } from 'gatsby'
 import { ExternalLink } from 'components/buttons/'
 
 const StyledPublicationCard = styled.div`
@@ -269,9 +268,9 @@ const PublicationCard = (props) => {
         <div className="info info--tags">
           {props.tags &&
             props.tags.map((tag, index) => (
-              <Link to={'/publications?category=' + getSlug(tag)} className="tag color--blue500" key={index}>
+              <span className="tag color--blue500" key={index}>
                 {tag}
-              </Link>
+              </span>
             ))}
         </div>
       </div>
