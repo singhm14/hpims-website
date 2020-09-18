@@ -210,7 +210,7 @@ const StyledMenu = styled.nav`
 
       ${breakpoint.small`
         width: 512px;
-        top: 53px;
+        top: 52px;
         right: 0;
         bottom: auto;
         left: auto;
