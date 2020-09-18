@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
 import { colors } from 'utils/variables/'
-import { getSlug, useToggle } from 'utils/functions/'
+import { useToggle } from 'utils/functions/'
 
 // Components
 import Container from 'components/container/'
@@ -15,8 +14,6 @@ import { Link } from 'gatsby'
 
 // Icons
 import Logo from 'assets/icons/icon-logo.inline.svg'
-import IconCaretDown from 'assets/icons/icon-caret-down.inline.svg'
-import IconArrowLeft from 'assets/icons/icon-arrow-left.inline.svg'
 
 const StyledMenu = styled.nav`
   width: 100%;
@@ -299,7 +296,6 @@ const StyledMenu = styled.nav`
 
 const Menu = () => {
   const [isMenuOpen, toggleMenu] = useToggle()
-  const [isSubMenuOpen, toggleSubMenu] = useToggle()
   const [isScrollingDown, handleVisibility] = useToggle()
   const [lastScrollPosition, handleLastScrollPosition] = useState(0)
 
@@ -318,16 +314,14 @@ const Menu = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
 
-      if (!isSubMenuOpen) {
-        if (scrollPosition > 80) {
-          if (scrollPosition > lastScrollPosition) {
-            if (!isScrollingDown) {
-              handleVisibility(true)
-            }
-          } else {
-            if (isScrollingDown) {
-              handleVisibility(false)
-            }
+      if (scrollPosition > 80) {
+        if (scrollPosition > lastScrollPosition) {
+          if (!isScrollingDown) {
+            handleVisibility(true)
+          }
+        } else {
+          if (isScrollingDown) {
+            handleVisibility(false)
           }
         }
       }
@@ -340,24 +334,8 @@ const Menu = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   })
 
-  const data = useStaticQuery(graphql`
-    query {
-      researchProjects: allContentfulResearchProjects {
-        nodes {
-          id
-          title
-        }
-      }
-      labs: allContentfulLabs {
-        nodes {
-          id
-          name
-        }
-      }
-    }
-  `)
   return (
-    <StyledMenu isMenuOpen={isMenuOpen} isSubMenuOpen={isSubMenuOpen} hideMenu={isScrollingDown}>
+    <StyledMenu isMenuOpen={isMenuOpen} hideMenu={isScrollingDown}>
       <Container>
         <div className="menu__logo">
           <Link to="/" aria-label="HPI·MS">
@@ -377,55 +355,10 @@ const Menu = () => {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/team">Team</Link>
-            </li>
-            <li className="menu__has-submenu">
-              <button type="button" onClick={() => toggleSubMenu()}>
-                Research
-                <IconCaretDown />
-              </button>
-
-              <div className="submenu">
-                <h5 className="submenu__closer">
-                  <button type="button" onClick={() => toggleSubMenu()}>
-                    <IconArrowLeft />
-                    Research
-                  </button>
-                </h5>
-
-                <div className="submenu__general-link">
-                  <Link to="/research" className="color--black font-weight--500">
-                    All Research initiatives
-                  </Link>
-                </div>
-
-                <ul>
-                  <p className="paragraph-small color--grey700">Core Research Projects</p>
-                  {data.researchProjects.nodes.map((project) => (
-                    <li key={project.id}>
-                      <Link to={'/research-projects/' + getSlug(project.title)} className="font-weight--500">
-                        {project.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <ul>
-                  <p className="paragraph-small color--grey700">Our Labs</p>
-                  {data.labs.nodes.map((lab) => (
-                    <li key={lab.id}>
-                      <Link to={'/labs/' + getSlug(lab.name)} className="font-weight--500">
-                        {lab.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Link to="/research">Research</Link>
             </li>
             <li>
               <Link to="/publications">Publications</Link>
-            </li>
-            <li>
-              <Link to="/careers">Careers</Link>
             </li>
           </ul>
         </div>
