@@ -318,14 +318,16 @@ const Menu = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
 
-      if (scrollPosition > 80) {
-        if (scrollPosition > lastScrollPosition) {
-          if (!isScrollingDown) {
-            handleVisibility(true)
-          }
-        } else {
-          if (isScrollingDown) {
-            handleVisibility(false)
+      if (!isSubMenuOpen) {
+        if (scrollPosition > 80) {
+          if (scrollPosition > lastScrollPosition) {
+            if (!isScrollingDown) {
+              handleVisibility(true)
+            }
+          } else {
+            if (isScrollingDown) {
+              handleVisibility(false)
+            }
           }
         }
       }
