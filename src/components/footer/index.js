@@ -33,7 +33,7 @@ const StyledFooter = styled.footer`
     margin-bottom: 24px;
 
     ${breakpoint.medium`
-      margin-bottom: 64px;
+      margin-bottom: 0;
     `}
 
     p {
@@ -125,7 +125,7 @@ const Footer = () => (
             </a>
           </h4>
         </div>
-        <ul>
+        {/* <ul>
           <div className="column">
             <li>
               <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
@@ -160,7 +160,7 @@ const Footer = () => (
               </Link>
             </li>
           </div>
-        </ul>
+        </ul> */}
       </div>
 
       <div className="footer__logos">
