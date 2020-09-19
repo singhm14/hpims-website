@@ -48,10 +48,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h4 {
-    font-size: 22px;
+    font-size: 28px;
     
     ${breakpoint.medium`
-      font-size: 24px;
+      font-size: 32px;
     `}
   }
 
