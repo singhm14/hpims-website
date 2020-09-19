@@ -67,6 +67,10 @@ const StyledWhyHPIMS = styled.section`
       max-width: 192px;
       margin-bottom: 8px;
       font-weight: 600;
+
+      ${breakpoint.medium`
+        max-width: 204px;
+      `}
     }
   }
 `
@@ -88,7 +92,7 @@ const WhyHPIMS = () => (
               <Icon1 />
             </div>
             <br />
-            <p className="title color--black">Expanding possibilities in medicine</p>
+            <p className="title color--blue500">Expanding possibilities in medicine</p>
             <p className="color--black paragraph--small">Advancements in data science and engineering are rapidly translated into medical discovery in partnership with clinical experts.</p>
           </div>
         </div>
@@ -99,7 +103,7 @@ const WhyHPIMS = () => (
               <Icon2 />
             </div>
             <br />
-            <p className="title color--black">Improving access to critical data</p>
+            <p className="title color--blue500">Improving access to critical data</p>
             <p className="color--black paragraph--small">Data science powered by 7.6 million clinical records is connected to diverse genomic sequencing, comprehensive medical imaging, and biometric cardiology data, alongside innovative clinical research.</p>
           </div>
         </div>
@@ -110,7 +114,7 @@ const WhyHPIMS = () => (
               <Icon3 />
             </div>
             <br />
-            <p className="title color--black">Optimizing human health and well-being</p>
+            <p className="title color--blue500">Optimizing human health and well-being</p>
             <p className="color--black paragraph--small">By linking comprehensive patient data from hospital visits, genetic testing, and remote monitoring devices, patients and their physicians will be able to monitor, diagnose and inform personalized treatment plans.</p>
           </div>
         </div>
@@ -121,7 +125,7 @@ const WhyHPIMS = () => (
               <Icon4 />
             </div>
             <br />
-            <p className="title color--black">Advancing the state of the art</p>
+            <p className="title color--blue500">Advancing the state of the art</p>
             <p className="color--black paragraph--small">Leveraging the latest technologies, creating novel methodologies, and bringing together interdisciplinary expertise, HPI⋅MS is leading the digital health revolution. </p>
           </div>
         </div>
