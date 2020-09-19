@@ -17,10 +17,10 @@ import Icon3 from 'assets/icons/research/research-icon-3.inline.svg'
 import Icon4 from 'assets/icons/research/research-icon-4.inline.svg'
 
 const StyledCuttingEdge = styled.section`
-  padding: 64px 0;
+  padding: 64px 0 35vw 0;
 
   ${breakpoint.small`
-    padding: 80px 0;
+    padding: 80px 0 20vw 0;
   `}
 
   ${Container} {
