@@ -41,7 +41,7 @@ const StyledFooter = styled.footer`
       text-transform: uppercase;
     }
 
-    h4 {
+    h5 {
       font-weight: 400;
     }
   }
@@ -119,11 +119,11 @@ const Footer = () => (
       <div className="footer__sitemap">
         <div className="email">
           <p className="paragraph--small color--blue500">Contact Us</p>
-          <h4>
+          <h5>
             <a href="mailto:hpimsinfo@mssm.edu" className="color--blue300 color-hover--magenta300">
               HPIMSinfo@mssm.edu
             </a>
-          </h4>
+          </h5>
         </div>
         <ul>
           <div className="column">
