@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import BackgroundImage from 'gatsby-background-image'
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
 import { colors } from 'utils/variables/'
 import { getSlug } from 'utils/functions/'
 
@@ -27,14 +26,11 @@ const StyledTeamMemberCard = styled.div`
 
   .team-member__info {
     min-height: 126px;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     padding: 16px;
     background-color: ${colors.white};
-
-    ${breakpoint.medium`
-      padding: 32px;
-    `}
 
     * {
       width: 100%;
@@ -55,6 +51,7 @@ const StyledTeamMemberCard = styled.div`
     .link {
       margin-top: 16px;
       align-self: flex-end;
+      text-align: right;
       text-transform: uppercase;
     }
   }
@@ -77,22 +74,22 @@ const TeamMemberCard = (props) => {
       <BackgroundImage className="team-member__profile-picture bg--grey900" fixed={props.profilePicture ? props.profilePicture : data.file.childImageSharp.fixed} style={{ backgroundSize: 'cover' }} />
       <div className="team-member__info bg--grey100 color--black">
         <div>
-          <p className="department paragraph--small color--grey700 font-weight--500">
+          <p className="department paragraph--small color--grey900 font-weight--500">
             {props.departments &&
               props.departments.map((department) => {
                 return department
               })}
           </p>
 
-          <p className="name">
+          <p className="name paragraph--large color--blue500">
             <Link to={'/team/' + getSlug(props.name)} className="name color--blue500 font-weight--600">
               {props.name}
             </Link>
           </p>
         </div>
 
-        <Link to={'/team/' + getSlug(props.name)} className="link color--900">
-          + More Info
+        <Link to={'/team/' + getSlug(props.name)} className="link color--blue500">
+          +
         </Link>
       </div>
     </StyledTeamMemberCard>
