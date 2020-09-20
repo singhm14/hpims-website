@@ -70,6 +70,7 @@ const GlobalStyles = createGlobalStyle`
 
     &.paragraph--large {
       font-size: 18px;
+      line-height: 26px;
     }
 
     &.paragraph--small {

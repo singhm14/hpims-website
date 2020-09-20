@@ -40,7 +40,8 @@ const TeamMembers = () => {
   return (
     <StyledTeamMembers>
       <Container>
-        <Grid gutter="32" columns="4">
+        <h4 className="color--blue500 font-weight--600">Team Members</h4>
+        <Grid gutter="32" columns="3">
           {data.allContentfulTeamMembers.nodes.map((member) => (
             <div className="grid__item">
               <TeamMemberCard profilePicture={member.profilePicture && member.profilePicture.fixed} departments={member.department} name={member.name} position={member.position} />
