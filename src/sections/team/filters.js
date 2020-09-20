@@ -22,68 +22,57 @@ const StyledFilters = styled.div`
 
 const Filters = () => {
   // Store filters as state
-  const [year, handleYearFilter] = useState(null)
-  const [category, handleCategoryFilter] = useState(null)
-  const [author, handleAuthorFilter] = useState(null)
-  const [publicationMethod, handlePublicationMethodFilter] = useState(null)
+  const [role, handleRoleFilter] = useState(null)
+  const [lab, handleLabFilter] = useState(null)
+  const [project, handleProjectFilter] = useState(null)
 
   const data = useStaticQuery(graphql`
     query {
-      allContentfulPublications {
+      allContentfulTeamMembers {
         nodes {
-          year
-          tags
-          internalAuthors {
-            ... on ContentfulTeamMembers {
-              name
-            }
-            ... on ContentfulStudents {
-              name
-            }
+          id
+          department
+          labs {
+            name
           }
-          method
+          research_projects {
+            title
+          }
         }
       }
     }
   `)
 
-  let years = []
-  let tags = []
-  let internalAuthors = []
-  let publicationMethods = []
+  let roles = []
+  let labs = []
+  let projects = []
 
   // Populates the arrays with information
-  data.allContentfulPublications.nodes.map((publication) => {
-    // Push all Years
-    years.push(publication.year)
+  data.allContentfulTeamMembers.nodes.map((member) => {
+    // Push all roles
+    member.department && member.department.map((department) => roles.push(department))
 
-    // Push all Tags
-    publication.tags && publication.tags.map((tag) => tags.push(tag))
+    // Push all labs
+    member.labs && member.labs.map((lab) => labs.push(lab.name))
 
-    // Push all Authors
-    publication.internalAuthors && publication.internalAuthors.map((author) => internalAuthors.push(author.name))
-
-    // Push all Publication Methods
-    publicationMethods.push(publication.method)
+    // Push all projects
+    member.research_projects && member.research_projects.map((project) => projects.push(project.title))
 
     return false // To avoid error
   })
 
   // Remove repeated options
-  years = Array.from(new Set(years))
-  tags = Array.from(new Set(tags))
-  internalAuthors = Array.from(new Set(internalAuthors))
-  publicationMethods = Array.from(new Set(publicationMethods))
+  roles = Array.from(new Set(roles))
+  labs = Array.from(new Set(labs))
+  projects = Array.from(new Set(projects))
 
   return (
     <StyledFilters>
-      <Dropdown label="Year" options={years} callbackFunction={(event) => handleYearFilter(event.target.innerText)} />
-      <Dropdown label="Category" options={tags} callbackFunction={(event) => handleCategoryFilter(event.target.innerText)} />
-      <Dropdown label="Author" options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(event.target.innerText)} />
-      <Dropdown label="Publication Method" options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(event.target.innerText)} />
-
+      <Dropdown label="Role" options={roles} callbackFunction={(event) => handleRoleFilter(event.target.innerText)} />
+      <Dropdown label="Lab" options={labs} callbackFunction={(event) => handleLabFilter(event.target.innerText)} />
+      <Dropdown label="Project" options={projects} callbackFunction={(event) => handleProjectFilter(event.target.innerText)} />
       <p>
-        ?year={year}&category={category}&author={author}&publicatioMethod={publicationMethod}
+        ?role={role}&lab={lab}&project={project}
       </p>
     </StyledFilters>
   )
