@@ -135,6 +135,47 @@ const GlobalStyles = createGlobalStyle`
     overflow: hidden!important;
   }
 
+  .sidebar-layout {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 60px 0;
+
+    ${breakpoint.small`
+      flex-wrap: nowrap;
+    `}
+
+    ${breakpoint.medium`
+      padding: 80px 0;
+    `}
+
+    .sidebar {
+      width: 100%;
+      margin-bottom: 32px;
+
+      ${breakpoint.small`
+        width: 240px;
+        margin-right: 32px;
+        margin-bottom: 0;
+      `}
+
+      ${breakpoint.medium`
+        margin-right: 48px;
+      `}
+    }
+
+    .content {
+      width: 100%;
+
+      ${breakpoint.small`
+        width: calc(100% - 240px - 32px);
+      `}
+
+      ${breakpoint.medium`
+        width: calc(100% - 240px - 48px);
+      `}
+    }
+  }
+
   ${Helpers}
 `
 
