@@ -13,6 +13,7 @@ import IconExternalLink from 'assets/icons/icon-external-link.inline.svg'
 const StyledButton = styled(Link)`
   display: inline-flex;
   padding: 8px 24px;
+  box-sizing: border-box;
 
   &:hover {
     svg {

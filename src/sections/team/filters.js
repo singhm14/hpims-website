@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
@@ -6,9 +6,11 @@ import styled from 'styled-components'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
+import { getSlug } from 'utils/functions/'
 
 // Components
 import Dropdown from 'components/dropdown/'
+import { Primary } from 'components/buttons/'
 
 const StyledFilters = styled.div`
   width: 100%;
@@ -18,13 +20,29 @@ const StyledFilters = styled.div`
     max-width: 256px;
     margin: 0;
   `}
+
+  .filters__button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+
+    svg {
+      display: none;
+    }
+  }
 `
 
 const Filters = () => {
   // Store filters as state
-  const [role, handleRoleFilter] = useState(null)
-  const [lab, handleLabFilter] = useState(null)
-  const [project, handleProjectFilter] = useState(null)
+  const [role, handleRoleFilter] = useState('')
+  const [lab, handleLabFilter] = useState('')
+  const [project, handleProjectFilter] = useState('')
+  const [queryString, handleQueryString] = useState('')
+
+  // Build the URL string
+  useEffect(() => {
+    handleQueryString(`?role=${getSlug(role)}&lab=${getSlug(lab)}&project=${getSlug(project)}`)
+  }, [role, lab, project])
 
   const data = useStaticQuery(graphql`
     query {
@@ -71,9 +89,8 @@ const Filters = () => {
       <Dropdown label="Role" options={roles} callbackFunction={(event) => handleRoleFilter(event.target.innerText)} />
       <Dropdown label="Lab" options={labs} callbackFunction={(event) => handleLabFilter(event.target.innerText)} />
       <Dropdown label="Project" options={projects} callbackFunction={(event) => handleProjectFilter(event.target.innerText)} />
-      <p>
-        ?role={role}&lab={lab}&project={project}
-      </p>
+
+      <Primary className="filters__button bg-hover--blue300 color--blue500 color-hover--white border--blue500 border-hover--blue300" to={queryString} text="Filter Publications" />
     </StyledFilters>
   )
 }
