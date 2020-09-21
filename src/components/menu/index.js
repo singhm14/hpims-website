@@ -394,7 +394,7 @@ const Menu = () => {
                 </h5>
 
                 <div className="submenu__general-link">
-                  <Link to="/research" className="color--black font-weight--500">
+                  <Link to="/research" className="color--black font-weight--500" onClick={() => toggleSubMenu()}>
                     All Research initiatives
                   </Link>
                 </div>
@@ -403,7 +403,7 @@ const Menu = () => {
                   <p className="paragraph-small color--grey700">Core Research Projects</p>
                   {data.researchProjects.nodes.map((project) => (
                     <li key={project.id}>
-                      <Link to={'/research-projects/' + getSlug(project.title)} className="font-weight--500">
+                      <Link to={'/research-projects/' + getSlug(project.title)} className="font-weight--500" onClick={() => toggleSubMenu()}>
                         {project.title}
                       </Link>
                     </li>
@@ -413,7 +413,7 @@ const Menu = () => {
                   <p className="paragraph-small color--grey700">Our Labs</p>
                   {data.labs.nodes.map((lab) => (
                     <li key={lab.id}>
-                      <Link to={'/labs/' + getSlug(lab.name)} className="font-weight--500">
+                      <Link to={'/labs/' + getSlug(lab.name)} className="font-weight--500" onClick={() => toggleSubMenu()}>
                         {lab.name}
                       </Link>
                     </li>
