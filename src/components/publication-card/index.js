@@ -38,7 +38,6 @@ const StyledPublicationCard = styled.div`
 
     .publication__date {
       margin-bottom: 4px;
-      font-weight: 500;
       color: ${colors.grey700};
 
       ${breakpoint.medium`
@@ -78,7 +77,7 @@ const StyledPublicationCard = styled.div`
         }
 
         .authors__internal {
-          width: 100%;
+          width: calc(100% - 68px);
           display: flex;
           flex-wrap: wrap;
           justify-content: space-between;
@@ -151,7 +150,7 @@ const StyledPublicationCard = styled.div`
           margin: 0 8px 8px 0;
           background-color: ${colors.blue100};
           color: ${colors.blue900};
-          font-size: 12px;
+          font-size: 14px;
           border-radius: 24px;
           outline: 0;
           transition: all 0.3s;
@@ -226,7 +225,7 @@ const PublicationCard = (props) => {
   return (
     <StyledPublicationCard active={active}>
       <div className="publication__info">
-        <p className="publication__date paragraph--extra-small color--grey700">{props.year}</p>
+        <p className="publication__date paragraph--small color--grey700">{props.year}</p>
         <h5>
           <a href={props.link} className="publication__title color--blue900" target="_blank" rel="noopener noreferrer">
             {props.title}
