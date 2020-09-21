@@ -305,12 +305,14 @@ const Menu = () => {
 
   // Locks scroll if `isMenuOpen`
   useEffect(() => {
-    if (isMenuOpen) {
-      document.querySelector('html').classList.add('no-scroll')
-      document.querySelector('body').classList.add('no-scroll')
-    } else {
-      document.querySelector('html').classList.remove('no-scroll')
-      document.querySelector('body').classList.remove('no-scroll')
+    if (window.innerWidth <= 768) {
+      if (isMenuOpen) {
+        document.querySelector('html').classList.add('no-scroll')
+        document.querySelector('body').classList.add('no-scroll')
+      } else {
+        document.querySelector('html').classList.remove('no-scroll')
+        document.querySelector('body').classList.remove('no-scroll')
+      }
     }
   })
 
@@ -374,10 +376,14 @@ const Menu = () => {
         <div className="menu__content">
           <ul>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about" onClick={() => toggleMenu()}>
+                About
+              </Link>
             </li>
             <li>
-              <Link to="/team">Team</Link>
+              <Link to="/team" onClick={() => toggleMenu()}>
+                Team
+              </Link>
             </li>
             <li className="menu__has-submenu">
               <button type="button" onClick={() => toggleSubMenu()}>
@@ -422,10 +428,14 @@ const Menu = () => {
               </div>
             </li>
             <li>
-              <Link to="/publications">Publications</Link>
+              <Link to="/publications" onClick={() => toggleMenu()}>
+                Publications
+              </Link>
             </li>
             <li>
-              <Link to="/careers">Careers</Link>
+              <Link to="/careers" onClick={() => toggleMenu()}>
+                Careers
+              </Link>
             </li>
           </ul>
         </div>
