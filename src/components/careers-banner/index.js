@@ -3,12 +3,12 @@ import React from 'react'
 // Libraries
 import styled from 'styled-components'
 
-// Utils
-import breakpoint from 'utils/breakpoints/'
-
 // Components
 import Container from 'components/container/'
 import { Tertiary } from 'components/buttons/'
+
+// Icons
+import BannerTriangle from 'assets/icons/careers-banner-triangle.inline.svg'
 
 const StyledCareersBanner = styled.section`
   position: relative;
@@ -18,10 +18,18 @@ const StyledCareersBanner = styled.section`
   .banner__content {
     max-width: 352px;
   }
+
+  .banner__triangle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
 `
 
 const CareersBanner = () => (
   <StyledCareersBanner>
+    <BannerTriangle className="banner__triangle" />
     <Container>
       <div className="banner__content">
         <h4 className="color--white font-weight--600">We are looking for exceptional talents</h4>
