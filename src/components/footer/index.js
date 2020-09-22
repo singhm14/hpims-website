@@ -48,7 +48,7 @@ const StyledFooter = styled.footer`
 
   ul {
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
     list-style: none;
 
     ${breakpoint.medium`
@@ -56,15 +56,7 @@ const StyledFooter = styled.footer`
     `}
 
     .column {
-      margin-right: 32px;
-
-      &:last-child {
-        margin-right: 0;
-      }
-
-      ${breakpoint.small`
-        margin-right: 64px;
-      `}
+      margin-right: 126px;
 
       ${breakpoint.medium`
         margin-right: 152px;
@@ -86,6 +78,9 @@ const StyledFooter = styled.footer`
   }
 
   .footer__logos {
+    max-width: 208px;
+    margin-left: auto;
+
     ${breakpoint.medium`
       text-align: right;
     `}
@@ -93,7 +88,12 @@ const StyledFooter = styled.footer`
     .logos {
       width: auto;
       height: 52px;
-      margin-bottom: 24px;
+      display: flex;
+      margin-bottom: 12px;
+
+      ${breakpoint.medium`
+        margin-bottom: 24px;
+      `}
     }
 
     svg {
@@ -109,6 +109,7 @@ const StyledFooter = styled.footer`
 
     p {
       font-weight: 500;
+      text-align: right;
     }
   }
 `
@@ -120,7 +121,7 @@ const Footer = () => (
         <div className="email">
           <p className="paragraph--small color--blue500">Contact Us</p>
           <h5>
-            <a href="mailto:hpimsinfo@mssm.edu" className="color--blue300 color-hover--magenta300">
+            <a href="mailto:hpimsinfo@mssm.edu" className="color--blue500 color-hover--magenta300">
               HPIMSinfo@mssm.edu
             </a>
           </h5>

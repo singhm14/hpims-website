@@ -57,6 +57,7 @@ const StyledNewsCard = styled.a`
       align-items: center;
       justify-content: flex-end;
       opacity: 0;
+      white-space: nowrap;
       transition: all 0.3s ease;
 
       svg {

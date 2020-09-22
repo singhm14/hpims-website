@@ -101,7 +101,11 @@ const GlobalStyles = createGlobalStyle`
 
     .section__title {
       max-width: 640px;
-      margin-bottom: 56px;
+      margin-bottom: 32px;
+
+      ${breakpoint.medium`
+        margin-bottom: 56px;
+      `}
     }
 
     .section__subtitle {

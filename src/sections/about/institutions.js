@@ -69,6 +69,10 @@ const StyledInstitutions = styled.section`
 
       .name {
         margin: 40px 0;
+
+        ${breakpoint.medium`
+          min-height: 80px;
+        `}
       }
 
       button {
@@ -155,15 +159,10 @@ const Institutions = () => {
                   <IconMountSinai />
                 </div>
 
-                <h4 className="name color--black">
-                  Mount Sinai
-                  <br />
-                  Health System
-                </h4>
+                <h4 className="name color--black">Mount Sinai Health System</h4>
 
                 <p className="summary">
-                  The Mount Sinai Health System is an integrated health care system providing exceptional medical care to our local and global communities.
-                  <br />
+                  The Mount Sinai Health System is an integrated health care system providing exceptional medical care to our local and global communities. <br />
                   Encompassing the Icahn School of Medicine at Mount Sinai and eight hospital campuses in the New York metropolitan area, as well as a large, regional ambulatory footprint, Mount Sinai is internationally acclaimed for its excellence in research, patient care, and education across a range of specialties.
                 </p>
 

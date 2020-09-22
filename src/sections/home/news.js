@@ -99,7 +99,11 @@ const StyledNews = styled.section`
 
       ${breakpoint.medium`
         top: 50%;
-        left: -74px;
+        left: -48px;
+      `}
+
+      ${breakpoint.large`
+        right: -72px;
       `}
     }
 
@@ -109,7 +113,11 @@ const StyledNews = styled.section`
 
       ${breakpoint.medium`
         top: 50%;
-        right: -74px;
+        right: -48px;
+      `}
+
+      ${breakpoint.large`
+        right: -72px;
       `}
     }
   }

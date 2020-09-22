@@ -26,6 +26,10 @@ const StyledLastEvent = styled.section`
 
   ${Container} {
     max-width: 928px;
+
+    ${breakpoint.medium`
+      padding: 0;
+    `}
   }
 
   .event__carousel {
