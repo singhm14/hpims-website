@@ -70,7 +70,7 @@ const NewsCard = (props) => (
   <StyledNewsCard href={props.link} target="_blank" rel="noopener noreferrer">
     <div>
       <p className="news__journal paragraph--small color--grey900">{props.journal}</p>
-      <p className="news__title color--blue300 font-weight--600">{props.title}</p>
+      <h5 className="news__title color--blue300 font-weight--600">{props.title}</h5>
     </div>
 
     <div className="news__footer">

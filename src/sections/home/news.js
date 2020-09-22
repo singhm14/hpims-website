@@ -170,7 +170,7 @@ const News = () => {
         }
       },
       {
-        breakpoint: 1023,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 2
         }
@@ -191,7 +191,7 @@ const News = () => {
       <Container>
         <div className="section__title">
           <p className="section__subtitle color--black">Press</p>
-          <h2 className="color--blue500">HPI·MS in the news</h2>
+          <h3 className="color--blue500">HPI·MS in the news</h3>
         </div>
 
         <Slider {...settings}>
