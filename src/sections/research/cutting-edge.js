@@ -32,6 +32,7 @@ const StyledCuttingEdge = styled.section`
 
     ${breakpoint.medium`
       margin-bottom: 48px;
+      text-align: center;
     `}
   }
 

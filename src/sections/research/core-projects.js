@@ -24,6 +24,7 @@ const StyledCoreProjects = styled.section`
   `}
 
   h2 {
+    max-width: 620px;
     margin-bottom: 24px;
 
     ${breakpoint.small`
@@ -58,7 +59,11 @@ const CoreProjects = () => {
     <StyledCoreProjects className="bg--blue100">
       <Triangle />
       <Container>
-        <h2 className="color--blue500 font-weight--600">Core Research Projects</h2>
+        <h2 className="color--blue500 font-weight--600">
+          Core
+          <br />
+          Research Projects
+        </h2>
         <Grid gutter="32" columns="3">
           {data.allContentfulResearchProjects.nodes.map((project, index) => (
             <div className="grid__item" key={index}>
