@@ -31,7 +31,7 @@ const GlobalStyles = createGlobalStyle`
 
   h2 {
     font-size: 40px;
-    line-height: 1.2em;
+    line-height: 1.22em;
 
     ${breakpoint.medium`
       font-size: 52px;
@@ -49,6 +49,7 @@ const GlobalStyles = createGlobalStyle`
 
   h4 {
     font-size: 28px;
+    line-height: 1.05em;
     
     ${breakpoint.medium`
       font-size: 32px;

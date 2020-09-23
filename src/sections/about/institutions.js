@@ -53,10 +53,10 @@ const StyledInstitutions = styled.section`
   .institution__card {
     height: 100%;
     background-color: ${colors.white};
-    box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
 
     .institute__content {
       padding: 40px 16px;
+      box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
 
       ${breakpoint.medium`
         padding: 40px;
@@ -148,7 +148,7 @@ const Institutions = () => {
   return (
     <StyledInstitutions>
       <Container>
-        <p className="institutions__title color--grey700 font-weight--600">Our Home Institutions</p>
+        <p className="institutions__title color--grey700 paragraph--small font-weight--600">Our Home Institutions</p>
         <Grid gutter="32" columns="2">
           <div className="grid__item">
             <div className="institution__card">
@@ -159,7 +159,7 @@ const Institutions = () => {
                   <IconMountSinai />
                 </div>
 
-                <h4 className="name color--black">Mount Sinai Health System</h4>
+                <h4 className="name color--black font-weight--600">Mount Sinai Health System</h4>
 
                 <p className="summary">
                   The Mount Sinai Health System is an integrated health care system providing exceptional medical care to our local and global communities. <br />
@@ -200,7 +200,7 @@ const Institutions = () => {
                   <IconHassoPlattner />
                 </div>
 
-                <h4 className="name color--black">Hasso Plattner Institute for Digital Engineering</h4>
+                <h4 className="name color--black font-weight--600">Hasso Plattner Institute for Digital Engineering</h4>
 
                 <p className="summary"> The Hasso Plattner Institute (HPI) in Potsdam is Germany's university center of excellence for digital engineering, advancing research and education in IT systems engineering, data engineering, cyber security, entrepreneurship, and digital health. With its bachelor‘s and master’s degree programs, the Faculty of Digital Engineering, established jointly by HPI and the University of Potsdam, offers innovative engineering- and application-oriented study programs.</p>
 

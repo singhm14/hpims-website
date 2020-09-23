@@ -15,6 +15,7 @@ import Background from 'assets/icons/about/hero-background.inline.svg'
 
 const StyledHero = styled(Hero)`
   position: relative;
+  padding-bottom: 64px;
 
   .hero__background {
     width: 100%;
@@ -59,9 +60,11 @@ const StyledHero = styled(Hero)`
   }
 
   p {
+    max-width: 498px;
     font-size: 14px;
 
     ${breakpoint.medium`
+      max-width: 544px;
       font-size: 16px;
     `}
   }
@@ -75,9 +78,10 @@ export default () => (
 
     <Container className="container">
       <p className="subtitle">About</p>
-      <h1 className="title color--blue500">Turning the promise of digital health into a reality</h1>
+      <h2 className="title color--blue500">Turning the promise of digital health into a reality</h2>
       <p>
         This extraordinary collaboration allows us to combine data science, biomedical and digital engineering, and health care expertise to offer unprecedented opportunities for healthcare.
+        <br />
         <br />
         Our goal is to turn the promise of digital health into a reality, being the driver of innovations that will revolutionize the way in which people think about their personal health and health systems, generating real impact in people’s lives.
       </p>
