@@ -139,24 +139,24 @@ const Footer = () => (
               </Link>
             </li>
             <li>
-              <Link to="/team" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
                 Team
               </Link>
             </li>
           </div>
           <div className="column">
             <li>
-              <Link to="/research" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
                 Research
               </Link>
             </li>
             <li>
-              <Link to="/publications" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
                 Publications
               </Link>
             </li>
             <li>
-              <Link to="/careers" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
                 Careers
               </Link>
             </li>

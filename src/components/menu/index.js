@@ -381,7 +381,7 @@ const Menu = () => {
               </Link>
             </li>
             <li>
-              <Link to="/team" onClick={() => toggleMenu()}>
+              <Link to="/" onClick={() => toggleMenu()}>
                 Team
               </Link>
             </li>
@@ -400,7 +400,7 @@ const Menu = () => {
                 </h5>
 
                 <div className="submenu__general-link">
-                  <Link to="/research" className="color--black font-weight--500" onClick={() => toggleSubMenu()}>
+                  <Link to="/" className="color--black font-weight--500" onClick={() => toggleSubMenu()}>
                     All Research initiatives
                   </Link>
                 </div>
@@ -428,12 +428,12 @@ const Menu = () => {
               </div>
             </li>
             <li>
-              <Link to="/publications" onClick={() => toggleMenu()}>
+              <Link to="/" onClick={() => toggleMenu()}>
                 Publications
               </Link>
             </li>
             <li>
-              <Link to="/careers" onClick={() => toggleMenu()}>
+              <Link to="/" onClick={() => toggleMenu()}>
                 Careers
               </Link>
             </li>
