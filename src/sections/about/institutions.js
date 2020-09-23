@@ -69,10 +69,6 @@ const StyledInstitutions = styled.section`
 
       .name {
         margin: 40px 0;
-
-        ${breakpoint.medium`
-          min-height: 80px;
-        `}
       }
 
       button {
@@ -86,6 +82,12 @@ const StyledInstitutions = styled.section`
         align-items: center;
         padding-bottom: 16px;
         border-bottom: 1px solid ${colors.blue500};
+
+        &.link--hpims {
+          ${breakpoint.large`
+            margin-top: 82px;
+          `}
+        }
 
         svg {
           margin-left: 8px;
@@ -168,7 +170,7 @@ const Institutions = () => {
 
                 <Accordion openText="Read more +" closedText="Read less -" content={<p>The Health System is designed to increase efficiencies and economies of scale; improve quality and outcomes; and expand access to advanced primary, specialty, and ambulatory care services throughout a wide clinical network. The Health System includes more than 7,200 physicians, including general practitioners and specialists, and 13 free-standing joint-venture centers. Mount Sinai also features a robust and continually expanding network of multispecialty services, including more than 400 ambulatory practice locations throughout the five boroughs of New York City, Westchester, and Long Island. With an extraordinary array of resources for the provision of compassionate, state-of-the-art care, the Mount Sinai Health System is poised to identify and respond to the health-related needs of the diverse populations we serve.</p>} />
 
-                <a className="link color--blue500 font-weight--600 svg--stroke-blue500" href="https://mountsinai.org/" target="_blank" rel="noopener noreferrer">
+                <a className="link link--hpims color--blue500 font-weight--600 svg--stroke-blue500" href="https://mountsinai.org/" target="_blank" rel="noopener noreferrer">
                   Visit Website
                   <IconExternal />
                 </a>
