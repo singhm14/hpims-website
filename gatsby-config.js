@@ -44,6 +44,14 @@ module.exports = {
         path: `${__dirname}/src/assets/images`
       }
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `animations`,
+        path: `${__dirname}/src/assets/animations`
+      }
+    },
+    `gatsby-transformer-json`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

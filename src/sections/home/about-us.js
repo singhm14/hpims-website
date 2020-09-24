@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
+import Lottie from 'react-lottie'
 import styled from 'styled-components'
 
 // Utils
@@ -9,8 +9,10 @@ import breakpoint from 'utils/breakpoints/'
 
 // Components
 import Container from 'components/container/'
-import Img from 'gatsby-image'
 import { Tertiary } from 'components/buttons/'
+
+// Animations
+import AboutAnimation from 'assets/animations/home/about-animation.json'
 
 const StyledAboutUs = styled.section`
   padding-top: 64px;
@@ -42,23 +44,47 @@ const StyledAboutUs = styled.section`
     }
   }
 
+  .about-us__image {
+    max-width: 100vw;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+
+    ${breakpoint.small`
+      height: 600px;
+    `}
+
+    ${breakpoint.medium`
+      height: 770px;
+    `}
+
+    > div {
+      height: 100%;
+
+      svg {
+        max-width: 10000px;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+    }
+  }
+
   .about__link {
     margin-top: 16px;
   }
 `
 
 const AboutUs = (props) => {
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "home/about-us-video-placeholder.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1440, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
+  const animationOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: AboutAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
     }
-  `)
+  }
+
   return (
     <StyledAboutUs>
       <Container>
@@ -73,7 +99,9 @@ const AboutUs = (props) => {
         </div>
       </Container>
 
-      <Img className="about-us__image" fluid={data.file.childImageSharp.fluid} alt="About Us" />
+      <div className="about-us__image">
+        <Lottie options={animationOptions} isClickToPauseDisabled={true} />
+      </div>
     </StyledAboutUs>
   )
 }
