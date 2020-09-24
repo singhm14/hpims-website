@@ -400,7 +400,7 @@ const Menu = () => {
                 </h5>
 
                 <div className="submenu__general-link">
-                  <Link to="/" className="color--black font-weight--500" onClick={() => toggleSubMenu()}>
+                  <Link to="/research" className="color--black font-weight--500" onClick={() => toggleSubMenu()}>
                     All Research initiatives
                   </Link>
                 </div>
