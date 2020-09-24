@@ -43,3 +43,9 @@ export const weights = {
   700: '700'
 }
 // Font-Weights:end
+
+// Gradients:start
+export const gradients = {
+  primary: 'linear-gradient(112deg, #004465 24.54%, #0985BB 76.57%)'
+}
+// Gradients:end

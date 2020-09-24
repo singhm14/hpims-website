@@ -2,7 +2,7 @@
 import { css } from 'styled-components'
 
 // Utils
-import { colors, weights } from 'utils/variables/'
+import { colors, weights, gradients } from 'utils/variables/'
 
 export const Helpers = () => {
   let styles = ''
@@ -91,6 +91,14 @@ export const Helpers = () => {
             stroke: ${color};
           }
         }
+      }
+    `
+  })
+
+  Object.entries(gradients).forEach(([name, gradient]) => {
+    styles += `
+      .gradient--${name} {
+        background: ${gradient};
       }
     `
   })
