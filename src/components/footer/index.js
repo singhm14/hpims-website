@@ -146,7 +146,7 @@ const Footer = () => (
           </div>
           <div className="column">
             <li>
-              <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/research" className="color--blue500 color-hover--magenta300" activeClassName="active">
                 Research
               </Link>
             </li>
