@@ -9,7 +9,6 @@ const Hero = styled.section`
   min-height: 670px;
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 120px 0 80px 0;
 
   ${breakpoint.medium`
