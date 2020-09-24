@@ -18,51 +18,54 @@ const GlobalStyles = createGlobalStyle`
   h3,
   h4 {
     font-weight: 600;
-    line-height: 1.13em;
   }
 
   h1 {
     font-size: 40px;
+    line-height: 48px;
 
     ${breakpoint.medium`
       font-size: 64px;
+      line-height: 72px;
     `}
   }
 
   h2 {
-    font-size: 40px;
-    line-height: 1.22em;
+    font-size: 32px;
+    line-height: 36px;
 
     ${breakpoint.medium`
       font-size: 52px;
+      line-height: 64px;
     `}
   }
 
   h3 {
-    font-size: 32px;
-    line-height: 1.2em;
+    font-size: 28px;
+    line-height: 32px;
 
     ${breakpoint.medium`
       font-size: 40px;
+      line-height: 48px;
     `}
   }
 
   h4 {
-    font-size: 28px;
-    line-height: 1.05em;
+    font-size: 24px;
+    line-height: 28px;;
     
     ${breakpoint.medium`
-      font-size: 32px;
+      font-size: 28px;
+      line-height: 32px;
     `}
   }
 
   h5 {
     font-size: 20px;
-    line-height: 24px;
+    line-height: 28px;
 
     ${breakpoint.medium`
       font-size: 22px;
-      line-height: 28px;
     `}
   }
 
