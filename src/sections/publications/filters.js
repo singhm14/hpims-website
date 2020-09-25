@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
@@ -6,9 +6,11 @@ import styled from 'styled-components'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
+import { getSlug } from 'utils/functions/'
 
 // Components
 import Dropdown from 'components/dropdown/'
+import { Primary } from 'components/buttons/'
 
 const StyledFilters = styled.div`
   width: 100%;
@@ -18,6 +20,16 @@ const StyledFilters = styled.div`
     max-width: 256px;
     margin: 0;
   `}
+
+  .filters__button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+
+    svg {
+      display: none;
+    }
+  }
 `
 
 const Filters = () => {
@@ -26,6 +38,12 @@ const Filters = () => {
   const [category, handleCategoryFilter] = useState(null)
   const [author, handleAuthorFilter] = useState(null)
   const [publicationMethod, handlePublicationMethodFilter] = useState(null)
+  const [queryString, handleQueryString] = useState('')
+
+  // Build the URL string
+  useEffect(() => {
+    handleQueryString(`?year=${getSlug(year)}&category=${getSlug(category)}&author=${getSlug(author)}&publication-method=${publicationMethod}`)
+  }, [year, category, author, publicationMethod])
 
   const data = useStaticQuery(graphql`
     query {
@@ -82,9 +100,7 @@ const Filters = () => {
       <Dropdown label="Author" options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(event.target.innerText)} />
       <Dropdown label="Publication Method" options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(event.target.innerText)} />
 
-      <p>
-        ?year={year}&category={category}&author={author}&publicatioMethod={publicationMethod}
-      </p>
+      <Primary className="filters__button bg-hover--blue300 color--blue500 color-hover--white border--blue500 border-hover--blue300" to={queryString} text="Filter Publications" />
     </StyledFilters>
   )
 }
