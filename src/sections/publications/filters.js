@@ -31,7 +31,7 @@ const Filters = () => {
     query {
       allContentfulPublications {
         nodes {
-          year
+          year(formatString: "yyyy")
           tags
           internalAuthors {
             ... on ContentfulTeamMembers {

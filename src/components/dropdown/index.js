@@ -38,20 +38,24 @@ const StyledDropdown = styled.div`
       span {
         min-height: 24px;
       }
+
+      svg {
+        transition: all 0s;
+        transform: ${(props) => (props.active ? 'rotate(180deg)' : 'rotate(0deg)')};
+      }
     }
 
     .dropdown__options {
-      max-height: ${(props) => (props.active ? '500px' : '0')};
-      padding: 0 8px;
+      max-height: ${(props) => (props.active ? '330px' : '0')};
       margin-top: 8px;
       background-color: ${colors.white};
       list-style: none;
       box-shadow: ${(props) => (props.active ? '2px 2px 20px 4px rgba(0, 0, 0, 0.16)' : null)};
-      overflow: hidden;
+      overflow: auto;
 
       li {
-        padding: 16px 8px;
-        border-bottom: 1px solid ${colors.grey300};
+        padding: 16px;
+        border-bottom: 1px solid ${colors.grey500};
 
         &:first-child {
           border-top: 0;
