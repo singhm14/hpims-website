@@ -1,5 +1,12 @@
 import React from 'react'
 
-const Careers = () => <h1>Careers</h1>
+// Sections
+import Hero from 'sections/careers/hero'
+
+const Careers = () => (
+  <React.Fragment>
+    <Hero />
+  </React.Fragment>
+)
 
 export default Careers
