@@ -16,23 +16,24 @@ import Accordion from 'components/accordion/'
 const StyledCareersCard = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 16px;
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.08));
 
   ${breakpoint.medium`
     flex-wrap: nowrap;
-    padding: 32px;
   `}
 
   .careers__title {
     width: 100%;
-    padding-bottom: 16px;
-    border-bottom: 1px solid ${colors.grey500};
+    padding: 16px;
 
     ${breakpoint.medium`
-      width: 202px;
-      border-right: 1px solid ${colors.grey500};
-      border-bottom: 0;
+      width: 256px;
+      padding: 32px 24px;
     `}
+
+    p {
+      text-transform: uppercase;
+    }
   }
 
   ul,
@@ -45,40 +46,45 @@ const StyledCareersCard = styled.div`
   }
 
   .careers__content {
-    padding-top: 16px;
+    padding: 16px;
+    background-color: ${colors.white};
 
     ${breakpoint.medium`
-      width: calc(100% - 266px);
-      padding-top: 0;
-      padding-left: 32px;
+      width: calc(100% - 256px);
+      padding: 32px;
     `}
 
     .careers__requirements {
       margin: 40px 0;
+      font-size: 14px;
     }
 
     h4 {
-      padding-bottom: 8px;
       margin-top: 40px;
-      margin-bottom: 8px;
-      color: ${colors.grey900};
-      font-size: 12px;
+      margin-bottom: 16px;
+      color: ${colors.black};
+      font-size: 14px;
       font-weight: 600;
-      text-transform: uppercase;
+      line-height: 20px;
       border-bottom: 1px solid ${colors.grey500};
 
       &:first-child {
         margin-top: 0;
       }
     }
+
+    button {
+      color: ${colors.blue300};
+      border-bottom: 2px solid ${colors.blue300};
+    }
   }
 `
 
 const CareersCard = (props) => (
   <StyledCareersCard className="bg--grey100">
-    <div className="careers__title">
-      <p className="paragraph--large">Post-doc</p>
-      <h4>{props.title}</h4>
+    <div className="careers__title bg--blue100">
+      <p className="font-weight--600">Post Doc</p>
+      <h5 className="color--blue900">{props.title}</h5>
     </div>
 
     <div className="careers__content">
@@ -95,7 +101,7 @@ const CareersCard = (props) => (
         </div>
       </Grid>
 
-      {props.details && <Accordion content={documentToReactComponents(props.details.json)} />}
+      {props.details && <Accordion openText="Read More" closedText="Read Less" content={documentToReactComponents(props.details.json)} />}
     </div>
   </StyledCareersCard>
 )
