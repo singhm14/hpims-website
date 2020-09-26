@@ -38,6 +38,7 @@ const PublicationsList = () => {
               name
             }
           }
+          year(formatString: "MMMM, YYYY")
           tags
           link
         }

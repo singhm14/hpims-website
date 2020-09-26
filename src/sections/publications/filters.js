@@ -106,7 +106,7 @@ const Filters = () => {
       <Dropdown label="Author" options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(event.target.innerText)} />
       <Dropdown label="Publication Method" options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(event.target.innerText)} />
 
-      <Primary className="filters__button bg-hover--blue300 color--blue500 color-hover--white border--blue500 border-hover--blue300" to={queryString} text="Filter Publications" />
+      <Primary className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" to={queryString} text="Filter Publications" />
     </StyledFilters>
   )
 }
