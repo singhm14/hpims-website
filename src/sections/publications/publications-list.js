@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
@@ -13,6 +13,9 @@ const StyledPublicationsList = styled.section`
 `
 
 const PublicationsList = () => {
+  const [postsShowing, setPostsShowing] = useState(6)
+  const infiniteTrigger = React.createRef()
+
   const data = useStaticQuery(graphql`
     query {
       allContentfulPublications {
@@ -46,15 +49,34 @@ const PublicationsList = () => {
     }
   `)
 
+  useEffect(() => {
+    console.log('Showing ' + postsShowing + ' posts...')
+    const loadMorePosts = () => {
+      if (data.allContentfulPublications.nodes.length > postsShowing) {
+        setPostsShowing(postsShowing + 6)
+      }
+    }
+
+    const observer = new IntersectionObserver(([entry], self) => {
+      if (entry.intersectionRatio > 0) {
+        loadMorePosts()
+        self.disconnect()
+      }
+    })
+
+    observer.observe(infiniteTrigger.current)
+  })
+
   return (
     <StyledPublicationsList>
       <Grid gutter="32" columns="1">
-        {data.allContentfulPublications.nodes.map((publication) => (
+        {data.allContentfulPublications.nodes.slice(0, postsShowing).map((publication) => (
           <div className="grid__item">
             <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
           </div>
         ))}
       </Grid>
+      <div ref={infiniteTrigger}></div>
     </StyledPublicationsList>
   )
 }

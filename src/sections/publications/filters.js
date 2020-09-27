@@ -13,12 +13,20 @@ import { Primary } from 'components/buttons/'
 
 const StyledFilters = styled.div`
   width: 100%;
+  height: 100%;
   margin-bottom: 32px;
 
   ${breakpoint.small`
     max-width: 256px;
     margin: 0;
   `}
+
+  .sticky {
+    ${breakpoint.small`
+      position: sticky;
+      top: 80px;
+    `}
+  }
 
   .filters__button {
     width: 100%;
@@ -37,9 +45,9 @@ const Filters = () => {
   const [category, handleCategoryFilter] = useState(null)
   const [author, handleAuthorFilter] = useState(null)
   const [publicationMethod, handlePublicationMethodFilter] = useState(null)
-  const [queryString, handleQueryString] = useState('')
+  const [urlQueryString, handleQueryString] = useState('')
 
-  // We'll build the queryString
+  // We'll build the urlQueryString
   useEffect(() => {
     let toReturn = '?'
 
@@ -101,12 +109,14 @@ const Filters = () => {
 
   return (
     <StyledFilters>
-      <Dropdown label="Year" options={years} callbackFunction={(event) => handleYearFilter(event.target.innerText)} />
-      <Dropdown label="Category" options={tags} callbackFunction={(event) => handleCategoryFilter(event.target.innerText)} />
-      <Dropdown label="Author" options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(event.target.innerText)} />
-      <Dropdown label="Publication Method" options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(event.target.innerText)} />
+      <div className="sticky">
+        <Dropdown label="Year" options={years} callbackFunction={(event) => handleYearFilter(event.target.innerText)} />
+        <Dropdown label="Category" options={tags} callbackFunction={(event) => handleCategoryFilter(event.target.innerText)} />
+        <Dropdown label="Author" options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(event.target.innerText)} />
+        <Dropdown label="Publication Method" options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(event.target.innerText)} />
 
-      <Primary className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" to={queryString} text="Filter Publications" />
+        <Primary className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" to={urlQueryString} text="Filter Publications" />
+      </div>
     </StyledFilters>
   )
 }
