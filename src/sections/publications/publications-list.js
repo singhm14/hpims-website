@@ -18,6 +18,7 @@ const StyledPublicationsList = styled.section`
 
 const PublicationsList = () => {
   // We'll save the filters as states
+  const [posts, setPosts] = useState([])
   const [postsShowing, setPostsShowing] = useState(6)
   const [yearParameter, setYearParameter] = useState(null)
   const [categoryParamater, setCategoryParameter] = useState(null)
@@ -58,11 +59,39 @@ const PublicationsList = () => {
     }
   `)
 
+  // We'll save the posts as state
+  useEffect(() => {
+    setPosts(data.allContentfulPublications.nodes)
+  }, [data.allContentfulPublications.nodes])
+
+  // We'll save queryStrings as state
+  useEffect(() => {
+    setYearParameter(queryString.parse(window.location.search).year)
+    setCategoryParameter(queryString.parse(window.location.search).category)
+    setAuthorParameter(queryString.parse(window.location.search).author)
+    setPublicationMethodParameter(queryString.parse(window.location.search).publicationMethod)
+
+    // We'll filter the data array
+    // searching for posts matching the queryString
+    if (yearParameter || categoryParamater || authorParameter || publicationMethodParameter) {
+      let filteredPosts = posts.filter((publication) => {
+        let shouldBeIncluded = false
+        if (publication.year.split(' ')[1] === yearParameter) {
+          shouldBeIncluded = true
+        }
+
+        return shouldBeIncluded
+      })
+
+      setPosts(filteredPosts)
+    }
+  }, [yearParameter, categoryParamater, authorParameter, publicationMethodParameter])
+
   // We'll log the observer and the loadMorePosts() function
   useEffect(() => {
     console.log('Showing ' + postsShowing + ' posts...')
     const loadMorePosts = () => {
-      if (data.allContentfulPublications.nodes.length > postsShowing) {
+      if (posts.length > postsShowing) {
         setPostsShowing(postsShowing + 6)
       }
     }
@@ -75,29 +104,20 @@ const PublicationsList = () => {
     })
 
     observer.observe(infiniteTrigger.current)
-  })
-
-  // We'll save queryStrings as state
-  useEffect(() => {
-    setYearParameter(queryString.parse(window.location.search).year)
-    setCategoryParameter(queryString.parse(window.location.search).category)
-    setAuthorParameter(queryString.parse(window.location.search).author)
-    setPublicationMethodParameter(queryString.parse(window.location.search).publicationMethod)
-
-    // We'll filter the data array
-    // searching for posts matching the queryString
-    if (yearParameter || categoryParamater || authorParameter || publicationMethodParameter) {
-    }
-  }, [yearParameter, categoryParamater, authorParameter, publicationMethodParameter])
+  }, [postsShowing, infiniteTrigger, posts.length])
 
   return (
     <StyledPublicationsList>
       <Grid gutter="32" columns="1">
-        {data.allContentfulPublications.nodes.slice(0, postsShowing).map((publication) => (
-          <div className="grid__item">
-            <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
-          </div>
-        ))}
+        {posts ? (
+          posts.slice(0, postsShowing).map((publication) => (
+            <div className="grid__item">
+              <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
+            </div>
+          ))
+        ) : (
+          <p>No posts to show</p>
+        )}
       </Grid>
       <div ref={infiniteTrigger}></div>
     </StyledPublicationsList>
