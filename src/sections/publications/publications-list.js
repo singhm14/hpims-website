@@ -18,7 +18,7 @@ const StyledPublicationsList = styled.section`
 
 const PublicationsList = () => {
   // We'll save the filters as states
-  const [posts, setPosts] = useState([])
+  const [publications, setPublications] = useState([])
   const [postsShowing, setPostsShowing] = useState(6)
   const [yearParameter, setYearParameter] = useState(null)
   const [categoryParamater, setCategoryParameter] = useState(null)
@@ -28,7 +28,7 @@ const PublicationsList = () => {
 
   const data = useStaticQuery(graphql`
     query {
-      allContentfulPublications {
+      allContentfulPublications(sort: { fields: year, order: DESC }) {
         nodes {
           method
           journal
@@ -59,9 +59,9 @@ const PublicationsList = () => {
     }
   `)
 
-  // We'll save the posts as state
+  // We'll save the publications as state
   useEffect(() => {
-    setPosts(data.allContentfulPublications.nodes)
+    setPublications(data.allContentfulPublications.nodes)
   }, [data.allContentfulPublications.nodes])
 
   // We'll save queryStrings as state
@@ -72,26 +72,36 @@ const PublicationsList = () => {
     setPublicationMethodParameter(queryString.parse(window.location.search).publicationMethod)
 
     // We'll filter the data array
-    // searching for posts matching the queryString
-    if (yearParameter || categoryParamater || authorParameter || publicationMethodParameter) {
-      let filteredPosts = posts.filter((publication) => {
-        let shouldBeIncluded = false
-        if (publication.year.split(' ')[1] === yearParameter) {
-          shouldBeIncluded = true
-        }
+    // searching for publications matching the queryString
+    if (yearParameter) {
+      setPublications(
+        publications.filter((publication) => {
+          console.log(publication.internalAuthors)
+          return yearParameter === publication.year.split(' ')[1]
+        })
+      )
+    }
 
-        return shouldBeIncluded
-      })
-
-      setPosts(filteredPosts)
+    if (authorParameter) {
+      setPublications(
+        publications.filter((publication) => {
+          let shouldBeIncluded = false
+          publication.internalAuthors.map((author) => {
+            if (authorParameter === author.name) {
+              shouldBeIncluded = true
+            }
+          })
+          return shouldBeIncluded
+        })
+      )
     }
   }, [yearParameter, categoryParamater, authorParameter, publicationMethodParameter])
 
   // We'll log the observer and the loadMorePosts() function
   useEffect(() => {
-    console.log('Showing ' + postsShowing + ' posts...')
+    console.log('Showing ' + postsShowing + ' publications...')
     const loadMorePosts = () => {
-      if (posts.length > postsShowing) {
+      if (publications.length > postsShowing) {
         setPostsShowing(postsShowing + 6)
       }
     }
@@ -104,19 +114,19 @@ const PublicationsList = () => {
     })
 
     observer.observe(infiniteTrigger.current)
-  }, [postsShowing, infiniteTrigger, posts.length])
+  }, [postsShowing, infiniteTrigger, publications.length])
 
   return (
     <StyledPublicationsList>
       <Grid gutter="32" columns="1">
-        {posts ? (
-          posts.slice(0, postsShowing).map((publication) => (
+        {publications ? (
+          publications.slice(0, postsShowing).map((publication) => (
             <div className="grid__item">
               <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
             </div>
           ))
         ) : (
-          <p>No posts to show</p>
+          <p>No publications to show</p>
         )}
       </Grid>
       <div ref={infiniteTrigger}></div>
