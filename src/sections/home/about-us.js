@@ -46,16 +46,16 @@ const StyledAboutUs = styled.section`
 
   .about-us__image {
     max-width: 100vw;
-    height: 400px;
+    height: 300px;
     position: relative;
     overflow: hidden;
 
     ${breakpoint.small`
-      height: 600px;
+      height: 500px;
     `}
 
     ${breakpoint.medium`
-      height: 770px;
+      height: 900px;
     `}
 
     > div {

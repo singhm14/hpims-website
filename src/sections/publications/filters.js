@@ -58,18 +58,7 @@ const Filters = () => {
   const [defaultAuthor, handleDefaultAuthor] = useState(typeof window !== 'undefined' ? queryString.parse(window.location.search).author : null)
   const [defaultPublicationMethod, handleDefaultPublicationMethod] = useState(typeof window !== 'undefined' ? queryString.parse(window.location.search).publicationMethod : null)
 
-  // const [defaultYear, handleDefaultYear] = useState(null)
-  // const [defaultCategory, handleDefaultCategory] = useState(null)
-  // const [defaultAuthor, handleDefaultAuthor] = useState(null)
-  // const [defaultPublicationMethod, handleDefaultPublicationMethod] = useState(null)
   const [urlQueryString, handleQueryString] = useState('')
-
-  // useEffect(() => {
-  //   handleDefaultYear(queryString.parse(window.location.search).year)
-  //   handleDefaultCategory(queryString.parse(window.location.search).category)
-  //   handleDefaultAuthor(queryString.parse(window.location.search).author)
-  //   handleDefaultPublicationMethod(queryString.parse(window.location.search).publicationMethod)
-  // }, [defaultYear, defaultCategory, defaultAuthor, defaultPublicationMethod])
 
   // We'll build the urlQueryString
   useEffect(() => {
