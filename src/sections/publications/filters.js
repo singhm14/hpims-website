@@ -58,7 +58,7 @@ const Filters = () => {
   let defaultPublicationMethod = ''
 
   // Default states
-  if (window !== undefined) {
+  if (typeof window !== undefined) {
     defaultYear = queryString.parse(window.location.search).year
     defaultCategory = queryString.parse(window.location.search).category
     defaultAuthor = queryString.parse(window.location.search).author
