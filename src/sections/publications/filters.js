@@ -47,10 +47,10 @@ const StyledFilters = styled.div`
 
 const Filters = () => {
   // Store filters as state
-  const [year, handleYearFilter] = useState(null)
-  const [category, handleCategoryFilter] = useState(null)
-  const [author, handleAuthorFilter] = useState(null)
-  const [publicationMethod, handlePublicationMethodFilter] = useState(null)
+  const [year, handleYearFilter] = useState(undefined)
+  const [category, handleCategoryFilter] = useState(undefined)
+  const [author, handleAuthorFilter] = useState(undefined)
+  const [publicationMethod, handlePublicationMethodFilter] = useState(undefined)
 
   // Default states
   const defaultYear = typeof window !== 'undefined' ? queryString.parse(window.location.search).year : null
@@ -129,7 +129,7 @@ const Filters = () => {
         <Dropdown label="Author" defaultOption={defaultAuthor} options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(getSlug(event.target.innerText))} />
         <Dropdown label="Publication Method" defaultOption={defaultPublicationMethod} options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(getSlug(event.target.innerText))} />
 
-        <PrimaryExternal className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString} text="Apply Filter" />
+        <PrimaryExternal disabled={year === defaultYear && category === defaultCategory && author === defaultAuthor && publicationMethod === defaultPublicationMethod} className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString} text="Apply Filter" />
       </div>
     </StyledFilters>
   )
