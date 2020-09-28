@@ -5,6 +5,9 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import queryString from 'query-string'
 
+// Hooks
+import usePath from 'hooks/usePath/'
+
 // Utils
 import { getSlug } from 'utils/functions'
 
@@ -70,59 +73,63 @@ const PublicationsList = () => {
     setCategoryParameter(queryString.parse(window.location.search).category)
     setAuthorParameter(queryString.parse(window.location.search).author)
     setPublicationMethodParameter(queryString.parse(window.location.search).publicationMethod)
+  }, [yearParameter, categoryParamater, authorParameter, publicationMethodParameter])
 
-    // We'll filter the data array
-    // searching for publications matching the queryString
-    let filteredPublications = publications
+  // We'll filter the data array
+  // searching for publications matching the queryString
+  useEffect(() => {
+    if (yearParameter || categoryParamater || authorParameter || publicationMethodParameter) {
+      let filteredPublications = data.allContentfulPublications.nodes
 
-    // Year filtering
-    if (yearParameter) {
-      filteredPublications = filteredPublications.filter((publication) => {
-        return yearParameter === publication.year.split(' ')[1]
-      })
-    }
+      // Year filtering
+      if (yearParameter) {
+        filteredPublications = filteredPublications.filter((publication) => {
+          return yearParameter === publication.year.split(' ')[1]
+        })
+      }
 
-    // Category Filtering
-    if (categoryParamater) {
-      filteredPublications = filteredPublications.filter((publication) => {
-        let shouldBeIncluded = false
+      // Category Filtering
+      if (categoryParamater) {
+        filteredPublications = filteredPublications.filter((publication) => {
+          let shouldBeIncluded = false
 
-        const categories = publication.tags
-        categories &&
-          categories.map((category) => {
-            if (categoryParamater === getSlug(categoryParamater)) {
-              shouldBeIncluded = true
-            }
-          })
+          const categories = publication.tags
+          categories &&
+            categories.map((category) => {
+              if (getSlug(category) === categoryParamater) {
+                shouldBeIncluded = true
+              }
+            })
 
-        return shouldBeIncluded
-      })
-    }
+          return shouldBeIncluded
+        })
+      }
 
-    // Author filtering
-    if (authorParameter) {
-      filteredPublications = filteredPublications.filter((publication) => {
-        let shouldBeIncluded = false
+      // Author filtering
+      if (authorParameter) {
+        filteredPublications = filteredPublications.filter((publication) => {
+          let shouldBeIncluded = false
 
-        const internalAuthors = publication.internalAuthors
-        internalAuthors &&
-          internalAuthors.map((author) => {
-            if (authorParameter === getSlug(author.name)) {
-              shouldBeIncluded = true
-            }
-          })
+          const internalAuthors = publication.internalAuthors
+          internalAuthors &&
+            internalAuthors.map((author) => {
+              if (authorParameter === getSlug(author.name)) {
+                shouldBeIncluded = true
+              }
+            })
 
-        return shouldBeIncluded
-      })
+          return shouldBeIncluded
+        })
+      }
+
+      // Publication Method filtering
+      if (publicationMethodParameter) {
+        filteredPublications = filteredPublications.filter((publication) => {
+          return publicationMethodParameter === getSlug(publication.method)
+        })
+      }
 
       setPublications(filteredPublications)
-    }
-
-    // Publication Method filtering
-    if (publicationMethodParameter) {
-      filteredPublications = filteredPublications.filter((publication) => {
-        return publicationMethodParameter === getSlug(publication.method)
-      })
     }
   }, [yearParameter, categoryParamater, authorParameter, publicationMethodParameter])
 

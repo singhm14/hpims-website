@@ -10,7 +10,7 @@ import { getSlug } from 'utils/functions/'
 
 // Components
 import Dropdown from 'components/dropdown/'
-import { Primary } from 'components/buttons/'
+import { PrimaryExternal } from 'components/buttons/'
 
 const StyledFilters = styled.div`
   width: 100%;
@@ -111,12 +111,12 @@ const Filters = () => {
   return (
     <StyledFilters>
       <div className="sticky">
-        <Dropdown label="Year" options={years} callbackFunction={(event) => handleYearFilter(event.target.innerText)} />
-        <Dropdown label="Category" options={tags} callbackFunction={(event) => handleCategoryFilter(event.target.innerText)} />
-        <Dropdown label="Author" options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(event.target.innerText)} />
-        <Dropdown label="Publication Method" options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(event.target.innerText)} />
+        <Dropdown label="Year" options={years} callbackFunction={(event) => handleYearFilter(getSlug(event.target.innerText))} />
+        <Dropdown label="Category" options={tags} callbackFunction={(event) => handleCategoryFilter(getSlug(event.target.innerText))} />
+        <Dropdown label="Author" options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(getSlug(event.target.innerText))} />
+        <Dropdown label="Publication Method" options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(getSlug(event.target.innerText))} />
 
-        <Primary className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" to={urlQueryString} text="Filter Publications" />
+        <PrimaryExternal className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString} text="Filter Publications" />
       </div>
     </StyledFilters>
   )

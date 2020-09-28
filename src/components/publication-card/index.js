@@ -11,7 +11,6 @@ import { getSlug, useToggle } from 'utils/functions/'
 
 // Components
 import BackgroundImage from 'gatsby-background-image'
-import { Link } from 'gatsby'
 import { ExternalLink } from 'components/buttons/'
 
 const StyledPublicationCard = styled.div`
@@ -269,15 +268,15 @@ const PublicationCard = (props) => {
         <div className="info info--tags">
           {props.tags &&
             props.tags.map((tag, index) => (
-              <Link to={'/publications?category=' + getSlug(tag)} className="tag color--blue500" key={index}>
+              <a href={'/publications?category=' + getSlug(tag)} className="tag color--blue500" key={index}>
                 {tag}
-              </Link>
+              </a>
             ))}
         </div>
       </div>
       <div className="publication__actions">
         <div className="journal">
-          <p className="paragraph--extra-small color--grey900 font-weight--500">Journal</p>
+          <p className="paragraph--extra-small color--grey900 font-weight--500">{props.method}</p>
           <p className="color--blue500">{props.journal}</p>
         </div>
 

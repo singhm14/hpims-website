@@ -35,6 +35,30 @@ export const Primary = (props) => (
   </StyledButton>
 )
 
+const StyledPrimaryExternal = styled.a`
+  display: inline-flex;
+  padding: 8px 24px;
+  box-sizing: border-box;
+
+  &:hover {
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
+  svg {
+    position: relative;
+    top: 1px;
+    margin-left: 8px;
+  }
+`
+
+export const PrimaryExternal = (props) => (
+  <StyledPrimaryExternal href={props.href} className={props.className}>
+    {props.text} <CaretRight />
+  </StyledPrimaryExternal>
+)
+
 const StyledTertiary = styled(Link)`
   display: inline-flex;
 
