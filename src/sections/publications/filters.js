@@ -22,6 +22,10 @@ const StyledFilters = styled.div`
     margin: 0;
   `}
 
+  .filters__title {
+    text-transform: uppercase;
+  }
+
   .sticky {
     ${breakpoint.small`
       position: sticky;
@@ -53,9 +57,9 @@ const Filters = () => {
     let toReturn = '?'
 
     year && (toReturn += 'year=' + year)
-    category && (toReturn += 'category=' + category)
-    author && (toReturn += 'author=' + author)
-    publicationMethod && (toReturn += 'publicationMethod=' + publicationMethod)
+    category && (toReturn === '?' ? (toReturn += 'category=' + category) : (toReturn += '&category=' + category))
+    author && (toReturn === '?' ? (toReturn += 'author=' + author) : (toReturn += '&author=' + author))
+    publicationMethod && (toReturn === '?' ? (toReturn += 'publicationMethod=' + publicationMethod) : (toReturn += '&publicationMethod=' + publicationMethod))
 
     handleQueryString(toReturn)
   }, [year, category, author, publicationMethod])
@@ -111,12 +115,13 @@ const Filters = () => {
   return (
     <StyledFilters>
       <div className="sticky">
+        <p className="filters__title paragraph--small font-weight--600">Filter By</p>
         <Dropdown label="Year" options={years} callbackFunction={(event) => handleYearFilter(getSlug(event.target.innerText))} />
         <Dropdown label="Category" options={tags} callbackFunction={(event) => handleCategoryFilter(getSlug(event.target.innerText))} />
         <Dropdown label="Author" options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(getSlug(event.target.innerText))} />
         <Dropdown label="Publication Method" options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(getSlug(event.target.innerText))} />
 
-        <PrimaryExternal className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString} text="Filter Publications" />
+        <PrimaryExternal className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString} text="Apply Filter" />
       </div>
     </StyledFilters>
   )

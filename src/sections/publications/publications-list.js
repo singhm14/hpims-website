@@ -5,9 +5,6 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import queryString from 'query-string'
 
-// Hooks
-import usePath from 'hooks/usePath/'
-
 // Utils
 import { getSlug } from 'utils/functions'
 
@@ -19,6 +16,7 @@ const StyledPublicationsList = styled.section`
   width: 100%;
 `
 
+/* eslint-disable */
 const PublicationsList = () => {
   // We'll save the filters as states
   const [publications, setPublications] = useState([])
