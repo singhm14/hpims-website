@@ -123,7 +123,7 @@ const Filters = () => {
   return (
     <StyledFilters>
       <div className="sticky">
-        <p className="filters__title paragraph--small font-weight--600">Filter By</p>
+        <p className="filters__title paragraph--small font-weight--600">{year || category || author || publicationMethod ? 'Filtered by' : 'Filter by'}</p>
         <Dropdown label="Year" defaultOption={defaultYear} options={years} callbackFunction={(event) => handleYearFilter(getSlug(event.target.innerText))} />
         <Dropdown label="Category" defaultOption={defaultCategory} options={tags} callbackFunction={(event) => handleCategoryFilter(getSlug(event.target.innerText))} />
         <Dropdown label="Author" defaultOption={defaultAuthor} options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(getSlug(event.target.innerText))} />

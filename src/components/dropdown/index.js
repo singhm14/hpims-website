@@ -10,6 +10,7 @@ import { getSlug, unSlug } from 'utils/functions/'
 
 // Icons
 import IconCaretDown from 'assets/icons/icon-caret-down.inline.svg'
+import IconCheck from 'assets/icons/icon-check.svg'
 
 const StyledDropdown = styled.div`
   position: relative;
@@ -64,6 +65,18 @@ const StyledDropdown = styled.div`
 
         &:last-child {
           border-bottom: 0;
+        }
+
+        &.active {
+          color: ${colors.blue500};
+          font-weight: 600;
+
+          button {
+            &::after {
+              content: url(${IconCheck});
+              display: inline-block;
+            }
+          }
         }
 
         button {

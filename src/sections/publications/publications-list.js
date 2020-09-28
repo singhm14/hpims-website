@@ -153,8 +153,8 @@ const PublicationsList = () => {
     <StyledPublicationsList>
       <Grid gutter="32" columns="1">
         {publications ? (
-          publications.slice(0, postsShowing).map((publication) => (
-            <div className="grid__item">
+          publications.slice(0, postsShowing).map((publication, index) => (
+            <div className="grid__item" key={index}>
               <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
             </div>
           ))
