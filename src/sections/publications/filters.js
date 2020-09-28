@@ -52,21 +52,20 @@ const Filters = () => {
   const [author, handleAuthorFilter] = useState(null)
   const [publicationMethod, handlePublicationMethodFilter] = useState(null)
 
-  let defaultYear = ''
-  let defaultCategory = ''
-  let defaultAuthor = ''
-  let defaultPublicationMethod = ''
-
   // Default states
-  if (typeof window !== undefined) {
-    defaultYear = queryString.parse(window.location.search).year
-    defaultCategory = queryString.parse(window.location.search).category
-    defaultAuthor = queryString.parse(window.location.search).author
-    defaultPublicationMethod = queryString.parse(window.location.search).publicationMethod
-  }
-
-  // We'll store the URL Query String
+  const [defaultYear, handleDefaultYear] = useState(queryString.parse(window.location.search).year)
+  const [defaultCategory, handleDefaultCategory] = useState(queryString.parse(window.location.search).category)
+  const [defaultAuthor, handleDefaultAuthor] = useState(queryString.parse(window.location.search).author)
+  const [defaultPublicationMethod, handleDefaultPublicationMethod] = useState(queryString.parse(window.location.search).publicationMethod)
   const [urlQueryString, handleQueryString] = useState('')
+
+  // We'll set default states by reading the query-string
+  useEffect(() => {
+    handleDefaultYear(queryString.parse(window.location.search).year)
+    handleDefaultCategory(queryString.parse(window.location.search).category)
+    handleDefaultAuthor(queryString.parse(window.location.search).author)
+    handleDefaultPublicationMethod(queryString.parse(window.location.search).publicationMethod)
+  }, [handleDefaultYear])
 
   // We'll build the urlQueryString
   useEffect(() => {
@@ -137,7 +136,7 @@ const Filters = () => {
         <Dropdown label="Author" defaultOption={defaultAuthor} options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(getSlug(event.target.innerText))} />
         <Dropdown label="Publication Method" defaultOption={defaultPublicationMethod} options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(getSlug(event.target.innerText))} />
 
-        <PrimaryExternal disabled={urlQueryString === '?'} className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString} text="Apply Filter" />
+        <PrimaryExternal className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString} text="Apply Filter" />
       </div>
     </StyledFilters>
   )
