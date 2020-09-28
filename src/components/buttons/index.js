@@ -3,8 +3,11 @@ import React from 'react'
 // Libraries
 
 // Components
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
+
+// Utils
+import { colors } from 'utils/variables/'
 
 // Icons
 import CaretRight from 'assets/icons/icon-caret-right.inline.svg'
@@ -40,6 +43,15 @@ const StyledPrimaryExternal = styled.a`
   padding: 8px 24px;
   box-sizing: border-box;
 
+  ${(props) =>
+    props.disabled &&
+    css`
+      color: ${colors.grey500}!important;
+      border-color: ${colors.grey500}!important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+    `}
+
   &:hover {
     svg {
       transform: translateX(4px);
@@ -54,7 +66,7 @@ const StyledPrimaryExternal = styled.a`
 `
 
 export const PrimaryExternal = (props) => (
-  <StyledPrimaryExternal href={props.href} className={props.className}>
+  <StyledPrimaryExternal disabled={props.disabled} href={props.href} className={props.className}>
     {props.text} <CaretRight />
   </StyledPrimaryExternal>
 )
