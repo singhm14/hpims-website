@@ -53,19 +53,23 @@ const Filters = () => {
   const [publicationMethod, handlePublicationMethodFilter] = useState(null)
 
   // Default states
-  const [defaultYear, handleDefaultYear] = useState(typeof window !== undefined ? queryString.parse(document.location.search).year : null)
-  const [defaultCategory, handleDefaultCategory] = useState(typeof window !== undefined ? queryString.parse(document.location.search).category : null)
-  const [defaultAuthor, handleDefaultAuthor] = useState(typeof window !== undefined ? queryString.parse(document.location.search).author : null)
-  const [defaultPublicationMethod, handleDefaultPublicationMethod] = useState(typeof window !== undefined ? queryString.parse(document.location.search).publicationMethod : null)
+  const [defaultYear, handleDefaultYear] = useState(typeof window !== 'undefined' ? queryString.parse(window.location.search).year : null)
+  const [defaultCategory, handleDefaultCategory] = useState(typeof window !== 'undefined' ? queryString.parse(window.location.search).category : null)
+  const [defaultAuthor, handleDefaultAuthor] = useState(typeof window !== 'undefined' ? queryString.parse(window.location.search).author : null)
+  const [defaultPublicationMethod, handleDefaultPublicationMethod] = useState(typeof window !== 'undefined' ? queryString.parse(window.location.search).publicationMethod : null)
+
+  // const [defaultYear, handleDefaultYear] = useState(null)
+  // const [defaultCategory, handleDefaultCategory] = useState(null)
+  // const [defaultAuthor, handleDefaultAuthor] = useState(null)
+  // const [defaultPublicationMethod, handleDefaultPublicationMethod] = useState(null)
   const [urlQueryString, handleQueryString] = useState('')
 
-  // We'll set default states by reading the query-string
-  useEffect(() => {
-    handleDefaultYear(queryString.parse(document.location.search).year)
-    handleDefaultCategory(queryString.parse(document.location.search).category)
-    handleDefaultAuthor(queryString.parse(document.location.search).author)
-    handleDefaultPublicationMethod(queryString.parse(document.location.search).publicationMethod)
-  }, [handleDefaultYear])
+  // useEffect(() => {
+  //   handleDefaultYear(queryString.parse(window.location.search).year)
+  //   handleDefaultCategory(queryString.parse(window.location.search).category)
+  //   handleDefaultAuthor(queryString.parse(window.location.search).author)
+  //   handleDefaultPublicationMethod(queryString.parse(window.location.search).publicationMethod)
+  // }, [defaultYear, defaultCategory, defaultAuthor, defaultPublicationMethod])
 
   // We'll build the urlQueryString
   useEffect(() => {
