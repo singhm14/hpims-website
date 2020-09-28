@@ -46,17 +46,17 @@ const StyledFilters = styled.div`
 `
 
 const Filters = () => {
-  // Store filters as state
-  const [year, handleYearFilter] = useState(undefined)
-  const [category, handleCategoryFilter] = useState(undefined)
-  const [author, handleAuthorFilter] = useState(undefined)
-  const [publicationMethod, handlePublicationMethodFilter] = useState(undefined)
-
   // Default states
   const defaultYear = typeof window !== 'undefined' ? queryString.parse(window.location.search).year : null
   const defaultCategory = typeof window !== 'undefined' ? queryString.parse(window.location.search).category : null
   const defaultAuthor = typeof window !== 'undefined' ? queryString.parse(window.location.search).author : null
   const defaultPublicationMethod = typeof window !== 'undefined' ? queryString.parse(window.location.search).publicationMethod : null
+
+  // Store filters as state
+  const [year, handleYearFilter] = useState(defaultYear)
+  const [category, handleCategoryFilter] = useState(defaultCategory)
+  const [author, handleAuthorFilter] = useState(defaultAuthor)
+  const [publicationMethod, handlePublicationMethodFilter] = useState(defaultPublicationMethod)
 
   const [urlQueryString, handleQueryString] = useState('')
 
