@@ -21,10 +21,29 @@ export const getSlug = (tag) => {
   return tag
 }
 
+export const unSlug = (slug) => {
+  if (slug) {
+    slug = slug.replace('-', ' ')
+    slug = capitalize(slug)
+  }
+
+  return slug
+}
+
 export const useToggle = (initialValue = false) => {
   const [value, setValue] = React.useState(initialValue)
   const toggle = React.useCallback(() => {
     setValue((v) => !v)
   }, [])
   return [value, toggle]
+}
+
+export const capitalize = (string) => {
+  string = string.split(' ')
+
+  for (var i = 0, x = string.length; i < x; i++) {
+    string[i] = string[i][0].toUpperCase() + string[i].substr(1)
+  }
+
+  return string.join(' ')
 }

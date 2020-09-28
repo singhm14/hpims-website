@@ -6,13 +6,14 @@ import styled from 'styled-components'
 
 // Utils
 import { colors } from 'utils/variables/'
-import { getSlug } from 'utils/functions/'
+import { getSlug, unSlug } from 'utils/functions/'
 
 // Icons
 import IconCaretDown from 'assets/icons/icon-caret-down.inline.svg'
 
 const StyledDropdown = styled.div`
   position: relative;
+  margin-top: ${(props) => (props.selectedOption !== '' ? '16px' : '0')};
 
   .dropdown__label {
     position: relative;
@@ -83,6 +84,14 @@ class Dropdown extends React.Component {
     this.state = {
       active: false,
       selectedOption: ''
+    }
+  }
+
+  componentDidMount = () => {
+    if (this.props.defaultOption) {
+      this.setState({
+        selectedOption: unSlug(this.props.defaultOption)
+      })
     }
   }
 

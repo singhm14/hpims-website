@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
+import queryString from 'query-string'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
@@ -50,6 +51,14 @@ const Filters = () => {
   const [category, handleCategoryFilter] = useState(null)
   const [author, handleAuthorFilter] = useState(null)
   const [publicationMethod, handlePublicationMethodFilter] = useState(null)
+
+  // Default states
+  const defaultYear = queryString.parse(window.location.search).year
+  const defaultCategory = queryString.parse(window.location.search).category
+  const defaultAuthor = queryString.parse(window.location.search).author
+  const defaultPublicationMethod = queryString.parse(window.location.search).publicationMethod
+
+  // We'll store the URL Query String
   const [urlQueryString, handleQueryString] = useState('')
 
   // We'll build the urlQueryString
@@ -116,10 +125,10 @@ const Filters = () => {
     <StyledFilters>
       <div className="sticky">
         <p className="filters__title paragraph--small font-weight--600">Filter By</p>
-        <Dropdown label="Year" options={years} callbackFunction={(event) => handleYearFilter(getSlug(event.target.innerText))} />
-        <Dropdown label="Category" options={tags} callbackFunction={(event) => handleCategoryFilter(getSlug(event.target.innerText))} />
-        <Dropdown label="Author" options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(getSlug(event.target.innerText))} />
-        <Dropdown label="Publication Method" options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(getSlug(event.target.innerText))} />
+        <Dropdown label="Year" defaultOption={defaultYear} options={years} callbackFunction={(event) => handleYearFilter(getSlug(event.target.innerText))} />
+        <Dropdown label="Category" defaultOption={defaultCategory} options={tags} callbackFunction={(event) => handleCategoryFilter(getSlug(event.target.innerText))} />
+        <Dropdown label="Author" defaultOption={defaultAuthor} options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(getSlug(event.target.innerText))} />
+        <Dropdown label="Publication Method" defaultOption={defaultPublicationMethod} options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(getSlug(event.target.innerText))} />
 
         <PrimaryExternal className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString} text="Apply Filter" />
       </div>
