@@ -53,10 +53,10 @@ const Filters = () => {
   const [publicationMethod, handlePublicationMethodFilter] = useState(null)
 
   // Default states
-  const [defaultYear, handleDefaultYear] = useState(queryString.parse(document.location.search).year)
-  const [defaultCategory, handleDefaultCategory] = useState(queryString.parse(document.location.search).category)
-  const [defaultAuthor, handleDefaultAuthor] = useState(queryString.parse(document.location.search).author)
-  const [defaultPublicationMethod, handleDefaultPublicationMethod] = useState(queryString.parse(document.location.search).publicationMethod)
+  const [defaultYear, handleDefaultYear] = useState(typeof window !== undefined ? queryString.parse(document.location.search).year : null)
+  const [defaultCategory, handleDefaultCategory] = useState(typeof window !== undefined ? queryString.parse(document.location.search).category : null)
+  const [defaultAuthor, handleDefaultAuthor] = useState(typeof window !== undefined ? queryString.parse(document.location.search).author : null)
+  const [defaultPublicationMethod, handleDefaultPublicationMethod] = useState(typeof window !== undefined ? queryString.parse(document.location.search).publicationMethod : null)
   const [urlQueryString, handleQueryString] = useState('')
 
   // We'll set default states by reading the query-string
