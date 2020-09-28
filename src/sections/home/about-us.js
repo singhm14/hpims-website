@@ -49,6 +49,7 @@ const StyledAboutUs = styled.section`
     height: 300px;
     position: relative;
     overflow: hidden;
+    margin-top: 40px;
 
     ${breakpoint.small`
       height: 500px;
@@ -56,6 +57,7 @@ const StyledAboutUs = styled.section`
 
     ${breakpoint.medium`
       height: 900px;
+      margin-bottom: 80px;
     `}
 
     > div {
