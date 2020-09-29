@@ -9,7 +9,7 @@ import breakpoint from 'utils/breakpoints/'
 
 // Components
 import Container from 'components/container/'
-import Img from 'gatsby-image'
+import { Tertiary } from 'components/buttons/'
 
 // Animations
 import AboutAnimation from 'assets/animations/home/about-animation.json'
@@ -42,6 +42,38 @@ const StyledAboutUs = styled.section`
         font-size: 16px;
       `}
     }
+  }
+
+  .about-us__image {
+    max-width: 100vw;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 40px;
+
+    ${breakpoint.small`
+      height: 500px;
+    `}
+
+    ${breakpoint.medium`
+      height: 900px;
+      margin-bottom: 80px;
+    `}
+
+    > div {
+      height: 100%;
+
+      svg {
+        max-width: 10000px;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+    }
+  }
+
+  .about__link {
+    margin-top: 16px;
   }
 `
 
@@ -78,18 +110,7 @@ class AboutUs extends React.Component {
         isVisible: true
       })
     }
-  `)
-  return (
-    <StyledAboutUs id="about">
-      <Container>
-        <div className="section__title">
-          <p className="section__subtitle color--black">About Us</p>
-          <h3 className="color--blue500">Turning the promise of digital health into a reality</h3>
-          <p>Science has helped humanity to improve and extend life. Today, technological advances have allowed us to understand and analyze information in ways never before possible.</p>
-          <br />
-          <p>The Hasso Plattner Institute for Digital Health at Mount Sinai (HPI･MS) propels these possibilities through an extraordinary international academic collaboration between the Hasso Plattner Institute for Digital Engineering in Potsdam, Germany, and the Mount Sinai Health System in New York City, USA.</p>
-        </div>
-      </Container>
+  }
 
   render = () => {
     const animationOptions = {

@@ -194,7 +194,7 @@ const News = () => {
   }
 
   return (
-    <StyledNews id="press">
+    <StyledNews>
       <Triangle className="svg--fill-white" />
       <Container>
         <div className="section__title">
