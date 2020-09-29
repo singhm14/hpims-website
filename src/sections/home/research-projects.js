@@ -11,6 +11,7 @@ import breakpoint from 'utils/breakpoints/'
 import Container from 'components/container/'
 import Grid from 'components/grid/'
 import ResearchProjectCard from 'components/research-project-card/'
+import { Primary } from 'components/buttons/'
 
 const StyledResearchProjects = styled.section`
   position: relative;
@@ -76,7 +77,7 @@ const ResearchProjects = () => {
     }
   `)
   return (
-    <StyledResearchProjects id="research">
+    <StyledResearchProjects>
       <Container>
         <div className="section__title">
           <p className="section__subtitle">Research</p>
@@ -90,6 +91,8 @@ const ResearchProjects = () => {
             </div>
           ))}
         </Grid>
+
+        <Primary to="/research" className="research__link color--blue500 color-hover--white bg-hover--blue500 border--blue500" text="Explore all research initiatives" />
       </Container>
     </StyledResearchProjects>
   )

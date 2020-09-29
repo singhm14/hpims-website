@@ -2,13 +2,16 @@ import React from 'react'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
+import { getSlug } from 'utils/functions/'
 
 // Libraries
 import styled from 'styled-components'
 import Img from 'gatsby-image'
+import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 
 // Components
+import { Tertiary } from 'components/buttons/'
 
 const StyledResearchProjectCard = styled.div`
   max-width: 448px;
@@ -85,11 +88,15 @@ const ResearchProject = (props) => (
     <div>
       <div className="research-project__icon">{props.icon && <Img fixed={props.icon} alt={props.title} />}</div>
 
-      <h5 className="research-project__title color--blue500 font-weight--600">{props.title}</h5>
+      <h5 className="research-project__title color--blue500 font-weight--600">
+        <Link to={'/research-projects/' + getSlug(props.title)} className="color--blue500">
+          {props.title}
+        </Link>
+      </h5>
       <p className="color--grey900">{props.summary}</p>
     </div>
 
-    {/* <Tertiary to={'/research-projects/' + getSlug(props.title)} className="research-project__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500" text="View full project" /> */}
+    <Tertiary to={'/research-projects/' + getSlug(props.title)} className="research-project__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500" text="View full project" />
   </StyledResearchProjectCard>
 )
 

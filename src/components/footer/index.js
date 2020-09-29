@@ -1,6 +1,7 @@
 // Libraries
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
@@ -32,7 +33,7 @@ const StyledFooter = styled.footer`
     margin-bottom: 24px;
 
     ${breakpoint.medium`
-      margin-bottom: 0;
+      margin-bottom: 64px;
     `}
 
     p {
@@ -125,7 +126,7 @@ const Footer = () => (
             </a>
           </h5>
         </div>
-        {/* <ul>
+        <ul>
           <div className="column">
             <li>
               <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
@@ -160,7 +161,7 @@ const Footer = () => (
               </Link>
             </li>
           </div>
-        </ul> */}
+        </ul>
       </div>
 
       <div className="footer__logos">
