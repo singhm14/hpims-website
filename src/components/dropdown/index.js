@@ -26,6 +26,8 @@ const StyledDropdown = styled.div`
 
   .dropdown__clear {
     padding: 12px;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .dropdown {
