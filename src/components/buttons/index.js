@@ -94,6 +94,29 @@ export const Tertiary = (props) => (
   </StyledTertiary>
 )
 
+const StyledExternalTertiary = styled.a`
+  display: inline-flex;
+
+  &:hover {
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
+  svg {
+    position: relative;
+    top: 1px;
+    margin-left: 8px;
+  }
+`
+
+export const ExternalTertiary = (props) => (
+  <StyledExternalTertiary href={props.to} className={props.className}>
+    {props.text}
+    <CaretRight />
+  </StyledExternalTertiary>
+)
+
 const StyledExternalLink = styled.a`
   display: inline-flex;
   align-items: center;
