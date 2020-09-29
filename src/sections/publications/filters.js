@@ -62,7 +62,7 @@ const Filters = () => {
 
   // We'll build the urlQueryString
   useEffect(() => {
-    let toReturn = '/publications?'
+    let toReturn = '?'
 
     year && (toReturn += 'year=' + year)
     category && (toReturn === '?' ? (toReturn += 'category=' + category) : (toReturn += '&category=' + category))
@@ -129,7 +129,7 @@ const Filters = () => {
         <Dropdown label="Author" defaultOption={defaultAuthor} options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(getSlug(event.target.innerText))} resetFunction={() => handleAuthorFilter(null)} />
         <Dropdown label="Publication Method" defaultOption={defaultPublicationMethod} options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(getSlug(event.target.innerText))} resetFunction={() => handlePublicationMethodFilter(null)} />
 
-        <PrimaryExternal disabled={year === defaultYear && category === defaultCategory && author === defaultAuthor && publicationMethod === defaultPublicationMethod} className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString === '/publications?' ? '/publications' : urlQueryString} text="Apply Filter" />
+        <PrimaryExternal disabled={year === defaultYear && category === defaultCategory && author === defaultAuthor && publicationMethod === defaultPublicationMethod} className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString === '?' ? '/publications' : urlQueryString} text="Apply Filter" />
       </div>
     </StyledFilters>
   )
