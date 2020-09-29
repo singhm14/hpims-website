@@ -187,9 +187,9 @@ const PublicationsList = () => {
   useEffect(() => {
     const loadMorePosts = () => {
       if (publications.length > postsShowing) {
-        setLoading(false)
-        setPostsShowing(postsShowing + 6)
         setLoading(true)
+        setPostsShowing(postsShowing + 6)
+        setLoading(false)
       }
     }
 
