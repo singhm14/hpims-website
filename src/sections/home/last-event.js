@@ -269,7 +269,7 @@ const LastEvent = () => {
   }
 
   return (
-    <StyledLastEvent className="bg--blue500 color--white">
+    <StyledLastEvent className="bg--blue500 color--white" id="events">
       <Slider {...settings} className="event__carousel">
         <Img className="event__image" fluid={data.image1.childImageSharp.fluid} alt="Our last event" />
         <Img className="event__image" fluid={data.image2.childImageSharp.fluid} alt="Our last event" />

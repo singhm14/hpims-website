@@ -11,7 +11,6 @@ import breakpoint from 'utils/breakpoints/'
 import Container from 'components/container/'
 import Grid from 'components/grid/'
 import PublicationCard from 'components/publication-card/'
-import { Primary } from 'components/buttons/'
 
 // Icons
 import Background from 'assets/icons/home/publications-background.svg'
@@ -21,7 +20,7 @@ const StyledPublications = styled.section`
   padding: 60px 0 30vw 0;
 
   ${breakpoint.medium`
-    padding: 120px 0 15vw 0;
+    padding: 120px 0 20vw 0;
   `}
 
   .publications__background {
@@ -97,7 +96,7 @@ const Publications = () => {
     }
   `)
   return (
-    <StyledPublications className="bg--grey100">
+    <StyledPublications id="publications" className="bg--grey100">
       <div className="publications__background" />
 
       <Container>
@@ -111,10 +110,6 @@ const Publications = () => {
             </div>
           ))}
         </Grid>
-
-        <div className="publications__view-more">
-          <Primary to="/publications" className="color--blue500 color-hover--white bg-hover--blue500 border--blue500" text="See all publications" />
-        </div>
       </Container>
     </StyledPublications>
   )
