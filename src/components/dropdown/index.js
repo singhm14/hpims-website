@@ -24,6 +24,10 @@ const StyledDropdown = styled.div`
     z-index: 999;
   }
 
+  .dropdown__clear {
+    padding: 12px;
+  }
+
   .dropdown {
     position: relative;
     z-index: 1000;
@@ -114,8 +118,6 @@ class Dropdown extends React.Component {
     }))
   }
 
-  openDropdown = () => {}
-
   closeDropdown = () => {
     if (this.state.active) {
       this.setState({
@@ -137,6 +139,18 @@ class Dropdown extends React.Component {
     this.props.callbackFunction(event)
   }
 
+  handleReset = () => {
+    this.setState(
+      {
+        selectedOption: ''
+      },
+      () => {
+        this.closeDropdown()
+        this.props.resetFunction()
+      }
+    )
+  }
+
   render = (props) => (
     <StyledDropdown active={this.state.active} selectedOption={this.state.selectedOption}>
       <p className="dropdown__label color--blue500">{this.props.label}</p>
@@ -156,6 +170,11 @@ class Dropdown extends React.Component {
             </li>
           ))}
         </ul>
+        {this.state.active && (
+          <button type="button" onClick={this.handleReset} className="dropdown__clear color--blue300 font-weight--600">
+            Clear filter
+          </button>
+        )}
       </div>
     </StyledDropdown>
   )
