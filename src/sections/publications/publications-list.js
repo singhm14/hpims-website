@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import queryString from 'query-string'
 
 // Utils
@@ -14,8 +14,29 @@ import Grid from 'components/grid/'
 import PublicationCard from 'components/publication-card/'
 import { ExternalTertiary } from 'components/buttons/'
 
+// Icons
+import Loader from 'assets/icons/loader.inline.svg'
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
+
 const StyledPublicationsList = styled.section`
   width: 100%;
+
+  .loader {
+    width: 32px;
+    height: 32px;
+    display: block;
+    margin: 32px auto 0 auto;
+    animation: ${rotate} 1.3s ease infinite;
+  }
 
   .publications__nothing-found {
     width: 100%;
@@ -53,6 +74,7 @@ const PublicationsList = () => {
   const [categoryParamater, setCategoryParameter] = useState(null)
   const [authorParameter, setAuthorParameter] = useState(null)
   const [publicationMethodParameter, setPublicationMethodParameter] = useState(null)
+  const [isLoading, setLoading] = useState(false)
   const infiniteTrigger = React.createRef()
 
   const data = useStaticQuery(graphql`
@@ -105,6 +127,7 @@ const PublicationsList = () => {
   // searching for publications matching the queryString
   useEffect(() => {
     if (yearParameter || categoryParamater || authorParameter || publicationMethodParameter) {
+      setLoading(true)
       let filteredPublications = data.allContentfulPublications.nodes
 
       // Year filtering
@@ -156,6 +179,7 @@ const PublicationsList = () => {
       }
 
       setPublications(filteredPublications)
+      setLoading(false)
     }
   }, [yearParameter, categoryParamater, authorParameter, publicationMethodParameter])
 
@@ -163,7 +187,9 @@ const PublicationsList = () => {
   useEffect(() => {
     const loadMorePosts = () => {
       if (publications.length > postsShowing) {
+        setLoading(false)
         setPostsShowing(postsShowing + 6)
+        setLoading(true)
       }
     }
 
@@ -198,6 +224,7 @@ const PublicationsList = () => {
         )}
       </Grid>
       <div ref={infiniteTrigger}></div>
+      {isLoading && <Loader className="loader" />}
     </StyledPublicationsList>
   )
 }
