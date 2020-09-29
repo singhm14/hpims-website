@@ -172,7 +172,7 @@ class Dropdown extends React.Component {
             </li>
           ))}
         </ul>
-        {this.state.active && (
+        {this.state.active && this.state.selectedOption !== '' && (
           <button type="button" onClick={this.handleReset} className="dropdown__clear color--blue300 font-weight--600">
             Clear filter
           </button>
