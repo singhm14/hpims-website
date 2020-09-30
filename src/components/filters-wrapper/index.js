@@ -16,6 +16,7 @@ import Logo from 'assets/icons/icon-logo.inline.svg'
 
 const StyledFiltersWrapper = styled.div`
   position: relative;
+  height: 100%;
 
   .filters__trigger {
     width: 100%;
@@ -40,11 +41,12 @@ const StyledFiltersWrapper = styled.div`
     z-index: 99999;
 
     ${breakpoint.small`
-      height: auto;
+      height: 100%;
       position: relative;
       opacity: 1;
       visibility: visible;
       overflow: visible;
+      z-index: 10;
     `}
 
     .modal__header {
@@ -95,6 +97,8 @@ const StyledFiltersWrapper = styled.div`
       padding: 40px 16px;
 
       ${breakpoint.small`
+        position: sticky;
+        top: 104px;
         padding: 0;
       `}
     }
