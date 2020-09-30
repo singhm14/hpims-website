@@ -428,9 +428,9 @@ const Menu = () => {
               </div>
             </li>
             <li>
-              <Link to="/publications" onClick={() => toggleMenu()}>
+              <a href="/publications" onClick={() => toggleMenu()}>
                 Publications
-              </Link>
+              </a>
             </li>
             <li>
               <Link to="/" onClick={() => toggleMenu()}>
