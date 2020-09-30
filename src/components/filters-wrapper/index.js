@@ -19,6 +19,10 @@ const StyledFiltersWrapper = styled.div`
 
   .filters__trigger {
     width: 100%;
+
+    ${breakpoint.small`
+      display: none;
+    `}
   }
 
   .filters__modal {
@@ -35,12 +39,24 @@ const StyledFiltersWrapper = styled.div`
     overflow-y: auto;
     z-index: 99999;
 
+    ${breakpoint.small`
+      height: auto;
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+    `}
+
     .modal__header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 8px 16px 8px 16px;
       box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+
+      ${breakpoint.small`
+        display: none;
+        padding: 0;
+      `}
 
       .logo {
         width: 133px;
@@ -76,6 +92,10 @@ const StyledFiltersWrapper = styled.div`
 
     .modal__content {
       padding: 40px 16px;
+
+      ${breakpoint.small`
+        padding: 0;
+      `}
     }
   }
 `
