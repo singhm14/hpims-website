@@ -44,7 +44,6 @@ const StyledTeamMemberCard = styled.div`
 
     .name {
       margin-bottom: 4px;
-      font-size: 18px;
       font-weight: 600;
     }
 
@@ -76,16 +75,20 @@ const TeamMemberCard = (props) => {
         <div>
           <p className="department paragraph--small color--grey900 font-weight--500">
             {props.departments &&
-              props.departments.map((department) => {
-                return department
+              props.departments.map((department, index) => {
+                if (index !== props.departments.length - 1) {
+                  return department + ' | '
+                } else {
+                  return department
+                }
               })}
           </p>
 
-          <p className="name paragraph--large color--blue500">
+          <h5 className="name paragraph--large color--blue500">
             <Link to={'/team/' + getSlug(props.name)} className="name color--blue500 font-weight--600">
               {props.name}
             </Link>
-          </p>
+          </h5>
         </div>
 
         <Link to={'/team/' + getSlug(props.name)} className="link color--blue500">

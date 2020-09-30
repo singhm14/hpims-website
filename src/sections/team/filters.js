@@ -3,23 +3,30 @@ import React, { useState, useEffect } from 'react'
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
+import queryString from 'query-string'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
 import { getSlug } from 'utils/functions/'
 
 // Components
+import FiltersWrapper from 'components/filters-wrapper/'
 import Dropdown from 'components/dropdown/'
-import { Primary } from 'components/buttons/'
+import { PrimaryExternal } from 'components/buttons/'
 
 const StyledFilters = styled.div`
   width: 100%;
+  height: 100%;
   margin-bottom: 32px;
 
   ${breakpoint.small`
     max-width: 256px;
     margin: 0;
   `}
+
+  .filters__title {
+    text-transform: uppercase;
+  }
 
   .filters__button {
     width: 100%;
@@ -33,22 +40,34 @@ const StyledFilters = styled.div`
 `
 
 const Filters = () => {
-  // Store filters as state
-  const [role, handleRoleFilter] = useState('')
-  const [lab, handleLabFilter] = useState('')
-  const [project, handleProjectFilter] = useState('')
-  const [queryString, handleQueryString] = useState('')
+  // Default States
+  const defaultRole = typeof window !== 'undefined' ? queryString.parse(window.location.search).role : null
+  const defaultLab = typeof window !== 'undefined' ? queryString.parse(window.location.search).lab : null
+  const defaultProject = typeof window !== 'undefined' ? queryString.parse(window.location.search).project : null
 
-  // Build the URL string
+  // Store filters as state
+  const [role, handleRoleFilter] = useState(defaultRole)
+  const [lab, handleLabFilter] = useState(defaultLab)
+  const [project, handleProjectFilter] = useState(defaultProject)
+
+  // We'll build the query string here
+  const [urlQueryString, handleQueryString] = useState('')
+
+  // This function build the query string
   useEffect(() => {
-    handleQueryString(`?role=${getSlug(role)}&lab=${getSlug(lab)}&project=${getSlug(project)}`)
+    let toReturn = '?'
+
+    role && (toReturn += 'role=' + role)
+    lab && (toReturn === '?' ? (toReturn += 'lab=' + lab) : (toReturn += '&lab=' + lab))
+    project && (toReturn === '?' ? (toReturn += 'project=' + project) : (toReturn += '&project=' + project))
+
+    handleQueryString(toReturn)
   }, [role, lab, project])
 
   const data = useStaticQuery(graphql`
     query {
       allContentfulTeamMembers {
         nodes {
-          id
           department
           labs {
             name
@@ -66,32 +85,37 @@ const Filters = () => {
   let projects = []
 
   // Populates the arrays with information
-  data.allContentfulTeamMembers.nodes.map((member) => {
+  data.allContentfulTeamMembers.nodes.map((teamMember) => {
     // Push all roles
-    member.department && member.department.map((department) => roles.push(department))
+    teamMember.department && teamMember.department.map((department) => roles.push(department))
 
     // Push all labs
-    member.labs && member.labs.map((lab) => labs.push(lab.name))
+    teamMember.labs && teamMember.labs.map((lab) => labs.push(lab.name))
 
     // Push all projects
-    member.research_projects && member.research_projects.map((project) => projects.push(project.title))
+    teamMember.research_projects && teamMember.research_projects.map((project) => projects.push(project.title))
 
     return false // To avoid error
   })
 
-  // Remove repeated options
   roles = Array.from(new Set(roles))
   labs = Array.from(new Set(labs))
   projects = Array.from(new Set(projects))
 
   return (
-    <StyledFilters>
-      <Dropdown label="Role" options={roles} callbackFunction={(event) => handleRoleFilter(event.target.innerText)} />
-      <Dropdown label="Lab" options={labs} callbackFunction={(event) => handleLabFilter(event.target.innerText)} />
-      <Dropdown label="Project" options={projects} callbackFunction={(event) => handleProjectFilter(event.target.innerText)} />
+    <FiltersWrapper>
+      <StyledFilters>
+        <p className="filters__title paragraph--small font-weight--600">{role || lab || project ? 'Filtered by' : 'Filter by'}</p>
 
-      <Primary className="filters__button bg-hover--blue300 color--blue500 color-hover--white border--blue500 border-hover--blue300" to={queryString} text="Filter Publications" />
-    </StyledFilters>
+        <Dropdown label="Role" defaultOption={defaultRole} options={roles} callbackFunction={(event) => handleRoleFilter(getSlug(event.target.innerText))} resetFunction={() => handleRoleFilter(null)} />
+
+        <Dropdown label="Lab" defaultOption={defaultLab} options={labs} callbackFunction={(event) => handleLabFilter(getSlug(event.target.innerText))} resetFunction={() => handleLabFilter(null)} />
+
+        <Dropdown label="Project" defaultOption={defaultProject} options={projects} callbackFunction={(event) => handleProjectFilter(getSlug(event.target.innerText))} resetFunction={() => handleProjectFilter(null)} />
+
+        <PrimaryExternal disabled={role === defaultRole && lab === defaultLab && project === defaultProject} className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString === '?' ? '/team' : '/team/' + urlQueryString} text="Apply Filter" />
+      </StyledFilters>
+    </FiltersWrapper>
   )
 }
 
