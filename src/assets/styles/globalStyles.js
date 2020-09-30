@@ -148,7 +148,7 @@ const GlobalStyles = createGlobalStyle`
     flex-wrap: wrap;
     padding: 60px 0;
 
-    ${breakpoint.small`
+    ${breakpoint.medium`
       flex-wrap: nowrap;
     `}
 
@@ -160,23 +160,15 @@ const GlobalStyles = createGlobalStyle`
       width: 100%;
       margin-bottom: 32px;
 
-      ${breakpoint.small`
-        width: 240px;
-        margin-right: 32px;
-        margin-bottom: 0;
-      `}
-
       ${breakpoint.medium`
+        width: 240px;
         margin-right: 48px;
+        margin-bottom: 0;
       `}
     }
 
     .content {
       width: 100%;
-
-      ${breakpoint.small`
-        width: calc(100% - 240px - 32px);
-      `}
 
       ${breakpoint.medium`
         width: calc(100% - 240px - 48px);
