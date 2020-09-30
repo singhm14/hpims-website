@@ -23,7 +23,7 @@ export const getSlug = (tag) => {
 
 export const unSlug = (slug) => {
   if (slug) {
-    slug = slug.replace('-', ' ')
+    slug = slug.replace(/-/gi, ' ')
     slug = capitalize(slug)
   }
 
