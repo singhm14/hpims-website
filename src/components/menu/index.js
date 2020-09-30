@@ -381,7 +381,7 @@ const Menu = () => {
               </Link>
             </li>
             <li>
-              <Link to="/" onClick={() => toggleMenu()}>
+              <Link to="/team" onClick={() => toggleMenu()}>
                 Team
               </Link>
             </li>

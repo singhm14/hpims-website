@@ -5,7 +5,7 @@ import PageHero from 'components/hero/'
 import Container from 'components/container/'
 
 const Hero = () => (
-  <PageHero className="bg--blue300 color--white">
+  <PageHero className="gradient--primary color--white">
     <Container className="container">
       <p className="subtitle">TEAM</p>
       <h1 className="title">Expertise advancing digital health</h1>
