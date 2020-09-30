@@ -13,7 +13,33 @@ import { colors } from 'utils/variables/'
 import CaretRight from 'assets/icons/icon-caret-right.inline.svg'
 import IconExternalLink from 'assets/icons/icon-external-link.inline.svg'
 
-const StyledButton = styled(Link)`
+const StyledPrimaryButton = styled.button`
+  display: inline-flex;
+  justify-content: center;
+  padding: 8px 24px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+
+  &:hover {
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
+  svg {
+    position: relative;
+    top: 1px;
+    margin-left: 8px;
+  }
+`
+
+export const PrimaryButton = (props) => (
+  <StyledPrimaryButton type="button" {...props}>
+    {props.text}
+  </StyledPrimaryButton>
+)
+
+const StyledPrimary = styled(Link)`
   display: inline-flex;
   padding: 8px 24px;
   box-sizing: border-box;
@@ -32,10 +58,10 @@ const StyledButton = styled(Link)`
 `
 
 export const Primary = (props) => (
-  <StyledButton to={props.to} className={props.className}>
+  <StyledPrimary to={props.to} className={props.className}>
     {props.text}
     <CaretRight />
-  </StyledButton>
+  </StyledPrimary>
 )
 
 const StyledPrimaryExternal = styled.a`

@@ -10,6 +10,7 @@ import breakpoint from 'utils/breakpoints/'
 import { getSlug } from 'utils/functions/'
 
 // Components
+import FiltersWrapper from 'components/filters-wrapper/'
 import Dropdown from 'components/dropdown/'
 import { PrimaryExternal } from 'components/buttons/'
 
@@ -121,17 +122,19 @@ const Filters = () => {
   publicationMethods = Array.from(new Set(publicationMethods))
 
   return (
-    <StyledFilters>
-      <div className="sticky">
-        <p className="filters__title paragraph--small font-weight--600">{year || category || author || publicationMethod ? 'Filtered by' : 'Filter by'}</p>
-        <Dropdown label="Year" defaultOption={defaultYear} options={years} callbackFunction={(event) => handleYearFilter(getSlug(event.target.innerText))} resetFunction={() => handleYearFilter(null)} />
-        <Dropdown label="Category" defaultOption={defaultCategory} options={tags} callbackFunction={(event) => handleCategoryFilter(getSlug(event.target.innerText))} resetFunction={() => handleCategoryFilter(null)} />
-        <Dropdown label="Author" defaultOption={defaultAuthor} options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(getSlug(event.target.innerText))} resetFunction={() => handleAuthorFilter(null)} />
-        <Dropdown label="Publication Method" defaultOption={defaultPublicationMethod} options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(getSlug(event.target.innerText))} resetFunction={() => handlePublicationMethodFilter(null)} />
+    <FiltersWrapper>
+      <StyledFilters>
+        <div className="sticky">
+          <p className="filters__title paragraph--small font-weight--600">{year || category || author || publicationMethod ? 'Filtered by' : 'Filter by'}</p>
+          <Dropdown label="Year" defaultOption={defaultYear} options={years} callbackFunction={(event) => handleYearFilter(getSlug(event.target.innerText))} resetFunction={() => handleYearFilter(null)} />
+          <Dropdown label="Category" defaultOption={defaultCategory} options={tags} callbackFunction={(event) => handleCategoryFilter(getSlug(event.target.innerText))} resetFunction={() => handleCategoryFilter(null)} />
+          <Dropdown label="Author" defaultOption={defaultAuthor} options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(getSlug(event.target.innerText))} resetFunction={() => handleAuthorFilter(null)} />
+          <Dropdown label="Publication Method" defaultOption={defaultPublicationMethod} options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(getSlug(event.target.innerText))} resetFunction={() => handlePublicationMethodFilter(null)} />
 
-        <PrimaryExternal disabled={year === defaultYear && category === defaultCategory && author === defaultAuthor && publicationMethod === defaultPublicationMethod} className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString === '?' ? '/publications' : '/publications/' + urlQueryString} text="Apply Filter" />
-      </div>
-    </StyledFilters>
+          <PrimaryExternal disabled={year === defaultYear && category === defaultCategory && author === defaultAuthor && publicationMethod === defaultPublicationMethod} className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString === '?' ? '/publications' : '/publications/' + urlQueryString} text="Apply Filter" />
+        </div>
+      </StyledFilters>
+    </FiltersWrapper>
   )
 }
 
