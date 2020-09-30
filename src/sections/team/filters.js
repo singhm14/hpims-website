@@ -20,7 +20,6 @@ const StyledFilters = styled.div`
   margin-bottom: 32px;
 
   ${breakpoint.small`
-    max-width: 256px;
     margin: 0;
   `}
 

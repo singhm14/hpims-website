@@ -21,7 +21,7 @@ const StyledFiltersWrapper = styled.div`
   .filters__trigger {
     width: 100%;
 
-    ${breakpoint.small`
+    ${breakpoint.medium`
       display: none;
     `}
   }
@@ -40,7 +40,7 @@ const StyledFiltersWrapper = styled.div`
     overflow-y: auto;
     z-index: 99999;
 
-    ${breakpoint.small`
+    ${breakpoint.medium`
       height: 100%;
       position: relative;
       opacity: 1;
@@ -56,7 +56,7 @@ const StyledFiltersWrapper = styled.div`
       padding: 8px 16px 8px 16px;
       box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
 
-      ${breakpoint.small`
+      ${breakpoint.medium`
         display: none;
         padding: 0;
       `}
@@ -96,7 +96,7 @@ const StyledFiltersWrapper = styled.div`
     .modal__content {
       padding: 40px 16px;
 
-      ${breakpoint.small`
+      ${breakpoint.medium`
         position: sticky;
         top: 104px;
         padding: 0;
