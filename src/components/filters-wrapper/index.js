@@ -44,6 +44,7 @@ const StyledFiltersWrapper = styled.div`
       position: relative;
       opacity: 1;
       visibility: visible;
+      overflow: visible;
     `}
 
     .modal__header {
