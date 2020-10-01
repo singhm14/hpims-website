@@ -59,8 +59,8 @@ const TeamMembers = () => {
       allContentfulTeamMembers(sort: { fields: createdAt, order: ASC }) {
         nodes {
           profilePicture {
-            fixed(width: 256, quality: 100) {
-              ...GatsbyContentfulFixed_withWebp
+            fluid(maxWidth: 256, quality: 100) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           department
@@ -147,7 +147,7 @@ const TeamMembers = () => {
         {teamMembers.length > 0 ? (
           teamMembers.map((member) => (
             <div className="grid__item">
-              <TeamMemberCard profilePicture={member.profilePicture && member.profilePicture.fixed} departments={member.department} name={member.name} department={member.department} />
+              <TeamMemberCard profilePicture={member.profilePicture && member.profilePicture.fluid} departments={member.department} name={member.name} department={member.department} />
             </div>
           ))
         ) : (
