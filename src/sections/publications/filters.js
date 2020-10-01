@@ -14,6 +14,9 @@ import FiltersWrapper from 'components/filters-wrapper/'
 import Dropdown from 'components/dropdown/'
 import { PrimaryExternal } from 'components/buttons/'
 
+// Icons
+import IconReset from 'assets/icons/icon-reset.inline.svg'
+
 const StyledFilters = styled.div`
   width: 100%;
   height: 100%;
@@ -34,6 +37,16 @@ const StyledFilters = styled.div`
 
     svg {
       display: none;
+    }
+  }
+
+  .filters__reset {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 40px;
+
+    svg {
+      margin-left: 6px;
     }
   }
 `
@@ -123,6 +136,13 @@ const Filters = () => {
         <Dropdown label="Publication Method" defaultOption={defaultPublicationMethod} options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(getSlug(event.target.innerText))} resetFunction={() => handlePublicationMethodFilter(null)} />
 
         <PrimaryExternal disabled={year === defaultYear && category === defaultCategory && author === defaultAuthor && publicationMethod === defaultPublicationMethod} className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString === '?' ? '/publications' : '/publications/' + urlQueryString} text="Apply Filter" />
+
+        {year || category || author || publicationMethod ? (
+          <a href="/publications" className="filters__reset color--blue300 font-weight--600 svg--stroke-blue300">
+            Clear all filters
+            <IconReset />
+          </a>
+        ) : null}
       </StyledFilters>
     </FiltersWrapper>
   )
