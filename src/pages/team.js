@@ -4,6 +4,8 @@ import React from 'react'
 import Hero from 'sections/team/hero'
 import Filters from 'sections/team/filters'
 import TeamMembers from 'sections/team/team-members'
+import Students from 'sections/team/students'
+import CareersBanner from 'components/careers-banner/'
 
 // Components
 import Container from 'components/container/'
@@ -18,9 +20,11 @@ const Team = () => (
         </div>
         <div className="content">
           <TeamMembers />
+          <Students />
         </div>
       </div>
     </Container>
+    <CareersBanner />
   </React.Fragment>
 )
 
