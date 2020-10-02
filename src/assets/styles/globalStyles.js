@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
+import { colors } from 'utils/variables/'
 
 // Helpers
 import { Helpers } from './helpers'
@@ -176,6 +177,18 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  .title--underlined {
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 1px solid ${colors.grey500};
+  }
+
+  .breadcrumb {
+    text-transform: uppercase;
+  }
+  
   ${Helpers}
 `
 
