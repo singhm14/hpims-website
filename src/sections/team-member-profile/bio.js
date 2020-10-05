@@ -148,7 +148,7 @@ const Bio = (props) => {
   const name = data.name
   const departments = data.department
   const position = data.position
-  const bio = data.bio.json
+  const bio = data.bio
   const profilePicture = data.profilePicture
   const email = data.email
   const googleScholar = data.googleScholarProfile
@@ -192,8 +192,12 @@ const Bio = (props) => {
             </div>
 
             <div className="bio__content desktop color--black">
-              <p className="title--underlined color--black">Bio</p>
-              {documentToReactComponents(bio)}
+              {bio && (
+                <React.Fragment>
+                  <p className="title--underlined color--black">Bio</p>
+                  {documentToReactComponents(bio.json)}
+                </React.Fragment>
+              )}
             </div>
           </div>
 
