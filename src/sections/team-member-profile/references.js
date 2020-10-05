@@ -14,6 +14,7 @@ import Container from 'components/container/'
 import Grid from 'components/grid/'
 import ReferenceCard from 'components/reference-card/'
 import { Tertiary } from 'components/buttons/'
+import PublicationCard from 'components/publication-card-simplified/'
 
 const StyledReferences = styled.section`
   ${Container} {
@@ -57,6 +58,7 @@ const References = (props) => {
   const profilePicture = data.profilePicture.fluid
   const labs = data.labs
   const projects = data.research_projects
+  const publications = data.publications
 
   return (
     <StyledReferences>
@@ -116,6 +118,21 @@ const References = (props) => {
                   ))}
                 </Grid>
               </div>
+            )}
+          </div>
+
+          <div className="content">
+            {publications && (
+              <React.Fragment>
+                <p className="title--underlined">Publications</p>
+                <Grid gutter="16" columns="1">
+                  {publications.map((publication) => (
+                    <div className="grid__item">
+                      <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
+                    </div>
+                  ))}
+                </Grid>
+              </React.Fragment>
             )}
           </div>
         </div>

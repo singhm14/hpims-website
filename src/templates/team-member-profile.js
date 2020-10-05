@@ -37,6 +37,32 @@ export const query = graphql`
         }
         title
       }
+      publications {
+        method
+        journal
+        title
+        authors {
+          authors
+        }
+        internalAuthors {
+          ... on ContentfulTeamMembers {
+            id
+            name
+            profilePicture {
+              fixed(width: 24, quality: 100) {
+                ...GatsbyContentfulFixed_withWebp
+              }
+            }
+          }
+          ... on ContentfulStudents {
+            id
+            name
+          }
+        }
+        year(formatString: "MMMM, YYYY")
+        tags
+        link
+      }
     }
   }
 `
