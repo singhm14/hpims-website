@@ -62,7 +62,6 @@ const StyledReferences = styled.section`
 
 const References = (props) => {
   const data = props.data.contentfulTeamMembers
-  const profilePicture = data.profilePicture
   const labs = data.labs
   const projects = data.research_projects
   const publications = data.publications
@@ -93,7 +92,7 @@ const References = (props) => {
                       <ReferenceCard>
                         <BackgroundImage
                           className="card__icon"
-                          fluid={profilePicture ? profilePicture.fluid : placeholderProfilePicture.file.childImageSharp.fluid}
+                          fixed={lab.headOfTheLab.profilePicture ? lab.headOfTheLab.profilePicture.fixed : placeholderProfilePicture.file.childImageSharp.fluid}
                           style={{
                             width: '64px',
                             height: '64px',

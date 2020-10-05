@@ -28,6 +28,13 @@ export const query = graphql`
       linkedInProfile
       labs {
         name
+        headOfTheLab {
+          profilePicture {
+            fixed(width: 64, quality: 100) {
+              ...GatsbyContentfulFixed_withWebp
+            }
+          }
+        }
       }
       research_projects {
         icon {
