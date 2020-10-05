@@ -241,8 +241,12 @@ const Bio = (props) => {
           </div>
 
           <div className="bio__content mobile">
-            <p className="title--underlined color--black">Bio</p>
-            {documentToReactComponents(bio)}
+            {bio && (
+              <React.Fragment>
+                <p className="title--underlined color--black">Bio</p>
+                {documentToReactComponents(bio.json)}
+              </React.Fragment>
+            )}
           </div>
         </div>
       </Container>
