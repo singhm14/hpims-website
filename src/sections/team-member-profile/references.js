@@ -109,7 +109,7 @@ const References = (props) => {
                             height: '56px'
                           }}
                         />
-                        <div className="card_-content">
+                        <div className="card__content">
                           <p className="card__title color--blue500 font-weight--600">{project.title}</p>
                           <Tertiary className="color--blue300 font-weight--600" to={'/projects/' + getSlug(project.title)} text="View Project" />
                         </div>
