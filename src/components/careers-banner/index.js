@@ -17,6 +17,8 @@ const StyledCareersBanner = styled.section`
 
   .banner__content {
     max-width: 352px;
+    position: relative;
+    z-index: 10;
   }
 
   .banner__triangle {
@@ -34,7 +36,7 @@ const CareersBanner = () => (
       <div className="banner__content">
         <h4 className="color--white font-weight--600">We are looking for exceptional talents</h4>
         <br />
-        <Tertiary to="/careers" text="Check out our job postings" className="color--white svg--stroke-white" />
+        <Tertiary to="/careers" text="Check out our job postings" className="color--white font-weight--600 svg--stroke-white" />
       </div>
     </Container>
   </StyledCareersBanner>

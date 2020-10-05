@@ -88,11 +88,11 @@ const ResearchProject = (props) => (
     <div>
       <div className="research-project__icon">{props.icon && <Img fixed={props.icon} alt={props.title} />}</div>
 
-      <h5 className="research-project__title color--blue500 font-weight--600">
+      <h4 className="research-project__title color--blue500 font-weight--600">
         <Link to={'/research-projects/' + getSlug(props.title)} className="color--blue500">
           {props.title}
         </Link>
-      </h5>
+      </h4>
       <p className="color--grey900">{props.summary}</p>
     </div>
 
