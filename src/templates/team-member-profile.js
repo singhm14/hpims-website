@@ -1,6 +1,6 @@
 import React from 'react'
 
-// Utils
+// Libraries
 import { graphql } from 'gatsby'
 
 // Components

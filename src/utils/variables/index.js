@@ -46,6 +46,7 @@ export const weights = {
 
 // Gradients:start
 export const gradients = {
-  primary: 'linear-gradient(112deg, #004465 24.54%, #0985BB 76.57%)'
+  primary: 'linear-gradient(112deg, #004465 24.54%, #0985BB 76.57%)',
+  secondary: 'linear-gradient(82.4deg, #DEEDF4 1.01%, #FFFFFF 98.52%)'
 }
 // Gradients:end
