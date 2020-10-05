@@ -18,6 +18,12 @@ import { Tertiary } from 'components/buttons/'
 import PublicationCard from 'components/publication-card-simplified/'
 
 const StyledReferences = styled.section`
+  padding-bottom: 56px;
+
+  ${breakpoint.medium`
+    padding-bottom: 102px;
+  `}
+
   ${Container} {
     max-width: 928px;
   }

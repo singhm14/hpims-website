@@ -16,7 +16,7 @@ const StyledPublicationCard = styled.div`
   width: 100%;
   padding: 24px 16px;
   background-color: ${colors.white};
-  box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.08));
 
   .publication__info {
     .title {
