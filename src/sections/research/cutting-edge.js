@@ -33,7 +33,7 @@ const StyledCuttingEdge = styled.section`
 
   .grid__item {
     ${breakpoint.medium`
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     `}
   }
 
@@ -73,8 +73,8 @@ const CuttingEdge = () => (
               <Icon1 />
             </div>
             <div className="content">
-              <p className="title paragraph--large color--blue500 font-weight--600">Connected Technology</p>
-              <p className="paragraph--small">We are working towards a more connected health care system by leveraging patient-generated health data and building digital applications utilizing remote sensors and wearable technologies. </p>
+              <h5 className="title paragraph--large color--blue500 font-weight--600">Connected Technology</h5>
+              <p>We are working towards a more connected health care system by leveraging patient-generated health data and building digital applications utilizing remote sensors and wearable technologies. </p>
             </div>
           </div>
         </div>
@@ -85,8 +85,8 @@ const CuttingEdge = () => (
               <Icon2 />
             </div>
             <div className="content">
-              <p className="title paragraph--large color--blue500 font-weight--600">Health IT Systems Engineering</p>
-              <p className="paragraph--small">We are building state-of-the-art computational frameworks and architectures to enable rapid scientific discovery alongside translational applications into real-world clinical settings.</p>
+              <h5 className="title paragraph--large color--blue500 font-weight--600">Health IT Systems Engineering</h5>
+              <p>We are building state-of-the-art computational frameworks and architectures to enable rapid scientific discovery alongside translational applications into real-world clinical settings.</p>
             </div>
           </div>
         </div>
@@ -97,8 +97,8 @@ const CuttingEdge = () => (
               <Icon3 />
             </div>
             <div className="content">
-              <p className="title paragraph--large color--blue500 font-weight--600">Multimodal Data</p>
-              <p className="paragraph--small">By creating an innovative environment to access electronic health records, imaging, -omics, and sensor data, we will advance health-care-driven Artificial Intelligence (AI)-based solutions.</p>
+              <h5 className="title paragraph--large color--blue500 font-weight--600">Multimodal Data</h5>
+              <p>By creating an innovative environment to access electronic health records, imaging, -omics, and sensor data, we will advance health-care-driven Artificial Intelligence (AI)-based solutions.</p>
             </div>
           </div>
         </div>
@@ -109,8 +109,8 @@ const CuttingEdge = () => (
               <Icon4 />
             </div>
             <div className="content">
-              <p className="title paragraph--large color--blue500 font-weight--600">Machine Learning and Artificial Intelligence</p>
-              <p className="paragraph--small">We are advancing data science methodologies in medicine with insights that benefit patients and healthcare providers through better clinical prediction and early warning systems.</p>
+              <h5 className="title paragraph--large color--blue500 font-weight--600">Machine Learning and Artificial Intelligence</h5>
+              <p>We are advancing data science methodologies in medicine with insights that benefit patients and healthcare providers through better clinical prediction and early warning systems.</p>
             </div>
           </div>
         </div>
