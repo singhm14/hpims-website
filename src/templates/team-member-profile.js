@@ -3,6 +3,9 @@ import React from 'react'
 // Utils
 import { graphql } from 'gatsby'
 
+// Components
+import SEO from 'components/seo/'
+
 // Sections
 import Hero from 'sections/team-member-profile/hero'
 import Bio from 'sections/team-member-profile/bio'
@@ -77,6 +80,7 @@ export const query = graphql`
 const TeamMemberProfile = (props) => {
   return (
     <React.Fragment>
+      <SEO title={props.data.contentfulTeamMembers.name + ' | Hasso Plattner Institute for Digital Health at Mount Sinai'} />
       <Hero />
       <Bio data={props.data} />
       <References data={props.data} />
