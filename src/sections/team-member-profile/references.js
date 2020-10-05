@@ -41,6 +41,13 @@ const StyledReferences = styled.section`
         width: 352px;
       `}
 
+      .sticky {
+        ${breakpoint.medium`
+          position: sticky;
+          top: 104px;
+        `}
+      }
+
       .reference {
         margin-bottom: 32px;
 
@@ -83,60 +90,62 @@ const References = (props) => {
       <Container>
         <div className="references">
           <div className="sidebar">
-            {labs && (
-              <div className="reference">
-                <p className="title--underlined">Labs</p>
-                <Grid gutter="16" columns="1">
-                  {labs.map((lab) => (
-                    <div className="grid__item">
-                      <ReferenceCard>
-                        <BackgroundImage
-                          className="card__icon"
-                          fixed={lab.headOfTheLab.profilePicture ? lab.headOfTheLab.profilePicture.fixed : placeholderProfilePicture.file.childImageSharp.fluid}
-                          style={{
-                            width: '64px',
-                            height: '64px',
-                            backgroundSize: 'cover',
-                            borderRadius: '50%',
-                            overflow: 'hidden'
-                          }}
-                        />
-                        <div className="card__content">
-                          <h5 className="card__title color--blue500 font-weight--600">{lab.name}</h5>
-                          <Tertiary className="color--blue300 font-weight--600" to={'/labs/' + getSlug(lab.name)} text="View Lab" />
-                        </div>
-                      </ReferenceCard>
-                    </div>
-                  ))}
-                </Grid>
-              </div>
-            )}
+            <div className="sticky">
+              {labs && (
+                <div className="reference">
+                  <p className="title--underlined">Labs</p>
+                  <Grid gutter="16" columns="1">
+                    {labs.map((lab) => (
+                      <div className="grid__item">
+                        <ReferenceCard>
+                          <BackgroundImage
+                            className="card__icon"
+                            fixed={lab.headOfTheLab.profilePicture ? lab.headOfTheLab.profilePicture.fixed : placeholderProfilePicture.file.childImageSharp.fluid}
+                            style={{
+                              width: '64px',
+                              height: '64px',
+                              backgroundSize: 'cover',
+                              borderRadius: '50%',
+                              overflow: 'hidden'
+                            }}
+                          />
+                          <div className="card__content">
+                            <h5 className="card__title color--blue500 font-weight--600">{lab.name}</h5>
+                            <Tertiary className="color--blue300 font-weight--600" to={'/labs/' + getSlug(lab.name)} text="View Lab" />
+                          </div>
+                        </ReferenceCard>
+                      </div>
+                    ))}
+                  </Grid>
+                </div>
+              )}
 
-            {projects && (
-              <div className="reference">
-                <p className="title--underlined">Projects</p>
-                <Grid gutter="16" columns="1">
-                  {projects.map((project) => (
-                    <div className="grid__item">
-                      <ReferenceCard>
-                        <Img
-                          className="card__icon"
-                          fixed={project.icon.fixed}
-                          styles={{
-                            width: '56px',
-                            height: '56px'
-                          }}
-                        />
-                        <div className="card__content">
-                          <p className="card__title color--blue500 font-weight--600">{project.title}</p>
-                          <Tertiary className="color--blue300 font-weight--600" to={'/projects/' + getSlug(project.title)} text="View Project" />
-                        </div>
-                      </ReferenceCard>
-                    </div>
-                  ))}
-                </Grid>
-              </div>
-            )}
+              {projects && (
+                <div className="reference">
+                  <p className="title--underlined">Projects</p>
+                  <Grid gutter="16" columns="1">
+                    {projects.map((project) => (
+                      <div className="grid__item">
+                        <ReferenceCard>
+                          <Img
+                            className="card__icon"
+                            fixed={project.icon.fixed}
+                            styles={{
+                              width: '56px',
+                              height: '56px'
+                            }}
+                          />
+                          <div className="card__content">
+                            <p className="card__title color--blue500 font-weight--600">{project.title}</p>
+                            <Tertiary className="color--blue300 font-weight--600" to={'/projects/' + getSlug(project.title)} text="View Project" />
+                          </div>
+                        </ReferenceCard>
+                      </div>
+                    ))}
+                  </Grid>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="content">
