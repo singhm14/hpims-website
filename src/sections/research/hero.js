@@ -8,8 +8,8 @@ const Hero = () => (
   <PageHero className="gradient--primary color--white">
     <Container className="container">
       <p className="subtitle">Research</p>
-      <h1 className="title">Leading the digital health revolution</h1>
-      <p>Our research leverages the latest technologies to create novel methodologies and bring together interdisciplinary expertise.</p>
+      <h2 className="title">Leading the digital health revolution</h2>
+      <p className="paragraph--large">Our research leverages the latest technologies to create novel methodologies and bring together interdisciplinary expertise.</p>
     </Container>
   </PageHero>
 )

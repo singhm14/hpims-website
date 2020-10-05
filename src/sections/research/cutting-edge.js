@@ -27,13 +27,8 @@ const StyledCuttingEdge = styled.section`
     max-width: 928px;
   }
 
-  h4 {
-    margin-bottom: 32px;
-
-    ${breakpoint.medium`
-      margin-bottom: 56px;
-      text-align: center;
-    `}
+  h3 {
+    margin-bottom: 42px;
   }
 
   .grid__item {
@@ -70,7 +65,7 @@ const StyledCuttingEdge = styled.section`
 const CuttingEdge = () => (
   <StyledCuttingEdge>
     <Container>
-      <h4 className="color--blue500 font-weight--600">Cutting Edge Research</h4>
+      <h3 className="color--blue500 font-weight--600">Cutting Edge Research</h3>
       <Grid gutter="32" columns="2">
         <div className="grid__item">
           <div className="research-item">

@@ -6,7 +6,7 @@ import breakpoint from 'utils/breakpoints/'
 
 const Hero = styled.section`
   width: 100%;
-  min-height: 670px;
+  min-height: 520px;
   display: flex;
   align-items: center;
   padding: 120px 0 80px 0;
