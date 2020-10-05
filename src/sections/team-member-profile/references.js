@@ -1,6 +1,7 @@
 import React from 'react'
 
 // Libraries
+import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import BackgroundImage from 'gatsby-background-image'
 import Img from 'gatsby-image'
@@ -55,10 +56,22 @@ const StyledReferences = styled.section`
 
 const References = (props) => {
   const data = props.data.contentfulTeamMembers
-  const profilePicture = data.profilePicture.fluid
+  const profilePicture = data.profilePicture
   const labs = data.labs
   const projects = data.research_projects
   const publications = data.publications
+
+  const placeholderProfilePicture = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 352, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <StyledReferences>
@@ -74,7 +87,7 @@ const References = (props) => {
                       <ReferenceCard>
                         <BackgroundImage
                           className="card__icon"
-                          fluid={profilePicture}
+                          fluid={profilePicture ? profilePicture.fluid : placeholderProfilePicture.file.childImageSharp.fluid}
                           style={{
                             width: '64px',
                             height: '64px',

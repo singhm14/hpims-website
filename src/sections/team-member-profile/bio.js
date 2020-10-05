@@ -1,6 +1,7 @@
 import React from 'react'
 
 // Libraries
+import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import BackgroundImage from 'gatsby-background-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
@@ -148,11 +149,23 @@ const Bio = (props) => {
   const departments = data.department
   const position = data.position
   const bio = data.bio.json
-  const profilePicture = data.profilePicture.fluid
+  const profilePicture = data.profilePicture
   const email = data.email
   const googleScholar = data.googleScholarProfile
   const twitter = data.twitterProfile
   const linkedIn = data.linkedInProfile
+
+  const placeholderProfilePicture = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 352, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <StyledBio>
@@ -186,7 +199,7 @@ const Bio = (props) => {
 
           <div className="bio__profile-picture">
             <BackgroundImage
-              fluid={profilePicture}
+              fluid={profilePicture ? profilePicture.fluid : placeholderProfilePicture.file.childImageSharp.fluid}
               className="profile-picture"
               style={{
                 backgroundSize: 'cover'
