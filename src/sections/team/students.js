@@ -64,7 +64,7 @@ const Students = () => {
   `)
 
   return (
-    <StyledStudents>
+    <StyledStudents id="teamStudents">
       <h4 className="students__title color--blue500 font-weight--600">Students</h4>
 
       <div className="institute">

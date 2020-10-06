@@ -137,6 +137,12 @@ const TeamMembers = () => {
       }
 
       setTeamMembers(filteredTeamMembers)
+
+      // Hides `Students section
+      const studentsSection = document.getElementById('teamStudents')
+      if (studentsSection) {
+        studentsSection.style.display = 'none'
+      }
     }
   }, [roleParameter, labParameter, projectParameter])
 
