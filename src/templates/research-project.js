@@ -7,6 +7,7 @@ import { graphql } from 'gatsby'
 // Sections
 import Hero from 'sections/research-project/hero'
 import Content from 'sections/research-project/content'
+import Sidebar from 'sections/research-project/sidebar'
 
 // Components
 import Container from 'components/container/'
@@ -30,6 +31,14 @@ export const query = graphql`
       description {
         json
       }
+      teamMembers {
+        name
+        profilePicture {
+          fluid(maxWidth: 128, quality: 100) {
+            ...GatsbyContentfulFluid_withWebp
+          }
+        }
+      }
     }
   }
 `
@@ -39,7 +48,9 @@ const ResearchProject = (props) => (
     <Hero data={props.data} />
     <StyledContainer>
       <div className="sidebar-layout">
-        <div className="sidebar"></div>
+        <div className="sidebar">
+          <Sidebar data={props.data} />
+        </div>
         <div className="content">
           <Content data={props.data} />
         </div>
