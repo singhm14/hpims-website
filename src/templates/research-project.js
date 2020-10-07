@@ -10,6 +10,9 @@ import Content from 'sections/research-project/content'
 import Sidebar from 'sections/research-project/sidebar'
 
 // Components
+import SEO from 'components/seo/'
+
+// Components
 import Container from 'components/container/'
 
 const StyledContainer = styled(Container)`
@@ -55,6 +58,7 @@ export const query = graphql`
 
 const ResearchProject = (props) => (
   <React.Fragment>
+    <SEO title={props.data.contentfulResearchProjects.title + ' | Hasso Plattner Institute for Digital Health at Mount Sinai'} />
     <Hero data={props.data} />
     <StyledContainer>
       <div className="sidebar-layout sidebar-layout--big">
