@@ -96,8 +96,7 @@ const ResearchProject = (props) => (
       <p className="color--grey900">{props.summary}</p>
     </div>
 
-    {/* <Tertiary to={'/research-projects/' + getSlug(props.title)} className="research-project__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500" text="View full project" /> */}
-    <Tertiary to={'/'} className="research-project__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500" text="View full project" />
+    <Tertiary to={'/research-projects/' + getSlug(props.title)} className="research-project__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500" text="View full project" />
   </StyledResearchProjectCard>
 )
 

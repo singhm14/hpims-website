@@ -409,7 +409,7 @@ const Menu = () => {
                   <p className="paragraph-small color--grey700">Core Research Projects</p>
                   {data.researchProjects.nodes.map((project) => (
                     <li key={project.id}>
-                      <Link to={'/'} className="font-weight--500" onClick={() => toggleSubMenu()}>
+                      <Link to={'/research-projects/' + getSlug(project.title)} className="font-weight--500" onClick={() => toggleSubMenu()}>
                         {project.title}
                       </Link>
                     </li>
