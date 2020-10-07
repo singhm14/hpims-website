@@ -3,7 +3,6 @@ import React from 'react'
 // Libraries
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
@@ -11,6 +10,9 @@ import breakpoint from 'utils/breakpoints/'
 // Components
 import PageHero from 'components/hero/'
 import Container from 'components/container/'
+
+// Icons
+import StudentsProjectsIcon from 'assets/icons/icon-students-projects.inline.svg'
 
 const StyledHero = styled(PageHero)`
   min-height: 520px;
@@ -34,6 +36,7 @@ const StyledHero = styled(PageHero)`
   .hero__icon {
     width: 112px;
     height: 112px;
+    position: absolute;
     top: 24px;
     right: 0;
 
@@ -59,10 +62,6 @@ const StyledHero = styled(PageHero)`
 `
 
 const Hero = (props) => {
-  const title = props.data.contentfulResearchProjects.title
-  const description = props.data.contentfulResearchProjects.summary.summary
-  const icon = props.data.contentfulResearchProjects.icon
-
   return (
     <StyledHero className="color--black gradient--secondary">
       <Container>
@@ -71,11 +70,11 @@ const Hero = (props) => {
           Projects
         </p>
 
-        <h2 className="title color--blue500">{title}</h2>
-        <p className="paragraph--large">{description}</p>
+        <h2 className="title color--blue500">Co-Innovation Research Exchange</h2>
+        <p className="paragraph--large">HPI·MS has developed an interdisciplinary research exchange and educational program wherein students of the HPI Digital Health program apply advanced data engineering and machine-learning approaches to interrogate Mount Sinai clinical data in research projects supervised jointly by Mount Sinai and HPI faculty.</p>
       </Container>
 
-      {icon && <Img className="hero__icon" fluid={icon.fluid} style={{ position: 'absolute' }} alt={title} />}
+      <StudentsProjectsIcon className="hero__icon" />
     </StyledHero>
   )
 }
