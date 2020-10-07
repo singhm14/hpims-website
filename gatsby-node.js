@@ -58,6 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
     return tag
   }
 
+  // Team Members
   response.data.allContentfulTeamMembers.nodes.forEach((node) => {
     createPage({
       component: path.resolve('./src/templates/team-member-profile.js'),
@@ -68,6 +69,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  // Research Projects
   response.data.allContentfulResearchProjects.nodes.forEach((node) => {
     createPage({
       component: path.resolve(`./src/templates/research-project.js`),

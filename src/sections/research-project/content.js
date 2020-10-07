@@ -1,11 +1,16 @@
 import React from 'react'
 
+// Libraries
+import styled from 'styled-components'
+import { BLOCKS } from '@contentful/rich-text-types'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import Img from 'gatsby-image'
+
 // Utils
 import { colors } from 'utils/variables/'
 
-// Libraries
-import styled from 'styled-components'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+// Hooks
+import useContentfulImage from 'hooks/useContentfulImage/'
 
 const StyledContent = styled.section`
   display: block;
@@ -38,12 +43,26 @@ const StyledContent = styled.section`
       }
     }
   }
+
+  .content__image {
+    margin-top: 40px;
+  }
 `
+
+// Render options for images
+const options = {
+  renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      const fluid = useContentfulImage(node.data.target.fields.file['en-US'].url)
+      return <Img className="content__image" fluid={fluid} title="HPI·MS" />
+    }
+  }
+}
 
 const Content = (props) => {
   const content = props.data.contentfulResearchProjects.description
 
-  return <StyledContent>{content && documentToReactComponents(content.json)}</StyledContent>
+  return <StyledContent>{content && documentToReactComponents(content.json, options)}</StyledContent>
 }
 
 export default Content
