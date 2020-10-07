@@ -32,12 +32,22 @@ export const query = graphql`
         json
       }
       teamMembers {
+        id
         name
         profilePicture {
           fluid(maxWidth: 128, quality: 100) {
             ...GatsbyContentfulFluid_withWebp
           }
         }
+      }
+      callToAction {
+        id
+        title
+        description {
+          description
+        }
+        linkLabel
+        linkUrl
       }
     }
   }
@@ -47,7 +57,7 @@ const ResearchProject = (props) => (
   <React.Fragment>
     <Hero data={props.data} />
     <StyledContainer>
-      <div className="sidebar-layout">
+      <div className="sidebar-layout sidebar-layout--big">
         <div className="sidebar">
           <Sidebar data={props.data} />
         </div>

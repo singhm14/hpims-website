@@ -157,6 +157,24 @@ const GlobalStyles = createGlobalStyle`
       padding: 80px 0;
     `}
 
+    &.sidebar-layout--big {
+
+      .sidebar {
+
+        ${breakpoint.medium`
+          width: 256px;
+          flex-shrink: 0;
+        `}
+      }
+
+      .content {
+
+        ${breakpoint.medium`
+          width: calc(100% - 256px - 32px);
+        `}
+      }
+    }
+
     .sidebar {
       width: 100%;
       margin-bottom: 32px;
