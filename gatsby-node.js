@@ -34,13 +34,6 @@ exports.createPages = async ({ graphql, actions }) => {
           title
         }
       }
-
-      allContentfulStudentsProjects {
-        nodes {
-          id
-          title
-        }
-      }
     }
   `)
 
@@ -90,9 +83,6 @@ exports.createPages = async ({ graphql, actions }) => {
   // Students Projects
   createPage({
     component: path.resolve(`./src/templates/students-projects.js`),
-    path: `/research-projects/co-innovation-research-exchange/`,
-    context: {
-      data: response.data.allContentfulStudentsProjects.nodes
-    }
+    path: `/research-projects/co-innovation-research-exchange/`
   })
 }
