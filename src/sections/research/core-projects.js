@@ -53,6 +53,14 @@ const CoreProjects = () => {
           }
         }
       }
+
+      studentsProjectsIcon: file(relativePath: { eq: "research/icon-co-innovation-research.png" }) {
+        childImageSharp {
+          fixed(width: 52, quality: 100) {
+            ...GatsbyImageSharpFixed_withWebp
+          }
+        }
+      }
     }
   `)
   return (
@@ -66,6 +74,9 @@ const CoreProjects = () => {
               <ResearchProjectCard icon={project.icon && project.icon.fixed} title={project.title} summary={project.summary.summary} />
             </div>
           ))}
+          <div className="grid__item">
+            <ResearchProjectCard icon={data.studentsProjectsIcon.childImageSharp.fixed} title="Co-Innovation Research Exchange" summary="The HPI･MS research exchange is a co-mentorship program supported by research faculty at the Hasso Plattner Institute and the Icahn School of Medicine at Mount Sinai, wherein trainees lead innovative projects that leverage the unique clinical data resources of Mount Sinai with the applied digital engineering training of HPI in order to improve clinical computational understanding." />
+          </div>
         </Grid>
       </Container>
     </StyledCoreProjects>
