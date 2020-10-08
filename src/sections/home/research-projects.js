@@ -41,7 +41,7 @@ const StyledResearchProjects = styled.section`
 
   .grid__item {
     ${breakpoint.small`
-      width: calc((100% - 16px) / 2);
+      width: calc((100% - 32px) / 2);
     `}
   }
 

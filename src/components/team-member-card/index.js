@@ -8,7 +8,7 @@ import BackgroundImage from 'gatsby-background-image'
 // Utils
 import breakpoint from 'utils/breakpoints/'
 import { colors } from 'utils/variables/'
-// import { getSlug } from 'utils/functions/'
+import { getSlug } from 'utils/functions/'
 
 // Components
 import { Link } from 'gatsby'
@@ -106,13 +106,13 @@ const TeamMemberCard = (props) => {
           </p>
 
           <h5 className="name paragraph--large color--blue500">
-            <Link to={'/'} className="name color--blue500 font-weight--600">
+            <Link to={'/team/' + getSlug(props.name)} className="name color--blue500 font-weight--600">
               {props.name}
             </Link>
           </h5>
         </div>
 
-        <Link to={'/'} className="link color--blue500 font-weight--600">
+        <Link to={'/team/' + getSlug(props.name)} className="link color--blue500 font-weight--600">
           <span>View Bio </span>+
         </Link>
       </div>
