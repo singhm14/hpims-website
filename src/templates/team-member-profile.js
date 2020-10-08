@@ -73,6 +73,9 @@ export const query = graphql`
         tags
         link
       }
+      students_projects {
+        title
+      }
     }
   }
 `

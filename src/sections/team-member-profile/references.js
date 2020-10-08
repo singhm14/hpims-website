@@ -17,6 +17,9 @@ import ReferenceCard from 'components/reference-card/'
 import { Tertiary } from 'components/buttons/'
 import PublicationCard from 'components/publication-card-simplified/'
 
+// Icons
+import StudentsProjectsIcon from 'assets/icons/icon-students-projects.inline.svg'
+
 const StyledReferences = styled.section`
   padding-bottom: 56px;
 
@@ -72,6 +75,7 @@ const References = (props) => {
   const labs = data.labs
   const projects = data.research_projects
   const publications = data.publications
+  const studentsProjects = data.students_projects
 
   const placeholderProfilePicture = useStaticQuery(graphql`
     query {
@@ -142,6 +146,18 @@ const References = (props) => {
                         </ReferenceCard>
                       </div>
                     ))}
+
+                    {studentsProjects && (
+                      <div className="grid__item">
+                        <ReferenceCard>
+                          <StudentsProjectsIcon className="card__icon" />
+                          <div className="card__content">
+                            <p className="card__title color--blue500 font-weight--600">Co-Innovation Research Exchange</p>
+                            <Tertiary className="color--blue300 font-weight--600" to="/research-projects/co-innovation-research-exchange" text="View Project" />
+                          </div>
+                        </ReferenceCard>
+                      </div>
+                    )}
                   </Grid>
                 </div>
               )}
