@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import queryString from 'query-string'
 
 // Utils
@@ -13,6 +13,19 @@ import { getSlug } from 'utils/functions/'
 import Grid from 'components/grid/'
 import TeamMemberCard from 'components/team-member-card/'
 import { ExternalTertiary } from 'components/buttons/'
+
+// Icons
+import Loader from 'assets/icons/loader.inline.svg'
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
 
 const StyledTeamMembers = styled.section`
   h4 {
@@ -44,6 +57,14 @@ const StyledTeamMembers = styled.section`
       margin-bottom: 24px;
     }
   }
+
+  .loader {
+    width: 32px;
+    height: 32px;
+    display: block;
+    margin: 32px auto 0 auto;
+    animation: ${rotate} 1.3s ease infinite;
+  }
 `
 
 /* eslint-disable */
@@ -53,6 +74,7 @@ const TeamMembers = () => {
   const [roleParameter, setRoleParameter] = useState(null)
   const [labParameter, setLabParameter] = useState(null)
   const [projectParameter, setProjectParameter] = useState(null)
+  const [isLoading, setLoading] = useState(true)
 
   const data = useStaticQuery(graphql`
     query {
@@ -80,6 +102,7 @@ const TeamMembers = () => {
   // We'll save all team members as state
   useEffect(() => {
     setTeamMembers(data.allContentfulTeamMembers.nodes)
+    setLoading(false)
   }, [data.allContentfulTeamMembers.nodes])
 
   // We'll save query strings as state
@@ -92,6 +115,10 @@ const TeamMembers = () => {
   // Filtering
   useEffect(() => {
     if (roleParameter || labParameter || projectParameter) {
+      // Show loader
+      setLoading(true)
+
+      // Start filtering
       let filteredTeamMembers = data.allContentfulTeamMembers.nodes
 
       // Role filtering
@@ -136,35 +163,45 @@ const TeamMembers = () => {
         })
       }
 
-      setTeamMembers(filteredTeamMembers)
-
       // Hides `Students section
       const studentsSection = document.getElementById('teamStudents')
       if (studentsSection) {
         studentsSection.style.display = 'none'
       }
+
+      // Filters publications
+      setTeamMembers(filteredTeamMembers)
+
+      // Hides loader
+      setLoading(false)
     }
   }, [roleParameter, labParameter, projectParameter])
 
   return (
     <StyledTeamMembers>
-      <h4 className="color--blue500 font-weight--600">Team Members</h4>
-      <Grid gutter="32" columns="3">
-        {teamMembers.length > 0 ? (
-          teamMembers.map((member) => (
-            <div className="grid__item">
-              <TeamMemberCard profilePicture={member.profilePicture && member.profilePicture.fluid} departments={member.department} name={member.name} department={member.department} />
-            </div>
-          ))
-        ) : (
-          <div className="team-members__nothing-found">
-            <h5 className="color--black font-weight--600">We haven’t found any publications that match your search.</h5>
-            <p>Please, try changing the filters to find what you’re looking for.</p>
+      {isLoading ? (
+        <Loader className="loader" />
+      ) : (
+        <React.Fragment>
+          <h4 className="color--blue500 font-weight--600">Team Members</h4>
+          <Grid gutter="32" columns="3">
+            {teamMembers.length > 0 ? (
+              teamMembers.map((member) => (
+                <div className="grid__item">
+                  <TeamMemberCard profilePicture={member.profilePicture && member.profilePicture.fluid} departments={member.department} name={member.name} department={member.department} />
+                </div>
+              ))
+            ) : (
+              <div className="team-members__nothing-found">
+                <h5 className="color--black font-weight--600">We haven’t found any publications that match your search.</h5>
+                <p>Please, try changing the filters to find what you’re looking for.</p>
 
-            <ExternalTertiary to="/team" className="color--blue300 font-weight--600" text="View all team members" />
-          </div>
-        )}
-      </Grid>
+                <ExternalTertiary to="/team" className="color--blue300 font-weight--600" text="View all team members" />
+              </div>
+            )}
+          </Grid>
+        </React.Fragment>
+      )}
     </StyledTeamMembers>
   )
 }
