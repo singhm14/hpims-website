@@ -200,7 +200,7 @@ const PublicationCard = (props) => {
       <div className="publication__info">
         <p className="publication__date paragraph--small color--grey700">{props.year}</p>
         <p className="publication__title font-weight--600">
-          <a href={props.link} className="color--blue900" target="_blank" rel="noopener noreferrer">
+          <a href={props.link} className="color--blue900 color-hover--blue300" target="_blank" rel="noopener noreferrer">
             {props.title}
           </a>
         </p>
@@ -244,7 +244,7 @@ const PublicationCard = (props) => {
           <p className="color--blue500">{props.journal}</p>
         </div>
 
-        <ExternalLink href={props.link} className="link bg-hover--blue500 color--blue500 color-hover--white border--blue500 svg--stroke-blue500 svg-hover--stroke-white" text="Open Publication" />
+        <ExternalLink href={props.link} className="link color--blue500 color-hover--blue300 border--blue500 svg--stroke-blue500 svg-hover--stroke-blue300" text="Open Publication" />
       </div>
     </StyledPublicationCard>
   )

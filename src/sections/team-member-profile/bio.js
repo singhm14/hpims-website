@@ -120,6 +120,10 @@ const StyledBio = styled.section`
 
           svg {
             margin-right: 8px;
+
+            * {
+              transition: all 0.3s ease;
+            }
           }
         }
       }
@@ -211,28 +215,28 @@ const Bio = (props) => {
             />
             <div className="info bg--blue100">
               {email && (
-                <a href={'mailto:' + email} className="email olor--blue900" target="_blank" rel="noopener noreferrer">
+                <a href={'mailto:' + email} className="email color--blue900 color-hover--blue300 svg-hover--fill-blue300" target="_blank" rel="noopener noreferrer">
                   <IconEmail />
                   {email}
                 </a>
               )}
 
               {googleScholar && (
-                <a href={googleScholar} target="_blank" rel="noopener noreferrer">
+                <a href={googleScholar} className="color--blue900 color-hover--blue300 svg-hover--fill-blue300" target="_blank" rel="noopener noreferrer">
                   <IconGoogleScholar />
                   Google Scholar
                 </a>
               )}
 
               {twitter && (
-                <a href={twitter} target="_blank" rel="noopener noreferrer">
+                <a href={twitter} className="color--blue900 color-hover--blue300 svg-hover--fill-blue300" target="_blank" rel="noopener noreferrer">
                   <IconTwitter />
                   Twitter
                 </a>
               )}
 
               {linkedIn && (
-                <a href={linkedIn} target="_blank" rel="noopener noreferrer">
+                <a href={linkedIn} className="color--blue900 color-hover--blue300 svg-hover--fill-blue300" target="_blank" rel="noopener noreferrer">
                   <IconLinkedIn />
                   LinkedIn
                 </a>
