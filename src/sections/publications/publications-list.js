@@ -74,7 +74,7 @@ const PublicationsList = () => {
   const [categoryParamater, setCategoryParameter] = useState(null)
   const [authorParameter, setAuthorParameter] = useState(null)
   const [publicationMethodParameter, setPublicationMethodParameter] = useState(null)
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(true)
   const infiniteTrigger = React.createRef()
 
   const data = useStaticQuery(graphql`
@@ -113,6 +113,7 @@ const PublicationsList = () => {
   // We'll save the publications as state
   useEffect(() => {
     setPublications(data.allContentfulPublications.nodes)
+    setLoading(false)
   }, [data.allContentfulPublications.nodes])
 
   // We'll save queryStrings as state
@@ -205,26 +206,31 @@ const PublicationsList = () => {
 
   return (
     <StyledPublicationsList>
-      <Grid gutter="32" columns="1">
-        {publications.length > 0 ? (
-          publications.slice(0, postsShowing).map((publication, index) => (
-            <div className="grid__item" key={index}>
-              <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
-            </div>
-          ))
-        ) : (
-          <div className="grid__item">
-            <div className="publications__nothing-found">
-              <h5 className="color--black font-weight--600">We haven’t found any publications that match your search.</h5>
-              <p>Please, try changing the filters to find what you’re looking for.</p>
+      {isLoading ? (
+        <Loader className="loader" />
+      ) : (
+        <React.Fragment>
+          <Grid gutter="32" columns="1">
+            {publications.length > 0 ? (
+              publications.slice(0, postsShowing).map((publication, index) => (
+                <div className="grid__item" key={index}>
+                  <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
+                </div>
+              ))
+            ) : (
+              <div className="grid__item">
+                <div className="publications__nothing-found">
+                  <h5 className="color--black font-weight--600">We haven’t found any publications that match your search.</h5>
+                  <p>Please, try changing the filters to find what you’re looking for.</p>
 
-              <ExternalTertiary to="/publications" className="color--blue300 font-weight--600" text="View all publications" />
-            </div>
-          </div>
-        )}
-      </Grid>
+                  <ExternalTertiary to="/publications" className="color--blue300 font-weight--600" text="View all publications" />
+                </div>
+              </div>
+            )}
+          </Grid>
+        </React.Fragment>
+      )}
       <div ref={infiniteTrigger}></div>
-      {isLoading && <Loader className="loader" />}
     </StyledPublicationsList>
   )
 }
