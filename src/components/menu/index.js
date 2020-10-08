@@ -414,9 +414,11 @@ const Menu = () => {
                       </Link>
                     </li>
                   ))}
-                  <Link to="/research-projects/co-innovation-research-exchange" className="font-weight--500" onClick={() => toggleSubMenu()}>
-                    Co-Innovation Research Exchange
-                  </Link>
+                  <li>
+                    <Link to="/research-projects/co-innovation-research-exchange" className="font-weight--500" onClick={() => toggleSubMenu()}>
+                      Co-Innovation Research Exchange
+                    </Link>
+                  </li>
                 </ul>
                 <ul>
                   <p className="paragraph-small color--grey700">Our Labs</p>
