@@ -7,9 +7,19 @@ import { graphql } from 'gatsby'
 import Hero from 'sections/lab/hero'
 import Bio from 'sections/lab/bio'
 
+// Components
+import SEO from 'components/seo/'
+
 const Lab = props => {
+  const title = props.data.contentfulLabs.name
+  const summary = props.data.contentfulLabs.summary.summary
+  
   return (
     <React.Fragment>
+      <SEO
+        title={title + " | Hasso Plattner Institute for Digital Health at Mount Sinai"}
+        description={summary}
+      />
       <Hero />
       <Bio data={props.data} />
     </React.Fragment>
