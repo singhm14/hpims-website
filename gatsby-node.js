@@ -34,6 +34,13 @@ exports.createPages = async ({ graphql, actions }) => {
           title
         }
       }
+
+      allContentfulLabs {
+        nodes {
+          id
+          name
+        }
+      }
     }
   `)
 
@@ -84,5 +91,16 @@ exports.createPages = async ({ graphql, actions }) => {
   createPage({
     component: path.resolve(`./src/templates/students-projects.js`),
     path: `/research-projects/co-innovation-research-exchange/`
+  })
+
+  // Labs
+  response.data.allContentfulLabs.nodes.forEach(node => {
+    createPage({
+      component: path.resolve(`./src/templates/lab.js`),
+      path: `/labs/${getSlug(node.name)}`,
+      context: {
+        id: node.id
+      }
+    })
   })
 }
