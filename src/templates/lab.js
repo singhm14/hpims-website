@@ -6,6 +6,7 @@ import { graphql } from 'gatsby'
 // Sections
 import Hero from 'sections/lab/hero'
 import Bio from 'sections/lab/bio'
+import References from 'sections/lab/references'
 
 // Components
 import SEO from 'components/seo/'
@@ -22,6 +23,7 @@ const Lab = props => {
       />
       <Hero />
       <Bio data={props.data} />
+      <References data={props.data} />
     </React.Fragment>
   )
 }
@@ -39,6 +41,9 @@ export const query = graphql`
             ...GatsbyContentfulFluid_withWebp
           }
         }
+      }
+      description {
+        json
       }
     }
   }
