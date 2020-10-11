@@ -30,6 +30,7 @@ const CareersList = () => {
       allContentfulCareers {
         nodes {
           id
+          jobType
           jobTitle
           jobSummary {
             jobSummary
@@ -53,7 +54,7 @@ const CareersList = () => {
         <Grid gutter="32" columns="1">
           {data.allContentfulCareers.nodes.map((career) => (
             <div className="grid__item">
-              <CareersCard key={career.id} title={career.jobTitle} summary={career.jobSummary.jobSummary} requirements={career.requirementsSummary} applicationInstructions={career.applicationInstructions} details={career.jobDetails} />
+              <CareersCard key={career.id} type={career.jobType} title={career.jobTitle} summary={career.jobSummary.jobSummary} requirements={career.requirementsSummary} applicationInstructions={career.applicationInstructions} details={career.jobDetails} />
             </div>
           ))}
         </Grid>
