@@ -141,7 +141,7 @@ const References = (props) => {
                           />
                           <div className="card__content">
                             <p className="card__title color--blue500 font-weight--600">{project.title}</p>
-                            <Tertiary className="color--blue300 font-weight--600" to={'/projects/' + getSlug(project.title)} text="View Project" />
+                            <Tertiary className="color--blue300 font-weight--600" to={'/research-projects/' + getSlug(project.title)} text="View Project" />
                           </div>
                         </ReferenceCard>
                       </div>
