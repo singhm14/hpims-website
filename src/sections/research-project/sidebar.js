@@ -11,6 +11,9 @@ import { colors } from 'utils/variables/'
 import { getSlug } from 'utils/functions/'
 
 const StyledSidebar = styled.section`
+  position: sticky;
+  top: 104px;
+
   .call-to-action {
     padding: 24px 16px;
     margin-bottom: 64px;
