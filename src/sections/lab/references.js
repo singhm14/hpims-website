@@ -170,59 +170,61 @@ const References = (props) => {
           <div className="content">{content && documentToReactComponents(content.json, options)}</div>
 
           <div className="sidebar">
-            {research_projects && (
-              <div className="reference">
-                <p className="title--underlined">Projects</p>
-                <Grid gutter="16" columns="1">
-                  {research_projects.map((project) => (
+            <div className="sticky">
+              {research_projects && (
+                <div className="reference">
+                  <p className="title--underlined">Projects</p>
+                  <Grid gutter="16" columns="1">
+                    {research_projects.map((project) => (
+                      <div className="grid__item">
+                        <ReferenceCard>
+                          <Img
+                            className="card__icon"
+                            fixed={project.icon.fixed}
+                            styles={{
+                              width: '56px',
+                              height: '56px'
+                            }}
+                          />
+                          <div className="card__content">
+                            <p className="card__title color--blue500 font-weight--600">{project.title}</p>
+                            <Tertiary className="color--blue300 font-weight--600" to={'/research-projects/' + getSlug(project.title)} text="View Project" />
+                          </div>
+                        </ReferenceCard>
+                      </div>
+                    ))}
                     <div className="grid__item">
                       <ReferenceCard>
-                        <Img
-                          className="card__icon"
-                          fixed={project.icon.fixed}
-                          styles={{
-                            width: '56px',
-                            height: '56px'
-                          }}
-                        />
+                        <StudentsProjectsIcon className="card__icon" />
                         <div className="card__content">
-                          <p className="card__title color--blue500 font-weight--600">{project.title}</p>
-                          <Tertiary className="color--blue300 font-weight--600" to={'/research-projects/' + getSlug(project.title)} text="View Project" />
+                          <p className="card__title color--blue500 font-weight--600">Co-Innovation Research Exchange</p>
+                          <Tertiary className="color--blue300 font-weight--600" to="/research-projects/co-innovation-research-exchange" text="View Project" />
                         </div>
                       </ReferenceCard>
                     </div>
-                  ))}
-                  <div className="grid__item">
-                    <ReferenceCard>
-                      <StudentsProjectsIcon className="card__icon" />
-                      <div className="card__content">
-                        <p className="card__title color--blue500 font-weight--600">Co-Innovation Research Exchange</p>
-                        <Tertiary className="color--blue300 font-weight--600" to="/research-projects/co-innovation-research-exchange" text="View Project" />
-                      </div>
-                    </ReferenceCard>
-                  </div>
-                </Grid>
-              </div>
-            )}
+                  </Grid>
+                </div>
+              )}
 
-            {teamMembers && (
-              <div className="reference">
-                <p className="title--underlined">Team</p>
-                <Grid gutter="14" columns="1">
-                  {teamMembers.map((member) => (
-                    <div className="grid__item">
-                      {member.__typename === 'ContentfulTeamMembers' ? (
-                        <Link className="sidebar__team-member color-hover--blue300 font-weight--500" to={'/team/' + getSlug(member.name)}>
-                          {member.name}
-                        </Link>
-                      ) : (
-                        <p className="font-weight--500">{member.name}</p>
-                      )}
-                    </div>
-                  ))}
-                </Grid>
-              </div>
-            )}
+              {teamMembers && (
+                <div className="reference">
+                  <p className="title--underlined">Team</p>
+                  <Grid gutter="14" columns="1">
+                    {teamMembers.map((member) => (
+                      <div className="grid__item">
+                        {member.__typename === 'ContentfulTeamMembers' ? (
+                          <Link className="sidebar__team-member color-hover--blue300 font-weight--500" to={'/team/' + getSlug(member.name)}>
+                            {member.name}
+                          </Link>
+                        ) : (
+                            <p className="font-weight--500">{member.name}</p>
+                          )}
+                      </div>
+                    ))}
+                  </Grid>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </Container>
