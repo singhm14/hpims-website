@@ -99,8 +99,8 @@ const References = (props) => {
                 <div className="reference">
                   <p className="title--underlined">Labs</p>
                   <Grid gutter="16" columns="1">
-                    {labs.map((lab) => (
-                      <div className="grid__item">
+                    {labs.map((lab, index) => (
+                      <div className="grid__item" key={index}>
                         <ReferenceCard>
                           <BackgroundImage
                             className="card__icon"

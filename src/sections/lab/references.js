@@ -1,12 +1,11 @@
 import React from 'react'
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import styled from 'styled-components'
-import BackgroundImage from 'gatsby-background-image'
 import Img from 'gatsby-image'
+import { Link } from 'gatsby'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
@@ -18,11 +17,9 @@ import Container from 'components/container/'
 import Grid from 'components/grid/'
 import ReferenceCard from 'components/reference-card/'
 import { Tertiary } from 'components/buttons/'
-import PublicationCard from 'components/publication-card-simplified/'
 
 // Hooks
 import useContentfulImage from 'hooks/useContentfulImage/'
-
 
 // Icons
 import StudentsProjectsIcon from 'assets/icons/icon-students-projects.inline.svg'
@@ -63,6 +60,20 @@ const StyledReferences = styled.section`
 
         &:last-child {
           margin-bottom: 0;
+        }
+
+        .sidebar__team-member {
+          display: flex;
+          align-items: center;
+
+          &::after {
+            content: '+';
+            position: relative;
+            top: -2px;
+            margin-left: 8px;
+            color: ${colors.blue300};
+            font-size: 24px;
+          }
         }
       }
     }
@@ -130,31 +141,89 @@ const options = {
       return <Img className="content__image" fluid={fluid} title="HPI·MS" />
     },
     [INLINES.HYPERLINK]: (node) => {
-      if (node.data.uri.indexOf('youtube.com') || node.data.uri.indexOf('vimeo.com')) {
+      if (node.data.uri.indexOf('youtube.com') > 0 || node.data.uri.indexOf('vimeo.com') > 0) {
         return (
           <div className="video-wrapper">
             <iframe title="HPI·MS" src={node.data.uri} frameBorder="0" allowFullScreen></iframe>
           </div>
+        )
+      } else {
+        return (
+          <a className="color--blue500 color-hover--blue300" href={node.data.uri} target="_blank" rel="noopener noreferrer">
+            {node.content[0].value}
+          </a>
         )
       }
     }
   }
 }
 
-const References = props => {
+const References = (props) => {
   const content = props.data.contentfulLabs.description
+  const research_projects = props.data.contentfulLabs.projects
+  const teamMembers = props.data.contentfulLabs.teamMembers
 
   return (
     <StyledReferences>
       <Container>
         <div className="references">
-          <div className="content">
-            {content && documentToReactComponents(content.json, options)}
-          </div>
-        </div>
+          <div className="content">{content && documentToReactComponents(content.json, options)}</div>
 
-        <div className="sidebar">
-          
+          <div className="sidebar">
+            {research_projects && (
+              <div className="reference">
+                <p className="title--underlined">Projects</p>
+                <Grid gutter="16" columns="1">
+                  {research_projects.map((project) => (
+                    <div className="grid__item">
+                      <ReferenceCard>
+                        <Img
+                          className="card__icon"
+                          fixed={project.icon.fixed}
+                          styles={{
+                            width: '56px',
+                            height: '56px'
+                          }}
+                        />
+                        <div className="card__content">
+                          <p className="card__title color--blue500 font-weight--600">{project.title}</p>
+                          <Tertiary className="color--blue300 font-weight--600" to={'/projects/' + getSlug(project.title)} text="View Project" />
+                        </div>
+                      </ReferenceCard>
+                    </div>
+                  ))}
+                  <div className="grid__item">
+                    <ReferenceCard>
+                      <StudentsProjectsIcon className="card__icon" />
+                      <div className="card__content">
+                        <p className="card__title color--blue500 font-weight--600">Co-Innovation Research Exchange</p>
+                        <Tertiary className="color--blue300 font-weight--600" to="/research-projects/co-innovation-research-exchange" text="View Project" />
+                      </div>
+                    </ReferenceCard>
+                  </div>
+                </Grid>
+              </div>
+            )}
+
+            {teamMembers && (
+              <div className="reference">
+                <p className="title--underlined">Team</p>
+                <Grid gutter="14" columns="1">
+                  {teamMembers.map((member) => (
+                    <div className="grid__item">
+                      {member.__typename === 'ContentfulTeamMembers' ? (
+                        <Link className="sidebar__team-member color-hover--blue300 font-weight--500" to={'/team/' + getSlug(member.name)}>
+                          {member.name}
+                        </Link>
+                      ) : (
+                        <p className="font-weight--500">{member.name}</p>
+                      )}
+                    </div>
+                  ))}
+                </Grid>
+              </div>
+            )}
+          </div>
         </div>
       </Container>
     </StyledReferences>
