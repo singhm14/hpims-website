@@ -188,9 +188,7 @@ const PublicationsList = () => {
   useEffect(() => {
     const loadMorePosts = () => {
       if (publications.length > postsShowing) {
-        setLoading(true)
         setPostsShowing(postsShowing + 6)
-        setLoading(false)
       }
     }
 
@@ -228,6 +226,7 @@ const PublicationsList = () => {
               </div>
             )}
           </Grid>
+          {isLoading && <Loader className="loader" />}
         </React.Fragment>
       )}
       <div ref={infiniteTrigger}></div>

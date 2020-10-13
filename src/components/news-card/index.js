@@ -19,9 +19,6 @@ const StyledNewsCard = styled.a`
   box-sizing: border-box;
 
   &:hover {
-    .news__title {
-      color: ${colors.blue500};
-    }
 
     .news__footer {
       .footer__link {
