@@ -193,7 +193,7 @@ const TeamMembers = () => {
               ))
             ) : (
               <div className="team-members__nothing-found">
-                <h5 className="color--black font-weight--600">We haven’t found any publications that match your search.</h5>
+                <h5 className="color--black font-weight--600">We haven’t found any team members that match your search.</h5>
                 <p>Please, try changing the filters to find what you’re looking for.</p>
 
                 <ExternalTertiary to="/team" className="color--blue300 font-weight--600" text="View all team members" />
