@@ -63,14 +63,26 @@ const StyledTeamMemberCard = styled.div`
 
     .link {
       margin-top: 16px;
-      font-size: 24px;
-      line-height: 16px;
       align-self: flex-end;
       text-align: right;
 
       span {
+
         ${breakpoint.medium`
           display: none;
+        `}
+      }
+
+      &::after {
+        content: '+';
+        max-height: 10px;
+        display: inline-block;
+        margin-left: 4px;
+        font-size: 18px;
+        line-height: 10px;
+
+        ${breakpoint.medium`
+          font-size: 22px;
         `}
       }
     }
@@ -112,8 +124,7 @@ const TeamMemberCard = (props) => {
           </h5>
         </div>
 
-        <Link to={'/team/' + getSlug(props.name)} className="link color--blue500 font-weight--600">
-          <span>View Bio </span>+
+        <Link to={'/team/' + getSlug(props.name)} className="link color--blue500 font-weight--600"><span>View bio</span>
         </Link>
       </div>
     </StyledTeamMemberCard>
