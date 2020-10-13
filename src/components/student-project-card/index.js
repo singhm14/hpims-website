@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
@@ -94,8 +94,12 @@ const StudentProject = (props) => {
     }
   `)
 
-  const supervisors = props.supervisors.filter((supervisor) => supervisor.name !== undefined)
-  const students = props.students.filter((student) => student.name !== undefined)
+  const supervisors = props.supervisors.filter((supervisor) => supervisor.__typename === 'ContentfulTeamMembers')
+  const students = props.supervisors.filter((supervisor) => supervisor.__typename === 'ContentfulStudents')
+
+  useEffect(() => {
+    // console.log(students.length)
+  })
 
   return (
     <StyledStudentProject>
@@ -135,15 +139,13 @@ const StudentProject = (props) => {
           <div className="students">
             <p className="title paragraph--small color--black font-weight--600">Students</p>
             <p className="paragraph--small color--black">
-              {' '}
               {students.map((student, index) => {
-                if (student.name) {
-                  if (index !== students.length) {
-                    return student.name + ','
-                  } else {
-                    return student.name
-                  }
-                } else return null
+                console.log("Index: " + index)
+                if (index !== (students.length - 1)) {
+                  return student.name + ', '
+                } else {
+                  return student.name
+                }
               })}
             </p>
           </div>

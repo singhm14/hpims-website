@@ -38,6 +38,7 @@ const Projects = (props) => {
           supervisors {
             ... on ContentfulTeamMembers {
               id
+              __typename
               name
               profilePicture {
                 fixed(width: 24, quality: 100) {
@@ -45,15 +46,9 @@ const Projects = (props) => {
                 }
               }
             }
-          }
-        }
-      }
-
-      students: allContentfulStudentsProjects {
-        nodes {
-          supervisors {
             ... on ContentfulStudents {
               id
+              __typename
               name
             }
           }
@@ -67,7 +62,7 @@ const Projects = (props) => {
         <Grid gutter="40" columns="1">
           {data.allContentfulStudentsProjects.nodes.map((project, index) => (
             <div className="grid__item" key={project.id}>
-              <StudentProjectCard status={project.status} title={project.title} description={project.description} supervisors={project.supervisors} students={data.students.nodes[index].supervisors} />
+              <StudentProjectCard status={project.status} title={project.title} description={project.description} supervisors={project.supervisors}/>
             </div>
           ))}
         </Grid>
