@@ -123,7 +123,7 @@ const Institutions = () => {
           }
         }
       }
-      hassoPlattner: file(relativePath: { eq: "about/institution-hasso-platner.png" }) {
+      hassoPlattner: file(relativePath: { eq: "about/institution-hasso-platner.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 544, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
