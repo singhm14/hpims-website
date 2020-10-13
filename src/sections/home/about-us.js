@@ -57,7 +57,6 @@ const StyledAboutUs = styled.section`
 
     ${breakpoint.medium`
       height: 900px;
-      margin-bottom: 80px;
     `}
 
     > div {
