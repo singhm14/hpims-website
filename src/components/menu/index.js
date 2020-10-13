@@ -386,14 +386,14 @@ const Menu = () => {
               </Link>
             </li>
             <li className="menu__has-submenu">
-              <button type="button" onClick={() => {toggleSubMenu(); toggleMenu()}}>
+              <button type="button" onClick={() => {toggleSubMenu()}}>
                 Research
                 <IconCaretDown />
               </button>
 
               <div className="submenu">
                 <h5 className="submenu__closer">
-                  <button type="button" onClick={() => {toggleSubMenu(); toggleMenu()}}>
+                  <button type="button" onClick={() => {toggleSubMenu()}}>
                     <IconArrowLeft />
                     Research
                   </button>
