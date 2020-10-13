@@ -88,6 +88,10 @@ const StyledPublicationCard = styled.div`
               align-items: center;
               margin-bottom: ${(props) => (props.active ? '2px' : '0')};
 
+              &:nth-child(n + 15) {
+                display: ${props => props.active ? 'flex' : 'none'};
+              }
+
               &:last-child {
                 margin-bottom: 0;
               }

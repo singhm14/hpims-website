@@ -100,6 +100,16 @@ const StyledPublicationCard = styled.div`
               align-items: center;
               margin-bottom: ${(props) => (props.active ? '2px' : '0')};
 
+              @media screen and (max-width: 1025px) {
+                &:nth-child(n + 8) {
+                  display: ${props => props.active ? 'flex' : 'none'};
+                }
+              }
+
+              &:nth-child(n + 15) {
+                display: ${props => props.active ? 'flex' : 'none'};
+              }
+
               &:last-child {
                 margin-bottom: 0;
               }
