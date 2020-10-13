@@ -78,8 +78,8 @@ const TeamMembers = () => {
 
   const data = useStaticQuery(graphql`
     query {
-      allContentfulTeamMembers(sort: { fields: createdAt, order: ASC }) {
-        nodes {
+      contentfulContentOrder {
+        teamMembers {
           profilePicture {
             fluid(maxWidth: 256, quality: 100) {
               ...GatsbyContentfulFluid_withWebp
@@ -101,9 +101,9 @@ const TeamMembers = () => {
 
   // We'll save all team members as state
   useEffect(() => {
-    setTeamMembers(data.allContentfulTeamMembers.nodes)
+    setTeamMembers(data.contentfulContentOrder.teamMembers)
     setLoading(false)
-  }, [data.allContentfulTeamMembers.nodes])
+  }, [data.contentfulContentOrder.teamMembers])
 
   // We'll save query strings as state
   useEffect(() => {
@@ -119,7 +119,7 @@ const TeamMembers = () => {
       setLoading(true)
 
       // Start filtering
-      let filteredTeamMembers = data.allContentfulTeamMembers.nodes
+      let filteredTeamMembers = data.contentfulContentOrder.teamMembers
 
       // Role filtering
       if (roleParameter) {
