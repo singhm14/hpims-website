@@ -386,21 +386,21 @@ const Menu = () => {
               </Link>
             </li>
             <li className="menu__has-submenu">
-              <button type="button" onClick={() => toggleSubMenu()}>
+              <button type="button" onClick={() => {toggleSubMenu(); toggleMenu()}}>
                 Research
                 <IconCaretDown />
               </button>
 
               <div className="submenu">
                 <h5 className="submenu__closer">
-                  <button type="button" onClick={() => toggleSubMenu()}>
+                  <button type="button" onClick={() => {toggleSubMenu(); toggleMenu()}}>
                     <IconArrowLeft />
                     Research
                   </button>
                 </h5>
 
                 <div className="submenu__general-link">
-                  <Link to="/research" className="color--black font-weight--500" onClick={() => toggleSubMenu()}>
+                  <Link to="/research" className="color--black font-weight--500" onClick={() => {toggleSubMenu(); toggleMenu()}}>
                     All Research initiatives
                   </Link>
                 </div>
@@ -409,13 +409,13 @@ const Menu = () => {
                   <p className="paragraph-small color--grey700">Core Research Projects</p>
                   {data.researchProjects.nodes.map((project) => (
                     <li key={project.id}>
-                      <Link to={'/research-projects/' + getSlug(project.title)} className="font-weight--500" onClick={() => toggleSubMenu()}>
+                      <Link to={'/research-projects/' + getSlug(project.title)} className="font-weight--500" onClick={() => {toggleSubMenu(); toggleMenu()}}>
                         {project.title}
                       </Link>
                     </li>
                   ))}
                   <li>
-                    <Link to="/research-projects/co-innovation-research-exchange" className="font-weight--500" onClick={() => toggleSubMenu()}>
+                    <Link to="/research-projects/co-innovation-research-exchange" className="font-weight--500" onClick={() => {toggleSubMenu(); toggleMenu()}}>
                       Co-Innovation Research Exchange
                     </Link>
                   </li>
@@ -424,7 +424,7 @@ const Menu = () => {
                   <p className="paragraph-small color--grey700">Our Labs</p>
                   {data.labs.nodes.map((lab) => (
                     <li key={lab.id}>
-                      <Link to={'/labs/' + getSlug(lab.name)} className="font-weight--500" onClick={() => toggleSubMenu()}>
+                      <Link to={'/labs/' + getSlug(lab.name)} className="font-weight--500" onClick={() => {toggleSubMenu(); toggleMenu()}}>
                         {lab.name}
                       </Link>
                     </li>
@@ -438,7 +438,7 @@ const Menu = () => {
               </a>
             </li>
             <li>
-              <Link to="/" onClick={() => toggleMenu()}>
+              <Link to="/careers" onClick={() => toggleMenu()}>
                 Careers
               </Link>
             </li>
