@@ -78,8 +78,8 @@ const StyledLabs = styled.section`
 const Labs = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulLabs(sort: { fields: createdAt, order: ASC }) {
-        nodes {
+      contentfulContentOrder {
+        labs {
           id
           headOfTheLab {
             name
@@ -98,7 +98,7 @@ const Labs = () => {
       <Container>
         <h2 className="color--blue500">Our Labs</h2>
         <Grid gutter="32" columns="2">
-          {data.allContentfulLabs.nodes.map((lab) => (
+          {data.contentfulContentOrder.labs.map((lab) => (
             <div className="grid__item" key={lab.id}>
               <div className="lab-card">
                 <BackgroundImage
