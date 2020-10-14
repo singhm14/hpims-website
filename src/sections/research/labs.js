@@ -81,6 +81,7 @@ const Labs = () => {
       contentfulContentOrder {
         labs {
           id
+          name
           headOfTheLab {
             name
             profilePicture {
@@ -110,7 +111,7 @@ const Labs = () => {
                 />
                 <div className="lab__content">
                   <h4 className="color--blue500 font-weight--600">{lab.headOfTheLab.name}</h4>
-                  <Tertiary className="color--blue300 color-hover--blue500 font-weight--600 svg-stroke--blue300 svg-hover--stroke-blue500" to={'/labs/' + getSlug(lab.headOfTheLab.name)} text="View Lab" />
+                  <Tertiary className="color--blue300 color-hover--blue500 font-weight--600 svg-stroke--blue300 svg-hover--stroke-blue500" to={'/labs/' + getSlug(lab.name)} text="View Lab" />
                 </div>
               </div>
             </div>
