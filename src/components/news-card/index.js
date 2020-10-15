@@ -74,7 +74,7 @@ const NewsCard = (props) => (
     <div className="news__footer">
       <p className="footer__date color--black">{props.date}</p>
       <p className="footer__link color--blue300 font-weight--600">
-        Open Publication <IconExternalLink className="svg--stroke-blue300" />
+        Open article <IconExternalLink className="svg--stroke-blue300" />
       </p>
     </div>
   </StyledNewsCard>
