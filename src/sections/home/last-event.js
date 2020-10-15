@@ -138,8 +138,12 @@ const StyledLastEvent = styled.section`
       `}
 
       .subtitle {
-        margin-bottom: 16px;
+        margin-bottom: 8px;
         text-transform: uppercase;
+
+        ${breakpoint.medium`
+          margin-bottom: 16px;
+        `}
       }
 
       p {
@@ -148,8 +152,13 @@ const StyledLastEvent = styled.section`
 
       .location {
         align-self: flex-end;
+        margin-top: 40px;
         margin-bottom: 0;
         font-weight: 400;
+
+        ${breakpoint.medium`
+          margin-top: 0;
+        `}
       }
     }
 
