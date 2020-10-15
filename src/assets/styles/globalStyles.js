@@ -80,6 +80,7 @@ const GlobalStyles = createGlobalStyle`
 
     &.paragraph--small {
       font-size: 14px;
+      line-height: 20px;
     }
 
     &.paragraph--extra-small {
