@@ -138,6 +138,7 @@ const StyledLastEvent = styled.section`
       `}
 
       .subtitle {
+        margin-bottom: 16px;
         text-transform: uppercase;
       }
 

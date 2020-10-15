@@ -30,11 +30,7 @@ const StyledFooter = styled.footer`
   }
 
   .email {
-    margin-bottom: 24px;
-
-    ${breakpoint.medium`
-      margin-bottom: 64px;
-    `}
+    margin-bottom: 64px;
 
     p {
       margin-bottom: 8px;
@@ -59,13 +55,13 @@ const StyledFooter = styled.footer`
       margin-right: 126px;
 
       ${breakpoint.medium`
-        margin-right: 152px;
+        margin-right: 146px;
       `}
     }
 
     li {
       margin-bottom: 12px;
-      font-size: 14px;
+      font-size: 16px;
 
       &:last-child {
         margin-bottom: 0;
@@ -119,9 +115,9 @@ const Footer = () => (
     <Container>
       <div className="footer__sitemap">
         <div className="email">
-          <p className="paragraph--small color--blue500">Contact Us</p>
+          <p className="paragraph--small color--grey900 font-weight--600">Contact Us</p>
           <h5>
-            <a href="mailto:hpimsinfo@mssm.edu" className="color--blue500 color-hover--magenta300">
+            <a href="mailto:hpimsinfo@mssm.edu" className="color--blue500 color-hover--blue300">
               HPIMSinfo@mssm.edu
             </a>
           </h5>
@@ -129,34 +125,34 @@ const Footer = () => (
         <ul>
           <div className="column">
             <li>
-              <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/about" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 About
               </Link>
             </li>
             <li>
-              <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 Team
               </Link>
             </li>
           </div>
           <div className="column">
             <li>
-              <Link to="/research" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/research" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 Research
               </Link>
             </li>
             <li>
-              <Link to="/publications" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/publications" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 Publications
               </Link>
             </li>
             <li>
-              <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 Careers
               </Link>
             </li>
