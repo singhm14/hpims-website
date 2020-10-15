@@ -113,7 +113,7 @@ const Publications = () => {
         </Grid>
 
         <div className="publications__view-more">
-          <Primary to="/publications" className="color--blue500 color-hover--white bg-hover--blue500 border--blue500" text="See all publications" />
+          <Primary to="/publications" className="color--white bg--blue500 bg-hover--blue300 border--blue500 border-hover--blue300" text="See all publications" />
         </div>
       </Container>
     </StyledPublications>
