@@ -69,7 +69,7 @@ const StyledWhyHPIMS = styled.section`
       font-weight: 600;
 
       ${breakpoint.medium`
-        max-width: 204px;
+        max-width: 256px;
       `}
     }
   }
