@@ -42,7 +42,7 @@ const StyledMenu = styled.nav`
   a,
   button {
     transition: all 0.3s;
-    border-bottom: 1px solid transparent;
+    border-bottom: 2px solid transparent;
 
     &:hover {
       color: ${colors.blue300};

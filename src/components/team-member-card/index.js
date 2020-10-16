@@ -15,6 +15,7 @@ import { Link } from 'gatsby'
 
 const StyledTeamMemberCard = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
 
@@ -51,7 +52,7 @@ const StyledTeamMemberCard = styled.div`
     }
 
     .department {
-      margin-bottom: 4px;
+      margin-bottom: 12px;
       font-size: 14px;
       text-transform: uppercase;
     }
@@ -122,6 +123,7 @@ const TeamMemberCard = (props) => {
               {props.name}
             </Link>
           </h5>
+          <p className="paragraph--small color--black">{props.position}</p>
         </div>
 
         <Link to={'/team/' + getSlug(props.name)} className="link color--blue500 font-weight--600"><span>View bio</span>

@@ -87,7 +87,7 @@ const TeamMembers = () => {
           }
           department
           name
-          department
+          position
           labs {
             name
           }
@@ -188,7 +188,7 @@ const TeamMembers = () => {
             {teamMembers.length > 0 ? (
               teamMembers.map((member) => (
                 <div className="grid__item">
-                  <TeamMemberCard profilePicture={member.profilePicture && member.profilePicture.fluid} departments={member.department} name={member.name} department={member.department} />
+                  <TeamMemberCard profilePicture={member.profilePicture && member.profilePicture.fluid} departments={member.department} name={member.name} position={member.position} department={member.department} />
                 </div>
               ))
             ) : (
