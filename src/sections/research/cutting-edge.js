@@ -98,7 +98,7 @@ const CuttingEdge = () => (
             </div>
             <div className="content">
               <h5 className="title paragraph--large color--blue500 font-weight--600">Multimodal Data</h5>
-              <p>By creating an innovative environment to access electronic health records, imaging, -omics, and sensor data, we will advance health-care-driven Artificial Intelligence (AI)-based solutions.</p>
+              <p>By creating an innovative environment to access electronic health records, imaging, -omics, and sensor data, we will advance healthcare-driven Artificial Intelligence (AI)-based solutions.</p>
             </div>
           </div>
         </div>
