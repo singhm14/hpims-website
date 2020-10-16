@@ -45,15 +45,15 @@ const StyledHero = styled(PageHero)`
     `}
 
     ${breakpoint.medium`
-      width: 400px;
-      height: 400px;
-      top: calc((100% - 400px) / 2);
+      width: 310px;
+      height: 310px;
+      top: calc((100% - 310px) / 2);
       right: -64px;
     `}
 
     ${breakpoint.extraLarge`
       right: auto;
-      left: calc(100vw - 400px - 64px);
+      left: calc(100vw - 310px - 64px);
     `}
   }
 `
