@@ -401,7 +401,7 @@ const Menu = () => {
 
                 <div className="submenu__general-link">
                   <Link to="/research" className="color--black font-weight--500" onClick={() => {toggleSubMenu(); toggleMenu()}}>
-                    All Research initiatives
+                    All Research Initiatives
                   </Link>
                 </div>
 
