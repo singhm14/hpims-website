@@ -31,6 +31,10 @@ const StyledContent = styled.section`
     }
   }
 
+  p {
+    margin: 1em 0;
+  }
+
   ul {
     margin: 1em 0;
     padding-left: 20px;
