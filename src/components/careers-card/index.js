@@ -30,10 +30,6 @@ const StyledCareersCard = styled.div`
       width: 256px;
       padding: 32px 24px;
     `}
-
-    p {
-      text-transform: uppercase;
-    }
   }
 
   ul,
@@ -83,7 +79,6 @@ const StyledCareersCard = styled.div`
 const CareersCard = (props) => (
   <StyledCareersCard className="bg--grey100">
     <div className="careers__title bg--blue100">
-      {props.type && <p className="font-weight--600">{props.type}</p>}
       <h5 className="color--blue900">{props.title}</h5>
     </div>
 
