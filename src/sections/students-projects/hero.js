@@ -50,7 +50,7 @@ const StyledHero = styled(PageHero)`
     ${breakpoint.medium`
       width: 310px;
       height: 310px;
-      top: calc((100% - 310px) / 2);
+      top: calc((100% - 310px + 80px) / 2);
       right: -64px;
     `}
 
