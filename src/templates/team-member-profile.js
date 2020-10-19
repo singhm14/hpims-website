@@ -73,7 +73,7 @@ export const query = graphql`
         tags
         link
       }
-      students_projects {
+      co_innovation_projects {
         title
       }
     }

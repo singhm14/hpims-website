@@ -27,7 +27,7 @@ const StyledProjects = styled.section`
 const Projects = (props) => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulStudentsProjects {
+      allContentfulCoInnovationProjects {
         nodes {
           id
           status
@@ -60,7 +60,7 @@ const Projects = (props) => {
     <StyledProjects>
       <Container>
         <Grid gutter="40" columns="1">
-          {data.allContentfulStudentsProjects.nodes.map((project, index) => (
+          {data.allContentfulCoInnovationProjects.nodes.map((project, index) => (
             <div className="grid__item" key={project.id}>
               <StudentProjectCard status={project.status} title={project.title} description={project.description} supervisors={project.supervisors}/>
             </div>
