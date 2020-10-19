@@ -92,13 +92,13 @@ const StudentProject = (props) => {
             {supervisors.map(
               (supervisor) =>
                 supervisor.name && (
-                  <Link className="supervisor color-hover--blue300 font-weight--500" to={'/team/' + getSlug(supervisor.name)} key={supervisor.id}>
+                  <Link className="supervisor color-hover--blue300" to={'/team/' + getSlug(supervisor.name)} key={supervisor.id}>
                     <p className="paragraph--small">{supervisor.name}</p>
                   </Link>
                 )
             )}
             {props.nonAffiliatedSupervisors && props.nonAffiliatedSupervisors.map(supervisor => 
-              <p className="paragraph--small font-weight--500" style={{marginBottom: '4px'}}>{supervisor}</p>  
+              <p className="paragraph--small" style={{marginBottom: '4px'}}>{supervisor}</p>  
             )}
           </div>
         )}
