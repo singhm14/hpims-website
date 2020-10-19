@@ -52,6 +52,11 @@ const Projects = (props) => {
               name
             }
           }
+          nonAffiliatedPeople
+          students {
+            id
+            students
+          }
         }
       }
     }
@@ -62,7 +67,7 @@ const Projects = (props) => {
         <Grid gutter="40" columns="1">
           {data.allContentfulCoInnovationProjects.nodes.map((project, index) => (
             <div className="grid__item" key={project.id}>
-              <StudentProjectCard status={project.status} title={project.title} description={project.description} supervisors={project.supervisors}/>
+              <StudentProjectCard status={project.status} title={project.title} description={project.description} supervisors={project.supervisors} nonAffiliatedSupervisors={project.nonAffiliatedPeople} students={project.students} />
             </div>
           ))}
         </Grid>

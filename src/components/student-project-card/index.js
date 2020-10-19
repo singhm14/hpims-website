@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { Link } from 'gatsby'
-import BackgroundImage from 'gatsby-background-image'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
@@ -65,41 +63,20 @@ const StyledStudentProject = styled.div`
         margin-bottom: 0;
       }
 
-      &:hover {
-        color: ${colors.blue500};
-
-        .supervisor__image {
-          border-color: ${colors.blue500}!important;
-        }
-      }
-
-      .supervisor__image {
-        margin-right: 4px;
-        transition: all 0.3s ease;
+      &::after {
+        content: '+';
+        position: relative;
+        top: -2px;
+        margin-left: 8px;
+        color: ${colors.blue300};
+        font-size: 20px;
       }
     }
   }
 `
 
 const StudentProject = (props) => {
-  const placeholderProfilePicture = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
-        childImageSharp {
-          fixed(width: 24, quality: 100) {
-            ...GatsbyImageSharpFixed_withWebp
-          }
-        }
-      }
-    }
-  `)
-
   const supervisors = props.supervisors.filter((supervisor) => supervisor.__typename === 'ContentfulTeamMembers')
-  const students = props.supervisors.filter((supervisor) => supervisor.__typename === 'ContentfulStudents')
-
-  useEffect(() => {
-    // console.log(students.length)
-  })
 
   return (
     <StyledStudentProject>
@@ -115,38 +92,22 @@ const StudentProject = (props) => {
             {supervisors.map(
               (supervisor) =>
                 supervisor.name && (
-                  <Link className="supervisor" to={'/team/' + getSlug(supervisor.name)} key={supervisor.id}>
-                    <BackgroundImage
-                      className="supervisor__image"
-                      fixed={supervisor.profilePicture ? supervisor.profilePicture.fixed : placeholderProfilePicture.file.childImageSharp.fixed}
-                      style={{
-                        width: '24px',
-                        height: '24px',
-                        backgroundSize: 'cover',
-                        borderRadius: '50%',
-                        border: '2px solid white',
-                        overflow: 'hidden'
-                      }}
-                    />
+                  <Link className="supervisor color-hover--blue300 font-weight--500" to={'/team/' + getSlug(supervisor.name)} key={supervisor.id}>
                     <p className="paragraph--small">{supervisor.name}</p>
                   </Link>
                 )
             )}
+            {props.nonAffiliatedSupervisors && props.nonAffiliatedSupervisors.map(supervisor => 
+              <p className="paragraph--small font-weight--500" style={{marginBottom: '4px'}}>{supervisor}</p>  
+            )}
           </div>
         )}
 
-        {students && (
+        {props.students && (
           <div className="students">
             <p className="title paragraph--small color--black font-weight--600">Students</p>
             <p className="paragraph--small color--black">
-              {students.map((student, index) => {
-                console.log("Index: " + index)
-                if (index !== (students.length - 1)) {
-                  return student.name + ', '
-                } else {
-                  return student.name
-                }
-              })}
+              {props.students.students}
             </p>
           </div>
         )}
