@@ -30,6 +30,15 @@ const StyledCareersCard = styled.div`
       width: 256px;
       padding: 32px 24px;
     `}
+
+    > div {
+      height: 100%;
+
+      h5 {
+        position: sticky;
+        top: 104px;
+      }
+    }
   }
 
   ul,
@@ -79,7 +88,9 @@ const StyledCareersCard = styled.div`
 const CareersCard = (props) => (
   <StyledCareersCard className="bg--grey100">
     <div className="careers__title bg--blue100">
-      <h5 className="color--blue900">{props.title}</h5>
+      <div>
+        <h5 className="color--blue900">{props.title}</h5>
+      </div>
     </div>
 
     <div className="careers__content">
