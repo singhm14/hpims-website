@@ -98,7 +98,7 @@ const StyledBio = styled.section`
 `
 
 const Bio = props => {
-  const name = props.data.contentfulLabs.name
+  const name = props.data.contentfulLabs.title
   const profilePicture = props.data.contentfulLabs.headOfTheLab.profilePicture.fluid
   const bio = props.data.contentfulLabs.summary.summary
 

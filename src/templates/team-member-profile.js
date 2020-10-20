@@ -30,7 +30,7 @@ export const query = graphql`
       twitterProfile
       linkedInProfile
       labs {
-        name
+        title
         headOfTheLab {
           profilePicture {
             fixed(width: 64, quality: 100) {

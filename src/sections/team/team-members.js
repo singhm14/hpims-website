@@ -101,7 +101,7 @@ const TeamMembers = () => {
           name
           position
           labs {
-            name
+            title
           }
           research_projects {
             title

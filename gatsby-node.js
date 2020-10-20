@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allContentfulLabs {
         nodes {
           id
-          name
+          title
         }
       }
     }
@@ -97,7 +97,7 @@ exports.createPages = async ({ graphql, actions }) => {
   response.data.allContentfulLabs.nodes.forEach(node => {
     createPage({
       component: path.resolve(`./src/templates/lab.js`),
-      path: `/labs/${getSlug(node.name)}`,
+      path: `/labs/${getSlug(node.title)}`,
       context: {
         id: node.id
       }

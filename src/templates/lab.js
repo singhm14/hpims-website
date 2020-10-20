@@ -12,7 +12,7 @@ import References from 'sections/lab/references'
 import SEO from 'components/seo/'
 
 const Lab = (props) => {
-  const title = props.data.contentfulLabs.name
+  const title = props.data.contentfulLabs.title
   const summary = props.data.contentfulLabs.summary.summary
 
   return (
@@ -28,7 +28,7 @@ const Lab = (props) => {
 export const query = graphql`
   query($id: String!) {
     contentfulLabs(id: { eq: $id }) {
-      name
+      title
       summary {
         summary
       }

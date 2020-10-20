@@ -353,7 +353,7 @@ const Menu = () => {
       labs: allContentfulLabs {
         nodes {
           id
-          name
+          title
         }
       }
     }
@@ -424,8 +424,8 @@ const Menu = () => {
                   <p className="paragraph-small color--grey700">Our Labs</p>
                   {data.labs.nodes.map((lab) => (
                     <li key={lab.id}>
-                      <Link to={'/labs/' + getSlug(lab.name)} className="font-weight--500" onClick={() => {toggleSubMenu(); toggleMenu()}}>
-                        {lab.name}
+                      <Link to={'/labs/' + getSlug(lab.title)} className="font-weight--500" onClick={() => {toggleSubMenu(); toggleMenu()}}>
+                        {lab.title}
                       </Link>
                     </li>
                   ))}

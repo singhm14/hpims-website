@@ -69,7 +69,7 @@ const Filters = () => {
         nodes {
           department
           labs {
-            name
+            title
           }
           research_projects {
             title
@@ -89,7 +89,7 @@ const Filters = () => {
     teamMember.department && teamMember.department.map((department) => roles.push(department))
 
     // Push all labs
-    teamMember.labs && teamMember.labs.map((lab) => labs.push(lab.name))
+    teamMember.labs && teamMember.labs.map((lab) => labs.push(lab.title))
 
     // Push all projects
     teamMember.research_projects && teamMember.research_projects.map((project) => projects.push(project.title))

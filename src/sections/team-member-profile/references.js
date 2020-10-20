@@ -114,8 +114,8 @@ const References = (props) => {
                             }}
                           />
                           <div className="card__content">
-                            <h5 className="card__title color--blue500 font-weight--600">{lab.name}</h5>
-                            <Tertiary className="color--blue300 font-weight--600" to={'/labs/' + getSlug(lab.name)} text="View Lab" />
+                            <h5 className="card__title color--blue500 font-weight--600">{lab.title}</h5>
+                            <Tertiary className="color--blue300 font-weight--600" to={'/labs/' + getSlug(lab.title)} text="View Lab" />
                           </div>
                         </ReferenceCard>
                       </div>
