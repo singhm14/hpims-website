@@ -11,7 +11,7 @@ import CareersBanner from 'components/careers-banner/'
 import Container from 'components/container/'
 
 const Team = () => (
-  <React.Fragment>
+  <div data-aos="fade">
     <Hero />
     <Container>
       <div className="sidebar-layout">
@@ -25,7 +25,7 @@ const Team = () => (
       </div>
     </Container>
     <CareersBanner />
-  </React.Fragment>
+  </div>
 )
 
 export default Team
