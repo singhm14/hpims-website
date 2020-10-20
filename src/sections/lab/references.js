@@ -100,6 +100,20 @@ const StyledReferences = styled.section`
         }
       }
 
+      h5 {
+        margin-top: 1em;
+        font-size: 16px;
+        line-height: 22px;
+
+        & + p {
+          margin-top: 0;
+        }
+      }
+
+      p {
+        margin: 1em 0;
+      }
+
       ul {
         margin: 1em 0;
         padding-left: 20px;
