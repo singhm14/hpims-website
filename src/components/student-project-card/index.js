@@ -54,6 +54,10 @@ const StyledStudentProject = styled.div`
       margin-bottom: 16px;
     }
 
+    .title {
+      margin-bottom: 8px;
+    }
+
     .supervisor {
       display: flex;
       align-items: center;
