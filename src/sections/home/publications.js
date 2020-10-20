@@ -106,7 +106,7 @@ const Publications = () => {
 
         <Grid gutter="32" columns="1">
           {data.allContentfulPublications.nodes.map((publication, index) => (
-            <div className="grid__item" key={index}>
+            <div className="grid__item" key={index} data-aos="indicius-slide-up" data-aos-duration="600">
               <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
             </div>
           ))}

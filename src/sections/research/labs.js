@@ -99,8 +99,8 @@ const Labs = () => {
       <Container>
         <h2 className="color--blue500">Our Labs</h2>
         <Grid gutter="32" columns="2">
-          {data.contentfulContentOrder.labs.map((lab) => (
-            <div className="grid__item" key={lab.id}>
+          {data.contentfulContentOrder.labs.map((lab, index) => (
+            <div className="grid__item" data-aos="fade" data-aos-delay={150 * index} key={lab.id}>
               <div className="lab-card">
                 <BackgroundImage
                   className="lab__image"

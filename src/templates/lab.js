@@ -16,12 +16,12 @@ const Lab = (props) => {
   const summary = props.data.contentfulLabs.summary.summary
 
   return (
-    <React.Fragment>
+    <div data-aos="fade">
       <SEO title={title + ' | Hasso Plattner Institute for Digital Health at Mount Sinai'} description={summary} />
       <Hero />
       <Bio data={props.data} />
       <References data={props.data} />
-    </React.Fragment>
+    </div>
   )
 }
 

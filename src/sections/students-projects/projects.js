@@ -66,7 +66,7 @@ const Projects = (props) => {
       <Container>
         <Grid gutter="40" columns="1">
           {data.allContentfulCoInnovationProjects.nodes.map((project, index) => (
-            <div className="grid__item" key={project.id}>
+            <div className="grid__item" data-aos="indicius-slide-up" key={project.id}>
               <StudentProjectCard status={project.status} title={project.title} description={project.description} supervisors={project.supervisors} nonAffiliatedSupervisors={project.nonAffiliatedPeople} students={project.students} />
             </div>
           ))}

@@ -1,0 +1,8 @@
+/* Slide up */
+[data-aos='indicius-slide-up'] {
+  transform: translateY(64px);
+}
+
+.aos-animate[data-aos='indicius-slide-up'] {
+  transform: translateY(0);
+}

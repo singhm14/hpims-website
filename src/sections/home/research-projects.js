@@ -77,7 +77,7 @@ const ResearchProjects = () => {
     }
   `)
   return (
-    <StyledResearchProjects>
+    <StyledResearchProjects data-aos="fade">
       <Container>
         <div className="section__title">
           <p className="section__subtitle">Research</p>

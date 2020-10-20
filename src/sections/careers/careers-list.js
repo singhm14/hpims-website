@@ -52,7 +52,7 @@ const CareersList = () => {
       <Container>
         <Grid gutter="32" columns="1">
           {data.allContentfulCareers.nodes.map((career) => (
-            <div className="grid__item">
+            <div className="grid__item" data-aos="indicius-slide-up">
               <CareersCard key={career.id} title={career.jobTitle} summary={career.jobSummary.jobSummary} requirements={career.requirementsSummary} applicationInstructions={career.applicationInstructions} details={career.jobDetails} />
             </div>
           ))}

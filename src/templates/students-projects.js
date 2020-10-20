@@ -5,10 +5,10 @@ import Hero from 'sections/students-projects/hero'
 import Projects from 'sections/students-projects/projects'
 
 const StudentsProjects = () => (
-  <React.Fragment>
+  <div data-aos="fade">
     <Hero />
     <Projects />
-  </React.Fragment>
+  </div>
 )
 
 export default StudentsProjects

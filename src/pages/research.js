@@ -8,13 +8,13 @@ import Labs from 'sections/research/labs'
 import CareersBanner from 'components/careers-banner/'
 
 const Research = () => (
-  <React.Fragment>
+  <div data-aos="fade">
     <Hero />
     <CuttingEdge />
     <CoreProjects />
     <Labs />
     <CareersBanner />
-  </React.Fragment>
+  </div>
 )
 
 export default Research

@@ -70,11 +70,11 @@ const CoreProjects = () => {
         <h2 className="color--blue500 font-weight--600">Core Research Projects</h2>
         <Grid gutter="32" columns="3">
           {data.allContentfulResearchProjects.nodes.map((project, index) => (
-            <div className="grid__item" key={index}>
+            <div className="grid__item" key={index} data-aos="fade" data-aos-delay={150 * index}>
               <ResearchProjectCard icon={project.icon && project.icon.fixed} title={project.title} summary={project.summary.summary} />
             </div>
           ))}
-          <div className="grid__item">
+          <div className="grid__item" data-aos="fade" data-aos-delay="300">
             <ResearchProjectCard icon={data.studentsProjectsIcon.childImageSharp.fixed} title="Co-Innovation Research Exchange" summary="The HPI･MS research exchange is a co-mentorship program supported by research faculty at the Hasso Plattner Institute and the Icahn School of Medicine at Mount Sinai, wherein trainees lead innovative projects that leverage the unique clinical data resources of Mount Sinai with the applied digital engineering training of HPI in order to improve clinical computational understanding." />
           </div>
         </Grid>

@@ -211,7 +211,7 @@ const PublicationsList = () => {
           <Grid gutter="32" columns="1">
             {publications.length > 0 ? (
               publications.slice(0, postsShowing).map((publication, index) => (
-                <div className="grid__item" key={index}>
+                <div className="grid__item" data-aos="indicius-slide-up" key={index}>
                   <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
                 </div>
               ))

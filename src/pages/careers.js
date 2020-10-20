@@ -5,10 +5,10 @@ import Hero from 'sections/careers/hero'
 import CareersList from 'sections/careers/careers-list'
 
 const Careers = () => (
-  <React.Fragment>
+  <div data-aos="fade">
     <Hero />
     <CareersList />
-  </React.Fragment>
+  </div>
 )
 
 export default Careers

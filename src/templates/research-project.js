@@ -57,7 +57,7 @@ export const query = graphql`
 `
 
 const ResearchProject = (props) => (
-  <React.Fragment>
+  <div data-aos="fade">
     <SEO title={props.data.contentfulResearchProjects.title + ' | Hasso Plattner Institute for Digital Health at Mount Sinai'} />
     <Hero data={props.data} />
     <StyledContainer>
@@ -70,7 +70,7 @@ const ResearchProject = (props) => (
         </div>
       </div>
     </StyledContainer>
-  </React.Fragment>
+  </div>
 )
 
 export default ResearchProject
