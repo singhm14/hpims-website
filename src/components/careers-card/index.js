@@ -89,7 +89,7 @@ const CareersCard = (props) => (
   <StyledCareersCard className="bg--grey100">
     <div className="careers__title bg--blue100">
       <div>
-        <h5 className="color--blue900">{props.title}</h5>
+        <h5 className="color--blue900 font-weight--600">{props.title}</h5>
       </div>
     </div>
 
