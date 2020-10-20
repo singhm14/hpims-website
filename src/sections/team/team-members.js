@@ -27,6 +27,18 @@ const rotate = keyframes`
   }
 `
 
+const StyledGrid = styled(Grid)`
+
+  .grid__item {
+
+    &:nth-last-child(-n + 3) {
+      ${breakpoint.medium`
+        margin-bottom: 32px;
+      `}
+    }
+  }
+`
+
 const StyledTeamMembers = styled.section`
   h4 {
     margin-bottom: 24px;
@@ -184,7 +196,7 @@ const TeamMembers = () => {
       ) : (
         <React.Fragment>
           <h4 className="color--blue500 font-weight--600">Team Members</h4>
-          <Grid gutter="32" columns="3">
+          <StyledGrid gutter="32" columns="3">
             {teamMembers.length > 0 ? (
               teamMembers.map((member) => (
                 <div className="grid__item">
@@ -199,7 +211,7 @@ const TeamMembers = () => {
                 <ExternalTertiary to="/team" className="color--blue300 font-weight--600" text="View all team members" />
               </div>
             )}
-          </Grid>
+          </StyledGrid>
         </React.Fragment>
       )}
     </StyledTeamMembers>
