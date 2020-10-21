@@ -14,6 +14,7 @@ import Container from 'components/container/'
 
 const StyledHero = styled(PageHero)`
   min-height: 520px;
+  padding-top: 168px;
   position: relative;
   overflow: hidden;
 
@@ -34,7 +35,7 @@ const StyledHero = styled(PageHero)`
   .hero__icon {
     width: 112px;
     height: 112px;
-    top: 24px;
+    top: 72px;
     right: 0;
 
     ${breakpoint.small`
