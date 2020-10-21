@@ -294,7 +294,7 @@ const LastEvent = () => {
         <div className="event__description">
           <div className="date">
             <div>
-              <p className="subtitle paragraph--large">Our Last Event</p>
+              <p className="subtitle">Our Last Event</p>
               <h3>HPI - Mount Sinai Digital Health Forum</h3>
             </div>
 
