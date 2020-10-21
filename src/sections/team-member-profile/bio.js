@@ -80,6 +80,7 @@ const StyledBio = styled.section`
     }
 
     .bio__profile-picture {
+      max-width: 352px;
       width: 100%;
       margin-bottom: 40px;
 
@@ -174,13 +175,13 @@ const Bio = (props) => {
   return (
     <StyledBio>
       <Container>
-        <p className="breadcrumb color--white">
+        <p className="breadcrumb color--white font-weight--600">
           <Link to="/team">Team / </Link>
           Team Members
         </p>
         <div className="bio">
           <div className="bio__name">
-            <p className="department">
+            <p className="department font-weight--500">
               {departments &&
                 departments.map((department, index) => {
                   if (index !== departments.length - 1) {
