@@ -202,7 +202,7 @@ const PublicationCard = (props) => {
   return (
     <StyledPublicationCard active={active}>
       <div className="publication__info">
-        <p className="publication__date paragraph--small color--grey700">{props.year}</p>
+        <p className="publication__date paragraph--small color--grey900">{props.year}</p>
         <p className="publication__title font-weight--600">
           <a href={props.link} className="color--blue900 color-hover--blue300" target="_blank" rel="noopener noreferrer">
             {props.title}
