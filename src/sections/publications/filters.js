@@ -127,7 +127,7 @@ const Filters = () => {
   publicationMethods = Array.from(new Set(publicationMethods))
 
   return (
-    <FiltersWrapper>
+    <FiltersWrapper filterText="Filter Publications">
       <StyledFilters>
         <p className="filters__title paragraph--small font-weight--600">{year || category || author || publicationMethod ? 'Filtered by' : 'Filter by'}</p>
         <Dropdown label="Year" defaultOption={defaultYear} options={years} callbackFunction={(event) => handleYearFilter(getSlug(event.target.innerText))} resetFunction={() => handleYearFilter(null)} />

@@ -13,10 +13,11 @@ import { getSlug } from 'utils/functions/'
 // Components
 import { Link } from 'gatsby'
 
-const StyledTeamMemberCard = styled.div`
+const StyledTeamMemberCard = styled(Link)`
   width: 100%;
   height: 100%;
   display: flex;
+  cursor: pointer;
   box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
 
   ${breakpoint.medium`
@@ -103,7 +104,7 @@ const TeamMemberCard = (props) => {
     }
   `)
   return (
-    <StyledTeamMemberCard>
+    <StyledTeamMemberCard to={'/team/' + getSlug(props.name)}>
       <BackgroundImage className="team-member__profile-picture bg--grey900" fluid={props.profilePicture ? props.profilePicture : data.file.childImageSharp.fluid} style={{ backgroundSize: 'cover' }} />
       <div className="team-member__info bg--grey100 color--black">
         <div>
@@ -119,15 +120,15 @@ const TeamMemberCard = (props) => {
           </p>
 
           <h5 className="name paragraph--large color--blue500">
-            <Link to={'/team/' + getSlug(props.name)} className="name color--blue500 font-weight--600">
+            <p className="name color--blue500 font-weight--600">
               {props.name}
-            </Link>
+            </p>
           </h5>
           <p className="paragraph--small color--black">{props.position}</p>
         </div>
 
-        <Link to={'/team/' + getSlug(props.name)} className="link color--blue500 font-weight--600"><span>View bio</span>
-        </Link>
+        <p className="link color--blue500 font-weight--600"><span>View bio</span>
+        </p>
       </div>
     </StyledTeamMemberCard>
   )

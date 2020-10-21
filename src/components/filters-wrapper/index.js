@@ -134,7 +134,7 @@ const FiltersWrapper = (props) => {
 
         <div className="modal__content">{props.children}</div>
       </div>
-      <PrimaryButton onClick={() => toggleActive()} className="filters__trigger bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" text="Filter Publications" />
+      <PrimaryButton onClick={() => toggleActive()} className="filters__trigger bg--blue500 bg-hover--blue300 color--white border--blue500 border-hover--blue300" text={props.filterText} />
     </StyledFiltersWrapper>
   )
 }
