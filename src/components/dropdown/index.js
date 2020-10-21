@@ -62,7 +62,6 @@ const StyledDropdown = styled.div`
       overflow: auto;
 
       li {
-        padding: 16px;
         border-bottom: 1px solid ${colors.grey500};
 
         &:first-child {
@@ -90,7 +89,11 @@ const StyledDropdown = styled.div`
           display: flex;
           align-items: center;
           justify-content: space-between;
-          text-align: left;
+          padding: 16px;
+          
+          span {
+            text-align: left;
+          }
         }
       }
     }
