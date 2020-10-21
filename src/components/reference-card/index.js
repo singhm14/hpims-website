@@ -8,6 +8,7 @@ const ReferenceCard = styled.div`
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
 
   .card__icon {
+    flex-shrink: 0;
     margin-right: 16px;
   }
 
