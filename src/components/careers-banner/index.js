@@ -13,7 +13,7 @@ import BannerTriangle from 'assets/icons/careers-banner-triangle.inline.svg'
 const StyledCareersBanner = styled.section`
   position: relative;
   padding: 64px 0 56px 0;
-  background: linear-gradient(100.86deg, #025e8a 34.07%, #4ec3f7 88.87%);
+  background: linear-gradient(100.86deg, #025E8A 34.07%, #4EC3F7 88.87%);
 
   .banner__content {
     max-width: 352px;
