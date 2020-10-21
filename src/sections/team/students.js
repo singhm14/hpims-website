@@ -12,10 +12,10 @@ import { colors } from 'utils/variables/'
 import Grid from 'components/grid/'
 
 const StyledStudents = styled.section`
-  padding-top: 32px;
+  padding-top: 64px;
 
   ${breakpoint.medium`
-    padding-top: 96px;
+    padding-top: 64px;
   `}
 
   .students__title {
