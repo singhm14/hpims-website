@@ -41,14 +41,8 @@ const StyledPublicationCard = styled.div`
       padding: 16px 0;
 
       &.info--journal {
-        display: flex;
-        align-items: center;
         padding-top: 0;
         border: 0;
-
-        p:first-child {
-          margin-right: 4px;
-        }
       }
 
       &.info--authors {
@@ -209,10 +203,10 @@ const PublicationCard = (props) => {
           </a>
         </p>
 
-        <div className="info info--journal color--grey900">
-          <p className="journal paragraph--small">Journal | </p>
-          <p className="journal-title paragraph--small font-weight--500"> {props.journal}</p>
-        </div>
+        <p className="info info--journal paragraph--small color--grey900">
+          <span className="journal">Journal | </span>
+          <span className="journal-title font-weight--500"> {props.journal}</span>
+        </p>
 
         <div className="info info--authors">
           <div className="authors__internal">
