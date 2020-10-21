@@ -119,7 +119,8 @@ const StyledMenu = styled.nav`
     position: relative;
     padding-top: ${(props) => (props.isMenuOpen ? '16px' : '0')};
     transition: all 0.6s ease;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     ${breakpoint.small`
       width: auto;
@@ -206,6 +207,7 @@ const StyledMenu = styled.nav`
       left: ${(props) => (props.isSubMenuOpen ? '0' : '120%')};
       padding-top: 24px;
       background-color: ${colors.white};
+      overflow-y: auto;
       transition: all 0.3s ease;
 
       ${breakpoint.small`
