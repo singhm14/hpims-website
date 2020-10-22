@@ -81,6 +81,7 @@ const StyledStudentProject = styled.div`
 
 const StudentProject = (props) => {
   const supervisors = props.supervisors.filter((supervisor) => supervisor.__typename === 'ContentfulTeamMembers')
+  const students = props.supervisors.filter((supervisor) => supervisor.__typename === 'ContentfulStudents')
 
   return (
     <StyledStudentProject>
@@ -101,8 +102,11 @@ const StudentProject = (props) => {
                   </Link>
                 )
             )}
+            {students.map(student => (
+              <p key={student.id} className="paragraph--small" style={{marginBottom: '4px'}}>{student.name}</p>  
+            ))}
             {props.nonAffiliatedSupervisors && props.nonAffiliatedSupervisors.map(supervisor => 
-              <p className="paragraph--small" style={{marginBottom: '4px'}}>{supervisor}</p>  
+              <p key={supervisor.id} className="paragraph--small" style={{marginBottom: '4px'}}>{supervisor}</p>  
             )}
           </div>
         )}
