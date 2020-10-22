@@ -102,7 +102,7 @@ const StudentProject = (props) => {
                   </Link>
                 )
             )}
-            {students.map(student => (
+            {students && students.map(student => (
               <p key={student.id} className="paragraph--small" style={{marginBottom: '4px'}}>{student.name}</p>  
             ))}
             {props.nonAffiliatedSupervisors && props.nonAffiliatedSupervisors.map(supervisor => 
