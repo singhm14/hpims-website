@@ -131,14 +131,16 @@ const References = (props) => {
                     {projects.map((project) => (
                       <div className="grid__item">
                         <ReferenceCard>
-                          <Img
-                            className="card__icon"
-                            fixed={project.icon.fixed}
-                            styles={{
-                              width: '56px',
-                              height: '56px'
-                            }}
-                          />
+                          {project.icon ? 
+                            <Img
+                              className="card__icon"
+                              fixed={project.icon.fixed}
+                              styles={{
+                                width: '56px',
+                                height: '56px'
+                              }}
+                            />
+                          : <div className="card__icon"></div>}
                           <div className="card__content">
                             <p className="card__title color--blue500 font-weight--600">{project.title}</p>
                             <Tertiary className="color--blue300 font-weight--600" to={'/research-projects/' + getSlug(project.title)} text="View full project" />
