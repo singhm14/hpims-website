@@ -11,7 +11,7 @@ import breakpoint from 'utils/breakpoints/'
 import Triangle from 'components/background-triangle/'
 import Container from 'components/container/'
 import Grid from 'components/grid/'
-import ResearchProjectCard from 'components/research-project-card/'
+import ResearchProjectCard from 'components/research-project-card-simplified/'
 
 const StyledCoreProjects = styled.section`
   position: relative;
@@ -22,6 +22,10 @@ const StyledCoreProjects = styled.section`
     padding-top: 0;
     padding-bottom: 120px;
   `}
+
+  ${Container} {
+    max-width: 928px;
+  }
 
   h2 {
     max-width: 620px;
@@ -43,7 +47,7 @@ const CoreProjects = () => {
       allContentfulResearchProjects(sort: { fields: createdAt, order: ASC }, limit: 3) {
         nodes {
           icon {
-            fixed(width: 52, quality: 100) {
+            fixed(width: 64, quality: 100) {
               ...GatsbyContentfulFixed_withWebp
             }
           }
@@ -56,7 +60,7 @@ const CoreProjects = () => {
 
       studentsProjectsIcon: file(relativePath: { eq: "research/icon-co-innovation-research.png" }) {
         childImageSharp {
-          fixed(width: 52, quality: 100) {
+          fixed(width: 64, quality: 100) {
             ...GatsbyImageSharpFixed_withWebp
           }
         }
@@ -68,7 +72,7 @@ const CoreProjects = () => {
       <Triangle />
       <Container>
         <h2 className="color--blue500 font-weight--600">Core Research Projects</h2>
-        <Grid gutter="32" columns="3">
+        <Grid gutter="32" columns="1">
           {data.allContentfulResearchProjects.nodes.map((project, index) => (
             <div className="grid__item" key={index} data-aos="fade" data-aos-delay={150 * index}>
               <ResearchProjectCard icon={project.icon && project.icon.fixed} title={project.title} summary={project.summary.summary} />
