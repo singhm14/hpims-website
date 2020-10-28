@@ -77,12 +77,13 @@ const References = (props) => {
   const publications = data.publications
   const studentsProjects = data.co_innovation_projects
 
-  publications.sort((a, b) => {
-    a = new Date(a.yearUnformatted)
-    b = new Date(b.yearUnformatted)
+  publications &&
+    publications.sort((a, b) => {
+      a = new Date(a.yearUnformatted)
+      b = new Date(b.yearUnformatted)
 
-    return b - a
-  })
+      return b - a
+    })
 
   const placeholderProfilePicture = useStaticQuery(graphql`
     query {
