@@ -69,6 +69,7 @@ export const query = graphql`
             name
           }
         }
+        yearUnformatted: year
         year(formatString: "MMMM, YYYY")
         tags
         link
