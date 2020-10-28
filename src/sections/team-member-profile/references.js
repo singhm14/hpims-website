@@ -75,7 +75,7 @@ const References = (props) => {
   const labs = data.labs
   const projects = data.research_projects
   const publications = data.publications
-  const studentsProjects = data.students_projects
+  const studentsProjects = data.co_innovation_projects
 
   const placeholderProfilePicture = useStaticQuery(graphql`
     query {
@@ -131,7 +131,7 @@ const References = (props) => {
                     {projects.map((project) => (
                       <div className="grid__item">
                         <ReferenceCard>
-                          {project.icon ? 
+                          {project.icon ? (
                             <Img
                               className="card__icon"
                               fixed={project.icon.fixed}
@@ -140,7 +140,9 @@ const References = (props) => {
                                 height: '56px'
                               }}
                             />
-                          : <div className="card__icon"></div>}
+                          ) : (
+                            <div className="card__icon"></div>
+                          )}
                           <div className="card__content">
                             <p className="card__title color--blue500 font-weight--600">{project.title}</p>
                             <Tertiary className="color--blue300 font-weight--600" to={'/research-projects/' + getSlug(project.title)} text="View full project" />
