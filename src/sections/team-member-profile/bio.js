@@ -131,6 +131,10 @@ const StyledBio = styled.section`
     }
 
     .bio__content {
+      p {
+        margin: 1em 0;
+      }
+
       &.mobile {
         ${breakpoint.medium`
           display: none;
