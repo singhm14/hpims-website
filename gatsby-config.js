@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `HPI∙MS | Hasso Plattner Institute for Digital Health at Mount Sinai`,
     description: `The institute is a collaboration between the Hasso Plattner Institute for Digital Engineering in Potsdam, Germany, and the Mount Sinai Health System. Our goal is to develop innovations to revolutionize how people think about their personal health and health systems and have a tangible impact on patients’ lives.`,
-    url: 'https://icahn.mssm.edu/research/hpims',
+    url: 'https://hpism.org/',
     image: '',
     twitterUsername: '@hpi_health',
     author: `@indicius`
