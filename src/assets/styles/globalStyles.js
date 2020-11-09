@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
+import { colors } from 'utils/variables/'
 
 // Helpers
 import { Helpers } from './helpers'
@@ -10,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Inter", sans-serif;
     font-size: 16px;
-    line-height: 1.5em;
+    line-height: 1.38em;
   }
 
   h1,
@@ -18,40 +19,45 @@ const GlobalStyles = createGlobalStyle`
   h3,
   h4 {
     font-weight: 600;
-    line-height: 1.13em;
   }
 
   h1 {
     font-size: 40px;
+    line-height: 48px;
 
     ${breakpoint.medium`
       font-size: 64px;
+      line-height: 72px;
     `}
   }
 
   h2 {
-    font-size: 40px;
-    line-height: 1.2em;
+    font-size: 32px;
+    line-height: 36px;
 
     ${breakpoint.medium`
       font-size: 52px;
+      line-height: 64px;
     `}
   }
 
   h3 {
-    font-size: 32px;
-    line-height: 1.2em;
+    font-size: 28px;
+    line-height: 32px;
 
     ${breakpoint.medium`
       font-size: 40px;
+      line-height: 48px;
     `}
   }
 
   h4 {
-    font-size: 22px;
+    font-size: 24px;
+    line-height: 28px;;
     
     ${breakpoint.medium`
-      font-size: 24px;
+      font-size: 28px;
+      line-height: 32px;
     `}
   }
 
@@ -60,7 +66,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 28px;
 
     ${breakpoint.medium`
-      font-size: 24px;
+      font-size: 22px;
     `}
   }
 
@@ -69,10 +75,12 @@ const GlobalStyles = createGlobalStyle`
 
     &.paragraph--large {
       font-size: 18px;
+      line-height: 26px;
     }
 
     &.paragraph--small {
       font-size: 14px;
+      line-height: 20px;
     }
 
     &.paragraph--extra-small {
@@ -99,13 +107,22 @@ const GlobalStyles = createGlobalStyle`
 
     .section__title {
       max-width: 640px;
-      margin-bottom: 56px;
+      margin-bottom: 32px;
+
+      ${breakpoint.medium`
+        margin-bottom: 56px;
+      `}
     }
 
     .section__subtitle {
       margin-bottom: 16px;
+      font-size: 14px;
       font-weight: 600;
       text-transform: uppercase;
+
+      ${breakpoint.medium`
+        font-size: 16px;
+      `}
     }
 
     .section__description {
@@ -128,6 +145,69 @@ const GlobalStyles = createGlobalStyle`
     overflow: hidden!important;
   }
 
+  .sidebar-layout {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 60px 0;
+
+    ${breakpoint.medium`
+      flex-wrap: nowrap;
+    `}
+
+    ${breakpoint.medium`
+      padding: 80px 0;
+    `}
+
+    &.sidebar-layout--big {
+
+      .sidebar {
+
+        ${breakpoint.medium`
+          width: 256px;
+          flex-shrink: 0;
+        `}
+      }
+
+      .content {
+
+        ${breakpoint.medium`
+          width: calc(100% - 256px - 32px);
+        `}
+      }
+    }
+
+    .sidebar {
+      width: 100%;
+      margin-bottom: 32px;
+
+      ${breakpoint.medium`
+        width: 240px;
+        margin-right: 48px;
+        margin-bottom: 0;
+      `}
+    }
+
+    .content {
+      width: 100%;
+
+      ${breakpoint.medium`
+        width: calc(100% - 240px - 48px);
+      `}
+    }
+  }
+
+  .title--underlined {
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 1px solid ${colors.grey500};
+  }
+
+  .breadcrumb {
+    text-transform: uppercase;
+  }
+  
   ${Helpers}
 `
 

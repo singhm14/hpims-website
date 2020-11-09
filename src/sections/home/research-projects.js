@@ -23,7 +23,15 @@ const StyledResearchProjects = styled.section`
   `}
 
   ${Container} {
-    max-width: 928px;
+    max-width: 716px;
+
+    ${breakpoint.small`
+      padding: 0;
+    `}
+
+    ${breakpoint.medium`
+      max-width: 928px;
+    `}
   }
 
   .section__title {
@@ -31,8 +39,14 @@ const StyledResearchProjects = styled.section`
     text-align: center;
   }
 
+  .grid__item {
+    ${breakpoint.small`
+      width: calc((100% - 32px) / 2);
+    `}
+  }
+
   .research__link {
-    margin-top: 24px;
+    margin-top: 40px;
 
     ${breakpoint.medium`
       margin-top: 56px;
@@ -63,7 +77,7 @@ const ResearchProjects = () => {
     }
   `)
   return (
-    <StyledResearchProjects>
+    <StyledResearchProjects data-aos="fade">
       <Container>
         <div className="section__title">
           <p className="section__subtitle">Research</p>
@@ -71,8 +85,8 @@ const ResearchProjects = () => {
         </div>
 
         <Grid gutter="32" columns="2">
-          {data.allContentfulResearchProjects.nodes.map((project) => (
-            <div className="grid__item">
+          {data.allContentfulResearchProjects.nodes.map((project, index) => (
+            <div className="grid__item" key={index}>
               <ResearchProjectCard icon={project.icon && project.icon.fixed} title={project.title} summary={project.summary.summary} />
             </div>
           ))}

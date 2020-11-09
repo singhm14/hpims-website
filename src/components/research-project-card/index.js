@@ -13,19 +13,23 @@ import PropTypes from 'prop-types'
 // Components
 import { Tertiary } from 'components/buttons/'
 
-const StyledResearchProjectCard = styled.a`
+const StyledResearchProjectCard = styled.div`
   max-width: 448px;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  padding: 32px 16px;
+  padding: 32px 24px;
   text-align: left;
   box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
 
   ${breakpoint.small`
-    padding: 48px 32px 42px 40px;
+    padding: 40px 24px 32px 24px;
+  `}
+
+  ${breakpoint.medium`
+    padding: 48px 40px 42px 40px;
   `}
 
   ${breakpoint.medium`
@@ -43,6 +47,14 @@ const StyledResearchProjectCard = styled.a`
   .research-project__title {
     width: 100%;
     margin-bottom: 16px;
+
+    ${breakpoint.small`
+      margin-bottom: 8px;
+    `}
+
+    ${breakpoint.medium`
+      margin-bottom: 16px;
+    `}
   }
 
   .research-project__link {
@@ -52,6 +64,22 @@ const StyledResearchProjectCard = styled.a`
     align-items: center;
     margin-top: 40px;
     font-weight: 600;
+
+    ${breakpoint.small`
+      margin-top: 24px;
+    `}
+
+    ${breakpoint.medium`
+      margin-top: 40px;
+    `}
+  }
+
+  p {
+    font-size: 14px;
+
+    ${breakpoint.medium`
+      font-size: 16px;
+    `}
   }
 `
 
@@ -60,7 +88,7 @@ const ResearchProject = (props) => (
     <div>
       <div className="research-project__icon">{props.icon && <Img fixed={props.icon} alt={props.title} />}</div>
 
-      <h4 className="research-project__title color--blue500">
+      <h4 className="research-project__title color--blue500 font-weight--600">
         <Link to={'/research-projects/' + getSlug(props.title)} className="color--blue500">
           {props.title}
         </Link>
@@ -73,7 +101,7 @@ const ResearchProject = (props) => (
 )
 
 ResearchProject.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.object,
   title: PropTypes.string,
   summary: PropTypes.string
 }

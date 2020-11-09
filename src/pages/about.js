@@ -5,10 +5,10 @@ import Hero from 'sections/about/hero'
 import Institutions from 'sections/about/institutions'
 
 const About = () => (
-  <React.Fragment>
+  <div data-aos="fade">
     <Hero />
     <Institutions />
-  </React.Fragment>
+  </div>
 )
 
 export default About

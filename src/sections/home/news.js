@@ -7,6 +7,7 @@ import Slider from 'react-slick'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
+import { colors } from 'utils/variables/'
 
 // Components
 import Container from 'components/container/'
@@ -18,7 +19,7 @@ import SliderArrow from 'assets/icons/icon-carousel-arrow.inline.svg'
 
 const StyledNews = styled.section`
   position: relative;
-  padding: 40px 0 60px 0;
+  padding: 40px 0 120px 0;
   z-index: 5;
 
   ${breakpoint.medium`
@@ -42,17 +43,82 @@ const StyledNews = styled.section`
     }
   }
 
+  .slick-dots {
+    height: 8px;
+    bottom: -36px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    li {
+      width: 8px;
+      height: 8px;
+      margin: 0 4px 0 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.slick-active {
+        button {
+          background-color: ${colors.blue500};
+        }
+      }
+
+      button {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        background-color: ${colors.grey300};
+        border-radius: 50%;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+
   .slick-arrow {
+    width: 10px;
+    height: 16px;
+
     &::before {
       display: none;
     }
 
+    svg {
+      path {
+        stroke-width: 3;
+      }
+    }
+
     &.slick-prev {
-      left: -50px;
+      top: calc(100% + 32px);
+      left: 0;
+
+      ${breakpoint.medium`
+        top: 50%;
+        left: -48px;
+      `}
+
+      ${breakpoint.large`
+        right: -72px;
+      `}
     }
 
     &.slick-next {
-      right: -50px;
+      top: calc(100% + 32px);
+      right: 0;
+
+      ${breakpoint.medium`
+        top: 50%;
+        right: -48px;
+      `}
+
+      ${breakpoint.large`
+        right: -72px;
+      `}
     }
   }
 `
@@ -69,7 +135,7 @@ const StyledArrow = styled.div`
 const ArrowPrev = (props) => {
   return (
     <StyledArrow prev onClick={props.onClick} className={props.className}>
-      <SliderArrow />
+      <SliderArrow className="svg--stroke-blue500" />
     </StyledArrow>
   )
 }
@@ -77,7 +143,7 @@ const ArrowPrev = (props) => {
 const ArrowNext = (props) => {
   return (
     <StyledArrow onClick={props.onClick} className={props.className}>
-      <SliderArrow />
+      <SliderArrow className="svg--stroke-blue500" />
     </StyledArrow>
   )
 }
@@ -98,7 +164,6 @@ const News = () => {
   `)
 
   const settings = {
-    dots: false,
     infinite: true,
     speed: 600,
     slidesToShow: 3,
@@ -108,21 +173,20 @@ const News = () => {
       {
         breakpoint: 1199,
         settings: {
-          arrows: false,
+          dots: false,
           slidesToShow: 3
         }
       },
       {
-        breakpoint: 1023,
+        breakpoint: 1024,
         settings: {
-          arrows: false,
           slidesToShow: 2
         }
       },
       {
         breakpoint: 767,
         settings: {
-          arrows: false,
+          dots: true,
           slidesToShow: 1
         }
       }
@@ -135,7 +199,7 @@ const News = () => {
       <Container>
         <div className="section__title">
           <p className="section__subtitle color--black">Press</p>
-          <h2 className="color--blue500">HPI·MS in the news</h2>
+          <h3 className="color--blue500">HPI·MS in the news</h3>
         </div>
 
         <Slider {...settings}>

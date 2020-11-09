@@ -14,6 +14,10 @@ const Container = styled.div`
     padding: 0 40px;
   `}
 
+  ${breakpoint.medium`
+    padding: 0 80px;
+  `}
+
   ${breakpoint.large`
     padding: 0;
   `}

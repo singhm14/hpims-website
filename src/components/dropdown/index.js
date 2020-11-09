@@ -6,13 +6,15 @@ import styled from 'styled-components'
 
 // Utils
 import { colors } from 'utils/variables/'
-import { getSlug } from 'utils/functions/'
+import { getSlug, unSlug } from 'utils/functions/'
 
 // Icons
 import IconCaretDown from 'assets/icons/icon-caret-down.inline.svg'
+import IconCheck from 'assets/icons/icon-check.svg'
 
 const StyledDropdown = styled.div`
   position: relative;
+  margin-top: ${(props) => (props.selectedOption !== '' ? '16px' : '0')};
 
   .dropdown__label {
     position: relative;
@@ -20,6 +22,12 @@ const StyledDropdown = styled.div`
     font-weight: 600;
     transform: ${(props) => (props.selectedOption !== '' ? 'translateY(0)' : 'translateY(32px)')};
     z-index: 999;
+  }
+
+  .dropdown__clear {
+    padding: 12px;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .dropdown {
@@ -38,20 +46,23 @@ const StyledDropdown = styled.div`
       span {
         min-height: 24px;
       }
+
+      svg {
+        transition: all 0s;
+        transform: ${(props) => (props.active ? 'rotate(180deg)' : 'rotate(0deg)')};
+      }
     }
 
     .dropdown__options {
-      max-height: ${(props) => (props.active ? '500px' : '0')};
-      padding: 0 8px;
+      max-height: ${(props) => (props.active ? '330px' : '0')};
       margin-top: 8px;
       background-color: ${colors.white};
       list-style: none;
       box-shadow: ${(props) => (props.active ? '2px 2px 20px 4px rgba(0, 0, 0, 0.16)' : null)};
-      overflow: hidden;
+      overflow: auto;
 
       li {
-        padding: 16px 8px;
-        border-bottom: 1px solid ${colors.grey300};
+        border-bottom: 1px solid ${colors.grey500};
 
         &:first-child {
           border-top: 0;
@@ -61,11 +72,28 @@ const StyledDropdown = styled.div`
           border-bottom: 0;
         }
 
+        &.active {
+          color: ${colors.blue500};
+          font-weight: 600;
+
+          button {
+            &::after {
+              content: url(${IconCheck});
+              display: inline-block;
+            }
+          }
+        }
+
         button {
           width: 100%;
           display: flex;
           align-items: center;
           justify-content: space-between;
+          padding: 16px;
+          
+          span {
+            text-align: left;
+          }
         }
       }
     }
@@ -81,13 +109,19 @@ class Dropdown extends React.Component {
     }
   }
 
+  componentDidMount = () => {
+    if (this.props.defaultOption) {
+      this.setState({
+        selectedOption: unSlug(this.props.defaultOption)
+      })
+    }
+  }
+
   toggleDropdown = () => {
     this.setState((prevState) => ({
       active: !prevState.active
     }))
   }
-
-  openDropdown = () => {}
 
   closeDropdown = () => {
     if (this.state.active) {
@@ -110,6 +144,18 @@ class Dropdown extends React.Component {
     this.props.callbackFunction(event)
   }
 
+  handleReset = () => {
+    this.setState(
+      {
+        selectedOption: ''
+      },
+      () => {
+        this.closeDropdown()
+        this.props.resetFunction()
+      }
+    )
+  }
+
   render = (props) => (
     <StyledDropdown active={this.state.active} selectedOption={this.state.selectedOption}>
       <p className="dropdown__label color--blue500">{this.props.label}</p>
@@ -129,6 +175,11 @@ class Dropdown extends React.Component {
             </li>
           ))}
         </ul>
+        {this.state.active && this.state.selectedOption !== '' && (
+          <button type="button" onClick={this.handleReset} className="dropdown__clear color--blue300 font-weight--600">
+            Clear filter
+          </button>
+        )}
       </div>
     </StyledDropdown>
   )

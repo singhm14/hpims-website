@@ -1,37 +1,88 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Libraries
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
+import queryString from 'query-string'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
+import { getSlug } from 'utils/functions/'
 
 // Components
+import FiltersWrapper from 'components/filters-wrapper/'
 import Dropdown from 'components/dropdown/'
+import { PrimaryExternal } from 'components/buttons/'
+
+// Icons
+import IconReset from 'assets/icons/icon-reset.inline.svg'
 
 const StyledFilters = styled.div`
   width: 100%;
+  height: 100%;
   margin-bottom: 32px;
 
   ${breakpoint.small`
-    max-width: 256px;
     margin: 0;
   `}
+
+  .filters__title {
+    text-transform: uppercase;
+  }
+
+  .filters__button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+
+    svg {
+      display: none;
+    }
+  }
+
+  .filters__reset {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 40px;
+
+    svg {
+      margin-left: 6px;
+    }
+  }
 `
 
 const Filters = () => {
+  // Default states
+  const defaultYear = typeof window !== 'undefined' ? queryString.parse(window.location.search).year : null
+  const defaultCategory = typeof window !== 'undefined' ? queryString.parse(window.location.search).category : null
+  const defaultAuthor = typeof window !== 'undefined' ? queryString.parse(window.location.search).author : null
+  const defaultPublicationMethod = typeof window !== 'undefined' ? queryString.parse(window.location.search).publicationMethod : null
+
   // Store filters as state
-  const [year, handleYearFilter] = useState(null)
-  const [category, handleCategoryFilter] = useState(null)
-  const [author, handleAuthorFilter] = useState(null)
-  const [publicationMethod, handlePublicationMethodFilter] = useState(null)
+  const [year, handleYearFilter] = useState(defaultYear)
+  const [category, handleCategoryFilter] = useState(defaultCategory)
+  const [author, handleAuthorFilter] = useState(defaultAuthor)
+  const [publicationMethod, handlePublicationMethodFilter] = useState(defaultPublicationMethod)
+
+  const [urlQueryString, handleQueryString] = useState('')
+
+  // We'll build the urlQueryString
+  useEffect(() => {
+    let toReturn = '?'
+
+    year && (toReturn += 'year=' + year)
+    category && (toReturn === '?' ? (toReturn += 'category=' + category) : (toReturn += '&category=' + category))
+    author && (toReturn === '?' ? (toReturn += 'author=' + author) : (toReturn += '&author=' + author))
+    publicationMethod && (toReturn === '?' ? (toReturn += 'publicationMethod=' + publicationMethod) : (toReturn += '&publicationMethod=' + publicationMethod))
+
+    handleQueryString(toReturn)
+  }, [year, category, author, publicationMethod])
 
   const data = useStaticQuery(graphql`
     query {
       allContentfulPublications {
         nodes {
-          year
+          year(formatString: "yyyy")
           tags
           internalAuthors {
             ... on ContentfulTeamMembers {
@@ -76,16 +127,24 @@ const Filters = () => {
   publicationMethods = Array.from(new Set(publicationMethods))
 
   return (
-    <StyledFilters>
-      <Dropdown label="Year" options={years} callbackFunction={(event) => handleYearFilter(event.target.innerText)} />
-      <Dropdown label="Category" options={tags} callbackFunction={(event) => handleCategoryFilter(event.target.innerText)} />
-      <Dropdown label="Author" options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(event.target.innerText)} />
-      <Dropdown label="Publication Method" options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(event.target.innerText)} />
+    <FiltersWrapper filterText="Filter Publications">
+      <StyledFilters>
+        <p className="filters__title paragraph--small font-weight--600">{year || category || author || publicationMethod ? 'Filtered by' : 'Filter by'}</p>
+        <Dropdown label="Year" defaultOption={defaultYear} options={years} callbackFunction={(event) => handleYearFilter(getSlug(event.target.innerText))} resetFunction={() => handleYearFilter(null)} />
+        <Dropdown label="Category" defaultOption={defaultCategory} options={tags} callbackFunction={(event) => handleCategoryFilter(getSlug(event.target.innerText))} resetFunction={() => handleCategoryFilter(null)} />
+        <Dropdown label="Author" defaultOption={defaultAuthor} options={internalAuthors} callbackFunction={(event) => handleAuthorFilter(getSlug(event.target.innerText))} resetFunction={() => handleAuthorFilter(null)} />
+        <Dropdown label="Publication Method" defaultOption={defaultPublicationMethod} options={publicationMethods} callbackFunction={(event) => handlePublicationMethodFilter(getSlug(event.target.innerText))} resetFunction={() => handlePublicationMethodFilter(null)} />
 
-      <p>
-        ?year={year}&category={category}&author={author}&publicatioMethod={publicationMethod}
-      </p>
-    </StyledFilters>
+        <PrimaryExternal disabled={year === defaultYear && category === defaultCategory && author === defaultAuthor && publicationMethod === defaultPublicationMethod} className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString === '?' ? '/publications' : '/publications/' + urlQueryString} text="Apply Filter" />
+
+        {year || category || author || publicationMethod ? (
+          <a href="/publications" className="filters__reset color--blue300 font-weight--600 svg--stroke-blue300">
+            Clear all filters
+            <IconReset />
+          </a>
+        ) : null}
+      </StyledFilters>
+    </FiltersWrapper>
   )
 }
 

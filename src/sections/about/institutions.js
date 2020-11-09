@@ -51,11 +51,16 @@ const StyledInstitutions = styled.section`
   }
 
   .institution__card {
+    height: 100%;
     background-color: ${colors.white};
-    box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
 
     .institute__content {
-      padding: 40px;
+      padding: 40px 16px;
+      box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
+
+      ${breakpoint.medium`
+        padding: 40px;
+      `}
 
       .logo {
         height: 80px;
@@ -71,11 +76,18 @@ const StyledInstitutions = styled.section`
       }
 
       .link {
+        align-self: flex-end;
         margin-top: 48px;
         display: flex;
         align-items: center;
         padding-bottom: 16px;
         border-bottom: 1px solid ${colors.blue500};
+
+        &.link--hpims {
+          ${breakpoint.large`
+            margin-top: 82px;
+          `}
+        }
 
         svg {
           margin-left: 8px;
@@ -111,7 +123,7 @@ const Institutions = () => {
           }
         }
       }
-      hassoPlattner: file(relativePath: { eq: "about/institution-hasso-platner.png" }) {
+      hassoPlattner: file(relativePath: { eq: "about/institution-hasso-platner.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 544, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
@@ -138,7 +150,7 @@ const Institutions = () => {
   return (
     <StyledInstitutions>
       <Container>
-        <p className="institutions__title color--grey700 font-weight--600">Our Home Institutions</p>
+        <p className="institutions__title color--grey700 paragraph--small font-weight--600">Our Home Institutions</p>
         <Grid gutter="32" columns="2">
           <div className="grid__item">
             <div className="institution__card">
@@ -149,21 +161,16 @@ const Institutions = () => {
                   <IconMountSinai />
                 </div>
 
-                <h4 className="name color--black">
-                  Mount Sinai
-                  <br />
-                  Health System
-                </h4>
+                <h4 className="name color--black font-weight--600">Mount Sinai Health System</h4>
 
                 <p className="summary">
-                  The Mount Sinai Health System is an integrated health care system providing exceptional medical care to our local and global communities.
-                  <br />
+                  The Mount Sinai Health System is an integrated health care system providing exceptional medical care to our local and global communities. <br />
                   Encompassing the Icahn School of Medicine at Mount Sinai and eight hospital campuses in the New York metropolitan area, as well as a large, regional ambulatory footprint, Mount Sinai is internationally acclaimed for its excellence in research, patient care, and education across a range of specialties.
                 </p>
 
                 <Accordion openText="Read more +" closedText="Read less -" content={<p>The Health System is designed to increase efficiencies and economies of scale; improve quality and outcomes; and expand access to advanced primary, specialty, and ambulatory care services throughout a wide clinical network. The Health System includes more than 7,200 physicians, including general practitioners and specialists, and 13 free-standing joint-venture centers. Mount Sinai also features a robust and continually expanding network of multispecialty services, including more than 400 ambulatory practice locations throughout the five boroughs of New York City, Westchester, and Long Island. With an extraordinary array of resources for the provision of compassionate, state-of-the-art care, the Mount Sinai Health System is poised to identify and respond to the health-related needs of the diverse populations we serve.</p>} />
 
-                <a className="link color--blue500 font-weight--600 svg--stroke-blue500" href="https://mountsinai.org/" target="_blank" rel="noopener noreferrer">
+                <a className="link link--hpims color--blue500 font-weight--600 svg--stroke-blue500" href="https://mountsinai.org/" target="_blank" rel="noopener noreferrer">
                   Visit Website
                   <IconExternal />
                 </a>
@@ -171,7 +178,11 @@ const Institutions = () => {
                 <div className="subinstitute">
                   <Img className="subinstitute__logo" fixed={data.logoIcahnSchool.childImageSharp.fixed} alt="Icahn School of Medicine at Mount Sinai" />
                   <h5>Icahn School of Medicine at Mount Sinai</h5>
-                  <p className="summary">The Icahn School of Medicine at Mount Sinai is an international leader in medical and scientific training, biomedical research, and patient care. It is the medical school for the Mount Sinai Health System, which includes eight hospital campuses, and has more than 5,000 faculty and nearly 2,000 students, residents and fellows. Our unwavering pursuit of intellectual exchange, breakthrough research, and multidisciplinary teamwork propels us ever forward in biomedical discoveries and advances. We pursue ideas that often challenge conventional wisdom to revolutionize the practice of medicine and produce dramatically better outcomes for patients. We make big, bold bets by investing in radical free thinkers and technology at the cutting edge.</p>
+                  <p className="summary">
+                    The Icahn School of Medicine at Mount Sinai is an international leader in medical and scientific training, biomedical research, and patient care. It is the medical school for the Mount Sinai Health System, which includes eight hospital campuses, and has more than 5,000 faculty and nearly 2,000 students, residents and fellows. Our unwavering pursuit of intellectual exchange, breakthrough research, and multidisciplinary teamwork propels us ever forward in biomedical discoveries and advances. We pursue ideas that often challenge conventional wisdom to revolutionize the practice of medicine and produce dramatically better outcomes for patients. We make big, bold bets by investing in radical free thinkers and technology at the cutting edge.
+                    <br />
+                    <br />
+                  </p>
 
                   <a className="link color--blue500 font-weight--600 svg--stroke-blue500" href="https://icahn.mssm.edu/" target="_blank" rel="noopener noreferrer">
                     Visit Website
@@ -191,7 +202,7 @@ const Institutions = () => {
                   <IconHassoPlattner />
                 </div>
 
-                <h4 className="name color--black">Hasso Plattner Institute for Digital Engineering</h4>
+                <h4 className="name color--black font-weight--600">Hasso Plattner Institute for Digital Engineering</h4>
 
                 <p className="summary"> The Hasso Plattner Institute (HPI) in Potsdam is Germany's university center of excellence for digital engineering, advancing research and education in IT systems engineering, data engineering, cyber security, entrepreneurship, and digital health. With its bachelor‘s and master’s degree programs, the Faculty of Digital Engineering, established jointly by HPI and the University of Potsdam, offers innovative engineering- and application-oriented study programs.</p>
 

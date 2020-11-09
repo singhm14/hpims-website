@@ -26,10 +26,14 @@ const StyledLastEvent = styled.section`
 
   ${Container} {
     max-width: 928px;
+
+    ${breakpoint.medium`
+      padding: 0;
+    `}
   }
 
   .event__carousel {
-    margin-bottom: 56px;
+    margin-bottom: 72px;
   }
 
   .slick-track {
@@ -46,6 +50,42 @@ const StyledLastEvent = styled.section`
 
     &.slick-active {
       opacity: 1;
+    }
+  }
+
+  .slick-dots {
+    height: 8px;
+    bottom: -20px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    li {
+      width: 8px;
+      height: 8px;
+      margin: 0 4px 0 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.slick-active {
+        button {
+          background-color: ${colors.blue300};
+        }
+      }
+
+      button {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        background-color: ${colors.white};
+        border-radius: 50%;
+
+        &::before {
+          display: none;
+        }
+      }
     }
   }
 
@@ -98,7 +138,12 @@ const StyledLastEvent = styled.section`
       `}
 
       .subtitle {
+        margin-bottom: 8px;
         text-transform: uppercase;
+
+        ${breakpoint.medium`
+          margin-bottom: 16px;
+        `}
       }
 
       p {
@@ -107,8 +152,13 @@ const StyledLastEvent = styled.section`
 
       .location {
         align-self: flex-end;
+        margin-top: 40px;
         margin-bottom: 0;
         font-weight: 400;
+
+        ${breakpoint.medium`
+          margin-top: 0;
+        `}
       }
     }
 
@@ -215,6 +265,7 @@ const LastEvent = () => {
       {
         breakpoint: 1023,
         settings: {
+          dots: true,
           arrows: false
         }
       },
@@ -243,7 +294,7 @@ const LastEvent = () => {
         <div className="event__description">
           <div className="date">
             <div>
-              <p className="subtitle paragraph--large">Our Last Event</p>
+              <p className="subtitle">Our Last Event</p>
               <h3>HPI - Mount Sinai Digital Health Forum</h3>
             </div>
 

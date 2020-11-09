@@ -30,25 +30,21 @@ const StyledFooter = styled.footer`
   }
 
   .email {
-    margin-bottom: 24px;
-
-    ${breakpoint.medium`
-      margin-bottom: 64px;
-    `}
+    margin-bottom: 64px;
 
     p {
       margin-bottom: 8px;
       text-transform: uppercase;
     }
 
-    h4 {
+    h5 {
       font-weight: 400;
     }
   }
 
   ul {
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
     list-style: none;
 
     ${breakpoint.medium`
@@ -56,24 +52,16 @@ const StyledFooter = styled.footer`
     `}
 
     .column {
-      margin-right: 32px;
-
-      &:last-child {
-        margin-right: 0;
-      }
-
-      ${breakpoint.small`
-        margin-right: 64px;
-      `}
+      margin-right: 126px;
 
       ${breakpoint.medium`
-        margin-right: 152px;
+        margin-right: 146px;
       `}
     }
 
     li {
       margin-bottom: 12px;
-      font-size: 14px;
+      font-size: 16px;
 
       &:last-child {
         margin-bottom: 0;
@@ -86,6 +74,9 @@ const StyledFooter = styled.footer`
   }
 
   .footer__logos {
+    max-width: 208px;
+    margin-left: auto;
+
     ${breakpoint.medium`
       text-align: right;
     `}
@@ -93,7 +84,12 @@ const StyledFooter = styled.footer`
     .logos {
       width: auto;
       height: 52px;
-      margin-bottom: 24px;
+      display: flex;
+      margin-bottom: 12px;
+
+      ${breakpoint.medium`
+        margin-bottom: 24px;
+      `}
     }
 
     svg {
@@ -109,6 +105,7 @@ const StyledFooter = styled.footer`
 
     p {
       font-weight: 500;
+      text-align: right;
     }
   }
 `
@@ -118,44 +115,44 @@ const Footer = () => (
     <Container>
       <div className="footer__sitemap">
         <div className="email">
-          <p className="paragraph--small color--blue500">Contact Us</p>
-          <h4>
-            <a href="mailto:hpimsinfo@mssm.edu" className="color--blue300 color-hover--magenta300">
+          <p className="paragraph--small color--grey900 font-weight--600">Contact Us</p>
+          <h5>
+            <a href="mailto:hpimsinfo@mssm.edu" className="color--blue500 color-hover--blue300">
               HPIMSinfo@mssm.edu
             </a>
-          </h4>
+          </h5>
         </div>
         <ul>
           <div className="column">
             <li>
-              <Link to="/" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/about" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 About
               </Link>
             </li>
             <li>
-              <Link to="/team" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 Team
               </Link>
             </li>
           </div>
           <div className="column">
             <li>
-              <Link to="/research" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/research" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 Research
               </Link>
             </li>
             <li>
-              <Link to="/publications" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/publications" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 Publications
               </Link>
             </li>
             <li>
-              <Link to="/careers" className="color--blue500 color-hover--magenta300" activeClassName="active">
+              <Link to="/" className="color--blue500 color-hover--blue300 font-weight--500" activeClassName="active">
                 Careers
               </Link>
             </li>

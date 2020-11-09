@@ -42,12 +42,13 @@ const StyledMenu = styled.nav`
   a,
   button {
     transition: all 0.3s;
-    border-bottom: 1px solid transparent;
+    border-bottom: 2px solid transparent;
 
     &:hover {
       color: ${colors.blue300};
 
       ${breakpoint.medium`
+        color: initial;
         border-color: ${colors.blue300};
       `}
     }
@@ -118,7 +119,8 @@ const StyledMenu = styled.nav`
     position: relative;
     padding-top: ${(props) => (props.isMenuOpen ? '16px' : '0')};
     transition: all 0.6s ease;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     ${breakpoint.small`
       width: auto;
@@ -205,11 +207,12 @@ const StyledMenu = styled.nav`
       left: ${(props) => (props.isSubMenuOpen ? '0' : '120%')};
       padding-top: 24px;
       background-color: ${colors.white};
+      overflow-y: auto;
       transition: all 0.3s ease;
 
       ${breakpoint.small`
         width: 512px;
-        top: 53px;
+        top: 52px;
         right: 0;
         bottom: auto;
         left: auto;
@@ -304,12 +307,14 @@ const Menu = () => {
 
   // Locks scroll if `isMenuOpen`
   useEffect(() => {
-    if (isMenuOpen) {
-      document.querySelector('html').classList.add('no-scroll')
-      document.querySelector('body').classList.add('no-scroll')
-    } else {
-      document.querySelector('html').classList.remove('no-scroll')
-      document.querySelector('body').classList.remove('no-scroll')
+    if (window.innerWidth <= 768) {
+      if (isMenuOpen) {
+        document.querySelector('html').classList.add('no-scroll')
+        document.querySelector('body').classList.add('no-scroll')
+      } else {
+        document.querySelector('html').classList.remove('no-scroll')
+        document.querySelector('body').classList.remove('no-scroll')
+      }
     }
   })
 
@@ -317,14 +322,16 @@ const Menu = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
 
-      if (scrollPosition > 80) {
-        if (scrollPosition > lastScrollPosition) {
-          if (!isScrollingDown) {
-            handleVisibility(true)
-          }
-        } else {
-          if (isScrollingDown) {
-            handleVisibility(false)
+      if (!isSubMenuOpen) {
+        if (scrollPosition > 80) {
+          if (scrollPosition > lastScrollPosition) {
+            if (!isScrollingDown) {
+              handleVisibility(true)
+            }
+          } else {
+            if (isScrollingDown) {
+              handleVisibility(false)
+            }
           }
         }
       }
@@ -348,7 +355,7 @@ const Menu = () => {
       labs: allContentfulLabs {
         nodes {
           id
-          name
+          title
         }
       }
     }
@@ -371,28 +378,32 @@ const Menu = () => {
         <div className="menu__content">
           <ul>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about" onClick={() => toggleMenu()}>
+                About
+              </Link>
             </li>
             <li>
-              <Link to="/team">Team</Link>
+              <Link to="/team" onClick={() => toggleMenu()}>
+                Team
+              </Link>
             </li>
             <li className="menu__has-submenu">
-              <button type="button" onClick={() => toggleSubMenu()}>
+              <button type="button" onClick={() => {toggleSubMenu()}}>
                 Research
                 <IconCaretDown />
               </button>
 
               <div className="submenu">
                 <h5 className="submenu__closer">
-                  <button type="button" onClick={() => toggleSubMenu()}>
+                  <button type="button" onClick={() => {toggleSubMenu()}}>
                     <IconArrowLeft />
                     Research
                   </button>
                 </h5>
 
                 <div className="submenu__general-link">
-                  <Link to="/research" className="color--black font-weight--500">
-                    All Research initiatives
+                  <Link to="/research" className="color--black font-weight--500" onClick={() => {toggleSubMenu(); toggleMenu()}}>
+                    All Research Initiatives
                   </Link>
                 </div>
 
@@ -400,18 +411,23 @@ const Menu = () => {
                   <p className="paragraph-small color--grey700">Core Research Projects</p>
                   {data.researchProjects.nodes.map((project) => (
                     <li key={project.id}>
-                      <Link to={'/research-projects/' + getSlug(project.title)} className="font-weight--500">
+                      <Link to={'/research-projects/' + getSlug(project.title)} className="font-weight--500" onClick={() => {toggleSubMenu(); toggleMenu()}}>
                         {project.title}
                       </Link>
                     </li>
                   ))}
+                  <li>
+                    <Link to="/research-projects/co-innovation-research-exchange" className="font-weight--500" onClick={() => {toggleSubMenu(); toggleMenu()}}>
+                      Co-Innovation Research Exchange
+                    </Link>
+                  </li>
                 </ul>
                 <ul>
                   <p className="paragraph-small color--grey700">Our Labs</p>
                   {data.labs.nodes.map((lab) => (
                     <li key={lab.id}>
-                      <Link to={'/labs/' + getSlug(lab.name)} className="font-weight--500">
-                        {lab.name}
+                      <Link to={'/labs/' + getSlug(lab.title)} className="font-weight--500" onClick={() => {toggleSubMenu(); toggleMenu()}}>
+                        {lab.title}
                       </Link>
                     </li>
                   ))}
@@ -419,10 +435,14 @@ const Menu = () => {
               </div>
             </li>
             <li>
-              <Link to="/publications">Publications</Link>
+              <a href="/publications" onClick={() => toggleMenu()}>
+                Publications
+              </a>
             </li>
             <li>
-              <Link to="/careers">Careers</Link>
+              <Link to="/careers" onClick={() => toggleMenu()}>
+                Careers
+              </Link>
             </li>
           </ul>
         </div>
