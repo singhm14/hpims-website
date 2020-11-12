@@ -397,6 +397,7 @@ const Menu = () => {
                 to="/team"
                 onClick={() => {
                   toggleMenu()
+                  isSubMenuOpen && toggleSubMenu()
                 }}>
                 Team
               </Link>
@@ -485,6 +486,7 @@ const Menu = () => {
                 href="/publications"
                 onClick={() => {
                   toggleMenu()
+                  isSubMenuOpen && toggleSubMenu()
                 }}>
                 Publications
               </a>
@@ -494,6 +496,7 @@ const Menu = () => {
                 to="/careers"
                 onClick={() => {
                   toggleMenu()
+                  isSubMenuOpen && toggleSubMenu()
                 }}>
                 Careers
               </Link>
