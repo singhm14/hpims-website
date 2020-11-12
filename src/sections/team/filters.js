@@ -112,7 +112,7 @@ const Filters = () => {
 
         <Dropdown label="Project" defaultOption={defaultProject} options={projects} callbackFunction={(event) => handleProjectFilter(getSlug(event.target.innerText))} resetFunction={() => handleProjectFilter(null)} />
 
-        <PrimaryExternal disabled={role === defaultRole && lab === defaultLab && project === defaultProject} className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString === '?' ? '/team' : '/team/' + urlQueryString} text="Filter members" />
+        <PrimaryExternal disabled={role === defaultRole && lab === defaultLab && project === defaultProject} className="filters__button bg-hover--blue500 color--blue500 color-hover--white border--blue500 border-hover--blue500" href={urlQueryString === '?' ? '/team' : '/team/' + urlQueryString} text="Apply Filter" />
       </StyledFilters>
     </FiltersWrapper>
   )
