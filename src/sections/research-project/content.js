@@ -74,11 +74,17 @@ const options = {
       return <Img className="content__image" fluid={fluid} title="HPI·MS" />
     },
     [INLINES.HYPERLINK]: (node) => {
-      if (node.data.uri.indexOf('youtube.com') || node.data.uri.indexOf('vimeo.com')) {
+      if (node.data.uri.indexOf('youtube.com') > -1 || node.data.uri.indexOf('vimeo.com') > -1) {
         return (
           <div className="video-wrapper">
             <iframe title="HPI·MS" src={node.data.uri} frameBorder="0" allowFullScreen></iframe>
           </div>
+        )
+      } else {
+        return (
+          <a className="color--blue500 color-hover--blue300" href={node.data.uri} target="_blank" rel="noopener noreferrer">
+            {node.content[0].value}
+          </a>
         )
       }
     }
