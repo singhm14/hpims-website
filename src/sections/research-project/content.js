@@ -75,11 +75,20 @@ const options = {
     },
     [INLINES.HYPERLINK]: (node) => {
       if (node.data.uri.indexOf('youtube.com') > -1 || node.data.uri.indexOf('vimeo.com') > -1) {
-        return (
-          <div className="video-wrapper">
-            <iframe title="HPI·MS" src={node.data.uri} frameBorder="0" allowFullScreen></iframe>
-          </div>
-        )
+        if (node.data.uri.indexOf('youtube.com') > -1) {
+          const videoID = node.data.uri.split('https://www.youtube.com/watch?v=')[1]
+          return (
+            <div className="video-wrapper">
+              <iframe title="HPI·MS" src={'https://www.youtube.com/embed/' + videoID} frameBorder="0" allowFullScreen></iframe>
+            </div>
+          )
+        } else {
+          return (
+            <div className="video-wrapper">
+              <iframe title="HPI·MS" src={node.data.uri} frameBorder="0" allowFullScreen></iframe>
+            </div>
+          )
+        }
       } else {
         return (
           <a className="color--blue500 color-hover--blue300" href={node.data.uri} target="_blank" rel="noopener noreferrer">
