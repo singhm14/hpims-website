@@ -1,7 +1,8 @@
 import React from 'react'
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import styled from 'styled-components'
 import Slider from 'react-slick'
 
@@ -16,12 +17,12 @@ import Img from 'gatsby-image'
 // Icons
 import SliderArrow from 'assets/icons/icon-carousel-arrow.inline.svg'
 
-const StyledLastEvent = styled.section`
+const StyledFaculty = styled.section`
   padding-bottom: 40px;
   overflow: hidden;
 
   ${breakpoint.medium`
-    padding-bottom: 120px;
+    padding-bottom: 260px;
   `}
 
   ${Container} {
@@ -32,7 +33,7 @@ const StyledLastEvent = styled.section`
     `}
   }
 
-  .event__carousel {
+  .faculty__carousel {
     margin-bottom: 72px;
   }
 
@@ -155,6 +156,7 @@ const StyledLastEvent = styled.section`
         margin-top: 40px;
         margin-bottom: 0;
         font-weight: 400;
+        text-decoration: underline;
 
         ${breakpoint.medium`
           margin-top: 0;
@@ -197,55 +199,23 @@ const ArrowNext = (props) => {
   )
 }
 
-const LastEvent = () => {
-  const data = useStaticQuery(graphql`
+const Faculty = () => {
+  const {
+    allContentfulHomesFacultySection: { nodes: data }
+  } = useStaticQuery(graphql`
     query {
-      image1: file(relativePath: { eq: "home/event/event-image-1.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
+      allContentfulHomesFacultySection {
+        nodes {
+          subtitle
+          title
+          description {
+            description
+            json
           }
-        }
-      }
-      image2: file(relativePath: { eq: "home/event/event-image-2.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      image3: file(relativePath: { eq: "home/event/event-image-3.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      image4: file(relativePath: { eq: "home/event/event-image-4.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      image5: file(relativePath: { eq: "home/event/event-image-5.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      image6: file(relativePath: { eq: "home/event/event-image-6.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      image7: file(relativePath: { eq: "home/event/event-image-7.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 928, maxHeight: 480, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
+          photoGallery {
+            fluid(maxWidth: 928, maxHeight: 522, quality: 100) {
+              ...GatsbyContentfulFluid_withWebp
+            }
           }
         }
       }
@@ -278,38 +248,37 @@ const LastEvent = () => {
     ]
   }
 
+  const subtitle = data[0].subtitle
+  const title = data[0].title
+  const description = data[0].description.json
+  const photoGallery = data[0].photoGallery
+
   return (
-    <StyledLastEvent className="bg--blue500 color--white">
-      <Slider {...settings} className="event__carousel">
-        <Img className="event__image" fluid={data.image1.childImageSharp.fluid} alt="Our last event" />
-        <Img className="event__image" fluid={data.image2.childImageSharp.fluid} alt="Our last event" />
-        <Img className="event__image" fluid={data.image3.childImageSharp.fluid} alt="Our last event" />
-        <Img className="event__image" fluid={data.image4.childImageSharp.fluid} alt="Our last event" />
-        <Img className="event__image" fluid={data.image5.childImageSharp.fluid} alt="Our last event" />
-        <Img className="event__image" fluid={data.image6.childImageSharp.fluid} alt="Our last event" />
-        <Img className="event__image" fluid={data.image7.childImageSharp.fluid} alt="Our last event" />
+    <StyledFaculty className="bg--blue500 color--white">
+      <Slider {...settings} className="faculty__carousel">
+        {photoGallery.map((photo) => (
+          <Img className="event__image" fluid={photo.fluid} alt="HPI·MS" />
+        ))}
       </Slider>
 
       <Container>
         <div className="event__description">
           <div className="date">
             <div>
-              <p className="subtitle">Our Last Event</p>
-              <h3>HPI - Mount Sinai Digital Health Forum</h3>
+              <p className="subtitle">{subtitle}</p>
+              <h3>{title}</h3>
             </div>
 
-            <p className="location">2019 | Potsdam, Germany</p>
+            <Link to="/faculty" className="location">
+              More info
+            </Link>
           </div>
 
-          <div className="summary">
-            <p>We hosted a successful two-day conference on November 21 and November 22, 2019 at the Hasso Plattner Institute in Potsdam. The Forum introduced visions and strategies for driving the digital transformation of health care.</p>
-            <br />
-            <p>With more than 400 attendees and livestream viewers from around the world, the conference facilitated transatlantic co-innovation among international experts in medical and biological sciences, engineering, computer science, and research, from world-leading organizations.</p>
-          </div>
+          <div className="summary">{description && documentToReactComponents(description)}</div>
         </div>
       </Container>
-    </StyledLastEvent>
+    </StyledFaculty>
   )
 }
 
-export default LastEvent
+export default Faculty

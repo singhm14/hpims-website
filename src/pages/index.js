@@ -6,11 +6,11 @@ import Helmet from 'react-helmet'
 // Sections
 import Hero from 'sections/home/hero'
 import AboutUs from 'sections/home/about-us'
+import Faculty from 'sections/home/faculty'
 import WhyHPIMS from 'sections/home/why-hpims'
 import ResearchProjects from 'sections/home/research-projects'
 import Publications from 'sections/home/publications'
 import News from 'sections/home/news'
-import LastEvent from 'sections/home/last-event'
 
 const Home = () => (
   <React.Fragment>
@@ -20,11 +20,11 @@ const Home = () => (
     </Helmet>
     <Hero />
     <AboutUs />
+    <Faculty />
     <WhyHPIMS />
     <ResearchProjects />
     <Publications />
     <News />
-    <LastEvent />
   </React.Fragment>
 )
 
