@@ -166,6 +166,18 @@ const StyledFaculty = styled.section`
 
     .summary {
       max-width: 448px;
+
+      p {
+        margin: 1em 0;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 `
