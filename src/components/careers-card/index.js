@@ -2,113 +2,50 @@ import React from 'react'
 
 // Libraries
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
 import { colors } from 'utils/variables/'
+import { getSlug } from 'utils/functions/'
 
 // Components
 import Grid from 'components/grid/'
-import Accordion from 'components/accordion/'
 
-const StyledCareersCard = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.08));
+// Icons
+import IconCaret from 'assets/icons/icon-caret-right.inline.svg'
 
-  ${breakpoint.medium`
-    flex-wrap: nowrap;
-  `}
+const StyledCareersCard = styled(Link)`
+  display: block;
+  box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
 
-  .careers__title {
-    width: 100%;
-    padding: 16px;
+  .card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
 
-    ${breakpoint.medium`
-      width: 256px;
-      padding: 32px 24px;
-    `}
-
-    > div {
-      height: 100%;
-
-      h5 {
-        position: sticky;
-        top: 104px;
-      }
+    svg {
+      width: auto;
+      height: 18px;
     }
   }
 
-  ul,
-  ol {
-    list-style-position: inside;
-
-    p {
-      display: inline;
-    }
-  }
-
-  .careers__content {
-    padding: 16px;
-    background-color: ${colors.white};
-
-    ${breakpoint.medium`
-      width: calc(100% - 256px);
-      padding: 32px;
-    `}
-
-    .careers__requirements {
-      margin: 40px 0;
-      font-size: 14px;
-    }
-
-    h4 {
-      margin-top: 40px;
-      margin-bottom: 16px;
-      color: ${colors.black};
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 20px;
-      border-bottom: 1px solid ${colors.grey500};
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-
-    button {
-      color: ${colors.blue300};
-      border-bottom: 2px solid ${colors.blue300};
-    }
+  .card__body {
+    padding: 24px;
   }
 `
 
 const CareersCard = (props) => (
-  <StyledCareersCard className="bg--grey100">
-    <div className="careers__title bg--blue100">
-      <div>
-        <h5 className="color--blue900 font-weight--600">{props.title}</h5>
-      </div>
+  <StyledCareersCard className="bg--grey100" to={'/careers/' + getSlug(props.title)}>
+    <div className="card__header bg--blue100 color--blue500">
+      <h5 className="color--blue500 font-weight--600">{props.title}</h5>
+      <IconCaret className="svg--stroke-blue500" />
     </div>
 
-    <div className="careers__content">
-      <p className="summary">{props.summary}</p>
-      <Grid className="careers__requirements" gutter="32" columns="2">
-        <div className="grid__item">
-          <h4>Requirements Summary</h4>
-          {props.requirements && documentToReactComponents(props.requirements.json)}
-        </div>
-
-        <div className="grid__item">
-          <h4>Apply Now</h4>
-          {props.applicationInstructions && documentToReactComponents(props.applicationInstructions.json)}
-        </div>
-      </Grid>
-
-      {props.details && <Accordion openText="Read More" closedText="Read Less" content={documentToReactComponents(props.details.json)} />}
-    </div>
+    <div className="card__body">{props.summary}</div>
   </StyledCareersCard>
 )
 
