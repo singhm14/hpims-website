@@ -22,6 +22,10 @@ const StyledCareersList = styled.section`
   ${Container} {
     max-width: 928px;
   }
+
+  .list__title {
+    margin-bottom: 32px;
+  }
 `
 
 const CareersList = () => {
@@ -50,10 +54,11 @@ const CareersList = () => {
   return (
     <StyledCareersList>
       <Container>
+        <h5 className="list__title font-weight--600">Open job postings</h5>
         <Grid gutter="32" columns="1">
           {data.allContentfulCareers.nodes.map((career) => (
             <div className="grid__item" data-aos="indicius-slide-up">
-              <CareersCard key={career.id} title={career.jobTitle} summary={career.jobSummary.jobSummary} requirements={career.requirementsSummary} applicationInstructions={career.applicationInstructions} details={career.jobDetails} />
+              <CareersCard key={career.id} title={career.jobTitle} summary={career.jobSummary.jobSummary} />
             </div>
           ))}
         </Grid>

@@ -4,15 +4,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
 import { getSlug } from 'utils/functions/'
-
-// Components
-import Grid from 'components/grid/'
 
 // Icons
 import IconCaret from 'assets/icons/icon-caret-right.inline.svg'
