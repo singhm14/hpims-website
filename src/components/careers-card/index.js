@@ -2,44 +2,69 @@ import React from 'react'
 
 // Libraries
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
+import { Link } from "gatsby"
 
 // Utils
-import { getSlug } from 'utils/functions/'
+import breakpoint from 'utils/breakpoints/'
+import { colors } from 'utils/variables/'
+import { getSlug } from "utils/functions/"
 
-// Icons
-import IconCaret from 'assets/icons/icon-caret-right.inline.svg'
+const StyledCareersCard = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.08));
 
-const StyledCareersCard = styled(Link)`
-  display: block;
-  box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
+  ${breakpoint.medium`
+    flex-wrap: nowrap;
+  `}
 
-  .card__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px;
+  .careers__title {
+    width: 100%;
+    padding: 16px;
 
-    svg {
-      width: auto;
-      height: 18px;
+    ${breakpoint.medium`
+      width: 256px;
+      padding: 32px 24px;
+    `}
+  }
+
+  ul,
+  ol {
+    list-style-position: inside;
+
+    p {
+      display: inline;
     }
   }
 
-  .card__body {
-    padding: 24px;
+  .careers__content {
+    padding: 16px;
+    background-color: ${colors.white};
+
+    ${breakpoint.medium`
+      width: calc(100% - 256px);
+      padding: 32px;
+    `}
+
+    .careers__link {
+      display: inline-block;
+      margin-top: 40px;
+      border-bottom: 2px solid ${colors.blue300};
+    }
   }
 `
 
 const CareersCard = (props) => (
-  <StyledCareersCard className="bg--grey100" to={'/careers/' + getSlug(props.title)}>
-    <div className="card__header bg--blue100 color--blue500">
+  <StyledCareersCard className="bg--grey100">
+    <div className="careers__title bg--blue100">
       <h5 className="color--blue500 font-weight--600">{props.title}</h5>
-      <IconCaret className="svg--stroke-blue500" />
     </div>
 
-    <div className="card__body">{props.summary}</div>
+    <div className="careers__content">
+      <p className="summary">{props.summary}</p>
+      <Link to={"/careers/" + getSlug(props.title)} className="careers__link color--blue300 font-weight--600">Learn more</Link>
+    </div>
   </StyledCareersCard>
 )
 

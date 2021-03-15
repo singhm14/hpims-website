@@ -54,7 +54,7 @@ const CareersList = () => {
   return (
     <StyledCareersList>
       <Container>
-        <h5 className="list__title font-weight--600">Open job postings</h5>
+        <h5 className="list__title font-weight--600">Current Opportunities</h5>
         <Grid gutter="32" columns="1">
           {data.allContentfulCareers.nodes.map((career) => (
             <div className="grid__item" data-aos="indicius-slide-up">
