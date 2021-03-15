@@ -99,7 +99,7 @@ const StyledBio = styled.section`
 
 const Bio = props => {
   const name = props.data.contentfulLabs.title
-  const profilePicture = props.data.contentfulLabs.headOfTheLab.profilePicture.fluid
+  const profilePicture = props.data.contentfulLabs.headOfTheLab?.profilePicture.fluid
   const bio = props.data.contentfulLabs.summary.summary
 
   return (
@@ -120,7 +120,7 @@ const Bio = props => {
             </div>
           </div>
 
-          <div className="bio__profile-picture">
+          {profilePicture && <div className="bio__profile-picture">
             <BackgroundImage
               className="profile-picture"
               fluid={profilePicture}
@@ -128,7 +128,7 @@ const Bio = props => {
                 backgroundSize: 'cover'
               }}
             />
-          </div>
+          </div>}
 
           <div className="bio__content mobile color--black">
             {bio && <p className="paragraph--large">{bio}</p>}
