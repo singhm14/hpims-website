@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import breakpoint from 'utils/breakpoints/'
 
 // Components
+import SEO from 'components/seo/'
 import Container from 'components/container/'
 
 // Sections
@@ -32,6 +33,7 @@ const Careers = (props) => {
 
   return (
     <React.Fragment>
+      <SEO title={data.jobTitle + ' | Hasso Plattner Institute for Digital Health at Mount Sinai'} description={data.jobSummary.jobSummary} />
       <Hero data={data} />
       <StyledContainer>
         <div className="sidebar-layout sidebar-layout--big">
