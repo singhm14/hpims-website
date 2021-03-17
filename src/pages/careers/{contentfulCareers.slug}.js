@@ -22,7 +22,7 @@ const StyledContainer = styled(Container)`
   .sidebar-layout--big {
     .sidebar {
       ${breakpoint.medium`
-        width: 352px;
+        width: 352px!important;
       `}
     }
   }
