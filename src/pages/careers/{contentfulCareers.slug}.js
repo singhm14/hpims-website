@@ -13,6 +13,7 @@ import Container from 'components/container/'
 // Sections
 import Hero from 'sections/career/hero'
 import Sidebar from 'sections/career/sidebar'
+import Content from 'sections/career/content'
 
 const StyledContainer = styled(Container)`
   max-width: 928px;
@@ -37,7 +38,9 @@ const Careers = (props) => {
           <div className="sidebar">
             <Sidebar data={data} />
           </div>
-          <div className="content"></div>
+          <div className="content">
+            <Content data={data} />
+          </div>
         </div>
       </StyledContainer>
     </React.Fragment>
