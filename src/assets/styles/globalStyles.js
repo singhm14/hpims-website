@@ -205,7 +205,13 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .breadcrumb {
+    display: inline-flex;
+    align-items: center;
     text-transform: uppercase;
+
+    svg {
+      margin-right: 12px;
+    }
   }
   
   ${Helpers}

@@ -35,6 +35,7 @@ const CareersList = () => {
         nodes {
           id
           jobTitle
+          slug
           jobSummary {
             jobSummary
           }
@@ -58,7 +59,7 @@ const CareersList = () => {
         <Grid gutter="32" columns="1">
           {data.allContentfulCareers.nodes.map((career) => (
             <div className="grid__item" data-aos="indicius-slide-up">
-              <CareersCard key={career.id} title={career.jobTitle} summary={career.jobSummary.jobSummary} />
+              <CareersCard key={career.id} title={career.jobTitle} slug={career.slug} summary={career.jobSummary.jobSummary} />
             </div>
           ))}
         </Grid>

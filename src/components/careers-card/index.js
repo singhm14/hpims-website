@@ -3,12 +3,12 @@ import React from 'react'
 // Libraries
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { Link } from "gatsby"
+import { Link } from 'gatsby'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
 import { colors } from 'utils/variables/'
-import { getSlug } from "utils/functions/"
+import { getSlug } from 'utils/functions/'
 
 const StyledCareersCard = styled.div`
   display: flex;
@@ -63,7 +63,9 @@ const CareersCard = (props) => (
 
     <div className="careers__content">
       <p className="summary">{props.summary}</p>
-      <Link to={"/careers/" + getSlug(props.title)} className="careers__link color--blue300 font-weight--600">Learn more</Link>
+      <Link to={'/careers/' + props.slug ? props.slug : getSlug(props.title)} className="careers__link color--blue300 font-weight--600">
+        Learn more
+      </Link>
     </div>
   </StyledCareersCard>
 )
