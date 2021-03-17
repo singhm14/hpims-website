@@ -19,6 +19,10 @@ const StyledHero = styled(HeroComponent)`
     min-height: 454px;
   `}
 
+  ${Container} {
+    max-width: 928px;
+  }
+
   .breadcrumb {
     svg {
       transform: rotate(180deg);
