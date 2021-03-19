@@ -15,8 +15,12 @@ import Container from 'components/container/'
 import IconCaret from 'assets/icons/icon-caret-right.inline.svg'
 
 const StyledHero = styled(HeroComponent)`
+  min-height: auto;
+  padding: 112px 0 56px 0;
+
   ${breakpoint.medium`
-    min-height: 454px;
+    min-height: auto!important;
+    padding: 174px 0 96px 0;
   `}
 
   ${Container} {
