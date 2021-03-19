@@ -24,6 +24,8 @@ const StyledHero = styled(HeroComponent)`
   }
 
   .breadcrumb {
+    margin-bottom: 32px;
+
     svg {
       transform: rotate(180deg);
     }
