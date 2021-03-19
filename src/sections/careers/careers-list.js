@@ -31,8 +31,8 @@ const StyledCareersList = styled.section`
 const CareersList = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulCareers {
-        nodes {
+      contentfulContentOrder {
+        careers {
           id
           jobTitle
           slug
@@ -57,7 +57,7 @@ const CareersList = () => {
       <Container>
         <h5 className="list__title font-weight--600">Current Opportunities</h5>
         <Grid gutter="32" columns="1">
-          {data.allContentfulCareers.nodes.map((career) => (
+          {data.contentfulContentOrder.careers.map((career) => (
             <div className="grid__item" data-aos="indicius-slide-up">
               <CareersCard key={career.id} title={career.jobTitle} slug={career.slug} summary={career.jobSummary.jobSummary} />
             </div>
