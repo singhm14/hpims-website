@@ -65,6 +65,11 @@ export const query = graphql`
       jobDetails {
         json
       }
+      jobPostPdf {
+        file {
+          url
+        }
+      }
     }
   }
 `

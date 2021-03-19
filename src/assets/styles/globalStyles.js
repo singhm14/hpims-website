@@ -92,6 +92,7 @@ const GlobalStyles = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+    box-sizing: border-box;
     transition: all 0.3s ease;
   }
 

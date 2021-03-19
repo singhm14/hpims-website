@@ -9,6 +9,7 @@ import IconEnvelope from 'assets/icons/icon-envelope.inline.svg'
 import IconTwitter from 'assets/icons/icon-twitter.inline.svg'
 import IconFacebook from 'assets/icons/icon-facebook.inline.svg'
 import IconLinkedIn from 'assets/icons/icon-linkedin.inline.svg'
+import IconDownload from 'assets/icons/icon-download.inline.svg'
 
 const StyledSidebar = styled.div`
   .sidebar__content {
@@ -45,6 +46,30 @@ const StyledSidebar = styled.div`
         }
       }
     }
+
+    .social__download-button {
+      width: 100%;
+      display: inline-block;
+      padding: 12px 24px;
+      margin-top: 12px;
+      text-align: center;
+
+      svg {
+        margin-left: 4px;
+
+        * {
+          transition: all 0.3s ease;
+        }
+      }
+
+      &:hover {
+        svg {
+          * {
+            stroke: #fff;
+          }
+        }
+      }
+    }
   }
 `
 
@@ -52,7 +77,8 @@ const Sidebar = (props) => {
   const {
     slug,
     jobSummary: { jobSummary: summary },
-    applicationInstructions: instructions
+    applicationInstructions: instructions,
+    jobPostPdf: pdf
   } = props.data
 
   return (
@@ -92,6 +118,13 @@ const Sidebar = (props) => {
               </a>
             </li>
           </ul>
+
+          {pdf && (
+            <a href={'https:' + pdf.file.url} className="social__download-button bg-hover--blue500 border--blue500 color--blue500 color-hover--white font-weight--600" target="_blank" rel="noopener noreferrer">
+              Download PDF
+              <IconDownload />
+            </a>
+          )}
         </div>
       </div>
     </StyledSidebar>
