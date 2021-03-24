@@ -493,6 +493,16 @@ const Menu = () => {
             </li>
             <li>
               <Link
+                to="/faculty"
+                onClick={() => {
+                  toggleMenu()
+                  isSubMenuOpen && toggleSubMenu()
+                }}>
+                Faculty
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/careers"
                 onClick={() => {
                   toggleMenu()
