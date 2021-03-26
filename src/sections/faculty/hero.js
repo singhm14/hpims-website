@@ -11,12 +11,29 @@ import breakpoint from 'utils/breakpoints/'
 // Components
 import Container from 'components/container/'
 
+// Icons
+import IconRibbons from 'assets/icons/faculty/icon-ribbons.inline.svg'
+
 const StyledHero = styled.section`
+  position: relative;
   padding-top: 120px;
 
   ${breakpoint.medium`
     padding-top: 200px;
   `}
+
+  .hero__icon {
+    width: auto;
+    height: 60%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+
+    ${breakpoint.medium`
+      height: 150%;
+    `}
+  }
 
   ${Container} {
     max-width: 928px;
@@ -50,6 +67,7 @@ const Hero = (props) => {
 
   return (
     <StyledHero>
+      <IconRibbons className="hero__icon" />
       <Container>
         <div className="hero__content">
           <p className="hero__subtitle color--blue500 font-weight--600">FACULTY</p>
