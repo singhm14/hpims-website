@@ -2,6 +2,8 @@ import React from 'react'
 
 // Libraries
 import styled from 'styled-components'
+import { BLOCKS } from '@contentful/rich-text-types'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
@@ -22,6 +24,14 @@ const StyledHero = styled.section`
 
   .hero__content {
     max-width: 640px;
+
+    p {
+      margin-bottom: 1em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .hero__title {
@@ -29,16 +39,22 @@ const StyledHero = styled.section`
   }
 `
 
-const Hero = () => {
+const Hero = (props) => {
+  const { title, pageDescription } = props.data
+
+  const renderOptions = {
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node, children) => <p className="paragraph--large">{children}</p>
+    }
+  }
+
   return (
     <StyledHero>
       <Container>
         <div className="hero__content">
-          <p className="hero__subtitle color--blue500 font-weight--600">Faculty</p>
-          <h2 className="hero__title color--blue300">Faculty Recruitment</h2>
-          <p className="paragraph--large">HPI.MS is seeking applications of early and mid-career faculty researchers in machine learning, artificial intelligence, and computer science for scholarship that impacts human health. </p>
-          <br />
-          <p className="paragraph--large">Applications from women, minorities, and residents of all countries are strongly encouraged.</p>
+          <p className="hero__subtitle color--blue500 font-weight--600">FACULTY</p>
+          <h2 className="hero__title color--blue300">{title}</h2>
+          {pageDescription && documentToReactComponents(pageDescription.json, renderOptions)}
         </div>
       </Container>
     </StyledHero>
