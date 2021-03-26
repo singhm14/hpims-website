@@ -103,9 +103,14 @@ const StyledFacultySection = styled.section`
   ${(props) =>
     props.layout === 'Image on the left' &&
     css`
+      .faculty__image {
+        margin-bottom: 40px;
+      }
+
       ${breakpoint.medium`
         .faculty__image {
-          order: 0;
+          order: 0; 
+          margin-bottom: 0;
         }
 
         .faculty__content {
@@ -117,6 +122,10 @@ const StyledFacultySection = styled.section`
   ${(props) =>
     props.layout === 'Image on the right' &&
     css`
+      .faculty__image {
+        margin-bottom: 40px;
+      }
+
       ${breakpoint.medium`
         .faculty__content {
           order: 0;
