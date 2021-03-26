@@ -16,6 +16,82 @@ import Container from 'components/container/'
 const StyledFacultySection = styled.section`
   padding: 80px 0;
 
+  ${Container} {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  // Layout:start
+  ${(props) =>
+    props.layout !== 'Image on top' &&
+    css`
+      ${Container} {
+        ${breakpoint.medium`
+          flex-wrap: nowrap;
+          align-items: center;
+        `}
+      }
+
+      .faculty__image {
+        width: 100%;
+        padding-bottom: 100%;
+
+        ${breakpoint.medium`
+          width: 50%;
+          padding-bottom: 50%;
+        `}
+      }
+
+      .faculty__content {
+        width: 100%;
+
+        ${breakpoint.medium`
+          max-width: 504px;
+          width: 50%;
+          box-sizing: content-box;
+
+          ${(props) =>
+            props.layout === 'Image on the left' || props.layout === 'Full image on the left'
+              ? css`
+                  margin-left: 56px;
+                `
+              : css`
+                  margin-right: 56px;
+                `}
+        `}
+      }
+    `}
+
+  ${(props) =>
+    props.layout === 'Image on the left' &&
+    css`
+      ${breakpoint.medium`
+        .faculty__image {
+          order: 0;
+        }
+
+        .faculty__content {
+          order:  1;
+        }
+      `}
+    `}
+
+  ${(props) =>
+    props.layout === 'Image on the right' &&
+    css`
+      ${breakpoint.medium`
+        .faculty__content {
+          order: 0;
+        }
+
+        .faculty__image {
+          order:  1;
+        }
+      `}
+    `}
+  // Layout:end
+
+  // Blue Gradient:start
   ${(props) =>
     props.background === 'Blue Gradient' &&
     css`
@@ -25,8 +101,6 @@ const StyledFacultySection = styled.section`
       ${Container} {
         max-width: 100%;
         padding: 0;
-        display: flex;
-        flex-wrap: wrap;
       }
 
       .faculty__image {
@@ -35,7 +109,7 @@ const StyledFacultySection = styled.section`
 
         ${breakpoint.medium`
           width: 50%;
-          padding-bottom: 42%;
+          padding-bottom: 45%;
         `}
       }
 
@@ -55,10 +129,33 @@ const StyledFacultySection = styled.section`
         `}
       }
     `}
+  // Blue Gradient:end
+
+  // Blue Light:start
+  ${(props) =>
+    props.background === 'Blue Light' &&
+    css`
+      background-color: ${colors.blue100};
+    `}
+  // Blue Light:end
 
   .faculty__content {
+
+    .title {
+      margin-bottom: 32px;
+      color: ${colors.blue300};
+    }
+
     .content__subheading {
       margin: 32px 0 8px 0;
+    }
+
+    p {
+      margin-bottom: 1em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     a {
