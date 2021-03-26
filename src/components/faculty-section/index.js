@@ -23,6 +23,44 @@ const StyledFacultySection = styled.section`
 
   // Layout:start
   ${(props) =>
+    props.layout === 'Image on top' &&
+    css`
+      &:first-of-type {
+        .faculty__content {
+          font-size: 18px;
+          line-height: 26px;
+        }
+      }
+
+      .faculty__image {
+        width: 100%;
+        padding-bottom: 56.25%;
+        margin-bottom: 40px;
+      }
+
+      .faculty__content {
+        max-width: 736px;
+        margin-right: auto;
+        margin-left: auto;
+
+        .title,
+        .subtitle {
+          text-align: center;
+        }
+
+        .title {
+          font-size: 28px;
+          line-height: 32px;
+
+          ${breakpoint.medium`
+            font-size: 40px;
+            line-height: 48px;
+          `}
+        }
+      }
+    `}
+
+  ${(props) =>
     props.layout !== 'Image on top' &&
     css`
       ${Container} {
@@ -120,6 +158,10 @@ const StyledFacultySection = styled.section`
         color: ${colors.white};
         box-sizing: content-box;
 
+        .title {
+          color: ${colors.white}!important;
+        }
+
         ${breakpoint.small`
           padding: 80px 56px;
         `}
@@ -140,6 +182,12 @@ const StyledFacultySection = styled.section`
   // Blue Light:end
 
   .faculty__content {
+
+    .subtitle {
+      margin-bottom: 16px;
+      font-size: 16px;
+      line-height: 24px;
+    }
 
     .title {
       margin-bottom: 32px;
@@ -178,7 +226,7 @@ const FacultySection = (props) => {
       <Container>
         {image && <BackgroundImage fluid={image.fluid} className="faculty__image" />}
         <div className="faculty__content">
-          {subtitle && <p>{subtitle}</p>}
+          {subtitle && <p className="subtitle font-weight--600">{subtitle}</p>}
           {title && <h4 className="title">{title}</h4>}
 
           {content && documentToReactComponents(content.json, renderOptions)}
