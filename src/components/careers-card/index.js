@@ -3,15 +3,12 @@ import React from 'react'
 // Libraries
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { Link } from 'gatsby'
 
 // Utils
 import breakpoint from 'utils/breakpoints/'
 import { colors } from 'utils/variables/'
-
-// Components
-import Grid from 'components/grid/'
-import Accordion from 'components/accordion/'
+import { getSlug } from 'utils/functions/'
 
 const StyledCareersCard = styled.div`
   display: flex;
@@ -30,15 +27,6 @@ const StyledCareersCard = styled.div`
       width: 256px;
       padding: 32px 24px;
     `}
-
-    > div {
-      height: 100%;
-
-      h5 {
-        position: sticky;
-        top: 104px;
-      }
-    }
   }
 
   ul,
@@ -59,27 +47,9 @@ const StyledCareersCard = styled.div`
       padding: 32px;
     `}
 
-    .careers__requirements {
-      margin: 40px 0;
-      font-size: 14px;
-    }
-
-    h4 {
+    .careers__link {
+      display: inline-block;
       margin-top: 40px;
-      margin-bottom: 16px;
-      color: ${colors.black};
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 20px;
-      border-bottom: 1px solid ${colors.grey500};
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-
-    button {
-      color: ${colors.blue300};
       border-bottom: 2px solid ${colors.blue300};
     }
   }
@@ -88,26 +58,14 @@ const StyledCareersCard = styled.div`
 const CareersCard = (props) => (
   <StyledCareersCard className="bg--grey100">
     <div className="careers__title bg--blue100">
-      <div>
-        <h5 className="color--blue900 font-weight--600">{props.title}</h5>
-      </div>
+      <h5 className="color--blue500 font-weight--600">{props.title}</h5>
     </div>
 
     <div className="careers__content">
       <p className="summary">{props.summary}</p>
-      <Grid className="careers__requirements" gutter="32" columns="2">
-        <div className="grid__item">
-          <h4>Requirements Summary</h4>
-          {props.requirements && documentToReactComponents(props.requirements.json)}
-        </div>
-
-        <div className="grid__item">
-          <h4>Apply Now</h4>
-          {props.applicationInstructions && documentToReactComponents(props.applicationInstructions.json)}
-        </div>
-      </Grid>
-
-      {props.details && <Accordion openText="Read More" closedText="Read Less" content={documentToReactComponents(props.details.json)} />}
+      <Link to={'/careers/' + props.slug ? props.slug : getSlug(props.title)} className="careers__link color--blue300 font-weight--600">
+        Learn more
+      </Link>
     </div>
   </StyledCareersCard>
 )

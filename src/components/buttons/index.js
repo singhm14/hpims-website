@@ -92,7 +92,7 @@ const StyledPrimaryExternal = styled.a`
 `
 
 export const PrimaryExternal = (props) => (
-  <StyledPrimaryExternal disabled={props.disabled} href={props.href} className={props.className}>
+  <StyledPrimaryExternal disabled={props.disabled} href={props.href} className={props.className} target="_blank" rel="noopener noreferrer">
     {props.text} <CaretRight />
   </StyledPrimaryExternal>
 )

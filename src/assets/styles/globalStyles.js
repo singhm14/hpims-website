@@ -92,6 +92,7 @@ const GlobalStyles = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+    box-sizing: border-box;
     transition: all 0.3s ease;
   }
 
@@ -205,7 +206,13 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .breadcrumb {
+    display: inline-flex;
+    align-items: center;
     text-transform: uppercase;
+
+    svg {
+      margin-right: 12px;
+    }
   }
   
   ${Helpers}

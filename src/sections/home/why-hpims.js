@@ -76,7 +76,7 @@ const StyledWhyHPIMS = styled.section`
 `
 
 const WhyHPIMS = () => (
-  <StyledWhyHPIMS className="bg--blue100" data-aos="fade">
+  <StyledWhyHPIMS className="bg--blue100">
     <BackgroundTriangle className="svg--fill-blue100" />
     <Container>
       <div className="section__title">
