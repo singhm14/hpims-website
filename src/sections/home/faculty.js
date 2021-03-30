@@ -25,6 +25,10 @@ const StyledFaculty = styled.section`
     padding-bottom: 260px;
   `}
 
+  ${breakpoint.extraLarge`
+    padding-bottom: 22vw;
+  `}
+
   ${Container} {
     max-width: 928px;
 
