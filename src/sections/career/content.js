@@ -51,7 +51,7 @@ const StyledContent = styled.div`
 
 const Content = (props) => {
   const { jobDetails: content } = props.data
-  return <StyledContent>{documentToReactComponents(content.json)}</StyledContent>
+  return <StyledContent>{content && documentToReactComponents(content.json)}</StyledContent>
 }
 
 export default Content
