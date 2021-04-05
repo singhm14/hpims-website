@@ -282,7 +282,7 @@ const Faculty = () => {
           <div className="date">
             <div>
               <p className="subtitle">{subtitle}</p>
-              <h3>{title}</h3>
+              <h4>{title}</h4>
             </div>
 
             <Link to="/faculty" className="location">
