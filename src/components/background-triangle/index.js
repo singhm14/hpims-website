@@ -14,13 +14,13 @@ const StyledBackgroundTriangle = styled.div`
   bottom: 100%;
   left: 0;
   overflow: hidden;
-  z-index: -1;
 
   svg {
     max-width: 2600px;
     width: 2600px !important;
     height: 458px !important;
     float: right;
+    z-index: 1;
   }
 `
 

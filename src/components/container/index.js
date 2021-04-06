@@ -7,8 +7,10 @@ import breakpoint from 'utils/breakpoints/'
 const Container = styled.div`
   max-width: 1120px;
   width: 100%;
+  position: relative;
   padding: 0 16px;
   margin: 0 auto;
+  z-index: 10;
 
   ${breakpoint.small`
     padding: 0 40px;

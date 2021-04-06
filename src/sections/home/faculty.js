@@ -31,6 +31,8 @@ const StyledFaculty = styled.section`
 
   ${Container} {
     max-width: 928px;
+    position: relative;
+    z-index: 100;
 
     ${breakpoint.medium`
       padding: 0;
