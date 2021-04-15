@@ -13,7 +13,7 @@ const SEO = ({ title, description, image, article, lang }) => {
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
+    image: `${image || defaultImage}`,
     url: `${siteUrl}${pathname}`
   }
 
@@ -22,8 +22,7 @@ const SEO = ({ title, description, image, article, lang }) => {
       title={seo.title}
       htmlAttributes={{
         lang
-      }}
-    >
+      }}>
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 
