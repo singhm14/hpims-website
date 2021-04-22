@@ -169,7 +169,7 @@ const Footer = () => (
             <MountSinai />
           </a>
         </div>
-        <p className="color--grey500 paragraph--extra-small">© 2020 Hasso Plattner Institute for Digital Health at Mount Sinai</p>
+        <p className="color--grey500 paragraph--extra-small">©{new Date().getFullYear()} Hasso Plattner Institute for Digital Health at Mount Sinai</p>
       </div>
     </Container>
   </StyledFooter>
