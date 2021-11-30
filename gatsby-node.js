@@ -45,6 +45,8 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
+  console.log(response)
+
   const getSlug = (tag) => {
     if (tag) {
       tag = tag.replace(/^\s+|\s+$/g, "")
@@ -81,7 +83,7 @@ exports.createPages = async ({ graphql, actions }) => {
   response.data.allContentfulResearchProjects.nodes.forEach((node) => {
     createPage({
       component: path.resolve(`./src/templates/research-project.js`),
-      path: `/research-projects/${node.slug}}`,
+      path: `/research-projects/${node.slug}`,
       context: {
         id: node.id,
       },
