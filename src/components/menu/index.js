@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react"
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
+import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
-import { getSlug, useToggle } from 'utils/functions/'
+import breakpoint from "utils/breakpoints/"
+import { colors } from "utils/variables/"
+import { getSlug, useToggle } from "utils/functions/"
 
 // Components
-import Container from 'components/container/'
-import { Link } from 'gatsby'
+import Container from "components/container/"
+import { Link } from "gatsby"
 
 // Icons
-import Logo from 'assets/icons/icon-logo.inline.svg'
-import IconCaretDown from 'assets/icons/icon-caret-down.inline.svg'
-import IconArrowLeft from 'assets/icons/icon-arrow-left.inline.svg'
+import Logo from "assets/icons/icon-logo.inline.svg"
+import IconCaretDown from "assets/icons/icon-caret-down.inline.svg"
+import IconArrowLeft from "assets/icons/icon-arrow-left.inline.svg"
 
 const StyledMenu = styled.nav`
   width: 100%;
@@ -27,7 +27,8 @@ const StyledMenu = styled.nav`
   padding: 8px 0;
   background-color: ${colors.white};
   box-shadow: 2px 2px 16px 4px rgba(0, 0, 0, 0.08);
-  transform: ${(props) => (props.hideMenu ? 'translateY(-100%)' : 'translateY(0)')};
+  transform: ${(props) =>
+    props.hideMenu ? "translateY(-100%)" : "translateY(0)"};
   transition: all 0.6s ease;
   z-index: 9998;
 
@@ -96,17 +97,17 @@ const StyledMenu = styled.nav`
       margin-bottom: 2px;
 
       &:first-child {
-        top: ${(props) => (props.isMenuOpen ? '5px' : null)};
-        transform: ${(props) => (props.isMenuOpen ? 'rotate(45deg)' : null)};
+        top: ${(props) => (props.isMenuOpen ? "5px" : null)};
+        transform: ${(props) => (props.isMenuOpen ? "rotate(45deg)" : null)};
       }
 
       &:nth-child(2) {
-        opacity: ${(props) => (props.isMenuOpen ? '0' : '1')};
+        opacity: ${(props) => (props.isMenuOpen ? "0" : "1")};
       }
 
       &:last-child {
-        top: ${(props) => (props.isMenuOpen ? '-5px' : null)};
-        transform: ${(props) => (props.isMenuOpen ? 'rotate(-45deg)' : null)};
+        top: ${(props) => (props.isMenuOpen ? "-5px" : null)};
+        transform: ${(props) => (props.isMenuOpen ? "rotate(-45deg)" : null)};
         margin-bottom: 0;
       }
     }
@@ -115,9 +116,12 @@ const StyledMenu = styled.nav`
   .menu__content {
     width: 100%;
     height: calc(100vh - 57px);
-    max-height: ${(props) => (props.isMenuOpen ? '1000px' : '0')}; // This animates the dropdown's height.
+    max-height: ${(props) =>
+      props.isMenuOpen
+        ? "1000px"
+        : "0"}; // This animates the dropdown's height.
     position: relative;
-    padding-top: ${(props) => (props.isMenuOpen ? '16px' : '0')};
+    padding-top: ${(props) => (props.isMenuOpen ? "16px" : "0")};
     transition: all 0.6s ease;
     overflow-y: auto;
     overflow-x: hidden;
@@ -192,7 +196,8 @@ const StyledMenu = styled.nav`
 
           ${breakpoint.small`
             margin-left: 4px;
-            transform: ${(props) => (props.isSubMenuOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
+            transform: ${(props) =>
+              props.isSubMenuOpen ? "rotate(180deg)" : "rotate(0deg)"};
           `}
         }
       }
@@ -204,7 +209,7 @@ const StyledMenu = styled.nav`
       top: 0;
       right: 0;
       bottom: 0;
-      left: ${(props) => (props.isSubMenuOpen ? '0' : '120%')};
+      left: ${(props) => (props.isSubMenuOpen ? "0" : "120%")};
       padding-top: 24px;
       background-color: ${colors.white};
       overflow-y: auto;
@@ -221,9 +226,10 @@ const StyledMenu = styled.nav`
         justify-content: space-between;
         padding: 32px;
         border-top: 1px solid ${colors.grey300};
-        opacity: ${(props) => (props.isSubMenuOpen ? '1' : '0')};
-        visibility: ${(props) => (props.isSubMenuOpen ? 'visible' : 'hidden')};
-        transform: ${(props) => (props.isSubMenuOpen ? 'translateY(0)' : 'translateY(32px)')};
+        opacity: ${(props) => (props.isSubMenuOpen ? "1" : "0")};
+        visibility: ${(props) => (props.isSubMenuOpen ? "visible" : "hidden")};
+        transform: ${(props) =>
+          props.isSubMenuOpen ? "translateY(0)" : "translateY(32px)"};
         transition: all 0.6s ease;
         z-index: -1;
       `}
@@ -309,11 +315,11 @@ const Menu = () => {
   useEffect(() => {
     if (window.innerWidth <= 768) {
       if (isMenuOpen) {
-        document.querySelector('html').classList.add('no-scroll')
-        document.querySelector('body').classList.add('no-scroll')
+        document.querySelector("html").classList.add("no-scroll")
+        document.querySelector("body").classList.add("no-scroll")
       } else {
-        document.querySelector('html').classList.remove('no-scroll')
-        document.querySelector('body').classList.remove('no-scroll')
+        document.querySelector("html").classList.remove("no-scroll")
+        document.querySelector("body").classList.remove("no-scroll")
       }
     }
   })
@@ -339,9 +345,9 @@ const Menu = () => {
       handleLastScrollPosition(scrollPosition)
     }
 
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener("scroll", handleScroll, { passive: true })
 
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   })
 
   const data = useStaticQuery(graphql`
@@ -349,9 +355,11 @@ const Menu = () => {
       researchProjects: allContentfulResearchProjects {
         nodes {
           id
+          slug
           title
         }
       }
+
       labs: allContentfulLabs {
         nodes {
           id
@@ -361,7 +369,11 @@ const Menu = () => {
     }
   `)
   return (
-    <StyledMenu isMenuOpen={isMenuOpen} isSubMenuOpen={isSubMenuOpen} hideMenu={isScrollingDown}>
+    <StyledMenu
+      isMenuOpen={isMenuOpen}
+      isSubMenuOpen={isSubMenuOpen}
+      hideMenu={isScrollingDown}
+    >
       <Container>
         <div className="menu__logo">
           <Link to="/" aria-label="HPI·MS">
@@ -374,7 +386,8 @@ const Menu = () => {
           className="menu__toggler"
           onClick={() => {
             toggleMenu()
-          }}>
+          }}
+        >
           <span className="bg--blue500"></span>
           <span className="bg--blue500"></span>
           <span className="bg--blue500"></span>
@@ -388,7 +401,8 @@ const Menu = () => {
                 onClick={() => {
                   toggleMenu()
                   isSubMenuOpen && toggleSubMenu()
-                }}>
+                }}
+              >
                 About
               </Link>
             </li>
@@ -398,7 +412,8 @@ const Menu = () => {
                 onClick={() => {
                   toggleMenu()
                   isSubMenuOpen && toggleSubMenu()
-                }}>
+                }}
+              >
                 Team
               </Link>
             </li>
@@ -407,7 +422,8 @@ const Menu = () => {
                 type="button"
                 onClick={() => {
                   toggleSubMenu()
-                }}>
+                }}
+              >
                 Research
                 <IconCaretDown />
               </button>
@@ -418,7 +434,8 @@ const Menu = () => {
                     type="button"
                     onClick={() => {
                       toggleSubMenu()
-                    }}>
+                    }}
+                  >
                     <IconArrowLeft />
                     Research
                   </button>
@@ -431,22 +448,26 @@ const Menu = () => {
                     onClick={() => {
                       toggleSubMenu()
                       toggleMenu()
-                    }}>
+                    }}
+                  >
                     All Research Initiatives
                   </Link>
                 </div>
 
                 <ul>
-                  <p className="paragraph-small color--grey700">Core Research Projects</p>
+                  <p className="paragraph-small color--grey700">
+                    Core Research Projects
+                  </p>
                   {data.researchProjects.nodes.map((project) => (
                     <li key={project.id}>
                       <Link
-                        to={'/research-projects/' + getSlug(project.title)}
+                        to={"/research-projects/" + project.slug}
                         className="font-weight--500"
                         onClick={() => {
                           toggleSubMenu()
                           toggleMenu()
-                        }}>
+                        }}
+                      >
                         {project.title}
                       </Link>
                     </li>
@@ -458,7 +479,8 @@ const Menu = () => {
                       onClick={() => {
                         toggleSubMenu()
                         toggleMenu()
-                      }}>
+                      }}
+                    >
                       Co-Innovation Research Exchange
                     </Link>
                   </li>
@@ -468,12 +490,13 @@ const Menu = () => {
                   {data.labs.nodes.map((lab) => (
                     <li key={lab.id}>
                       <Link
-                        to={'/labs/' + getSlug(lab.title)}
+                        to={"/labs/" + getSlug(lab.title)}
                         className="font-weight--500"
                         onClick={() => {
                           toggleSubMenu()
                           toggleMenu()
-                        }}>
+                        }}
+                      >
                         {lab.title}
                       </Link>
                     </li>
@@ -487,7 +510,8 @@ const Menu = () => {
                 onClick={() => {
                   toggleMenu()
                   isSubMenuOpen && toggleSubMenu()
-                }}>
+                }}
+              >
                 Publications
               </a>
             </li>
@@ -497,7 +521,8 @@ const Menu = () => {
                 onClick={() => {
                   toggleMenu()
                   isSubMenuOpen && toggleSubMenu()
-                }}>
+                }}
+              >
                 Faculty
               </Link>
             </li>
@@ -507,7 +532,8 @@ const Menu = () => {
                 onClick={() => {
                   toggleMenu()
                   isSubMenuOpen && toggleSubMenu()
-                }}>
+                }}
+              >
                 Careers
               </Link>
             </li>

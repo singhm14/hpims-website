@@ -5,14 +5,14 @@
  */
 
 // You can delete this file if you're not using it
-const path = require('path')
+const path = require("path")
 
 // Absolute path
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules']
-    }
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+    },
   })
 }
 
@@ -31,6 +31,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allContentfulResearchProjects {
         nodes {
           id
+          slug
           title
         }
       }
@@ -46,20 +47,20 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const getSlug = (tag) => {
     if (tag) {
-      tag = tag.replace(/^\s+|\s+$/g, '')
+      tag = tag.replace(/^\s+|\s+$/g, "")
       tag = tag.toLowerCase()
 
       // remove accents, swap ñ for n, etc
-      var from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;'
-      var to = 'aaaaeeeeiiiioooouuuunc------'
+      var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;"
+      var to = "aaaaeeeeiiiioooouuuunc------"
       for (var i = 0, l = from.length; i < l; i++) {
-        tag = tag.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
+        tag = tag.replace(new RegExp(from.charAt(i), "g"), to.charAt(i))
       }
 
       tag = tag
-        .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-        .replace(/\s+/g, '-') // collapse whitespace and replace by -
-        .replace(/-+/g, '-') // collapse dashes
+        .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
+        .replace(/\s+/g, "-") // collapse whitespace and replace by -
+        .replace(/-+/g, "-") // collapse dashes
     }
 
     return tag
@@ -68,11 +69,11 @@ exports.createPages = async ({ graphql, actions }) => {
   // Team Members
   response.data.allContentfulTeamMembers.nodes.forEach((node) => {
     createPage({
-      component: path.resolve('./src/templates/team-member-profile.js'),
+      component: path.resolve("./src/templates/team-member-profile.js"),
       path: `/team/${getSlug(node.name)}`,
       context: {
-        id: node.id
-      }
+        id: node.id,
+      },
     })
   })
 
@@ -80,27 +81,27 @@ exports.createPages = async ({ graphql, actions }) => {
   response.data.allContentfulResearchProjects.nodes.forEach((node) => {
     createPage({
       component: path.resolve(`./src/templates/research-project.js`),
-      path: `/research-projects/${getSlug(node.title)}`,
+      path: `/research-projects/${node.slug}}`,
       context: {
-        id: node.id
-      }
+        id: node.id,
+      },
     })
   })
 
   // Students Projects
   createPage({
     component: path.resolve(`./src/templates/students-projects.js`),
-    path: `/research-projects/co-innovation-research-exchange/`
+    path: `/research-projects/co-innovation-research-exchange/`,
   })
 
   // Labs
-  response.data.allContentfulLabs.nodes.forEach(node => {
+  response.data.allContentfulLabs.nodes.forEach((node) => {
     createPage({
       component: path.resolve(`./src/templates/lab.js`),
       path: `/labs/${getSlug(node.title)}`,
       context: {
-        id: node.id
-      }
+        id: node.id,
+      },
     })
   })
 }
