@@ -1,6 +1,6 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -25,7 +25,7 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: "6cma8zf36gz0",
-        accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
+        accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`,
       },
     },
     {
@@ -78,4 +78,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
