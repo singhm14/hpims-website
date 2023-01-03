@@ -1,21 +1,21 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql, Link } from 'gatsby'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import styled from 'styled-components'
-import Slider from 'react-slick'
+import { useStaticQuery, graphql, Link } from "gatsby";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import styled from "styled-components";
+import Slider from "react-slick";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
 
 // Components
-import Container from 'components/container/'
-import Img from 'gatsby-image'
+import Container from "components/container/";
+import Img from "gatsby-plugin-image";
 
 // Icons
-import SliderArrow from 'assets/icons/icon-carousel-arrow.inline.svg'
+import SliderArrow from "assets/icons/icon-carousel-arrow.inline.svg";
 
 const StyledFaculty = styled.section`
   padding-bottom: 40px;
@@ -186,40 +186,40 @@ const StyledFaculty = styled.section`
       }
     }
   }
-`
+`;
 
 const StyledArrow = styled.div`
   display: flex;
   align-items: flex-start;
 
   svg {
-    transform: ${(props) => (props.prev ? 'rotate(180deg)' : 'rotate(0deg)')};
+    transform: ${(props) => (props.prev ? "rotate(180deg)" : "rotate(0deg)")};
   }
 
   ${Container} {
     max-width: 736px;
   }
-`
+`;
 
 const ArrowPrev = (props) => {
   return (
     <StyledArrow prev onClick={props.onClick} className={props.className}>
       <SliderArrow />
     </StyledArrow>
-  )
-}
+  );
+};
 
 const ArrowNext = (props) => {
   return (
     <StyledArrow onClick={props.onClick} className={props.className}>
       <SliderArrow />
     </StyledArrow>
-  )
-}
+  );
+};
 
 const Faculty = () => {
   const {
-    allContentfulHomesFacultySection: { nodes: data }
+    allContentfulHomesFacultySection: { nodes: data },
   } = useStaticQuery(graphql`
     query {
       allContentfulHomesFacultySection {
@@ -238,7 +238,7 @@ const Faculty = () => {
         }
       }
     }
-  `)
+  `);
 
   const settings = {
     dots: false,
@@ -254,22 +254,22 @@ const Faculty = () => {
         breakpoint: 1023,
         settings: {
           dots: true,
-          arrows: false
-        }
+          arrows: false,
+        },
       },
       {
         breakpoint: 767,
         settings: {
-          arrows: false
-        }
-      }
-    ]
-  }
+          arrows: false,
+        },
+      },
+    ],
+  };
 
-  const subtitle = data[0].subtitle
-  const title = data[0].title
-  const description = data[0].description.json
-  const photoGallery = data[0].photoGallery
+  const subtitle = data[0].subtitle;
+  const title = data[0].title;
+  const description = data[0].description.json;
+  const photoGallery = data[0].photoGallery;
 
   return (
     <StyledFaculty className="bg--blue500 color--white">
@@ -292,11 +292,13 @@ const Faculty = () => {
             </Link>
           </div>
 
-          <div className="summary">{description && documentToReactComponents(description)}</div>
+          <div className="summary">
+            {description && documentToReactComponents(description)}
+          </div>
         </div>
       </Container>
     </StyledFaculty>
-  )
-}
+  );
+};
 
-export default Faculty
+export default Faculty;

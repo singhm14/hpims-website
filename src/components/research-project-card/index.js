@@ -1,17 +1,17 @@
-import React from "react"
+import React from "react";
 
 // Utils
-import breakpoint from "utils/breakpoints/"
-import { getSlug } from "utils/functions/"
+import breakpoint from "utils/breakpoints/";
+import { getSlug } from "utils/functions/";
 
 // Libraries
-import styled from "styled-components"
-import Img from "gatsby-image"
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
+import styled from "styled-components";
+import Img from "gatsby-plugin-image";
+import { Link } from "gatsby";
+import PropTypes from "prop-types";
 
 // Components
-import { Tertiary } from "components/buttons/"
+import { Tertiary } from "components/buttons/";
 
 const StyledResearchProjectCard = styled.div`
   max-width: 448px;
@@ -81,7 +81,7 @@ const StyledResearchProjectCard = styled.div`
       font-size: 16px;
     `}
   }
-`
+`;
 
 const ResearchProject = (props) => (
   <StyledResearchProjectCard className="bg--white color--black">
@@ -93,8 +93,7 @@ const ResearchProject = (props) => (
       <h4 className="research-project__title color--blue500 font-weight--600">
         <Link
           to={"/research-projects/" + props.slug}
-          className="color--blue500"
-        >
+          className="color--blue500">
           {props.title}
         </Link>
       </h4>
@@ -107,12 +106,12 @@ const ResearchProject = (props) => (
       text="View full project"
     />
   </StyledResearchProjectCard>
-)
+);
 
 ResearchProject.propTypes = {
   icon: PropTypes.object,
   title: PropTypes.string,
   summary: PropTypes.string,
-}
+};
 
-export default ResearchProject
+export default ResearchProject;

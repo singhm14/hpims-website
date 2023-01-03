@@ -1,16 +1,16 @@
-import React from "react"
+import React from "react";
 
 // Utils
-import breakpoint from "utils/breakpoints/"
-import { getSlug } from "utils/functions/"
+import breakpoint from "utils/breakpoints/";
+import { getSlug } from "utils/functions/";
 
 // Libraries
-import styled from "styled-components"
-import Img from "gatsby-image"
-import { Link } from "gatsby"
+import styled from "styled-components";
+import Img from "gatsby-plugin-image";
+import { Link } from "gatsby";
 
 // Components
-import { Tertiary } from "components/buttons/"
+import { Tertiary } from "components/buttons/";
 
 const StyledResearchProjectCard = styled.div`
   display: flex;
@@ -68,7 +68,7 @@ const StyledResearchProjectCard = styled.div`
       display: none;
     `}
   }
-`
+`;
 
 const ResearchProjectCard = (props) => {
   return (
@@ -95,7 +95,7 @@ const ResearchProjectCard = (props) => {
         text="View full project"
       />
     </StyledResearchProjectCard>
-  )
-}
+  );
+};
 
-export default ResearchProjectCard
+export default ResearchProjectCard;

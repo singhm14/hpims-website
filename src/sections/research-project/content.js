@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import styled from 'styled-components'
-import { BLOCKS, INLINES } from '@contentful/rich-text-types'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import Img from 'gatsby-image'
+import styled from "styled-components";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Img from "gatsby-plugin-image";
 
 // Utils
-import { colors } from 'utils/variables/'
+import { colors } from "utils/variables/";
 
 // Hooks
-import useContentfulImage from 'hooks/useContentfulImage/'
+import useContentfulImage from "hooks/useContentfulImage/";
 
 const StyledContent = styled.section`
   display: block;
@@ -64,46 +64,69 @@ const StyledContent = styled.section`
       position: absolute;
     }
   }
-`
+`;
 
 // Render options for images
 const options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const fluid = useContentfulImage(node.data.target.fields.file['en-US'].url)
-      return <Img className="content__image" fluid={fluid} title="HPI·MS" />
+      const fluid = useContentfulImage(
+        node.data.target.fields.file["en-US"].url
+      );
+      return <Img className="content__image" fluid={fluid} title="HPI·MS" />;
     },
     [INLINES.HYPERLINK]: (node) => {
-      if (node.data.uri.indexOf('youtube.com') > -1 || node.data.uri.indexOf('vimeo.com') > -1) {
-        if (node.data.uri.indexOf('youtube.com') > -1) {
-          const videoID = node.data.uri.split('https://www.youtube.com/watch?v=')[1]
+      if (
+        node.data.uri.indexOf("youtube.com") > -1 ||
+        node.data.uri.indexOf("vimeo.com") > -1
+      ) {
+        if (node.data.uri.indexOf("youtube.com") > -1) {
+          const videoID = node.data.uri.split(
+            "https://www.youtube.com/watch?v="
+          )[1];
           return (
             <div className="video-wrapper">
-              <iframe title="HPI·MS" src={'https://www.youtube.com/embed/' + videoID} frameBorder="0" allowFullScreen></iframe>
+              <iframe
+                title="HPI·MS"
+                src={"https://www.youtube.com/embed/" + videoID}
+                frameBorder="0"
+                allowFullScreen></iframe>
             </div>
-          )
+          );
         } else {
           return (
             <div className="video-wrapper">
-              <iframe title="HPI·MS" src={node.data.uri} frameBorder="0" allowFullScreen></iframe>
+              <iframe
+                title="HPI·MS"
+                src={node.data.uri}
+                frameBorder="0"
+                allowFullScreen></iframe>
             </div>
-          )
+          );
         }
       } else {
         return (
-          <a className="color--blue500 color-hover--blue300" href={node.data.uri} target="_blank" rel="noopener noreferrer">
+          <a
+            className="color--blue500 color-hover--blue300"
+            href={node.data.uri}
+            target="_blank"
+            rel="noopener noreferrer">
             {node.content[0].value}
           </a>
-        )
+        );
       }
-    }
-  }
-}
+    },
+  },
+};
 
 const Content = (props) => {
-  const content = props.data.contentfulResearchProjects.description
+  const content = props.data.contentfulResearchProjects.description;
 
-  return <StyledContent>{content && documentToReactComponents(content.json, options)}</StyledContent>
-}
+  return (
+    <StyledContent>
+      {content && documentToReactComponents(content.json, options)}
+    </StyledContent>
+  );
+};
 
-export default Content
+export default Content;
