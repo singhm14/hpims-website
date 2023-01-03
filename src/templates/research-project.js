@@ -1,23 +1,23 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import styled from "styled-components";
+import { graphql } from "gatsby";
 
 // Sections
-import Hero from 'sections/research-project/hero'
-import Content from 'sections/research-project/content'
-import Sidebar from 'sections/research-project/sidebar'
+import Hero from "sections/research-project/hero";
+import Content from "sections/research-project/content";
+import Sidebar from "sections/research-project/sidebar";
 
 // Components
-import SEO from 'components/seo/'
+import SEO from "components/seo/";
 
 // Components
-import Container from 'components/container/'
+import Container from "components/container/";
 
 const StyledContainer = styled(Container)`
   max-width: 928px;
-`
+`;
 
 export const query = graphql`
   query($id: String!) {
@@ -32,7 +32,7 @@ export const query = graphql`
         }
       }
       description {
-        json
+        raw
       }
       teamMembers {
         id
@@ -54,11 +54,16 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 const ResearchProject = (props) => (
   <div data-aos="fade">
-    <SEO title={props.data.contentfulResearchProjects.title + ' | Hasso Plattner Institute for Digital Health at Mount Sinai'} />
+    <SEO
+      title={
+        props.data.contentfulResearchProjects.title +
+        " | Hasso Plattner Institute for Digital Health at Mount Sinai"
+      }
+    />
     <Hero data={props.data} />
     <StyledContainer>
       <div className="sidebar-layout sidebar-layout--big">
@@ -71,6 +76,6 @@ const ResearchProject = (props) => (
       </div>
     </StyledContainer>
   </div>
-)
+);
 
-export default ResearchProject
+export default ResearchProject;

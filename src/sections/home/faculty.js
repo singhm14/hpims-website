@@ -227,8 +227,7 @@ const Faculty = () => {
           subtitle
           title
           description {
-            description
-            json
+            raw
           }
           photoGallery {
             fluid(maxWidth: 928, maxHeight: 522, quality: 100) {
@@ -268,7 +267,7 @@ const Faculty = () => {
 
   const subtitle = data[0].subtitle;
   const title = data[0].title;
-  const description = data[0].description.json;
+  const description = data[0].description.raw;
   const photoGallery = data[0].photoGallery;
 
   return (

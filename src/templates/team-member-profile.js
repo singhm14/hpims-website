@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { graphql } from 'gatsby'
+import { graphql } from "gatsby";
 
 // Components
-import SEO from 'components/seo/'
+import SEO from "components/seo/";
 
 // Sections
-import Hero from 'sections/team-member-profile/hero'
-import Bio from 'sections/team-member-profile/bio'
-import References from 'sections/team-member-profile/references'
+import Hero from "sections/team-member-profile/hero";
+import Bio from "sections/team-member-profile/bio";
+import References from "sections/team-member-profile/references";
 
 export const query = graphql`
   query($id: String!) {
@@ -23,7 +23,7 @@ export const query = graphql`
       department
       position
       bio {
-        json
+        raw
       }
       email
       googleScholarProfile
@@ -79,17 +79,22 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 const TeamMemberProfile = (props) => {
   return (
     <React.Fragment>
-      <SEO title={props.data.contentfulTeamMembers.name + ' | Hasso Plattner Institute for Digital Health at Mount Sinai'} />
+      <SEO
+        title={
+          props.data.contentfulTeamMembers.name +
+          " | Hasso Plattner Institute for Digital Health at Mount Sinai"
+        }
+      />
       <Hero />
       <Bio data={props.data} />
       <References data={props.data} />
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default TeamMemberProfile
+export default TeamMemberProfile;

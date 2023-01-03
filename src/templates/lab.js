@@ -1,29 +1,35 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { graphql } from 'gatsby'
+import { graphql } from "gatsby";
 
 // Sections
-import Hero from 'sections/lab/hero'
-import Bio from 'sections/lab/bio'
-import References from 'sections/lab/references'
+import Hero from "sections/lab/hero";
+import Bio from "sections/lab/bio";
+import References from "sections/lab/references";
 
 // Components
-import SEO from 'components/seo/'
+import SEO from "components/seo/";
 
 const Lab = (props) => {
-  const title = props.data.contentfulLabs.title
-  const summary = props.data.contentfulLabs.summary.summary
+  const title = props.data.contentfulLabs.title;
+  const summary = props.data.contentfulLabs.summary.summary;
 
   return (
     <div data-aos="fade">
-      <SEO title={title + ' | Hasso Plattner Institute for Digital Health at Mount Sinai'} description={summary} />
+      <SEO
+        title={
+          title +
+          " | Hasso Plattner Institute for Digital Health at Mount Sinai"
+        }
+        description={summary}
+      />
       <Hero />
       <Bio data={props.data} />
       <References data={props.data} />
     </div>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query($id: String!) {
@@ -40,7 +46,7 @@ export const query = graphql`
         }
       }
       description {
-        json
+        raw
       }
       projects {
         title
@@ -63,6 +69,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default Lab
+export default Lab;

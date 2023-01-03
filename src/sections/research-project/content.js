@@ -124,7 +124,7 @@ const Content = (props) => {
 
   return (
     <StyledContent>
-      {content && documentToReactComponents(content.json, options)}
+      {content && documentToReactComponents(content.raw, options)}
     </StyledContent>
   );
 };

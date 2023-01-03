@@ -1,17 +1,17 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import styled, { css } from 'styled-components'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
-import BackgroundImage from 'gatsby-background-image'
+import styled, { css } from "styled-components";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { BLOCKS } from "@contentful/rich-text-types";
+import BackgroundImage from "gatsby-background-image";
 
 // Utils
-import { colors, gradients } from 'utils/variables/'
-import breakpoint from 'utils/breakpoints/'
+import { colors, gradients } from "utils/variables/";
+import breakpoint from "utils/breakpoints/";
 
 // Components
-import Container from 'components/container/'
+import Container from "components/container/";
 
 const StyledFacultySection = styled.section`
   padding: 80px 0;
@@ -23,7 +23,7 @@ const StyledFacultySection = styled.section`
 
   // Layout:start
   ${(props) =>
-    props.layout === 'Image on top' &&
+    props.layout === "Image on top" &&
     css`
       &:first-of-type {
         .faculty__content {
@@ -61,7 +61,7 @@ const StyledFacultySection = styled.section`
     `}
 
   ${(props) =>
-    props.layout !== 'Image on top' &&
+    props.layout !== "Image on top" &&
     css`
       ${Container} {
         ${breakpoint.medium`
@@ -89,7 +89,8 @@ const StyledFacultySection = styled.section`
           box-sizing: content-box;
 
           ${(props) =>
-            props.layout === 'Image on the left' || props.layout === 'Full image on the left'
+            props.layout === "Image on the left" ||
+            props.layout === "Full image on the left"
               ? css`
                   margin-left: 56px;
                 `
@@ -101,7 +102,7 @@ const StyledFacultySection = styled.section`
     `}
 
   ${(props) =>
-    props.layout === 'Image on the left' &&
+    props.layout === "Image on the left" &&
     css`
       .faculty__image {
         margin-bottom: 40px;
@@ -120,7 +121,7 @@ const StyledFacultySection = styled.section`
     `}
 
   ${(props) =>
-    props.layout === 'Image on the right' &&
+    props.layout === "Image on the right" &&
     css`
       .faculty__image {
         margin-bottom: 40px;
@@ -140,7 +141,7 @@ const StyledFacultySection = styled.section`
 
   // Blue Gradient:start
   ${(props) =>
-    props.background === 'Blue Gradient' &&
+    props.background === "Blue Gradient" &&
     css`
       padding: 0;
       background: ${gradients.primary};
@@ -184,7 +185,7 @@ const StyledFacultySection = styled.section`
 
   // Blue Light:start
   ${(props) =>
-    props.background === 'Blue Light' &&
+    props.background === "Blue Light" &&
     css`
       background-color: ${colors.blue100};
     `}
@@ -219,30 +220,45 @@ const StyledFacultySection = styled.section`
       text-decoration: underline;
     }
   }
-`
+`;
 
 const FacultySection = (props) => {
-  const { layoutArrangement, backgroundStyle, image, title, subtitle, content } = props.data
+  const {
+    layoutArrangement,
+    backgroundStyle,
+    image,
+    title,
+    subtitle,
+    content,
+  } = props.data;
 
   const renderOptions = {
     renderNode: {
-      [BLOCKS.HEADING_4]: (node, children) => <p className="content__subheading paragraph--large font-weight--600">{children}</p>
-    }
-  }
+      [BLOCKS.HEADING_4]: (node, children) => (
+        <p className="content__subheading paragraph--large font-weight--600">
+          {children}
+        </p>
+      ),
+    },
+  };
 
   return (
-    <StyledFacultySection layout={layoutArrangement} background={backgroundStyle}>
+    <StyledFacultySection
+      layout={layoutArrangement}
+      background={backgroundStyle}>
       <Container>
-        {image && <BackgroundImage fluid={image.fluid} className="faculty__image" />}
+        {image && (
+          <BackgroundImage fluid={image.fluid} className="faculty__image" />
+        )}
         <div className="faculty__content">
           {subtitle && <p className="subtitle font-weight--600">{subtitle}</p>}
           {title && <h4 className="title">{title}</h4>}
 
-          {content && documentToReactComponents(content.json, renderOptions)}
+          {content && documentToReactComponents(content.raw, renderOptions)}
         </div>
       </Container>
     </StyledFacultySection>
-  )
-}
+  );
+};
 
-export default FacultySection
+export default FacultySection;

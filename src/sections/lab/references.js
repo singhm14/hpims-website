@@ -195,7 +195,7 @@ const References = (props) => {
       <Container>
         <div className="references">
           <div className="content">
-            {content && documentToReactComponents(content.json, options)}
+            {content && documentToReactComponents(content.raw, options)}
           </div>
 
           <div className="sidebar">
