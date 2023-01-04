@@ -15,9 +15,7 @@ export const query = graphql`
   query($id: String!) {
     contentfulTeamMembers(id: { eq: $id }) {
       profilePicture {
-        fluid(maxWidth: 352, quality: 100) {
-          ...GatsbyContentfulFluid_withWebp
-        }
+        gatsbyImageData(width: 352, quality: 100)
       }
       name
       department
@@ -33,17 +31,13 @@ export const query = graphql`
         title
         headOfTheLab {
           profilePicture {
-            fixed(width: 64, quality: 100) {
-              ...GatsbyContentfulFixed_withWebp
-            }
+            gatsbyImageData(width: 64, quality: 100)
           }
         }
       }
       research_projects {
         icon {
-          fixed(width: 56, quality: 100) {
-            ...GatsbyContentfulFixed_withWebp
-          }
+          gatsbyImageData(width: 56, quality: 100)
         }
         title
       }
@@ -59,9 +53,7 @@ export const query = graphql`
             id
             name
             profilePicture {
-              fixed(width: 24, quality: 100) {
-                ...GatsbyContentfulFixed_withWebp
-              }
+              gatsbyImageData(width: 24, quality: 100)
             }
           }
           ... on ContentfulStudents {

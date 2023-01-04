@@ -41,9 +41,7 @@ const Projects = (props) => {
               __typename
               name
               profilePicture {
-                fixed(width: 24, quality: 100) {
-                  ...GatsbyContentfulFixed_withWebp
-                }
+                gatsbyImageData
               }
             }
             ... on ContentfulStudents {

@@ -1,17 +1,17 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
+import { useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
+import breakpoint from "utils/breakpoints/";
 
 // Components
-import Container from 'components/container/'
-import Grid from 'components/grid/'
-import ResearchProjectCard from 'components/research-project-card/'
-import { Primary } from 'components/buttons/'
+import Container from "components/container/";
+import Grid from "components/grid/";
+import ResearchProjectCard from "components/research-project-card/";
+import { Primary } from "components/buttons/";
 
 const StyledResearchProjects = styled.section`
   position: relative;
@@ -56,17 +56,15 @@ const StyledResearchProjects = styled.section`
       display: none;
     }
   }
-`
+`;
 
 const ResearchProjects = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulResearchProjects(sort: { fields: createdAt, order: ASC }, limit: 2) {
+      allContentfulResearchProjects(sort: { createdAt: ASC }, limit: 2) {
         nodes {
           icon {
-            fixed(width: 52, quality: 100) {
-              ...GatsbyContentfulFixed_withWebp
-            }
+            gatsbyImageData(width: 52, quality: 100)
           }
           title
           summary {
@@ -75,27 +73,37 @@ const ResearchProjects = () => {
         }
       }
     }
-  `)
+  `);
   return (
     <StyledResearchProjects data-aos="fade">
       <Container>
         <div className="section__title">
           <p className="section__subtitle">Research</p>
-          <h3 className="color--blue500">Leading the digital health revolution</h3>
+          <h3 className="color--blue500">
+            Leading the digital health revolution
+          </h3>
         </div>
 
         <Grid gutter="32" columns="2">
           {data.allContentfulResearchProjects.nodes.map((project, index) => (
             <div className="grid__item" key={index}>
-              <ResearchProjectCard icon={project.icon && project.icon.fixed} title={project.title} summary={project.summary.summary} />
+              <ResearchProjectCard
+                icon={project.icon && project.icon.fixed}
+                title={project.title}
+                summary={project.summary.summary}
+              />
             </div>
           ))}
         </Grid>
 
-        <Primary to="/research" className="research__link color--blue500 color-hover--white bg-hover--blue500 border--blue500" text="Explore all research initiatives" />
+        <Primary
+          to="/research"
+          className="research__link color--blue500 color-hover--white bg-hover--blue500 border--blue500"
+          text="Explore all research initiatives"
+        />
       </Container>
     </StyledResearchProjects>
-  )
-}
+  );
+};
 
-export default ResearchProjects
+export default ResearchProjects;

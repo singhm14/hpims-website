@@ -39,9 +39,7 @@ export const query = graphql`
         layoutArrangement
         backgroundStyle
         image {
-          fluid(maxWidth: 928, quality: 100) {
-            ...GatsbyContentfulFluid_withWebp
-          }
+          gatsbyImageData(width: 928, quality: 100)
         }
         title
         subtitle

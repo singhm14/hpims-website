@@ -40,9 +40,7 @@ export const query = graphql`
       }
       headOfTheLab {
         profilePicture {
-          fluid(maxWidth: 352, quality: 100) {
-            ...GatsbyContentfulFluid_withWebp
-          }
+          gatsbyImageData
         }
       }
       description {
@@ -51,9 +49,7 @@ export const query = graphql`
       projects {
         title
         icon {
-          fixed(width: 56, quality: 100) {
-            ...GatsbyContentfulFixed_withWebp
-          }
+          gatsbyImageData
         }
       }
       teamMembers {

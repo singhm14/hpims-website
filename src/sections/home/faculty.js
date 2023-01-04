@@ -230,9 +230,7 @@ const Faculty = () => {
             raw
           }
           photoGallery {
-            fluid(maxWidth: 928, maxHeight: 522, quality: 100) {
-              ...GatsbyContentfulFluid_withWebp
-            }
+            gatsbyImageData(width: 928, height: 522, quality: 100)
           }
         }
       }

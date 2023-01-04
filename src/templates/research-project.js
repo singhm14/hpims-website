@@ -27,9 +27,7 @@ export const query = graphql`
         summary
       }
       icon {
-        fluid(maxWidth: 400, quality: 100) {
-          ...GatsbyContentfulFluid_withWebp
-        }
+        gatsbyImageData(width: 400, quality: 100)
       }
       description {
         raw
@@ -38,9 +36,7 @@ export const query = graphql`
         id
         name
         profilePicture {
-          fluid(maxWidth: 128, quality: 100) {
-            ...GatsbyContentfulFluid_withWebp
-          }
+          gatsbyImageData(width: 128, quality: 100)
         }
       }
       callToAction {
