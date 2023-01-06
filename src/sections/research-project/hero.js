@@ -3,7 +3,7 @@ import React from "react";
 // Libraries
 import styled from "styled-components";
 import { Link } from "gatsby";
-import Img from "gatsby-plugin-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
@@ -77,9 +77,9 @@ const Hero = (props) => {
       </Container>
 
       {icon && (
-        <Img
+        <GatsbyImage
           className="hero__icon"
-          fluid={icon.fluid}
+          image={getImage(icon.fluid)}
           style={{ position: "absolute" }}
           alt={title}
         />

@@ -6,7 +6,7 @@ import { getSlug } from "utils/functions/";
 
 // Libraries
 import styled from "styled-components";
-import Img from "gatsby-plugin-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 
@@ -83,30 +83,32 @@ const StyledResearchProjectCard = styled.div`
   }
 `;
 
-const ResearchProject = (props) => (
-  <StyledResearchProjectCard className="bg--white color--black">
-    <div>
-      <div className="research-project__icon">
-        {props.icon && <Img fixed={props.icon} alt={props.title} />}
+const ResearchProject = (props) => {
+  const { icon, title, slug, summary } = props;
+  const image = getImage(icon);
+  return (
+    <StyledResearchProjectCard className="bg--white color--black">
+      <div>
+        <div className="research-project__icon">
+          {icon && <GatsbyImage image={image} alt={title} />}
+        </div>
+
+        <h4 className="research-project__title color--blue500 font-weight--600">
+          <Link to={"/research-projects/" + slug} className="color--blue500">
+            {title}
+          </Link>
+        </h4>
+        <p className="color--grey900">{summary}</p>
       </div>
 
-      <h4 className="research-project__title color--blue500 font-weight--600">
-        <Link
-          to={"/research-projects/" + props.slug}
-          className="color--blue500">
-          {props.title}
-        </Link>
-      </h4>
-      <p className="color--grey900">{props.summary}</p>
-    </div>
-
-    <Tertiary
-      to={"/research-projects/" + getSlug(props.title)}
-      className="research-project__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500"
-      text="View full project"
-    />
-  </StyledResearchProjectCard>
-);
+      <Tertiary
+        to={"/research-projects/" + getSlug(title)}
+        className="research-project__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500"
+        text="View full project"
+      />
+    </StyledResearchProjectCard>
+  );
+};
 
 ResearchProject.propTypes = {
   icon: PropTypes.object,

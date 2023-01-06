@@ -12,7 +12,7 @@ import { colors } from "utils/variables/";
 
 // Components
 import Container from "components/container/";
-import Img from "gatsby-plugin-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Icons
 import SliderArrow from "assets/icons/icon-carousel-arrow.inline.svg";
@@ -272,7 +272,11 @@ const Faculty = () => {
     <StyledFaculty className="bg--blue500 color--white">
       <Slider {...settings} className="faculty__carousel">
         {photoGallery.map((photo) => (
-          <Img className="event__image" fluid={photo.fluid} alt="HPI·MS" />
+          <GatsbyImage
+            className="event__image"
+            image={getImage(photo.fluid)}
+            alt="HPI·MS"
+          />
         ))}
       </Slider>
 

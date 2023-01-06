@@ -4,7 +4,7 @@ import React from "react";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import styled from "styled-components";
-import Img from "gatsby-plugin-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 
 // Utils
@@ -151,10 +151,16 @@ const StyledReferences = styled.section`
 const options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const fluid = useContentfulImage(
+      const image = useContentfulImage(
         node.data.target.fields.file["en-US"].url
       );
-      return <Img className="content__image" fluid={fluid} title="HPI·MS" />;
+      return (
+        <GatsbyImage
+          className="content__image"
+          image={getImage(image)}
+          title="HPI·MS"
+        />
+      );
     },
     [INLINES.HYPERLINK]: (node) => {
       if (
@@ -207,9 +213,9 @@ const References = (props) => {
                     {research_projects.map((project) => (
                       <div className="grid__item">
                         <ReferenceCard>
-                          <Img
+                          <GatsbyImage
                             className="card__icon"
-                            fixed={project.icon.fixed}
+                            image={getImage(project.icon.fixed)}
                             styles={{
                               width: "56px",
                               height: "56px",

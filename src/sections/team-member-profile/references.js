@@ -4,7 +4,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
-import Img from "gatsby-plugin-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
@@ -151,9 +151,9 @@ const References = (props) => {
                       <div className="grid__item">
                         <ReferenceCard>
                           {project.icon ? (
-                            <Img
+                            <GatsbyImage
                               className="card__icon"
-                              fixed={project.icon.fixed}
+                              image={getImage(project.icon.fixed)}
                               styles={{
                                 width: "56px",
                                 height: "56px",

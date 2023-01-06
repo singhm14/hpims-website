@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import Img from "gatsby-plugin-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
 import { colors } from "utils/variables/";
@@ -70,10 +70,10 @@ const StyledContent = styled.section`
 const options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const fluid = useContentfulImage(
+      const image = useContentfulImage(
         node.data.target.fields.file["en-US"].url
       );
-      return <Img className="content__image" fluid={fluid} title="HPI·MS" />;
+      return <GatsbyImage className="content__image" image={getImage(image)} />;
     },
     [INLINES.HYPERLINK]: (node) => {
       if (

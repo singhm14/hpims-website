@@ -1,9 +1,9 @@
 import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from "gatsby";
+// import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import Img from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
@@ -114,44 +114,44 @@ const StyledInstitutions = styled.section`
 `;
 
 const Institutions = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      mountSinai: file(
-        relativePath: { eq: "about/institution-mount-sinai.png" }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 544, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      hassoPlattner: file(
-        relativePath: { eq: "about/institution-hasso-platner.jpg" }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 544, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      logoIcahnSchool: file(
-        relativePath: { eq: "about/logo-icahn-school.png" }
-      ) {
-        childImageSharp {
-          fixed(height: 60, quality: 100) {
-            ...GatsbyImageSharpFixed_withWebp
-          }
-        }
-      }
-      hpiHealthCenter: file(relativePath: { eq: "about/logo-hpi.png" }) {
-        childImageSharp {
-          fixed(height: 60, quality: 100) {
-            ...GatsbyImageSharpFixed_withWebp
-          }
-        }
-      }
-    }
-  `);
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     mountSinai: file(
+  //       relativePath: { eq: "about/institution-mount-sinai.png" }
+  //     ) {
+  //       childImageSharp {
+  //         fluid(maxWidth: 544, quality: 100) {
+  //           ...GatsbyImageSharpFluid_withWebp
+  //         }
+  //       }
+  //     }
+  //     hassoPlattner: file(
+  //       relativePath: { eq: "about/institution-hasso-platner.jpg" }
+  //     ) {
+  //       childImageSharp {
+  //         fluid(maxWidth: 544, quality: 100) {
+  //           ...GatsbyImageSharpFluid_withWebp
+  //         }
+  //       }
+  //     }
+  //     logoIcahnSchool: file(
+  //       relativePath: { eq: "about/logo-icahn-school.png" }
+  //     ) {
+  //       childImageSharp {
+  //         fixed(height: 60, quality: 100) {
+  //           ...GatsbyImageSharpFixed_withWebp
+  //         }
+  //       }
+  //     }
+  //     hpiHealthCenter: file(relativePath: { eq: "about/logo-hpi.png" }) {
+  //       childImageSharp {
+  //         fixed(height: 60, quality: 100) {
+  //           ...GatsbyImageSharpFixed_withWebp
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
 
   return (
     <StyledInstitutions>
@@ -162,9 +162,13 @@ const Institutions = () => {
         <Grid gutter="32" columns="2">
           <div className="grid__item">
             <div className="institution__card">
-              <Img
+              {/* <Img
                 fluid={data.mountSinai.childImageSharp.fluid}
                 className="institute__image"
+                alt="Mount Sinai Health System"
+              /> */}
+              <StaticImage
+                src="../../assets/images/about/institution-mount-sinai.png"
                 alt="Mount Sinai Health System"
               />
 
@@ -223,10 +227,14 @@ const Institutions = () => {
                 </a>
 
                 <div className="subinstitute">
-                  <Img
+                  {/* <Img
                     className="subinstitute__logo"
                     fixed={data.logoIcahnSchool.childImageSharp.fixed}
                     alt="Icahn School of Medicine at Mount Sinai"
+                  /> */}
+                  <StaticImage
+                    src="../../assets/images/about/logo-icahn-school.png"
+                    alt="Mount Sinai Health System"
                   />
                   <h5>Icahn School of Medicine at Mount Sinai</h5>
                   <p className="summary">
@@ -262,9 +270,13 @@ const Institutions = () => {
 
           <div className="grid__item">
             <div className="institution__card">
-              <Img
+              {/* <Img
                 fluid={data.hassoPlattner.childImageSharp.fluid}
                 className="institute__image"
+                alt="Mount Sinai Health System"
+              /> */}
+              <StaticImage
+                src="../../assets/images/about/institution-hasso-platner.jpg"
                 alt="Mount Sinai Health System"
               />
 
@@ -326,10 +338,14 @@ const Institutions = () => {
                 </a>
 
                 <div className="subinstitute">
-                  <Img
+                  {/* <Img
                     className="subinstitute__logo hpi"
                     fixed={data.hpiHealthCenter.childImageSharp.fixed}
                     alt="HPI Digital Health Center"
+                  /> */}
+                  <StaticImage
+                    src="../../assets/images/about/logo-hpi.png"
+                    alt="Mount Sinai Health System"
                   />
                   <h5>HPI Digital Health Center</h5>
                   <p className="summary">
