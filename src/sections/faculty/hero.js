@@ -3,7 +3,8 @@ import React from "react";
 // Libraries
 import styled from "styled-components";
 import { BLOCKS } from "@contentful/rich-text-types";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
+// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
@@ -76,8 +77,7 @@ const Hero = (props) => {
             FACULTY
           </p>
           <h2 className="hero__title color--blue300">{title}</h2>
-          {pageDescription &&
-            documentToReactComponents(pageDescription.raw, renderOptions)}
+          {pageDescription && renderRichText(pageDescription, renderOptions)}
         </div>
       </Container>
     </StyledHero>

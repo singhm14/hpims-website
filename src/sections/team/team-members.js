@@ -107,8 +107,6 @@ const TeamMembers = () => {
     }
   `);
 
-  console.log("aca viene el team member completo ---> ", data);
-
   // We'll save all team members as state
   useEffect(() => {
     setTeamMembers(data.contentfulContentOrder.teamMembers);

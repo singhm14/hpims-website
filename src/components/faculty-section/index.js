@@ -2,10 +2,9 @@ import React from "react";
 
 // Libraries
 import styled, { css } from "styled-components";
-// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 import { BLOCKS } from "@contentful/rich-text-types";
-import BackgroundImage from "gatsby-background-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
 import { colors, gradients } from "utils/variables/";
@@ -248,7 +247,7 @@ const FacultySection = (props) => {
       background={backgroundStyle}>
       <Container>
         {image && (
-          <BackgroundImage fluid={image.fluid} className="faculty__image" />
+          <GatsbyImage image={getImage(image)} className="faculty__image" />
         )}
         <div className="faculty__content">
           {subtitle && <p className="subtitle font-weight--600">{subtitle}</p>}

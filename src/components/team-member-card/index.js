@@ -1,9 +1,8 @@
 import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import BackgroundImage from "gatsby-background-image";
+import { StaticImage } from "gatsby-plugin-image";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
@@ -91,26 +90,18 @@ const StyledTeamMemberCard = styled(Link)`
 `;
 
 const TeamMemberCard = (props) => {
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
-        childImageSharp {
-          gatsbyImageData(width: 256, quality: 100)
-        }
-      }
-    }
-  `);
   return (
     <StyledTeamMemberCard to={"/team/" + getSlug(props.name)}>
-      <BackgroundImage
-        className="team-member__profile-picture bg--grey900"
-        fluid={
-          props.profilePicture
-            ? props.profilePicture
-            : data.file.childImageSharp.fluid
-        }
-        style={{ backgroundSize: "cover" }}
-      />
+      <div>
+        <StaticImage
+          src="../../assets/images/team/profile-picture-placeholder.png"
+          alt=""
+          quality={100}
+          width="256"
+          className="team-member__profile-picture bg--grey900"
+          style={{ backgroundSize: "cover" }}
+        />
+      </div>
       <div className="team-member__info bg--grey100 color--black">
         <div>
           <p className="department paragraph--small color--grey900 font-weight--500">
