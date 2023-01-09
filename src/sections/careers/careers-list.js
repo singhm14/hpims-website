@@ -52,6 +52,7 @@ const CareersList = () => {
       }
     }
   `);
+
   return (
     <StyledCareersList>
       <Container>

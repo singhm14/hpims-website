@@ -275,7 +275,7 @@ const Faculty = () => {
         {photoGallery.map((photo) => (
           <GatsbyImage
             className="event__image"
-            image={getImage(photo.fluid)}
+            image={getImage(photo)}
             alt="HPI·MS"
           />
         ))}
@@ -289,7 +289,7 @@ const Faculty = () => {
               <h4>{title}</h4>
             </div>
 
-            <Link to="/faculty" className="location">
+            <Link to="/faculty/" className="location">
               More info
             </Link>
           </div>

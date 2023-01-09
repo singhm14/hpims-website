@@ -2,7 +2,7 @@ import React from "react";
 
 // Libraries
 import styled from "styled-components";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
@@ -51,11 +51,7 @@ const StyledContent = styled.div`
 
 const Content = (props) => {
   const { jobDetails: content } = props.data;
-  return (
-    <StyledContent>
-      {content && documentToReactComponents(content.raw)}
-    </StyledContent>
-  );
+  return <StyledContent>{content && renderRichText(content)}</StyledContent>;
 };
 
 export default Content;

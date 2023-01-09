@@ -1,10 +1,9 @@
 import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import BackgroundImage from "gatsby-background-image";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
@@ -164,17 +163,17 @@ const Bio = (props) => {
   const twitter = data.twitterProfile;
   const linkedIn = data.linkedInProfile;
 
-  const placeholderProfilePicture = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 352, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `);
+  // const placeholderProfilePicture = useStaticQuery(graphql`
+  //   query {
+  //     file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
+  //       childImageSharp
+  //         gatsbyImageData(width: 352, quality: 100)
+  //       }
+  //     }
+  //   }
+  // `);
+
+  const image = getImage(profilePicture);
 
   return (
     <StyledBio>
@@ -204,24 +203,23 @@ const Bio = (props) => {
               {bio && (
                 <React.Fragment>
                   <p className="title--underlined color--black">Bio</p>
-                  {documentToReactComponents(bio.raw)}
+                  {renderRichText(bio)}
                 </React.Fragment>
               )}
             </div>
           </div>
 
           <div className="bio__profile-picture">
-            <BackgroundImage
-              fluid={
-                profilePicture
-                  ? profilePicture.fluid
-                  : placeholderProfilePicture.file.childImageSharp.fluid
-              }
-              className="profile-picture"
-              style={{
-                backgroundSize: "cover",
-              }}
-            />
+            {profilePicture ? (
+              <GatsbyImage image={image} alt="" className="profile-picture" />
+            ) : (
+              <StaticImage
+                src="../../assets/images/team/profile-picture-placeholder.png"
+                width={325}
+                quality={100}
+                className="profile-picture"
+              />
+            )}
             <div className="info bg--blue100">
               {email && (
                 <a
@@ -273,7 +271,7 @@ const Bio = (props) => {
             {bio && (
               <React.Fragment>
                 <p className="title--underlined color--black">Bio</p>
-                {documentToReactComponents(bio.raw)}
+                {renderRichText(bio)}
               </React.Fragment>
             )}
           </div>
