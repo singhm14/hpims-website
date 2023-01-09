@@ -8,7 +8,7 @@ import styled from "styled-components";
 import breakpoint from "utils/breakpoints/";
 
 // Components
-import SEO from "components/seo/";
+import Seo from "components/seo/";
 import Container from "components/container/";
 
 // Sections
@@ -33,7 +33,7 @@ const Careers = (props) => {
 
   return (
     <React.Fragment>
-      <SEO
+      <Seo
         title={
           data.jobTitle +
           " | Hasso Plattner Institute for Digital Health at Mount Sinai"
@@ -58,7 +58,7 @@ const Careers = (props) => {
 export default Careers;
 
 export const query = graphql`
-  query($id: String) {
+  query ($id: String) {
     contentfulCareers(id: { eq: $id }) {
       jobTitle
       slug

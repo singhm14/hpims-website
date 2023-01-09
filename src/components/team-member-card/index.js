@@ -1,17 +1,17 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
-import BackgroundImage from 'gatsby-background-image'
+import { useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
+import BackgroundImage from "gatsby-background-image";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
-import { getSlug } from 'utils/functions/'
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
+import { getSlug } from "utils/functions/";
 
 // Components
-import { Link } from 'gatsby'
+import { Link } from "gatsby";
 
 const StyledTeamMemberCard = styled(Link)`
   width: 100%;
@@ -69,14 +69,13 @@ const StyledTeamMemberCard = styled(Link)`
       text-align: right;
 
       span {
-
         ${breakpoint.medium`
           display: none;
         `}
       }
 
       &::after {
-        content: '+';
+        content: "+";
         max-height: 10px;
         display: inline-block;
         margin-left: 4px;
@@ -89,49 +88,54 @@ const StyledTeamMemberCard = styled(Link)`
       }
     }
   }
-`
+`;
 
 const TeamMemberCard = (props) => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
         childImageSharp {
-          fluid(maxWidth: 256, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(width: 256, quality: 100)
         }
       }
     }
-  `)
+  `);
   return (
-    <StyledTeamMemberCard to={'/team/' + getSlug(props.name)}>
-      <BackgroundImage className="team-member__profile-picture bg--grey900" fluid={props.profilePicture ? props.profilePicture : data.file.childImageSharp.fluid} style={{ backgroundSize: 'cover' }} />
+    <StyledTeamMemberCard to={"/team/" + getSlug(props.name)}>
+      <BackgroundImage
+        className="team-member__profile-picture bg--grey900"
+        fluid={
+          props.profilePicture
+            ? props.profilePicture
+            : data.file.childImageSharp.fluid
+        }
+        style={{ backgroundSize: "cover" }}
+      />
       <div className="team-member__info bg--grey100 color--black">
         <div>
           <p className="department paragraph--small color--grey900 font-weight--500">
             {props.departments &&
               props.departments.map((department, index) => {
                 if (index !== props.departments.length - 1) {
-                  return department + ' | '
+                  return department + " | ";
                 } else {
-                  return department
+                  return department;
                 }
               })}
           </p>
 
           <h5 className="name paragraph--large color--blue500">
-            <p className="name color--blue500 font-weight--600">
-              {props.name}
-            </p>
+            <p className="name color--blue500 font-weight--600">{props.name}</p>
           </h5>
           <p className="paragraph--small color--black">{props.position}</p>
         </div>
 
-        <p className="link color--blue500 font-weight--600"><span>View bio</span>
+        <p className="link color--blue500 font-weight--600">
+          <span>View bio</span>
         </p>
       </div>
     </StyledTeamMemberCard>
-  )
-}
+  );
+};
 
-export default TeamMemberCard
+export default TeamMemberCard;

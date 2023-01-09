@@ -10,7 +10,7 @@ import "aos/dist/aos.css";
 import "assets/styles/animations.css";
 
 // Components
-import SEO from "components/seo/";
+import Seo from "components/seo/";
 import Menu from "components/menu/";
 import Footer from "components/footer/";
 
@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
 
   return (
     <main className="color--black" data-aos="fade">
-      <SEO lang="en" />
+      <Seo lang="en" />
       <GlobalStyles />
       <Menu />
       {children}

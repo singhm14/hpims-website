@@ -10,7 +10,7 @@ import Content from "sections/research-project/content";
 import Sidebar from "sections/research-project/sidebar";
 
 // Components
-import SEO from "components/seo/";
+import Seo from "components/seo/";
 
 // Components
 import Container from "components/container/";
@@ -20,7 +20,7 @@ const StyledContainer = styled(Container)`
 `;
 
 export const query = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     contentfulResearchProjects(id: { eq: $id }) {
       title
       summary {
@@ -54,7 +54,7 @@ export const query = graphql`
 
 const ResearchProject = (props) => (
   <div data-aos="fade">
-    <SEO
+    <Seo
       title={
         props.data.contentfulResearchProjects.title +
         " | Hasso Plattner Institute for Digital Health at Mount Sinai"

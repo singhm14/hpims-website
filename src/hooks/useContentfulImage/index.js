@@ -1,7 +1,7 @@
 // Libraries
 import { useStaticQuery, graphql } from "gatsby";
 
-export default (assetUrl) => {
+const useContentfulImage = (assetUrl) => {
   const allContentfulAssets = useStaticQuery(graphql`
     query {
       allContentfulAsset {
@@ -19,3 +19,5 @@ export default (assetUrl) => {
     (node) => node.file.url === assetUrl
   ).fluid;
 };
+
+export default useContentfulImage;

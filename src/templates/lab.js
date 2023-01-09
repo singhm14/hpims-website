@@ -9,7 +9,7 @@ import Bio from "sections/lab/bio";
 import References from "sections/lab/references";
 
 // Components
-import SEO from "components/seo/";
+import Seo from "components/seo/";
 
 const Lab = (props) => {
   const title = props.data.contentfulLabs.title;
@@ -17,7 +17,7 @@ const Lab = (props) => {
 
   return (
     <div data-aos="fade">
-      <SEO
+      <Seo
         title={
           title +
           " | Hasso Plattner Institute for Digital Health at Mount Sinai"
@@ -32,7 +32,7 @@ const Lab = (props) => {
 };
 
 export const query = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     contentfulLabs(id: { eq: $id }) {
       title
       summary {

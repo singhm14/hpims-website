@@ -2,8 +2,8 @@ import React from "react";
 
 // Libraries
 import styled from "styled-components";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-
+// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 // Icons
 import IconEnvelope from "assets/icons/icon-envelope.inline.svg";
 import IconTwitter from "assets/icons/icon-twitter.inline.svg";
@@ -90,9 +90,7 @@ const Sidebar = (props) => {
         <p className="paragraph--small">{summary}</p>
         <br />
         <p className="title--underlined paragraph--small">Apply Now</p>
-        <p className="paragraph--small">
-          {documentToReactComponents(instructions.raw)}
-        </p>
+        <p className="paragraph--small">{renderRichText(instructions)}</p>
         <br />
         <div className="sidebar__social">
           <p className="title--underlined paragraph--small">Share Job Offer</p>

@@ -198,7 +198,7 @@ const TeamMembers = () => {
                 <div className="grid__item">
                   <TeamMemberCard
                     profilePicture={
-                      member.profilePicture && member.profilePicture.fluid
+                      member.profilePicture && member.profilePicture
                     }
                     departments={member.department}
                     name={member.name}

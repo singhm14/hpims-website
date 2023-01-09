@@ -2,7 +2,8 @@ import React from "react";
 
 // Libraries
 import styled, { css } from "styled-components";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 import { BLOCKS } from "@contentful/rich-text-types";
 import BackgroundImage from "gatsby-background-image";
 
@@ -192,7 +193,6 @@ const StyledFacultySection = styled.section`
   // Blue Light:end
 
   .faculty__content {
-
     .subtitle {
       margin-bottom: 16px;
       font-size: 16px;
@@ -254,7 +254,7 @@ const FacultySection = (props) => {
           {subtitle && <p className="subtitle font-weight--600">{subtitle}</p>}
           {title && <h4 className="title">{title}</h4>}
 
-          {content && documentToReactComponents(content.raw, renderOptions)}
+          {content && renderRichText(content, renderOptions)}
         </div>
       </Container>
     </StyledFacultySection>

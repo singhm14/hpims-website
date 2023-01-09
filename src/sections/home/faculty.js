@@ -2,7 +2,8 @@ import React from "react";
 
 // Libraries
 import { useStaticQuery, graphql, Link } from "gatsby";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 import styled from "styled-components";
 import Slider from "react-slick";
 
@@ -294,7 +295,7 @@ const Faculty = () => {
           </div>
 
           <div className="summary">
-            {description && documentToReactComponents(description)}
+            {description && renderRichText(description)}
           </div>
         </div>
       </Container>

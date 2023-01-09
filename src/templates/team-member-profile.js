@@ -4,7 +4,7 @@ import React from "react";
 import { graphql } from "gatsby";
 
 // Components
-import SEO from "components/seo/";
+import Seo from "components/seo/";
 
 // Sections
 import Hero from "sections/team-member-profile/hero";
@@ -12,7 +12,7 @@ import Bio from "sections/team-member-profile/bio";
 import References from "sections/team-member-profile/references";
 
 export const query = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     contentfulTeamMembers(id: { eq: $id }) {
       profilePicture {
         gatsbyImageData(width: 352, quality: 100)
@@ -76,7 +76,7 @@ export const query = graphql`
 const TeamMemberProfile = (props) => {
   return (
     <React.Fragment>
-      <SEO
+      <Seo
         title={
           props.data.contentfulTeamMembers.name +
           " | Hasso Plattner Institute for Digital Health at Mount Sinai"
