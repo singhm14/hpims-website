@@ -1,10 +1,8 @@
 import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import BackgroundImage from "gatsby-background-image";
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
@@ -85,18 +83,6 @@ const References = (props) => {
       return b - a;
     });
 
-  const placeholderProfilePicture = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 352, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `);
-
   return (
     <StyledReferences>
       <Container>
@@ -110,22 +96,34 @@ const References = (props) => {
                     {labs.map((lab, index) => (
                       <div className="grid__item" key={index}>
                         <ReferenceCard>
-                          <BackgroundImage
-                            className="card__icon"
-                            fixed={
-                              lab.headOfTheLab.profilePicture
-                                ? lab.headOfTheLab.profilePicture.fixed
-                                : placeholderProfilePicture.file.childImageSharp
-                                    .fluid
-                            }
-                            style={{
-                              width: "64px",
-                              height: "64px",
-                              backgroundSize: "cover",
-                              borderRadius: "50%",
-                              overflow: "hidden",
-                            }}
-                          />
+                          {lab.headOfTheLab.profilePicture ? (
+                            <GatsbyImage
+                              image={getImage(lab.headOfTheLab.profilePicture)}
+                              style={{
+                                width: "64px",
+                                height: "64px",
+                                backgroundSize: "cover",
+                                borderRadius: "50%",
+                                overflow: "hidden",
+                              }}
+                              alt=""
+                              className="card__icon"
+                            />
+                          ) : (
+                            <StaticImage
+                              src="../../assets/images/team/profile-picture-placeholder.png"
+                              style={{
+                                width: "64px",
+                                height: "64px",
+                                backgroundSize: "cover",
+                                borderRadius: "50%",
+                                overflow: "hidden",
+                              }}
+                              alt=""
+                              className="card__icon"
+                            />
+                          )}
+
                           <div className="card__content">
                             <h5 className="card__title color--blue500 font-weight--600">
                               {lab.title}
@@ -153,7 +151,7 @@ const References = (props) => {
                           {project.icon ? (
                             <GatsbyImage
                               className="card__icon"
-                              image={getImage(project.icon.fixed)}
+                              image={getImage(project.icon)}
                               styles={{
                                 width: "56px",
                                 height: "56px",
