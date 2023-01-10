@@ -2,7 +2,7 @@ import React from "react";
 
 // Libraries
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 import styled from "styled-components";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
@@ -201,7 +201,7 @@ const References = (props) => {
       <Container>
         <div className="references">
           <div className="content">
-            {content && documentToReactComponents(content.raw, options)}
+            {content && renderRichText(content, options)}
           </div>
 
           <div className="sidebar">
