@@ -79,7 +79,7 @@ const Hero = (props) => {
       {icon && (
         <GatsbyImage
           className="hero__icon"
-          image={getImage(icon.fluid)}
+          image={getImage(icon)}
           style={{ position: "absolute" }}
           alt={title}
         />

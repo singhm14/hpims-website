@@ -114,45 +114,6 @@ const StyledInstitutions = styled.section`
 `;
 
 const Institutions = () => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     mountSinai: file(
-  //       relativePath: { eq: "about/institution-mount-sinai.png" }
-  //     ) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 544, quality: 100) {
-  //           ...GatsbyImageSharpFluid_withWebp
-  //         }
-  //       }
-  //     }
-  //     hassoPlattner: file(
-  //       relativePath: { eq: "about/institution-hasso-platner.jpg" }
-  //     ) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 544, quality: 100) {
-  //           ...GatsbyImageSharpFluid_withWebp
-  //         }
-  //       }
-  //     }
-  //     logoIcahnSchool: file(
-  //       relativePath: { eq: "about/logo-icahn-school.png" }
-  //     ) {
-  //       childImageSharp {
-  //         fixed(height: 60, quality: 100) {
-  //           ...GatsbyImageSharpFixed_withWebp
-  //         }
-  //       }
-  //     }
-  //     hpiHealthCenter: file(relativePath: { eq: "about/logo-hpi.png" }) {
-  //       childImageSharp {
-  //         fixed(height: 60, quality: 100) {
-  //           ...GatsbyImageSharpFixed_withWebp
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
-
   return (
     <StyledInstitutions>
       <Container>
@@ -162,11 +123,6 @@ const Institutions = () => {
         <Grid gutter="32" columns="2">
           <div className="grid__item">
             <div className="institution__card">
-              {/* <Img
-                fluid={data.mountSinai.childImageSharp.fluid}
-                className="institute__image"
-                alt="Mount Sinai Health System"
-              /> */}
               <StaticImage
                 src="../../assets/images/about/institution-mount-sinai.png"
                 alt="Mount Sinai Health System"
@@ -270,11 +226,6 @@ const Institutions = () => {
 
           <div className="grid__item">
             <div className="institution__card">
-              {/* <Img
-                fluid={data.hassoPlattner.childImageSharp.fluid}
-                className="institute__image"
-                alt="Mount Sinai Health System"
-              /> */}
               <StaticImage
                 src="../../assets/images/about/institution-hasso-platner.jpg"
                 alt="Mount Sinai Health System"
@@ -338,11 +289,6 @@ const Institutions = () => {
                 </a>
 
                 <div className="subinstitute">
-                  {/* <Img
-                    className="subinstitute__logo hpi"
-                    fixed={data.hpiHealthCenter.childImageSharp.fixed}
-                    alt="HPI Digital Health Center"
-                  /> */}
                   <StaticImage
                     src="../../assets/images/about/logo-hpi.png"
                     alt="Mount Sinai Health System"

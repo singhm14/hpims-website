@@ -3,7 +3,7 @@ import React from "react";
 // Libraries
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import BackgroundImage from "gatsby-background-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
@@ -104,12 +104,12 @@ const Labs = () => {
               data-aos-delay={150 * index}
               key={lab.id}>
               <div className="lab-card">
-                <BackgroundImage
-                  className="lab__image"
-                  fluid={lab.headOfTheLab.profilePicture.fluid}
+                <GatsbyImage
+                  image={getImage(lab.headOfTheLab.profilePicture)}
                   style={{
                     backgroundSize: "cover",
                   }}
+                  className="lab__image"
                 />
                 <div className="lab__content">
                   <h4 className="color--blue500 font-weight--600">

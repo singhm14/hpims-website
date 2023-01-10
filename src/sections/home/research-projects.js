@@ -88,7 +88,7 @@ const ResearchProjects = () => {
           {data.allContentfulResearchProjects.nodes.map((project, index) => (
             <div className="grid__item" key={index}>
               <ResearchProjectCard
-                icon={project.icon && project.icon.fixed}
+                icon={project.icon && project.icon}
                 title={project.title}
                 summary={project.summary.summary}
               />

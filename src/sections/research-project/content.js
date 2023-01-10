@@ -120,11 +120,9 @@ const options = {
 };
 
 const Content = (props) => {
-  const content = props.data.contentfulResearchProjects.description.description;
+  const content = props.data.contentfulResearchProjects.description;
 
-  return (
-    <StyledContent>{content && renderRichText(content, options)}</StyledContent>
-  );
+  return <StyledContent>{content && renderRichText(content)}</StyledContent>;
 };
 
 export default Content;

@@ -85,12 +85,11 @@ const StyledResearchProjectCard = styled.div`
 
 const ResearchProject = (props) => {
   const { icon, title, slug, summary } = props;
-  const image = getImage(icon);
   return (
     <StyledResearchProjectCard className="bg--white color--black">
       <div>
         <div className="research-project__icon">
-          {icon && <GatsbyImage image={image} alt={title} />}
+          {icon && <GatsbyImage image={getImage(icon)} alt={title} />}
         </div>
 
         <h4 className="research-project__title color--blue500 font-weight--600">

@@ -249,7 +249,6 @@ const PublicationCard = (props) => {
               {props.internalAuthors &&
                 props.internalAuthors.map((author) => (
                   <div className="author" key={author.id}>
-                    {console.log("aca viene el autor author", author)}
                     {author.profilePicture ? (
                       <GatsbyImage
                         image={getImage(author.profilePicture)}
