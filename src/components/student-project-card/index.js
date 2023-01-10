@@ -2,7 +2,7 @@ import React from "react";
 
 // Libraries
 import styled from "styled-components";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 import { Link } from "gatsby";
 
 // Utils
@@ -97,8 +97,7 @@ const StudentProject = (props) => {
           {props.title}
         </h5>
         <div className="content">
-          {props.description &&
-            documentToReactComponents(props.description.raw)}
+          {props.description && renderRichText(props.description)}
         </div>
       </div>
       <div className="project__supervisors bg--blue100">

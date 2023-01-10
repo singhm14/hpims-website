@@ -3,7 +3,7 @@ import React from "react";
 // Libraries
 import styled from "styled-components";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
@@ -120,12 +120,10 @@ const options = {
 };
 
 const Content = (props) => {
-  const content = props.data.contentfulResearchProjects.description;
+  const content = props.data.contentfulResearchProjects.description.description;
 
   return (
-    <StyledContent>
-      {content && documentToReactComponents(content.raw, options)}
-    </StyledContent>
+    <StyledContent>{content && renderRichText(content, options)}</StyledContent>
   );
 };
 

@@ -2,8 +2,8 @@ import React from "react";
 
 // Libraries
 import styled from "styled-components";
-// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
+
 // Icons
 import IconEnvelope from "assets/icons/icon-envelope.inline.svg";
 import IconTwitter from "assets/icons/icon-twitter.inline.svg";
