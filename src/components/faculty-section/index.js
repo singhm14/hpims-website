@@ -247,7 +247,11 @@ const FacultySection = (props) => {
       background={backgroundStyle}>
       <Container>
         {image && (
-          <GatsbyImage image={getImage(image)} className="faculty__image" />
+          <GatsbyImage
+            image={getImage(image)}
+            className="faculty__image"
+            alt=""
+          />
         )}
         <div className="faculty__content">
           {subtitle && <p className="subtitle font-weight--600">{subtitle}</p>}

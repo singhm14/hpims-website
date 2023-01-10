@@ -2,10 +2,8 @@ import React from "react";
 
 // Libraries
 import { useStaticQuery, graphql, Link } from "gatsby";
-// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
-import styled from "styled-components";
-import Slider from "react-slick";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
@@ -13,7 +11,8 @@ import { colors } from "utils/variables/";
 
 // Components
 import Container from "components/container/";
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import styled from "styled-components";
+import Slider from "react-slick";
 
 // Icons
 import SliderArrow from "assets/icons/icon-carousel-arrow.inline.svg";
@@ -266,7 +265,7 @@ const Faculty = () => {
 
   const subtitle = data[0].subtitle;
   const title = data[0].title;
-  const description = data[0].description.raw;
+  const description = data[0].description;
   const photoGallery = data[0].photoGallery;
 
   return (

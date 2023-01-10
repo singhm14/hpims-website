@@ -4,7 +4,6 @@ import React from "react";
 import styled from "styled-components";
 import { BLOCKS } from "@contentful/rich-text-types";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
-// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
