@@ -2,7 +2,7 @@ import React from "react";
 
 // Libraries
 import styled from "styled-components";
-import { StaticImage } from "gatsby-plugin-image";
+import { StaticImage, getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
 import breakpoint from "utils/breakpoints/";
@@ -93,14 +93,23 @@ const TeamMemberCard = (props) => {
   return (
     <StyledTeamMemberCard to={"/team/" + getSlug(props.name)}>
       <div>
-        <StaticImage
-          src="../../assets/images/team/profile-picture-placeholder.png"
-          alt=""
-          quality={100}
-          width="256"
-          className="team-member__profile-picture bg--grey900"
-          style={{ backgroundSize: "cover" }}
-        />
+        {props.profilePicture ? (
+          <GatsbyImage
+            image={getImage(props.profilePicture)}
+            alt=""
+            quality={100}
+            width={256}
+          />
+        ) : (
+          <StaticImage
+            src="../../assets/images/team/profile-picture-placeholder.png"
+            alt=""
+            quality={100}
+            width="256"
+            className="team-member__profile-picture bg--grey900"
+            style={{ backgroundSize: "cover" }}
+          />
+        )}
       </div>
       <div className="team-member__info bg--grey100 color--black">
         <div>
