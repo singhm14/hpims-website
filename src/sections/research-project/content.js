@@ -119,6 +119,8 @@ const options = {
   },
 };
 
+console.log(options);
+
 const Content = (props) => {
   const content = props.data.contentfulResearchProjects.description;
 
