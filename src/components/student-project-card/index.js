@@ -97,7 +97,7 @@ const StudentProject = (props) => {
           {props.title}
         </h5>
         <div className="content">
-          {props.description && renderRichText(props.description)}
+          <p>{props.description && renderRichText(props.description)}</p>
         </div>
       </div>
       <div className="project__supervisors bg--blue100">

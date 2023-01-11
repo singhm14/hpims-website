@@ -34,6 +34,7 @@ const StyledFacultySection = styled.section`
 
       .faculty__image {
         width: 100%;
+        max-height: 630px;
         padding-bottom: 56.25%;
         margin-bottom: 40px;
       }
@@ -72,11 +73,13 @@ const StyledFacultySection = styled.section`
 
       .faculty__image {
         width: 100%;
+        height: 200px;
         padding-bottom: 100%;
 
         ${breakpoint.medium`
           width: 50%;
           padding-bottom: 50%;
+          max-height: 630px;
         `}
       }
 
@@ -249,15 +252,16 @@ const FacultySection = (props) => {
         {image && (
           <GatsbyImage
             image={getImage(image)}
-            className="faculty__image"
             alt=""
+            width={560}
+            className="faculty__image"
           />
         )}
         <div className="faculty__content">
           {subtitle && <p className="subtitle font-weight--600">{subtitle}</p>}
           {title && <h4 className="title">{title}</h4>}
 
-          {content && renderRichText(content, renderOptions)}
+          <p>{content && renderRichText(content, renderOptions)}</p>
         </div>
       </Container>
     </StyledFacultySection>

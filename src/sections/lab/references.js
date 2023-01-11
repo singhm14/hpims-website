@@ -201,7 +201,7 @@ const References = (props) => {
       <Container>
         <div className="references">
           <div className="content">
-            {content && renderRichText(content, options)}
+            <p>{content && renderRichText(content, options)}</p>
           </div>
 
           <div className="sidebar">

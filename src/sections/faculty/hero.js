@@ -76,7 +76,9 @@ const Hero = (props) => {
             FACULTY
           </p>
           <h2 className="hero__title color--blue300">{title}</h2>
-          {pageDescription && renderRichText(pageDescription, renderOptions)}
+          <p>
+            {pageDescription && renderRichText(pageDescription, renderOptions)}
+          </p>
         </div>
       </Container>
     </StyledHero>

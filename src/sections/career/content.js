@@ -51,7 +51,11 @@ const StyledContent = styled.div`
 
 const Content = (props) => {
   const { jobDetails: content } = props.data;
-  return <StyledContent>{content && renderRichText(content)}</StyledContent>;
+  return (
+    <StyledContent>
+      <p>{content && renderRichText(content)}</p>
+    </StyledContent>
+  );
 };
 
 export default Content;

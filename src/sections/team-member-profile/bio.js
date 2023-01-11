@@ -203,7 +203,7 @@ const Bio = (props) => {
               {bio && (
                 <React.Fragment>
                   <p className="title--underlined color--black">Bio</p>
-                  {renderRichText(bio)}
+                  <p>{renderRichText(bio)}</p>
                 </React.Fragment>
               )}
             </div>
@@ -271,7 +271,7 @@ const Bio = (props) => {
             {bio && (
               <React.Fragment>
                 <p className="title--underlined color--black">Bio</p>
-                {renderRichText(bio)}
+                <p>{renderRichText(bio)}</p>
               </React.Fragment>
             )}
           </div>

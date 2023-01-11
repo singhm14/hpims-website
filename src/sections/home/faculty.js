@@ -294,7 +294,7 @@ const Faculty = () => {
           </div>
 
           <div className="summary">
-            {description && renderRichText(description)}
+            <p>{description && renderRichText(description)}</p>
           </div>
         </div>
       </Container>

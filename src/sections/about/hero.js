@@ -81,7 +81,7 @@ const AboutHero = () => (
       <h2 className="title color--blue500">
         Turning the promise of digital health into a reality
       </h2>
-      <p>
+      <p className="">
         Our goal is to turn the promise of digital health into reality by being
         the driver of innovation that will revolutionize the way in which people
         think about their personal health and health systems, generating real

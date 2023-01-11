@@ -122,7 +122,11 @@ const options = {
 const Content = (props) => {
   const content = props.data.contentfulResearchProjects.description;
 
-  return <StyledContent>{content && renderRichText(content)}</StyledContent>;
+  return (
+    <StyledContent>
+      <p>{content && renderRichText(content)}</p>
+    </StyledContent>
+  );
 };
 
 export default Content;
