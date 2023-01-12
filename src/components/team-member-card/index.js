@@ -94,21 +94,25 @@ const TeamMemberCard = (props) => {
     <StyledTeamMemberCard to={"/team/" + getSlug(props.name)}>
       <div>
         {props.profilePicture ? (
-          <GatsbyImage
-            image={getImage(props.profilePicture)}
-            alt=""
-            quality={100}
-            width={256}
-          />
+          <div className="team-member__profile-picture">
+            <GatsbyImage
+              image={getImage(props.profilePicture)}
+              alt=""
+              quality={100}
+              imgStyle={{ backgroundSize: "cover" }}
+            />
+          </div>
         ) : (
-          <StaticImage
-            src="../../assets/images/team/profile-picture-placeholder.png"
-            alt=""
-            quality={100}
-            width="256"
-            className="team-member__profile-picture bg--grey900"
-            style={{ backgroundSize: "cover" }}
-          />
+          <div className="team-member__profile-picture">
+            <StaticImage
+              src="../../assets/images/team/profile-picture-placeholder.png"
+              alt=""
+              quality={100}
+              width="256"
+              className="bg--grey900"
+              style={{ backgroundSize: "cover" }}
+            />
+          </div>
         )}
       </div>
       <div className="team-member__info bg--grey100 color--black">
