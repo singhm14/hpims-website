@@ -1,18 +1,17 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
 
 // Helpers
-import { Helpers } from './helpers'
+import { Helpers } from "./helpers";
 
 const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Inter", sans-serif;
     font-size: 16px;
     line-height: 1.38em;
-  }
 
   h1,
   h2,
@@ -214,8 +213,8 @@ const GlobalStyles = createGlobalStyle`
       margin-right: 12px;
     }
   }
-  
+}
   ${Helpers}
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;

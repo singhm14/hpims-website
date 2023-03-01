@@ -1,17 +1,16 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import styled from 'styled-components'
-import { useStaticQuery, graphql } from 'gatsby'
+import styled from "styled-components";
+import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
-import { getSlug, useToggle } from 'utils/functions/'
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
+import { getSlug, useToggle } from "utils/functions/";
 
 // Components
-import BackgroundImage from 'gatsby-background-image'
-import { ExternalLink } from 'components/buttons/'
+import { ExternalLink } from "components/buttons/";
 
 const StyledPublicationCard = styled.div`
   width: 100%;
@@ -84,30 +83,30 @@ const StyledPublicationCard = styled.div`
           font-size: 14px;
 
           .title {
-            display: ${(props) => (props.active ? 'block' : 'none')};
+            display: ${(props) => (props.active ? "block" : "none")};
           }
 
           .authors {
             display: flex;
             flex-wrap: wrap;
-            align-items: ${(props) => (props.active ? 'flex-start' : 'center')};
+            align-items: ${(props) => (props.active ? "flex-start" : "center")};
             justify-content: space-between;
-            margin-bottom: ${(props) => (props.active ? '20px' : '0')};
+            margin-bottom: ${(props) => (props.active ? "20px" : "0")};
 
             .author {
-              width: ${(props) => (props.active ? '100%' : 'auto')};
+              width: ${(props) => (props.active ? "100%" : "auto")};
               display: flex;
               align-items: center;
-              margin-bottom: ${(props) => (props.active ? '2px' : '0')};
+              margin-bottom: ${(props) => (props.active ? "2px" : "0")};
 
               @media screen and (max-width: 1025px) {
                 &:nth-child(n + 8) {
-                  display: ${props => props.active ? 'flex' : 'none'};
+                  display: ${(props) => (props.active ? "flex" : "none")};
                 }
               }
 
               &:nth-child(n + 15) {
-                display: ${props => props.active ? 'flex' : 'none'};
+                display: ${(props) => (props.active ? "flex" : "none")};
               }
 
               &:last-child {
@@ -117,18 +116,18 @@ const StyledPublicationCard = styled.div`
               .author__profile-picture {
                 width: 24px;
                 height: 24px;
-                margin-right: ${(props) => (props.active ? '4px' : '-4px')};
+                margin-right: ${(props) => (props.active ? "4px" : "-4px")};
                 border: 1px solid ${colors.white};
                 border-radius: 50% !important;
               }
 
               .author__name {
-                display: ${(props) => (props.active ? 'block' : 'none')};
+                display: ${(props) => (props.active ? "block" : "none")};
               }
             }
 
             .count {
-              display: ${(props) => (props.active ? 'none' : 'block')};
+              display: ${(props) => (props.active ? "none" : "block")};
               margin-left: 8px;
               font-weight: 500;
             }
@@ -137,7 +136,7 @@ const StyledPublicationCard = styled.div`
 
         .authors__full-list {
           width: 100%;
-          display: ${(props) => (props.active ? 'block' : 'none')};
+          display: ${(props) => (props.active ? "block" : "none")};
           font-size: 14px;
           line-height: 20px;
 
@@ -215,29 +214,23 @@ const StyledPublicationCard = styled.div`
       white-space: nowrap;
     }
   }
-`
+`;
 
 const PublicationCard = (props) => {
-  const [active, toggleAuthors] = useToggle(false)
-
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
-        childImageSharp {
-          fixed(width: 24, quality: 100) {
-            ...GatsbyImageSharpFixed_withWebp
-          }
-        }
-      }
-    }
-  `)
+  const [active, toggleAuthors] = useToggle(false);
 
   return (
     <StyledPublicationCard active={active}>
       <div className="publication__info">
-        <p className="publication__date paragraph--small color--grey700">{props.year}</p>
+        <p className="publication__date paragraph--small color--grey700">
+          {props.year}
+        </p>
         <h5>
-          <a href={props.link} className="publication__title color--blue900" target="_blank" rel="noopener noreferrer">
+          <a
+            href={props.link}
+            className="publication__title color--blue900"
+            target="_blank"
+            rel="noopener noreferrer">
             {props.title}
           </a>
         </h5>
@@ -250,27 +243,66 @@ const PublicationCard = (props) => {
         <div className="info info--authors">
           <div className="authors__internal">
             <div className="authors color--black">
-              <p className="title color--black paragraph--small">HPI·MS Authors</p>
+              <p className="title color--black paragraph--small">
+                HPI·MS Authors
+              </p>
               {props.internalAuthors &&
                 props.internalAuthors.map((author) => (
                   <div className="author" key={author.id}>
-                    <BackgroundImage className="author__profile-picture" fixed={author.profilePicture ? author.profilePicture.fixed : data.file.childImageSharp.fixed} style={{ width: '24px', height: '24px', backgroundSize: 'cover', borderRadius: '50%', overflow: 'hidden' }} />
-                    <p className="author__name paragraph--small">{author.name}</p>
+                    {author.profilePicture ? (
+                      <GatsbyImage
+                        image={getImage(author.profilePicture)}
+                        alt=""
+                        className="author__profile-picture"
+                        style={{
+                          width: "24px",
+                          height: "24px",
+                          backgroundSize: "cover",
+                          borderRadius: "50%",
+                          overflow: "hidden",
+                        }}
+                      />
+                    ) : (
+                      <StaticImage
+                        src="../../assets/images/team/profile-picture-placeholder.png"
+                        className="author__profile-picture"
+                        style={{
+                          width: "24px",
+                          height: "24px",
+                          backgroundSize: "cover",
+                          borderRadius: "50%",
+                          overflow: "hidden",
+                        }}
+                        alt=""
+                      />
+                    )}
+
+                    <p className="author__name paragraph--small">
+                      {author.name}
+                    </p>
                   </div>
                 ))}
 
-              <p className="count paragraph--small">{props.internalAuthors && props.internalAuthors.length} HPI•MS authors</p>
+              <p className="count paragraph--small">
+                {props.internalAuthors && props.internalAuthors.length} HPI•MS
+                authors
+              </p>
             </div>
 
             <div className="authors__full-list">
-              <p className="title paragraph--small color--black">Full list of authors</p>
+              <p className="title paragraph--small color--black">
+                Full list of authors
+              </p>
               <p className="paragraph--small color--black">{props.authors}</p>
             </div>
           </div>
 
           <div>
-            <button type="button" className="color--blue300" onClick={toggleAuthors}>
-              {active ? 'View less' : 'View all'}
+            <button
+              type="button"
+              className="color--blue300"
+              onClick={toggleAuthors}>
+              {active ? "View less" : "View all"}
             </button>
           </div>
         </div>
@@ -278,7 +310,10 @@ const PublicationCard = (props) => {
         <div className="info info--tags">
           {props.tags &&
             props.tags.map((tag, index) => (
-              <a href={'/publications/?category=' + getSlug(tag)} className="tag color--blue500" key={index}>
+              <a
+                href={"/publications/?category=" + getSlug(tag)}
+                className="tag color--blue500"
+                key={index}>
                 {tag}
               </a>
             ))}
@@ -286,14 +321,20 @@ const PublicationCard = (props) => {
       </div>
       <div className="publication__actions">
         <div className="journal">
-          <p className="paragraph--extra-small color--grey900 font-weight--500">{props.method}</p>
+          <p className="paragraph--extra-small color--grey900 font-weight--500">
+            {props.method}
+          </p>
           <p className="color--blue500">{props.journal}</p>
         </div>
 
-        <ExternalLink href={props.link} className="link bg-hover--blue500 color--blue500 color-hover--white border--blue500 svg--stroke-blue500 svg-hover--stroke-white" text="Open Publication" />
+        <ExternalLink
+          href={props.link}
+          className="link bg-hover--blue500 color--blue500 color-hover--white border--blue500 svg--stroke-blue500 svg-hover--stroke-white"
+          text="Open Publication"
+        />
       </div>
     </StyledPublicationCard>
-  )
-}
+  );
+};
 
-export default PublicationCard
+export default PublicationCard;

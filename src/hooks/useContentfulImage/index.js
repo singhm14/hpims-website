@@ -1,7 +1,7 @@
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from "gatsby";
 
-export default (assetUrl) => {
+const useContentfulImage = (assetUrl) => {
   const allContentfulAssets = useStaticQuery(graphql`
     query {
       allContentfulAsset {
@@ -9,13 +9,15 @@ export default (assetUrl) => {
           file {
             url
           }
-          fluid(maxWidth: 640, quality: 100) {
-            ...GatsbyContentfulFluid_withWebp
-          }
+          gatsbyImageData(width: 640, quality: 100)
         }
       }
     }
-  `)
+  `);
 
-  return allContentfulAssets.allContentfulAsset.nodes.find((node) => node.file.url === assetUrl).fluid
-}
+  return allContentfulAssets.allContentfulAsset.nodes.find(
+    (node) => node.file.url === assetUrl
+  ).fluid;
+};
+
+export default useContentfulImage;

@@ -1,17 +1,17 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import styled from 'styled-components'
+import styled from "styled-components";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
+import breakpoint from "utils/breakpoints/";
 
 // Components
-import Hero from 'components/hero/'
-import Container from 'components/container/'
+import Hero from "components/hero/";
+import Container from "components/container/";
 
 // Icons
-import Background from 'assets/icons/about/hero-background.inline.svg'
+import Background from "assets/icons/about/hero-background.inline.svg";
 
 const StyledHero = styled(Hero)`
   position: relative;
@@ -68,9 +68,9 @@ const StyledHero = styled(Hero)`
       font-size: 16px;
     `}
   }
-`
+`;
 
-export default () => (
+const AboutHero = () => (
   <StyledHero className="color--black">
     <div className="hero__background">
       <Background />
@@ -78,8 +78,17 @@ export default () => (
 
     <Container className="container">
       <p className="subtitle">About</p>
-      <h2 className="title color--blue500">Turning the promise of digital health into a reality</h2>
-      <p>Our goal is to turn the promise of digital health into reality by being the driver of innovation that will revolutionize the way in which people think about their personal health and health systems, generating real impact in people’s lives.</p>
+      <h2 className="title color--blue500">
+        Turning the promise of digital health into a reality
+      </h2>
+      <p className="">
+        Our goal is to turn the promise of digital health into reality by being
+        the driver of innovation that will revolutionize the way in which people
+        think about their personal health and health systems, generating real
+        impact in people’s lives.
+      </p>
     </Container>
   </StyledHero>
-)
+);
+
+export default AboutHero;

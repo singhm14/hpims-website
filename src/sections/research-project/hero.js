@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import styled from 'styled-components'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import styled from "styled-components";
+import { Link } from "gatsby";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
+import breakpoint from "utils/breakpoints/";
 
 // Components
-import PageHero from 'components/hero/'
-import Container from 'components/container/'
+import PageHero from "components/hero/";
+import Container from "components/container/";
 
 const StyledHero = styled(PageHero)`
   min-height: 520px;
@@ -57,12 +57,12 @@ const StyledHero = styled(PageHero)`
       left: calc(100vw - 310px - 64px);
     `}
   }
-`
+`;
 
 const Hero = (props) => {
-  const title = props.data.contentfulResearchProjects.title
-  const description = props.data.contentfulResearchProjects.summary.summary
-  const icon = props.data.contentfulResearchProjects.icon
+  const title = props.data.contentfulResearchProjects.title;
+  const description = props.data.contentfulResearchProjects.summary.summary;
+  const icon = props.data.contentfulResearchProjects.icon;
 
   return (
     <StyledHero className="color--black gradient--secondary">
@@ -76,9 +76,16 @@ const Hero = (props) => {
         <p className="paragraph--large">{description}</p>
       </Container>
 
-      {icon && <Img className="hero__icon" fluid={icon.fluid} style={{ position: 'absolute' }} alt={title} />}
+      {icon && (
+        <GatsbyImage
+          className="hero__icon"
+          image={getImage(icon)}
+          style={{ position: "absolute" }}
+          alt={title}
+        />
+      )}
     </StyledHero>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

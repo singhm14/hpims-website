@@ -1,20 +1,20 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
+import { useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
+import breakpoint from "utils/breakpoints/";
 
 // Components
-import Container from 'components/container/'
-import Grid from 'components/grid/'
-import PublicationCard from 'components/publication-card/'
-import { Primary } from 'components/buttons/'
+import Container from "components/container/";
+import Grid from "components/grid/";
+import PublicationCard from "components/publication-card/";
+import { Primary } from "components/buttons/";
 
 // Icons
-import Background from 'assets/icons/home/publications-background.svg'
+import Background from "assets/icons/home/publications-background.svg";
 
 const StyledPublications = styled.section`
   position: relative;
@@ -61,12 +61,12 @@ const StyledPublications = styled.section`
       display: none;
     }
   }
-`
+`;
 
 const Publications = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulPublications(limit: 4, sort: { fields: year, order: DESC }) {
+      allContentfulPublications(limit: 4, sort: { year: DESC }) {
         nodes {
           method
           journal
@@ -79,9 +79,7 @@ const Publications = () => {
               id
               name
               profilePicture {
-                fixed(width: 24, quality: 100) {
-                  ...GatsbyContentfulFixed_withWebp
-                }
+                gatsbyImageData(width: 24, quality: 100)
               }
             }
             ... on ContentfulStudents {
@@ -95,29 +93,48 @@ const Publications = () => {
         }
       }
     }
-  `)
+  `);
   return (
     <StyledPublications className="bg--grey100">
       <div className="publications__background" />
 
       <Container>
         <p className="section__subtitle color--black">Publications</p>
-        <h3 className="section__title color--blue500">World class research with a global impact</h3>
+        <h3 className="section__title color--blue500">
+          World class research with a global impact
+        </h3>
 
         <Grid gutter="32" columns="1">
           {data.allContentfulPublications.nodes.map((publication, index) => (
-            <div className="grid__item" key={index} data-aos="indicius-slide-up" data-aos-duration="600">
-              <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
+            <div
+              className="grid__item"
+              key={index}
+              data-aos="indicius-slide-up"
+              data-aos-duration="600">
+              <PublicationCard
+                method={publication.method}
+                journal={publication.journal}
+                title={publication.title}
+                authors={publication.authors.authors}
+                internalAuthors={publication.internalAuthors}
+                year={publication.year}
+                tags={publication.tags}
+                link={publication.link}
+              />
             </div>
           ))}
         </Grid>
 
         <div className="publications__view-more">
-          <Primary to="/publications" className="color--white bg--blue500 bg-hover--blue300 border--blue500 border-hover--blue300" text="See all publications" />
+          <Primary
+            to="/publications"
+            className="color--white bg--blue500 bg-hover--blue300 border--blue500 border-hover--blue300"
+            text="See all publications"
+          />
         </div>
       </Container>
     </StyledPublications>
-  )
-}
+  );
+};
 
-export default Publications
+export default Publications;

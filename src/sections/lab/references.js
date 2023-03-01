@@ -1,28 +1,28 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { BLOCKS, INLINES } from '@contentful/rich-text-types'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import styled from 'styled-components'
-import Img from 'gatsby-image'
-import { Link } from 'gatsby'
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
+import styled from "styled-components";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
-import { getSlug } from 'utils/functions/'
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
+import { getSlug } from "utils/functions/";
 
 // Components
-import Container from 'components/container/'
-import Grid from 'components/grid/'
-import ReferenceCard from 'components/reference-card/'
-import { Tertiary } from 'components/buttons/'
+import Container from "components/container/";
+import Grid from "components/grid/";
+import ReferenceCard from "components/reference-card/";
+import { Tertiary } from "components/buttons/";
 
 // Hooks
-import useContentfulImage from 'hooks/useContentfulImage/'
+import useContentfulImage from "hooks/useContentfulImage/";
 
 // Icons
-import StudentsProjectsIcon from 'assets/icons/icon-students-projects.inline.svg'
+import StudentsProjectsIcon from "assets/icons/icon-students-projects.inline.svg";
 
 const StyledReferences = styled.section`
   padding-bottom: 56px;
@@ -67,7 +67,7 @@ const StyledReferences = styled.section`
           align-items: center;
 
           &::after {
-            content: '+';
+            content: "+";
             position: relative;
             top: -2px;
             margin-left: 8px;
@@ -145,43 +145,64 @@ const StyledReferences = styled.section`
       }
     }
   }
-`
+`;
 
 // Render options for images
 const options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const fluid = useContentfulImage(node.data.target.fields.file['en-US'].url)
-      return <Img className="content__image" fluid={fluid} title="HPI·MS" />
+      const image = useContentfulImage(
+        node.data.target.fields.file["en-US"].url
+      );
+      return (
+        <GatsbyImage
+          className="content__image"
+          image={getImage(image)}
+          title="HPI·MS"
+        />
+      );
     },
     [INLINES.HYPERLINK]: (node) => {
-      if (node.data.uri.indexOf('youtube.com') > 0 || node.data.uri.indexOf('vimeo.com') > 0) {
+      if (
+        node.data.uri.indexOf("youtube.com") > 0 ||
+        node.data.uri.indexOf("vimeo.com") > 0
+      ) {
         return (
           <div className="video-wrapper">
-            <iframe title="HPI·MS" src={node.data.uri} frameBorder="0" allowFullScreen></iframe>
+            <iframe
+              title="HPI·MS"
+              src={node.data.uri}
+              frameBorder="0"
+              allowFullScreen></iframe>
           </div>
-        )
+        );
       } else {
         return (
-          <a className="color--blue500 color-hover--blue300" href={node.data.uri} target="_blank" rel="noopener noreferrer">
+          <a
+            className="color--blue500 color-hover--blue300"
+            href={node.data.uri}
+            target="_blank"
+            rel="noopener noreferrer">
             {node.content[0].value}
           </a>
-        )
+        );
       }
-    }
-  }
-}
+    },
+  },
+};
 
 const References = (props) => {
-  const content = props.data.contentfulLabs.description
-  const research_projects = props.data.contentfulLabs.projects
-  const teamMembers = props.data.contentfulLabs.teamMembers
+  const content = props.data.contentfulLabs.description;
+  const research_projects = props.data.contentfulLabs.projects;
+  const teamMembers = props.data.contentfulLabs.teamMembers;
 
   return (
     <StyledReferences>
       <Container>
         <div className="references">
-          <div className="content">{content && documentToReactComponents(content.json, options)}</div>
+          <div className="content">
+            <p>{content && renderRichText(content, options)}</p>
+          </div>
 
           <div className="sidebar">
             <div className="sticky">
@@ -192,17 +213,25 @@ const References = (props) => {
                     {research_projects.map((project) => (
                       <div className="grid__item">
                         <ReferenceCard>
-                          <Img
+                          <GatsbyImage
                             className="card__icon"
-                            fixed={project.icon.fixed}
+                            image={getImage(project.icon.fixed)}
                             styles={{
-                              width: '56px',
-                              height: '56px'
+                              width: "56px",
+                              height: "56px",
                             }}
                           />
                           <div className="card__content">
-                            <p className="card__title color--blue500 font-weight--600">{project.title}</p>
-                            <Tertiary className="color--blue300 font-weight--600" to={'/research-projects/' + getSlug(project.title)} text="View Project" />
+                            <p className="card__title color--blue500 font-weight--600">
+                              {project.title}
+                            </p>
+                            <Tertiary
+                              className="color--blue300 font-weight--600"
+                              to={
+                                "/research-projects/" + getSlug(project.title)
+                              }
+                              text="View Project"
+                            />
                           </div>
                         </ReferenceCard>
                       </div>
@@ -211,8 +240,14 @@ const References = (props) => {
                       <ReferenceCard>
                         <StudentsProjectsIcon className="card__icon" />
                         <div className="card__content">
-                          <p className="card__title color--blue500 font-weight--600">Co-Innovation Research Exchange</p>
-                          <Tertiary className="color--blue300 font-weight--600" to="/research-projects/co-innovation-research-exchange" text="View Project" />
+                          <p className="card__title color--blue500 font-weight--600">
+                            Co-Innovation Research Exchange
+                          </p>
+                          <Tertiary
+                            className="color--blue300 font-weight--600"
+                            to="/research-projects/co-innovation-research-exchange"
+                            text="View Project"
+                          />
                         </div>
                       </ReferenceCard>
                     </div>
@@ -226,13 +261,15 @@ const References = (props) => {
                   <Grid gutter="14" columns="1">
                     {teamMembers.map((member) => (
                       <div className="grid__item">
-                        {member.__typename === 'ContentfulTeamMembers' ? (
-                          <Link className="sidebar__team-member color-hover--blue300 font-weight--500" to={'/team/' + getSlug(member.name)}>
+                        {member.__typename === "ContentfulTeamMembers" ? (
+                          <Link
+                            className="sidebar__team-member color-hover--blue300 font-weight--500"
+                            to={"/team/" + getSlug(member.name)}>
                             {member.name}
                           </Link>
                         ) : (
-                            <p className="font-weight--500">{member.name}</p>
-                          )}
+                          <p className="font-weight--500">{member.name}</p>
+                        )}
                       </div>
                     ))}
                   </Grid>
@@ -243,7 +280,7 @@ const References = (props) => {
         </div>
       </Container>
     </StyledReferences>
-  )
-}
+  );
+};
 
-export default References
+export default References;

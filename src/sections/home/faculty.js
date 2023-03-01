@@ -1,21 +1,21 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql, Link } from 'gatsby'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import styled from 'styled-components'
-import Slider from 'react-slick'
+import { useStaticQuery, graphql, Link } from "gatsby";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
 
 // Components
-import Container from 'components/container/'
-import Img from 'gatsby-image'
+import Container from "components/container/";
+import styled from "styled-components";
+import Slider from "react-slick";
 
 // Icons
-import SliderArrow from 'assets/icons/icon-carousel-arrow.inline.svg'
+import SliderArrow from "assets/icons/icon-carousel-arrow.inline.svg";
 
 const StyledFaculty = styled.section`
   padding-bottom: 40px;
@@ -186,40 +186,40 @@ const StyledFaculty = styled.section`
       }
     }
   }
-`
+`;
 
 const StyledArrow = styled.div`
   display: flex;
   align-items: flex-start;
 
   svg {
-    transform: ${(props) => (props.prev ? 'rotate(180deg)' : 'rotate(0deg)')};
+    transform: ${(props) => (props.prev ? "rotate(180deg)" : "rotate(0deg)")};
   }
 
   ${Container} {
     max-width: 736px;
   }
-`
+`;
 
 const ArrowPrev = (props) => {
   return (
     <StyledArrow prev onClick={props.onClick} className={props.className}>
       <SliderArrow />
     </StyledArrow>
-  )
-}
+  );
+};
 
 const ArrowNext = (props) => {
   return (
     <StyledArrow onClick={props.onClick} className={props.className}>
       <SliderArrow />
     </StyledArrow>
-  )
-}
+  );
+};
 
 const Faculty = () => {
   const {
-    allContentfulHomesFacultySection: { nodes: data }
+    allContentfulHomesFacultySection: { nodes: data },
   } = useStaticQuery(graphql`
     query {
       allContentfulHomesFacultySection {
@@ -227,18 +227,15 @@ const Faculty = () => {
           subtitle
           title
           description {
-            description
-            json
+            raw
           }
           photoGallery {
-            fluid(maxWidth: 928, maxHeight: 522, quality: 100) {
-              ...GatsbyContentfulFluid_withWebp
-            }
+            gatsbyImageData(width: 928, height: 522, quality: 100)
           }
         }
       }
     }
-  `)
+  `);
 
   const settings = {
     dots: false,
@@ -254,28 +251,32 @@ const Faculty = () => {
         breakpoint: 1023,
         settings: {
           dots: true,
-          arrows: false
-        }
+          arrows: false,
+        },
       },
       {
         breakpoint: 767,
         settings: {
-          arrows: false
-        }
-      }
-    ]
-  }
+          arrows: false,
+        },
+      },
+    ],
+  };
 
-  const subtitle = data[0].subtitle
-  const title = data[0].title
-  const description = data[0].description.json
-  const photoGallery = data[0].photoGallery
+  const subtitle = data[0].subtitle;
+  const title = data[0].title;
+  const description = data[0].description;
+  const photoGallery = data[0].photoGallery;
 
   return (
     <StyledFaculty className="bg--blue500 color--white">
       <Slider {...settings} className="faculty__carousel">
         {photoGallery.map((photo) => (
-          <Img className="event__image" fluid={photo.fluid} alt="HPI·MS" />
+          <GatsbyImage
+            className="event__image"
+            image={getImage(photo)}
+            alt="HPI·MS"
+          />
         ))}
       </Slider>
 
@@ -287,16 +288,18 @@ const Faculty = () => {
               <h4>{title}</h4>
             </div>
 
-            <Link to="/faculty" className="location">
+            <Link to="/faculty/" className="location">
               More info
             </Link>
           </div>
 
-          <div className="summary">{description && documentToReactComponents(description)}</div>
+          <div className="summary">
+            <p>{description && renderRichText(description)}</p>
+          </div>
         </div>
       </Container>
     </StyledFaculty>
-  )
-}
+  );
+};
 
-export default Faculty
+export default Faculty;

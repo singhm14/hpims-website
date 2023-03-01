@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import styled from 'styled-components'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import styled from "styled-components";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
+import breakpoint from "utils/breakpoints/";
 
 const StyledContent = styled.div`
   width: 100%;
@@ -47,11 +47,15 @@ const StyledContent = styled.div`
       }
     }
   }
-`
+`;
 
 const Content = (props) => {
-  const { jobDetails: content } = props.data
-  return <StyledContent>{content && documentToReactComponents(content.json)}</StyledContent>
-}
+  const { jobDetails: content } = props.data;
+  return (
+    <StyledContent>
+      <p>{content && renderRichText(content)}</p>
+    </StyledContent>
+  );
+};
 
-export default Content
+export default Content;

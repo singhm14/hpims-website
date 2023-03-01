@@ -1,24 +1,22 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
-import BackgroundImage from 'gatsby-background-image'
-import Img from 'gatsby-image'
+import styled from "styled-components";
+import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { getSlug } from 'utils/functions/'
+import breakpoint from "utils/breakpoints/";
+import { getSlug } from "utils/functions/";
 
 // Components
-import Container from 'components/container/'
-import Grid from 'components/grid/'
-import ReferenceCard from 'components/reference-card/'
-import { Tertiary } from 'components/buttons/'
-import PublicationCard from 'components/publication-card-simplified/'
+import Container from "components/container/";
+import Grid from "components/grid/";
+import ReferenceCard from "components/reference-card/";
+import { Tertiary } from "components/buttons/";
+import PublicationCard from "components/publication-card-simplified/";
 
 // Icons
-import StudentsProjectsIcon from 'assets/icons/icon-students-projects.inline.svg'
+import StudentsProjectsIcon from "assets/icons/icon-students-projects.inline.svg";
 
 const StyledReferences = styled.section`
   padding-bottom: 56px;
@@ -68,34 +66,22 @@ const StyledReferences = styled.section`
       `}
     }
   }
-`
+`;
 
 const References = (props) => {
-  const data = props.data.contentfulTeamMembers
-  const labs = data.labs
-  const projects = data.research_projects
-  const publications = data.publications
-  const studentsProjects = data.co_innovation_projects
+  const data = props.data.contentfulTeamMembers;
+  const labs = data.labs;
+  const projects = data.research_projects;
+  const publications = data.publications;
+  const studentsProjects = data.co_innovation_projects;
 
   publications &&
     publications.sort((a, b) => {
-      a = new Date(a.yearUnformatted)
-      b = new Date(b.yearUnformatted)
+      a = new Date(a.yearUnformatted);
+      b = new Date(b.yearUnformatted);
 
-      return b - a
-    })
-
-  const placeholderProfilePicture = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 352, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `)
+      return b - a;
+    });
 
   return (
     <StyledReferences>
@@ -110,20 +96,43 @@ const References = (props) => {
                     {labs.map((lab, index) => (
                       <div className="grid__item" key={index}>
                         <ReferenceCard>
-                          <BackgroundImage
-                            className="card__icon"
-                            fixed={lab.headOfTheLab.profilePicture ? lab.headOfTheLab.profilePicture.fixed : placeholderProfilePicture.file.childImageSharp.fluid}
-                            style={{
-                              width: '64px',
-                              height: '64px',
-                              backgroundSize: 'cover',
-                              borderRadius: '50%',
-                              overflow: 'hidden'
-                            }}
-                          />
+                          {lab.headOfTheLab.profilePicture ? (
+                            <GatsbyImage
+                              image={getImage(lab.headOfTheLab.profilePicture)}
+                              style={{
+                                width: "64px",
+                                height: "64px",
+                                backgroundSize: "cover",
+                                borderRadius: "50%",
+                                overflow: "hidden",
+                              }}
+                              alt=""
+                              className="card__icon"
+                            />
+                          ) : (
+                            <StaticImage
+                              src="../../assets/images/team/profile-picture-placeholder.png"
+                              style={{
+                                width: "64px",
+                                height: "64px",
+                                backgroundSize: "cover",
+                                borderRadius: "50%",
+                                overflow: "hidden",
+                              }}
+                              alt=""
+                              className="card__icon"
+                            />
+                          )}
+
                           <div className="card__content">
-                            <h5 className="card__title color--blue500 font-weight--600">{lab.title}</h5>
-                            <Tertiary className="color--blue300 font-weight--600" to={'/labs/' + getSlug(lab.title)} text="View Lab" />
+                            <h5 className="card__title color--blue500 font-weight--600">
+                              {lab.title}
+                            </h5>
+                            <Tertiary
+                              className="color--blue300 font-weight--600"
+                              to={"/labs/" + getSlug(lab.title)}
+                              text="View Lab"
+                            />
                           </div>
                         </ReferenceCard>
                       </div>
@@ -140,20 +149,28 @@ const References = (props) => {
                       <div className="grid__item">
                         <ReferenceCard>
                           {project.icon ? (
-                            <Img
+                            <GatsbyImage
                               className="card__icon"
-                              fixed={project.icon.fixed}
+                              image={getImage(project.icon)}
                               styles={{
-                                width: '56px',
-                                height: '56px'
+                                width: "56px",
+                                height: "56px",
                               }}
                             />
                           ) : (
                             <div className="card__icon"></div>
                           )}
                           <div className="card__content">
-                            <p className="card__title color--blue500 font-weight--600">{project.title}</p>
-                            <Tertiary className="color--blue300 font-weight--600" to={'/research-projects/' + getSlug(project.title)} text="View full project" />
+                            <p className="card__title color--blue500 font-weight--600">
+                              {project.title}
+                            </p>
+                            <Tertiary
+                              className="color--blue300 font-weight--600"
+                              to={
+                                "/research-projects/" + getSlug(project.title)
+                              }
+                              text="View full project"
+                            />
                           </div>
                         </ReferenceCard>
                       </div>
@@ -164,8 +181,14 @@ const References = (props) => {
                         <ReferenceCard>
                           <StudentsProjectsIcon className="card__icon" />
                           <div className="card__content">
-                            <p className="card__title color--blue500 font-weight--600">Co-Innovation Research Exchange</p>
-                            <Tertiary className="color--blue300 font-weight--600" to="/research-projects/co-innovation-research-exchange" text="View full project" />
+                            <p className="card__title color--blue500 font-weight--600">
+                              Co-Innovation Research Exchange
+                            </p>
+                            <Tertiary
+                              className="color--blue300 font-weight--600"
+                              to="/research-projects/co-innovation-research-exchange"
+                              text="View full project"
+                            />
                           </div>
                         </ReferenceCard>
                       </div>
@@ -183,7 +206,16 @@ const References = (props) => {
                 <Grid gutter="16" columns="1">
                   {publications.map((publication) => (
                     <div className="grid__item">
-                      <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
+                      <PublicationCard
+                        method={publication.method}
+                        journal={publication.journal}
+                        title={publication.title}
+                        authors={publication.authors.authors}
+                        internalAuthors={publication.internalAuthors}
+                        year={publication.year}
+                        tags={publication.tags}
+                        link={publication.link}
+                      />
                     </div>
                   ))}
                 </Grid>
@@ -193,7 +225,7 @@ const References = (props) => {
         </div>
       </Container>
     </StyledReferences>
-  )
-}
+  );
+};
 
-export default References
+export default References;

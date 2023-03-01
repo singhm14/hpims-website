@@ -1,21 +1,21 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
-import Slider from 'react-slick'
+import { useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
+import Slider from "react-slick";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
 
 // Components
-import Container from 'components/container/'
-import NewsCard from 'components/news-card/'
-import Triangle from 'components/background-triangle/'
+import Container from "components/container/";
+import NewsCard from "components/news-card/";
+import Triangle from "components/background-triangle/";
 
 // Icons
-import SliderArrow from 'assets/icons/icon-carousel-arrow.inline.svg'
+import SliderArrow from "assets/icons/icon-carousel-arrow.inline.svg";
 
 const StyledNews = styled.section`
   position: relative;
@@ -121,37 +121,37 @@ const StyledNews = styled.section`
       `}
     }
   }
-`
+`;
 
 const StyledArrow = styled.div`
   display: flex;
   align-items: flex-start;
 
   svg {
-    transform: ${(props) => (props.prev ? 'rotate(180deg)' : 'rotate(0deg)')};
+    transform: ${(props) => (props.prev ? "rotate(180deg)" : "rotate(0deg)")};
   }
-`
+`;
 
 const ArrowPrev = (props) => {
   return (
     <StyledArrow prev onClick={props.onClick} className={props.className}>
       <SliderArrow className="svg--stroke-blue500" />
     </StyledArrow>
-  )
-}
+  );
+};
 
 const ArrowNext = (props) => {
   return (
     <StyledArrow onClick={props.onClick} className={props.className}>
       <SliderArrow className="svg--stroke-blue500" />
     </StyledArrow>
-  )
-}
+  );
+};
 
 const News = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulNews(sort: { fields: date, order: DESC }) {
+      allContentfulNews(sort: { date: DESC }) {
         nodes {
           id
           journal
@@ -161,7 +161,7 @@ const News = () => {
         }
       }
     }
-  `)
+  `);
 
   const settings = {
     infinite: true,
@@ -174,24 +174,24 @@ const News = () => {
         breakpoint: 1199,
         settings: {
           dots: false,
-          slidesToShow: 3
-        }
+          slidesToShow: 3,
+        },
       },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2
-        }
+          slidesToShow: 2,
+        },
       },
       {
         breakpoint: 767,
         settings: {
           dots: true,
-          slidesToShow: 1
-        }
-      }
-    ]
-  }
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <StyledNews>
@@ -204,12 +204,18 @@ const News = () => {
 
         <Slider {...settings}>
           {data.allContentfulNews.nodes.map((news) => (
-            <NewsCard key={news.id} link={news.link} journal={news.journal} title={news.title} date={news.date} />
+            <NewsCard
+              key={news.id}
+              link={news.link}
+              journal={news.journal}
+              title={news.title}
+              date={news.date}
+            />
           ))}
         </Slider>
       </Container>
     </StyledNews>
-  )
-}
+  );
+};
 
-export default News
+export default News;
