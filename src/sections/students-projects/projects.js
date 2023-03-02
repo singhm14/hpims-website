@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
+import { useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
+import breakpoint from "utils/breakpoints/";
 
 // Components
-import Container from 'components/container/'
-import Grid from 'components/grid/'
-import StudentProjectCard from 'components/student-project-card/'
+import Container from "components/container/";
+import Grid from "components/grid/";
+import StudentProjectCard from "components/student-project-card/";
 
 const StyledProjects = styled.section`
   padding: 64px 0;
@@ -22,7 +22,7 @@ const StyledProjects = styled.section`
   ${Container} {
     max-width: 928px;
   }
-`
+`;
 
 const Projects = (props) => {
   const data = useStaticQuery(graphql`
@@ -33,7 +33,7 @@ const Projects = (props) => {
           status
           title
           description {
-            json
+            raw
           }
           supervisors {
             ... on ContentfulTeamMembers {
@@ -41,9 +41,7 @@ const Projects = (props) => {
               __typename
               name
               profilePicture {
-                fixed(width: 24, quality: 100) {
-                  ...GatsbyContentfulFixed_withWebp
-                }
+                gatsbyImageData
               }
             }
             ... on ContentfulStudents {
@@ -60,20 +58,32 @@ const Projects = (props) => {
         }
       }
     }
-  `)
+  `);
   return (
     <StyledProjects>
       <Container>
         <Grid gutter="40" columns="1">
-          {data.allContentfulCoInnovationProjects.nodes.map((project, index) => (
-            <div className="grid__item" data-aos="indicius-slide-up" key={project.id}>
-              <StudentProjectCard status={project.status} title={project.title} description={project.description} supervisors={project.supervisors} nonAffiliatedSupervisors={project.nonAffiliatedPeople} students={project.students} />
-            </div>
-          ))}
+          {data.allContentfulCoInnovationProjects.nodes.map(
+            (project, index) => (
+              <div
+                className="grid__item"
+                data-aos="indicius-slide-up"
+                key={project.id}>
+                <StudentProjectCard
+                  status={project.status}
+                  title={project.title}
+                  description={project.description}
+                  supervisors={project.supervisors}
+                  nonAffiliatedSupervisors={project.nonAffiliatedPeople}
+                  students={project.students}
+                />
+              </div>
+            )
+          )}
         </Grid>
       </Container>
     </StyledProjects>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

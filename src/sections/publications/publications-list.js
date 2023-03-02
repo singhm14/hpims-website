@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
-import styled, { keyframes } from 'styled-components'
-import queryString from 'query-string'
+import { useStaticQuery, graphql } from "gatsby";
+import styled, { keyframes } from "styled-components";
+import queryString from "query-string";
 
 // Utils
-import breakpoint from 'utils/breakpoints'
-import { getSlug } from 'utils/functions'
+import breakpoint from "utils/breakpoints";
+import { getSlug } from "utils/functions";
 
 // Components
-import Grid from 'components/grid/'
-import PublicationCard from 'components/publication-card/'
-import { ExternalTertiary } from 'components/buttons/'
+import Grid from "components/grid/";
+import PublicationCard from "components/publication-card/";
+import { ExternalTertiary } from "components/buttons/";
 
 // Icons
-import Loader from 'assets/icons/loader.inline.svg'
+import Loader from "assets/icons/loader.inline.svg";
 
 const rotate = keyframes`
   from {
@@ -25,7 +25,7 @@ const rotate = keyframes`
   to {
     transform: rotate(360deg);
   }
-`
+`;
 
 const StyledPublicationsList = styled.section`
   width: 100%;
@@ -63,23 +63,25 @@ const StyledPublicationsList = styled.section`
       margin-bottom: 24px;
     }
   }
-`
+`;
 
 /* eslint-disable */
 const PublicationsList = () => {
   // We'll save the filters as states
-  const [publications, setPublications] = useState([])
-  const [postsShowing, setPostsShowing] = useState(6)
-  const [yearParameter, setYearParameter] = useState(null)
-  const [categoryParamater, setCategoryParameter] = useState(null)
-  const [authorParameter, setAuthorParameter] = useState(null)
-  const [publicationMethodParameter, setPublicationMethodParameter] = useState(null)
-  const [isLoading, setLoading] = useState(true)
-  const infiniteTrigger = React.createRef()
+  const [publications, setPublications] = useState([]);
+  const [postsShowing, setPostsShowing] = useState(6);
+  const [yearParameter, setYearParameter] = useState(null);
+  const [categoryParamater, setCategoryParameter] = useState(null);
+  const [authorParameter, setAuthorParameter] = useState(null);
+  const [publicationMethodParameter, setPublicationMethodParameter] = useState(
+    null
+  );
+  const [isLoading, setLoading] = useState(true);
+  const infiniteTrigger = React.createRef();
 
   const data = useStaticQuery(graphql`
     query {
-      allContentfulPublications(sort: { fields: year, order: DESC }) {
+      allContentfulPublications(sort: { year: DESC }) {
         nodes {
           method
           journal
@@ -92,9 +94,7 @@ const PublicationsList = () => {
               id
               name
               profilePicture {
-                fixed(width: 24, quality: 100) {
-                  ...GatsbyContentfulFixed_withWebp
-                }
+                gatsbyImageData(width: 24, quality: 100)
               }
             }
             ... on ContentfulStudents {
@@ -108,99 +108,116 @@ const PublicationsList = () => {
         }
       }
     }
-  `)
+  `);
 
   // We'll save the publications as state
   useEffect(() => {
-    setPublications(data.allContentfulPublications.nodes)
-    setLoading(false)
-  }, [data.allContentfulPublications.nodes])
+    setPublications(data.allContentfulPublications.nodes);
+    setLoading(false);
+  }, [data.allContentfulPublications.nodes]);
 
   // We'll save queryStrings as state
   useEffect(() => {
-    setYearParameter(queryString.parse(window.location.search).year)
-    setCategoryParameter(queryString.parse(window.location.search).category)
-    setAuthorParameter(queryString.parse(window.location.search).author)
-    setPublicationMethodParameter(queryString.parse(window.location.search).publicationMethod)
-  }, [yearParameter, categoryParamater, authorParameter, publicationMethodParameter])
+    setYearParameter(queryString.parse(window.location.search).year);
+    setCategoryParameter(queryString.parse(window.location.search).category);
+    setAuthorParameter(queryString.parse(window.location.search).author);
+    setPublicationMethodParameter(
+      queryString.parse(window.location.search).publicationMethod
+    );
+  }, [
+    yearParameter,
+    categoryParamater,
+    authorParameter,
+    publicationMethodParameter,
+  ]);
 
   // We'll filter the data array
   // searching for publications matching the queryString
   useEffect(() => {
-    if (yearParameter || categoryParamater || authorParameter || publicationMethodParameter) {
-      setLoading(true)
-      let filteredPublications = data.allContentfulPublications.nodes
+    if (
+      yearParameter ||
+      categoryParamater ||
+      authorParameter ||
+      publicationMethodParameter
+    ) {
+      setLoading(true);
+      let filteredPublications = data.allContentfulPublications.nodes;
 
       // Year filtering
       if (yearParameter) {
         filteredPublications = filteredPublications.filter((publication) => {
-          return yearParameter === publication.year.split(' ')[1]
-        })
+          return yearParameter === publication.year.split(" ")[1];
+        });
       }
 
       // Category Filtering
       if (categoryParamater) {
         filteredPublications = filteredPublications.filter((publication) => {
-          let shouldBeIncluded = false
+          let shouldBeIncluded = false;
 
-          const categories = publication.tags
+          const categories = publication.tags;
           categories &&
             categories.map((category) => {
               if (getSlug(category) === categoryParamater) {
-                shouldBeIncluded = true
+                shouldBeIncluded = true;
               }
-            })
+            });
 
-          return shouldBeIncluded
-        })
+          return shouldBeIncluded;
+        });
       }
 
       // Author filtering
       if (authorParameter) {
         filteredPublications = filteredPublications.filter((publication) => {
-          let shouldBeIncluded = false
+          let shouldBeIncluded = false;
 
-          const internalAuthors = publication.internalAuthors
+          const internalAuthors = publication.internalAuthors;
           internalAuthors &&
             internalAuthors.map((author) => {
               if (authorParameter === getSlug(author.name)) {
-                shouldBeIncluded = true
+                shouldBeIncluded = true;
               }
-            })
+            });
 
-          return shouldBeIncluded
-        })
+          return shouldBeIncluded;
+        });
       }
 
       // Publication Method filtering
       if (publicationMethodParameter) {
         filteredPublications = filteredPublications.filter((publication) => {
-          return publicationMethodParameter === getSlug(publication.method)
-        })
+          return publicationMethodParameter === getSlug(publication.method);
+        });
       }
 
-      setPublications(filteredPublications)
-      setLoading(false)
+      setPublications(filteredPublications);
+      setLoading(false);
     }
-  }, [yearParameter, categoryParamater, authorParameter, publicationMethodParameter])
+  }, [
+    yearParameter,
+    categoryParamater,
+    authorParameter,
+    publicationMethodParameter,
+  ]);
 
   // We'll log the observer and the loadMorePosts() function
   useEffect(() => {
     const loadMorePosts = () => {
       if (publications.length > postsShowing) {
-        setPostsShowing(postsShowing + 6)
+        setPostsShowing(postsShowing + 6);
       }
-    }
+    };
 
     const observer = new IntersectionObserver(([entry], self) => {
       if (entry.intersectionRatio > 0) {
-        loadMorePosts()
-        self.disconnect()
+        loadMorePosts();
+        self.disconnect();
       }
-    })
+    });
 
-    observer.observe(infiniteTrigger.current)
-  }, [postsShowing, infiniteTrigger, publications.length])
+    observer.observe(infiniteTrigger.current);
+  }, [postsShowing, infiniteTrigger, publications.length]);
 
   return (
     <StyledPublicationsList>
@@ -211,17 +228,38 @@ const PublicationsList = () => {
           <Grid gutter="32" columns="1">
             {publications.length > 0 ? (
               publications.slice(0, postsShowing).map((publication, index) => (
-                <div className="grid__item" data-aos="indicius-slide-up" key={index}>
-                  <PublicationCard method={publication.method} journal={publication.journal} title={publication.title} authors={publication.authors.authors} internalAuthors={publication.internalAuthors} year={publication.year} tags={publication.tags} link={publication.link} />
+                <div
+                  className="grid__item"
+                  data-aos="indicius-slide-up"
+                  key={index}>
+                  <PublicationCard
+                    method={publication.method}
+                    journal={publication.journal}
+                    title={publication.title}
+                    authors={publication.authors.authors}
+                    internalAuthors={publication.internalAuthors}
+                    year={publication.year}
+                    tags={publication.tags}
+                    link={publication.link}
+                  />
                 </div>
               ))
             ) : (
               <div className="grid__item">
                 <div className="publications__nothing-found">
-                  <h5 className="color--black font-weight--600">We haven’t found any publications that match your search.</h5>
-                  <p>Please, try changing the filters to find what you’re looking for.</p>
+                  <h5 className="color--black font-weight--600">
+                    We haven’t found any publications that match your search.
+                  </h5>
+                  <p>
+                    Please, try changing the filters to find what you’re looking
+                    for.
+                  </p>
 
-                  <ExternalTertiary to="/publications" className="color--blue300 font-weight--600" text="View all publications" />
+                  <ExternalTertiary
+                    to="/publications"
+                    className="color--blue300 font-weight--600"
+                    text="View all publications"
+                  />
                 </div>
               </div>
             )}
@@ -231,7 +269,7 @@ const PublicationsList = () => {
       )}
       <div ref={infiniteTrigger}></div>
     </StyledPublicationsList>
-  )
-}
+  );
+};
 
-export default PublicationsList
+export default PublicationsList;

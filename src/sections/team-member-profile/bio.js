@@ -1,24 +1,23 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
-import BackgroundImage from 'gatsby-background-image'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import styled from "styled-components";
+import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
 
 // Components
-import { Link } from 'gatsby'
-import Container from 'components/container/'
+import { Link } from "gatsby";
+import Container from "components/container/";
 
 // Icons
-import IconEmail from 'assets/icons/icon-envelope.inline.svg'
-import IconGoogleScholar from 'assets/icons/icon-google-scholar.inline.svg'
-import IconTwitter from 'assets/icons/icon-twitter.inline.svg'
-import IconLinkedIn from 'assets/icons/icon-linkedin.inline.svg'
+import IconEmail from "assets/icons/icon-envelope.inline.svg";
+import IconGoogleScholar from "assets/icons/icon-google-scholar.inline.svg";
+import IconTwitter from "assets/icons/icon-twitter.inline.svg";
+import IconLinkedIn from "assets/icons/icon-linkedin.inline.svg";
 
 const StyledBio = styled.section`
   margin-top: -384px;
@@ -150,31 +149,31 @@ const StyledBio = styled.section`
       }
     }
   }
-`
+`;
 
 const Bio = (props) => {
-  const data = props.data.contentfulTeamMembers
-  const name = data.name
-  const departments = data.department
-  const position = data.position
-  const bio = data.bio
-  const profilePicture = data.profilePicture
-  const email = data.email
-  const googleScholar = data.googleScholarProfile
-  const twitter = data.twitterProfile
-  const linkedIn = data.linkedInProfile
+  const data = props.data.contentfulTeamMembers;
+  const name = data.name;
+  const departments = data.department;
+  const position = data.position;
+  const bio = data.bio;
+  const profilePicture = data.profilePicture;
+  const email = data.email;
+  const googleScholar = data.googleScholarProfile;
+  const twitter = data.twitterProfile;
+  const linkedIn = data.linkedInProfile;
 
-  const placeholderProfilePicture = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 352, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `)
+  // const placeholderProfilePicture = useStaticQuery(graphql`
+  //   query {
+  //     file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
+  //       childImageSharp
+  //         gatsbyImageData(width: 352, quality: 100)
+  //       }
+  //     }
+  //   }
+  // `);
+
+  const image = getImage(profilePicture);
 
   return (
     <StyledBio>
@@ -189,9 +188,9 @@ const Bio = (props) => {
               {departments &&
                 departments.map((department, index) => {
                   if (index !== departments.length - 1) {
-                    return department + ' | '
+                    return department + " | ";
                   } else {
-                    return department
+                    return department;
                   }
                 })}
             </p>
@@ -204,44 +203,63 @@ const Bio = (props) => {
               {bio && (
                 <React.Fragment>
                   <p className="title--underlined color--black">Bio</p>
-                  {documentToReactComponents(bio.json)}
+                  <p>{renderRichText(bio)}</p>
                 </React.Fragment>
               )}
             </div>
           </div>
 
           <div className="bio__profile-picture">
-            <BackgroundImage
-              fluid={profilePicture ? profilePicture.fluid : placeholderProfilePicture.file.childImageSharp.fluid}
-              className="profile-picture"
-              style={{
-                backgroundSize: 'cover'
-              }}
-            />
+            {profilePicture ? (
+              <GatsbyImage image={image} alt="" className="profile-picture" />
+            ) : (
+              <StaticImage
+                src="../../assets/images/team/profile-picture-placeholder.png"
+                width={325}
+                quality={100}
+                className="profile-picture"
+              />
+            )}
             <div className="info bg--blue100">
               {email && (
-                <a href={'mailto:' + email} className="email color--blue900 color-hover--blue300 svg-hover--fill-blue300" target="_blank" rel="noopener noreferrer">
+                <a
+                  href={"mailto:" + email}
+                  className="email color--blue900 color-hover--blue300 svg-hover--fill-blue300"
+                  target="_blank"
+                  rel="noopener noreferrer">
                   <IconEmail />
                   {email}
                 </a>
               )}
 
               {googleScholar && (
-                <a href={googleScholar} className="color--blue900 color-hover--blue300 svg-hover--fill-blue300" target="_blank" rel="noopener noreferrer">
+                <a
+                  href={googleScholar}
+                  className="color--blue900 color-hover--blue300 svg-hover--fill-blue300"
+                  target="_blank"
+                  rel="noopener noreferrer">
                   <IconGoogleScholar />
                   Google Scholar
                 </a>
               )}
 
               {twitter && (
-                <a href={twitter} className="color--blue900 color-hover--blue300 svg-hover--fill-blue300" target="_blank" rel="noopener noreferrer">
+                <a
+                  href={twitter}
+                  className="color--blue900 color-hover--blue300 svg-hover--fill-blue300"
+                  target="_blank"
+                  rel="noopener noreferrer">
                   <IconTwitter />
                   Twitter
                 </a>
               )}
 
               {linkedIn && (
-                <a href={linkedIn} className="color--blue900 color-hover--blue300 svg-hover--fill-blue300" target="_blank" rel="noopener noreferrer">
+                <a
+                  href={linkedIn}
+                  className="color--blue900 color-hover--blue300 svg-hover--fill-blue300"
+                  target="_blank"
+                  rel="noopener noreferrer">
                   <IconLinkedIn />
                   LinkedIn
                 </a>
@@ -253,14 +271,14 @@ const Bio = (props) => {
             {bio && (
               <React.Fragment>
                 <p className="title--underlined color--black">Bio</p>
-                {documentToReactComponents(bio.json)}
+                <p>{renderRichText(bio)}</p>
               </React.Fragment>
             )}
           </div>
         </div>
       </Container>
     </StyledBio>
-  )
-}
+  );
+};
 
-export default Bio
+export default Bio;

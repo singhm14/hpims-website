@@ -1,14 +1,13 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
-import BackgroundImage from 'gatsby-background-image'
-import { Link } from 'gatsby'
+import styled from "styled-components";
+import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
 
 // Utils
-import { colors } from 'utils/variables/'
-import { getSlug } from 'utils/functions/'
+import { colors } from "utils/variables/";
+import { getSlug } from "utils/functions/";
 
 const StyledSidebar = styled.section`
   position: sticky;
@@ -82,32 +81,27 @@ const StyledSidebar = styled.section`
       }
     }
   }
-`
+`;
 
 const Sidebar = (props) => {
-  const callToActions = props.data.contentfulResearchProjects.callToAction
-  const teamMembers = props.data.contentfulResearchProjects.teamMembers
-
-  const profilePicturePlacholder = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "team/profile-picture-placeholder.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 64, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `)
+  const callToActions = props.data.contentfulResearchProjects.callToAction;
+  const teamMembers = props.data.contentfulResearchProjects.teamMembers;
 
   return (
     <StyledSidebar>
       {callToActions &&
         callToActions.map((callToAction) => (
-          <div className="call-to-action bg--blue500 color--grey100" key={callToAction.map}>
+          <div
+            className="call-to-action bg--blue500 color--grey100"
+            key={callToAction.map}>
             <p className="title font-weight--600">{callToAction.title}</p>
-            {callToAction.description && <p>{callToAction.description.description}</p>}
-            <a href={callToAction.linkUrl} target="_blank" rel="noopener noreferrer">
+            {callToAction.description && (
+              <p>{callToAction.description.description}</p>
+            )}
+            <a
+              href={callToAction.linkUrl}
+              target="_blank"
+              rel="noopener noreferrer">
               {callToAction.linkLabel}
             </a>
           </div>
@@ -117,16 +111,31 @@ const Sidebar = (props) => {
           <div className="sidebar__team">
             <p className="title--underlined">Team</p>
             {teamMembers.map((teamMember) => (
-              <Link className="team" to={'/team/' + getSlug(teamMember.name)} key={teamMember.id}>
-                <BackgroundImage
-                  className="team__image"
-                  fluid={teamMember.profilePicture ? teamMember.profilePicture.fluid : profilePicturePlacholder.file.childImageSharp.fluid}
-                  style={{
-                    backgroundSize: 'cover'
-                  }}
-                />
+              <Link
+                className="team"
+                to={"/team/" + getSlug(teamMember.name)}
+                key={teamMember.id}>
+                {teamMember.profilePicture ? (
+                  <GatsbyImage
+                    image={getImage(teamMember.profilePicture)}
+                    style={{
+                      backgroundSize: "cover",
+                    }}
+                    className="team__image"
+                  />
+                ) : (
+                  <StaticImage
+                    src="../../assets/images/team/profile-picture-placeholder.png"
+                    style={{
+                      backgroundSize: "cover",
+                    }}
+                    className="team__image"
+                  />
+                )}
                 <div className="team__content">
-                  <p className="color--blue500 font-weight--600">{teamMember.name}</p>
+                  <p className="color--blue500 font-weight--600">
+                    {teamMember.name}
+                  </p>
                   <span className="content__plus color--blue300">+</span>
                 </div>
               </Link>
@@ -135,7 +144,7 @@ const Sidebar = (props) => {
         </React.Fragment>
       )}
     </StyledSidebar>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

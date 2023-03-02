@@ -1,19 +1,19 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
-import BackgroundImage from 'gatsby-background-image'
+import { useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
-import { getSlug } from 'utils/functions/'
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
+import { getSlug } from "utils/functions/";
 
 // Components
-import Container from 'components/container/'
-import Grid from 'components/grid/'
-import { Tertiary } from 'components/buttons/'
+import Container from "components/container/";
+import Grid from "components/grid/";
+import { Tertiary } from "components/buttons/";
 
 const StyledLabs = styled.section`
   padding: 64px 0;
@@ -73,7 +73,7 @@ const StyledLabs = styled.section`
       }
     }
   }
-`
+`;
 
 const Labs = () => {
   const data = useStaticQuery(graphql`
@@ -85,33 +85,41 @@ const Labs = () => {
           headOfTheLab {
             name
             profilePicture {
-              fluid(maxWidth: 160, quality: 100) {
-                ...GatsbyContentfulFluid_withWebp
-              }
+              gatsbyImageData
             }
           }
         }
       }
     }
-  `)
+  `);
   return (
     <StyledLabs>
       <Container>
         <h2 className="color--blue500">Our Labs</h2>
         <Grid gutter="32" columns="2">
           {data.contentfulContentOrder.labs.map((lab, index) => (
-            <div className="grid__item" data-aos="fade" data-aos-delay={150 * index} key={lab.id}>
+            <div
+              className="grid__item"
+              data-aos="fade"
+              data-aos-delay={150 * index}
+              key={lab.id}>
               <div className="lab-card">
-                <BackgroundImage
-                  className="lab__image"
-                  fluid={lab.headOfTheLab.profilePicture.fluid}
+                <GatsbyImage
+                  image={getImage(lab.headOfTheLab.profilePicture)}
                   style={{
-                    backgroundSize: 'cover'
+                    backgroundSize: "cover",
                   }}
+                  className="lab__image"
                 />
                 <div className="lab__content">
-                  <h4 className="color--blue500 font-weight--600">{lab.title}</h4>
-                  <Tertiary className="color--blue300 color-hover--blue500 font-weight--600 svg-stroke--blue300 svg-hover--stroke-blue500" to={'/labs/' + getSlug(lab.title)} text="View Lab" />
+                  <h4 className="color--blue500 font-weight--600">
+                    {lab.title}
+                  </h4>
+                  <Tertiary
+                    className="color--blue300 color-hover--blue500 font-weight--600 svg-stroke--blue300 svg-hover--stroke-blue500"
+                    to={"/labs/" + getSlug(lab.title)}
+                    text="View Lab"
+                  />
                 </div>
               </div>
             </div>
@@ -119,7 +127,7 @@ const Labs = () => {
         </Grid>
       </Container>
     </StyledLabs>
-  )
-}
+  );
+};
 
-export default Labs
+export default Labs;

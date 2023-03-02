@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import styled from 'styled-components'
-import BackgroundImage from 'gatsby-background-image'
+import styled from "styled-components";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
 
 // Components
-import { Link } from 'gatsby'
-import Container from 'components/container/'
+import { Link } from "gatsby";
+import Container from "components/container/";
 
 const StyledBio = styled.section`
   margin-top: -384px;
@@ -95,12 +95,12 @@ const StyledBio = styled.section`
       `}
     }
   }
-`
+`;
 
-const Bio = props => {
-  const name = props.data.contentfulLabs.title
-  const profilePicture = props.data.contentfulLabs.headOfTheLab?.profilePicture.fluid
-  const bio = props.data.contentfulLabs.summary.summary
+const Bio = (props) => {
+  const name = props.data.contentfulLabs.title;
+  const profilePicture = props.data.contentfulLabs.headOfTheLab.profilePicture;
+  const bio = props.data.contentfulLabs.summary.summary;
 
   return (
     <StyledBio>
@@ -120,15 +120,17 @@ const Bio = props => {
             </div>
           </div>
 
-          {profilePicture && <div className="bio__profile-picture">
-            <BackgroundImage
-              className="profile-picture"
-              fluid={profilePicture}
-              style={{
-                backgroundSize: 'cover'
-              }}
-            />
-          </div>}
+          {profilePicture && (
+            <div className="bio__profile-picture">
+              <GatsbyImage
+                image={getImage(profilePicture)}
+                style={{
+                  backgroundSize: "cover",
+                }}
+                className="profile-picture"
+              />
+            </div>
+          )}
 
           <div className="bio__content mobile color--black">
             {bio && <p className="paragraph--large">{bio}</p>}
@@ -136,7 +138,7 @@ const Bio = props => {
         </div>
       </Container>
     </StyledBio>
-  )
-}
+  );
+};
 
-export default Bio
+export default Bio;

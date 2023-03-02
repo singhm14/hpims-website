@@ -1,17 +1,17 @@
-import React from "react"
+import React from "react";
 
 // Utils
-import breakpoint from "utils/breakpoints/"
-import { getSlug } from "utils/functions/"
+import breakpoint from "utils/breakpoints/";
+import { getSlug } from "utils/functions/";
 
 // Libraries
-import styled from "styled-components"
-import Img from "gatsby-image"
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
+import styled from "styled-components";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
+import PropTypes from "prop-types";
 
 // Components
-import { Tertiary } from "components/buttons/"
+import { Tertiary } from "components/buttons/";
 
 const StyledResearchProjectCard = styled.div`
   max-width: 448px;
@@ -81,38 +81,38 @@ const StyledResearchProjectCard = styled.div`
       font-size: 16px;
     `}
   }
-`
+`;
 
-const ResearchProject = (props) => (
-  <StyledResearchProjectCard className="bg--white color--black">
-    <div>
-      <div className="research-project__icon">
-        {props.icon && <Img fixed={props.icon} alt={props.title} />}
+const ResearchProject = (props) => {
+  const { icon, title, slug, summary } = props;
+  return (
+    <StyledResearchProjectCard className="bg--white color--black">
+      <div>
+        <div className="research-project__icon">
+          {icon && <GatsbyImage image={getImage(icon)} alt={title} />}
+        </div>
+
+        <h4 className="research-project__title color--blue500 font-weight--600">
+          <Link to={"/research-projects/" + slug} className="color--blue500">
+            {title}
+          </Link>
+        </h4>
+        <p className="color--grey900">{summary}</p>
       </div>
 
-      <h4 className="research-project__title color--blue500 font-weight--600">
-        <Link
-          to={"/research-projects/" + props.slug}
-          className="color--blue500"
-        >
-          {props.title}
-        </Link>
-      </h4>
-      <p className="color--grey900">{props.summary}</p>
-    </div>
-
-    <Tertiary
-      to={"/research-projects/" + getSlug(props.title)}
-      className="research-project__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500"
-      text="View full project"
-    />
-  </StyledResearchProjectCard>
-)
+      <Tertiary
+        to={"/research-projects/" + getSlug(title)}
+        className="research-project__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500"
+        text="View full project"
+      />
+    </StyledResearchProjectCard>
+  );
+};
 
 ResearchProject.propTypes = {
   icon: PropTypes.object,
   title: PropTypes.string,
   summary: PropTypes.string,
-}
+};
 
-export default ResearchProject
+export default ResearchProject;

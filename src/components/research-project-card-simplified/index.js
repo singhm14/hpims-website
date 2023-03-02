@@ -1,16 +1,16 @@
-import React from "react"
+import React from "react";
 
 // Utils
-import breakpoint from "utils/breakpoints/"
-import { getSlug } from "utils/functions/"
+import breakpoint from "utils/breakpoints/";
+import { getSlug } from "utils/functions/";
 
 // Libraries
-import styled from "styled-components"
-import Img from "gatsby-image"
-import { Link } from "gatsby"
+import styled from "styled-components";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
 
 // Components
-import { Tertiary } from "components/buttons/"
+import { Tertiary } from "components/buttons/";
 
 const StyledResearchProjectCard = styled.div`
   display: flex;
@@ -68,34 +68,37 @@ const StyledResearchProjectCard = styled.div`
       display: none;
     `}
   }
-`
+`;
 
 const ResearchProjectCard = (props) => {
+  const { icon, title, slug, summary } = props;
+
+  const image = getImage(icon);
   return (
     <StyledResearchProjectCard className="bg--white">
       <div className="card__title">
         <div className="icon">
-          {props.icon && <Img fixed={props.icon} alt={props.title} />}
+          {icon && <GatsbyImage image={image} alt={title} />}
         </div>
         <div className="title">
           <h4 className="color--blue500 font-weight--600">
-            <Link to={"/research-projects/" + props.slug}>{props.title}</Link>
+            <Link to={"/research-projects/" + slug}>{title}</Link>
           </h4>
           <Tertiary
             className="link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500 font-weight--600"
-            to={"/research-projects/" + getSlug(props.title)}
+            to={"/research-projects/" + getSlug(title)}
             text="View full project"
           />
         </div>
       </div>
-      <div className="card__body">{props.summary}</div>
+      <div className="card__body">{summary}</div>
       <Tertiary
         className="card__link color--blue300 color-hover--blue500 svg--stroke-blue300 svg-hover--stroke-blue500 font-weight--600"
-        to={"/research-projects/" + getSlug(props.title)}
+        to={"/research-projects/" + getSlug(title)}
         text="View full project"
       />
     </StyledResearchProjectCard>
-  )
-}
+  );
+};
 
-export default ResearchProjectCard
+export default ResearchProjectCard;
