@@ -57,11 +57,6 @@ export const query = graphql`
           __typename
           name
         }
-
-        ... on ContentfulStudents {
-          __typename
-          name
-        }
       }
     }
   }

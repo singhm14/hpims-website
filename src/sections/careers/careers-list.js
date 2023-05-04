@@ -39,9 +39,6 @@ const CareersList = () => {
           jobSummary {
             jobSummary
           }
-          requirementsSummary {
-            raw
-          }
           applicationInstructions {
             raw
           }
