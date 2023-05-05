@@ -14,6 +14,10 @@ import IconDownload from "assets/icons/icon-download.inline.svg";
 const StyledSidebar = styled.div`
   .sidebar__content {
     padding: 24px;
+
+    .sidebar-url {
+      overflow-wrap: break-word;
+    }
   }
 
   .title--underlined {
@@ -91,7 +95,7 @@ const Sidebar = (props) => {
         <br />
         <p className="title--underlined paragraph--small">Apply Now</p>
 
-        <p className="paragraph--small ejemplo">
+        <p className="paragraph--small sidebar-url">
           {renderRichText(instructions)}
         </p>
 
