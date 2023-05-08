@@ -88,7 +88,7 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-  y
+
   // Students Projects
   createPage({
     component: path.resolve(`./src/templates/students-projects.js`),
