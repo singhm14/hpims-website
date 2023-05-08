@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 
 // Libraries
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { Link } from "gatsby";
 
 // Utils
-import breakpoint from 'utils/breakpoints/'
-import { colors } from 'utils/variables/'
-import { getSlug } from 'utils/functions/'
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
+import { getSlug } from "utils/functions/";
 
 const StyledCareersCard = styled.div`
   display: flex;
@@ -53,28 +53,31 @@ const StyledCareersCard = styled.div`
       border-bottom: 2px solid ${colors.blue300};
     }
   }
-`
+`;
 
-const CareersCard = (props) => (
-  <StyledCareersCard className="bg--grey100">
-    <div className="careers__title bg--blue100">
-      <h5 className="color--blue500 font-weight--600">{props.title}</h5>
-    </div>
+const CareersCard = (props) => {
+  return (
+    <StyledCareersCard className="bg--grey100">
+      <div className="careers__title bg--blue100">
+        <h5 className="color--blue500 font-weight--600">{props.title}</h5>
+      </div>
 
-    <div className="careers__content">
-      <p className="summary">{props.summary}</p>
-      <Link to={'/careers/' + props.slug ? props.slug : getSlug(props.title)} className="careers__link color--blue300 font-weight--600">
-        Learn more
-      </Link>
-    </div>
-  </StyledCareersCard>
-)
-
+      <div className="careers__content">
+        <p className="summary">{props.summary}</p>
+        <Link
+          to={"/careers/" + props.slug ? props.slug : getSlug(props.title)}
+          className="careers__link color--blue300 font-weight--600">
+          Learn more
+        </Link>
+      </div>
+    </StyledCareersCard>
+  );
+};
 CareersCard.propTypes = {
   title: PropTypes.string,
   summary: PropTypes.string,
   requirements: PropTypes.object,
-  applicationInstructions: PropTypes.object
-}
+  applicationInstructions: PropTypes.object,
+};
 
-export default CareersCard
+export default CareersCard;
