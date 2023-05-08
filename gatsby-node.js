@@ -5,7 +5,7 @@
  */
 
 // You can delete this file if you're not using it
-const path = require("path");
+const path = require("path")
 
 // Absolute path
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
@@ -13,12 +13,13 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
     resolve: {
       modules: [path.resolve(__dirname, "src"), "node_modules"],
     },
-  });
-};
+  })
+}
 
 // Team Member Profile
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
+
   const response = await graphql(`
     query {
       allContentfulTeamMembers {
@@ -43,28 +44,28 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `);
+  `)
 
   const getSlug = (tag) => {
     if (tag) {
-      tag = tag.replace(/^\s+|\s+$/g, "");
-      tag = tag.toLowerCase();
+      tag = tag.replace(/^\s+|\s+$/g, "")
+      tag = tag.toLowerCase()
 
       // remove accents, swap ñ for n, etc
-      var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-      var to = "aaaaeeeeiiiioooouuuunc------";
+      var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;"
+      var to = "aaaaeeeeiiiioooouuuunc------"
       for (var i = 0, l = from.length; i < l; i++) {
-        tag = tag.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+        tag = tag.replace(new RegExp(from.charAt(i), "g"), to.charAt(i))
       }
 
       tag = tag
         .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
         .replace(/\s+/g, "-") // collapse whitespace and replace by -
-        .replace(/-+/g, "-"); // collapse dashes
+        .replace(/-+/g, "-") // collapse dashes
     }
 
-    return tag;
-  };
+    return tag
+  }
 
   // Team Members
   response.data.allContentfulTeamMembers.nodes.forEach((node) => {
@@ -74,8 +75,8 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         id: node.id,
       },
-    });
-  });
+    })
+  })
 
   // Research Projects
   response.data.allContentfulResearchProjects.nodes.forEach((node) => {
@@ -85,23 +86,25 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         id: node.id,
       },
-    });
-  });
-
+    })
+  })
+  y
   // Students Projects
   createPage({
     component: path.resolve(`./src/templates/students-projects.js`),
     path: `/research-projects/co-innovation-research-exchange/`,
-  });
+  })
 
   // Labs
   response.data.allContentfulLabs.nodes.forEach((node) => {
-    createPage({
-      component: path.resolve(`./src/templates/lab.js`),
-      path: `/labs/${getSlug(node.title)}`,
-      context: {
-        id: node.id,
-      },
-    });
-  });
-};
+    if (node.id !== "2313d23b-0399-5b1f-9d60-e5138001d62b") {
+      createPage({
+        component: path.resolve(`./src/templates/lab.js`),
+        path: `/labs/${getSlug(node.title)}`,
+        context: {
+          id: node.id,
+        },
+      })
+    }
+  })
+}
