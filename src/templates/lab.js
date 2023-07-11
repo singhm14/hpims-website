@@ -1,19 +1,19 @@
-import React from "react";
+import React from "react"
 
 // Libraries
-import { graphql } from "gatsby";
+import { graphql } from "gatsby"
 
 // Sections
-import Hero from "sections/lab/hero";
-import Bio from "sections/lab/bio";
-import References from "sections/lab/references";
+import Hero from "sections/lab/hero"
+import Bio from "sections/lab/bio"
+import References from "sections/lab/references"
 
 // Components
-import Seo from "components/seo/";
+import Seo from "components/seo/"
 
 const Lab = (props) => {
-  const title = props.data.contentfulLabs.title;
-  const summary = props.data.contentfulLabs.summary.summary;
+  const title = props.data.contentfulLabs.title
+  const summary = props.data.contentfulLabs.summary.summary
 
   return (
     <div data-aos="fade">
@@ -28,8 +28,8 @@ const Lab = (props) => {
       <Bio data={props.data} />
       <References data={props.data} />
     </div>
-  );
-};
+  )
+}
 
 export const query = graphql`
   query ($id: String!) {
@@ -57,9 +57,14 @@ export const query = graphql`
           __typename
           name
         }
+
+        ... on ContentfulStudents {
+          __typename
+          name
+        }
       }
     }
   }
-`;
+`
 
-export default Lab;
+export default Lab
