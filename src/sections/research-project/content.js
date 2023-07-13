@@ -9,9 +9,6 @@ import { GatsbyImage } from "gatsby-plugin-image";
 // Utils
 import { colors } from "utils/variables/";
 
-// Hooks
-// import useContentfulImage from "hooks/useContentfulImage/"
-
 const StyledContent = styled.section`
   display: block;
   color: ${colors.black};
