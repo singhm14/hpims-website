@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 
 // Libraries
-import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
+import { useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
 
 // Utils
-import breakpoint from "utils/breakpoints/"
-import { colors } from "utils/variables/"
-import { getSlug, useToggle } from "utils/functions/"
+import breakpoint from "utils/breakpoints/";
+import { colors } from "utils/variables/";
+import { getSlug, useToggle } from "utils/functions/";
 
 // Components
-import Container from "components/container/"
-import { Link } from "gatsby"
+import Container from "components/container/";
+import { Link } from "gatsby";
 
 // Icons
-import Logo from "assets/icons/icon-logo.inline.svg"
-import IconCaretDown from "assets/icons/icon-caret-down.inline.svg"
-import IconArrowLeft from "assets/icons/icon-arrow-left.inline.svg"
+import Logo from "assets/icons/icon-logo.inline.svg";
+import IconCaretDown from "assets/icons/icon-caret-down.inline.svg";
+import IconArrowLeft from "assets/icons/icon-arrow-left.inline.svg";
 
 const StyledMenu = styled.nav`
   width: 100%;
@@ -303,52 +303,52 @@ const StyledMenu = styled.nav`
       }
     }
   }
-`
+`;
 
 const Menu = () => {
-  const [isMenuOpen, toggleMenu] = useToggle()
-  const [isSubMenuOpen, toggleSubMenu] = useToggle()
-  const [isScrollingDown, handleVisibility] = useToggle()
-  const [lastScrollPosition, handleLastScrollPosition] = useState(0)
+  const [isMenuOpen, toggleMenu] = useToggle();
+  const [isSubMenuOpen, toggleSubMenu] = useToggle();
+  const [isScrollingDown, handleVisibility] = useToggle();
+  const [lastScrollPosition, handleLastScrollPosition] = useState(0);
 
   // Locks scroll if `isMenuOpen`
   useEffect(() => {
     if (window.innerWidth <= 768) {
       if (isMenuOpen) {
-        document.querySelector("html").classList.add("no-scroll")
-        document.querySelector("body").classList.add("no-scroll")
+        document.querySelector("html").classList.add("no-scroll");
+        document.querySelector("body").classList.add("no-scroll");
       } else {
-        document.querySelector("html").classList.remove("no-scroll")
-        document.querySelector("body").classList.remove("no-scroll")
+        document.querySelector("html").classList.remove("no-scroll");
+        document.querySelector("body").classList.remove("no-scroll");
       }
     }
-  })
+  });
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY
+      const scrollPosition = window.scrollY;
 
       if (!isSubMenuOpen) {
         if (scrollPosition > 80) {
           if (scrollPosition > lastScrollPosition) {
             if (!isScrollingDown) {
-              handleVisibility(true)
+              handleVisibility(true);
             }
           } else {
             if (isScrollingDown) {
-              handleVisibility(false)
+              handleVisibility(false);
             }
           }
         }
       }
 
-      handleLastScrollPosition(scrollPosition)
-    }
+      handleLastScrollPosition(scrollPosition);
+    };
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", handleScroll)
-  })
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
 
   const data = useStaticQuery(graphql`
     query {
@@ -360,20 +360,21 @@ const Menu = () => {
         }
       }
 
-      labs: allContentfulLabs {
+      labs: allContentfulLabs(
+        filter: { title: { nin: "Dummy Post, DO NOT DELETE" } }
+      ) {
         nodes {
           id
           title
         }
       }
     }
-  `)
+  `);
   return (
     <StyledMenu
       isMenuOpen={isMenuOpen}
       isSubMenuOpen={isSubMenuOpen}
-      hideMenu={isScrollingDown}
-    >
+      hideMenu={isScrollingDown}>
       <Container>
         <div className="menu__logo">
           <Link to="/" aria-label="HPI·MS">
@@ -385,9 +386,8 @@ const Menu = () => {
           type="button"
           className="menu__toggler"
           onClick={() => {
-            toggleMenu()
-          }}
-        >
+            toggleMenu();
+          }}>
           <span className="bg--blue500"></span>
           <span className="bg--blue500"></span>
           <span className="bg--blue500"></span>
@@ -399,10 +399,9 @@ const Menu = () => {
               <Link
                 to="/about"
                 onClick={() => {
-                  toggleMenu()
-                  isSubMenuOpen && toggleSubMenu()
-                }}
-              >
+                  toggleMenu();
+                  isSubMenuOpen && toggleSubMenu();
+                }}>
                 About
               </Link>
             </li>
@@ -410,10 +409,9 @@ const Menu = () => {
               <Link
                 to="/team"
                 onClick={() => {
-                  toggleMenu()
-                  isSubMenuOpen && toggleSubMenu()
-                }}
-              >
+                  toggleMenu();
+                  isSubMenuOpen && toggleSubMenu();
+                }}>
                 Team
               </Link>
             </li>
@@ -421,9 +419,8 @@ const Menu = () => {
               <button
                 type="button"
                 onClick={() => {
-                  toggleSubMenu()
-                }}
-              >
+                  toggleSubMenu();
+                }}>
                 Research
                 <IconCaretDown />
               </button>
@@ -433,9 +430,8 @@ const Menu = () => {
                   <button
                     type="button"
                     onClick={() => {
-                      toggleSubMenu()
-                    }}
-                  >
+                      toggleSubMenu();
+                    }}>
                     <IconArrowLeft />
                     Research
                   </button>
@@ -446,10 +442,9 @@ const Menu = () => {
                     to="/research"
                     className="color--black font-weight--500"
                     onClick={() => {
-                      toggleSubMenu()
-                      toggleMenu()
-                    }}
-                  >
+                      toggleSubMenu();
+                      toggleMenu();
+                    }}>
                     All Research Initiatives
                   </Link>
                 </div>
@@ -464,10 +459,9 @@ const Menu = () => {
                         to={"/research-projects/" + project.slug}
                         className="font-weight--500"
                         onClick={() => {
-                          toggleSubMenu()
-                          toggleMenu()
-                        }}
-                      >
+                          toggleSubMenu();
+                          toggleMenu();
+                        }}>
                         {project.title}
                       </Link>
                     </li>
@@ -477,10 +471,9 @@ const Menu = () => {
                       to="/research-projects/co-innovation-research-exchange"
                       className="font-weight--500"
                       onClick={() => {
-                        toggleSubMenu()
-                        toggleMenu()
-                      }}
-                    >
+                        toggleSubMenu();
+                        toggleMenu();
+                      }}>
                       Co-Innovation Research Exchange
                     </Link>
                   </li>
@@ -493,10 +486,9 @@ const Menu = () => {
                         to={"/labs/" + getSlug(lab.title)}
                         className="font-weight--500"
                         onClick={() => {
-                          toggleSubMenu()
-                          toggleMenu()
-                        }}
-                      >
+                          toggleSubMenu();
+                          toggleMenu();
+                        }}>
                         {lab.title}
                       </Link>
                     </li>
@@ -508,10 +500,9 @@ const Menu = () => {
               <a
                 href="/publications"
                 onClick={() => {
-                  toggleMenu()
-                  isSubMenuOpen && toggleSubMenu()
-                }}
-              >
+                  toggleMenu();
+                  isSubMenuOpen && toggleSubMenu();
+                }}>
                 Publications
               </a>
             </li>
@@ -519,10 +510,9 @@ const Menu = () => {
               <Link
                 to="/faculty"
                 onClick={() => {
-                  toggleMenu()
-                  isSubMenuOpen && toggleSubMenu()
-                }}
-              >
+                  toggleMenu();
+                  isSubMenuOpen && toggleSubMenu();
+                }}>
                 Faculty
               </Link>
             </li>
@@ -530,10 +520,9 @@ const Menu = () => {
               <Link
                 to="/careers"
                 onClick={() => {
-                  toggleMenu()
-                  isSubMenuOpen && toggleSubMenu()
-                }}
-              >
+                  toggleMenu();
+                  isSubMenuOpen && toggleSubMenu();
+                }}>
                 Careers
               </Link>
             </li>
@@ -541,7 +530,7 @@ const Menu = () => {
         </div>
       </Container>
     </StyledMenu>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;
